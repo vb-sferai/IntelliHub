@@ -31,7 +31,7 @@ import {Carousel} from "../../../components/Carousel";
 import {ProductsCarouselItem} from "./ProductsCarouselItem.tsx";
 import {CasesCarouselItem} from "./CasesCarouselItem.tsx";
 import {EventsCarouselItem} from "./EventsCarouselItem.tsx";
-import {CASES, EVENTS} from "../data.ts";
+import {CASES, EVENTS, PRODUCTS} from "../data.ts";
 
 export const MainPage = () => {
     return (
@@ -93,14 +93,10 @@ export const MainPage = () => {
                                         icon={<img className="w-6 md:w-7 -rotate-90" src={ArrowIcon} alt="Arrow"/>}/>
                     </div>
                 </div>
-                <Carousel id="products" title="Продукты" cardsLength={7} cardWidth={360}>
-                    <ProductsCarouselItem/>
-                    <ProductsCarouselItem/>
-                    <ProductsCarouselItem/>
-                    <ProductsCarouselItem/>
-                    <ProductsCarouselItem/>
-                    <ProductsCarouselItem/>
-                    <ProductsCarouselItem/>
+                <Carousel id="products" title="Продукты" cardsLength={PRODUCTS.length} cardWidth={384}>
+                    {PRODUCTS.map((product) => (
+                        <ProductsCarouselItem title={product.title} text={product.text} list={product.list}/>
+                    ))}
                 </Carousel>
                 <Carousel id="cases" title="Кейсы" cardsLength={CASES.length}>
                     {CASES.map((casesItem) => (
@@ -199,9 +195,9 @@ export const MainPage = () => {
                         </div>
                     </div>
                 </div>
-                <Carousel id="events" title="Ближайшие мероприятия" cardWidth={360} cardsLength={EVENTS.length}>
+                <Carousel id="events" title="Ближайшие мероприятия" cardWidth={384} cardsLength={EVENTS.length}>
                     {EVENTS.map((event) => (
-                        <EventsCarouselItem date={event.date} title={event.title} text={event.text} speaker={event.speaker} speakerRole={event.speakerRole} speakerPhotoUrl={event.speakerPhotoUrl} />
+                        <EventsCarouselItem date={event.date} title={event.title} text={event.text} speaker={event.speaker} speakerRole={event.speakerRole} speakerPhotoUrl={event.speakerPhotoUrl} link={event.link ?? ''} />
                     ))}
                 </Carousel>
                 <div className="flex flex-col items-center mt-20 md:mt-22 lg:mt-36 xl:mt-50">

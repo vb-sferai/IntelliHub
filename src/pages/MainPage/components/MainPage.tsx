@@ -95,7 +95,7 @@ export const MainPage = () => {
                 </div>
                 <Carousel id="products" title="Продукты" cardsLength={PRODUCTS.length} cardWidth={384}>
                     {PRODUCTS.map((product) => (
-                        <ProductsCarouselItem title={product.title} text={product.text} list={product.list}/>
+                        <ProductsCarouselItem iconUrl={product.iconUrl} title={product.title} text={product.text} list={product.list}/>
                     ))}
                 </Carousel>
                 <Carousel id="cases" title="Кейсы" cardsLength={CASES.length}>

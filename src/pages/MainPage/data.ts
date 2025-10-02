@@ -1,8 +1,16 @@
 import KirillImg from '../../assets/imgs/kirill.png';
 import ArtemImg from '../../assets/imgs/artem-frolov.jpg';
+import ListIcon from '../../assets/imgs/list-checked.svg';
+import PersonIcon from '../../assets/imgs/person-display.svg';
+import AudioIcon from '../../assets/imgs/audio-console.svg';
+import CategoryIcon from '../../assets/imgs/category-icon.svg';
+import DrawIcon from '../../assets/imgs/draw.svg';
+import GroupIcon from '../../assets/imgs/people-group.svg';
+import AiIcon from '../../assets/imgs/machine-learning-model.svg';
 
 export const PRODUCTS = [
     {
+        iconUrl: ListIcon,
         title: 'AI-диагностика',
         text: 'Быстрый аудит задач, команд и процессов',
         list: [
@@ -12,6 +20,7 @@ export const PRODUCTS = [
         ],
     },
     {
+        iconUrl: PersonIcon,
         title: 'Ознакомительные воркшопы',
         text: 'Погружение в AI через реальные задачи, практические кейсы и интерактив',
         list: [
@@ -21,7 +30,8 @@ export const PRODUCTS = [
         ],
     },
     {
-        title: 'Разработка и внедрение кастомных  AI-агентов и решений в автоматизации',
+        iconUrl: AudioIcon,
+        title: 'Разработка и внедрение кастомных AI-агентов и решений в автоматизации',
         text: '',
         list: [
             'Готовое решение, встроенное в ежедневную работу отдела',
@@ -30,6 +40,7 @@ export const PRODUCTS = [
         ],
     },
     {
+        iconUrl: CategoryIcon,
         title: 'Кастомизированные образовательные программы',
         text: 'Cистемное внедрение в отдел / компанию',
         list: [
@@ -39,6 +50,7 @@ export const PRODUCTS = [
         ],
     },
     {
+        iconUrl: DrawIcon,
         title: 'Адаптация AI-стратегов',
         text: 'Подготовка внутренних AI-лидеров и амбассадоров изменений\n',
         list: [
@@ -49,6 +61,7 @@ export const PRODUCTS = [
         ],
     },
     {
+        iconUrl: GroupIcon,
         title: 'Комьюнити',
         text: '',
         list: [
@@ -58,6 +71,7 @@ export const PRODUCTS = [
         ],
     },
     {
+        iconUrl: AiIcon,
         title: 'AI - советник для CEO и ТОП-команд',
         text: 'Индивидуальный AI-навигационный трек: от стратегий до симуляций и решений в режиме реального времени',
         list: [
@@ -109,7 +123,7 @@ export const EVENTS = [
         title: 'Открытый вебинар для HR',
         text: 'Human First, AI Fast',
         speaker: 'Кирилл Гурбанов',
-        speakerRole: 'Основатель ИнтеллиХаб — практик  с 9-летним опытом на топ-позициях в крупнейших компаниях России: со-основатель и член СД банка СМЛТ  (группа «Самолет»), Chief Digital Officer МТС Банк,  CPO Сбер Бизнес Мобайл',
+        speakerRole: 'Основатель ИнтеллиХаб, со-основатель и член СД банка СМЛТ, Chief Digital Officer МТС Банк,  CPO Сбер Бизнес Мобайл',
         speakerPhotoUrl: KirillImg,
         link: 'https://t.me/kgrbnv_bot?start=dl-1757939498db45602a124c',
     },
@@ -118,7 +132,7 @@ export const EVENTS = [
         title: 'Буткемп',
         text: 'Введение в ИИ-агенты',
         speaker: 'Артем Фролов',
-        speakerRole: 'Основатель Veyalab (анализ бизнеса и создание AI-агентов для повышения эффективности компаний), экс-руководитель продукта в Collextr (разработка AI-агентов для B2B-продаж на рынках Европы и США), Product Manager в Т-Банке',
+        speakerRole: 'Основатель Veyalab, экс-руководитель продукта в Collextr, Product Manager в Т-Банке',
         speakerPhotoUrl: ArtemImg,
         link: 'https://ai.gurbanov.ru/agents',
     },

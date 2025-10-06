@@ -152,7 +152,7 @@ export const MainPage = () => {
                     <div className="hidden sm:flex flex-col md:flex-row items-end gap-10">
                         <div className="flex flex-row items-end">
                             <div className="relative pr-4 lg:pr-7">
-                                <img src={KirillImg} className="xl:w-180" alt="Кирилл Гурбанов"/>
+                                <img src={KirillImg} className="w-180" alt="Кирилл Гурбанов"/>
                                 <div className="absolute bottom-0 left-0 right-0 h-90 lg:h-92 bg-[#F7F7F5] -z-10"></div>
                             </div>
                             <div

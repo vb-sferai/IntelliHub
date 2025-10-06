@@ -25,6 +25,7 @@ import GiftIcon from '../../../assets/imgs/gift-icon.svg';
 import KirillImg from '../../../assets/imgs/kirill.png';
 import EventsIcon from '../../../assets/imgs/events.svg';
 import EmailIcon from '../../../assets/imgs/email.svg';
+import CalendarIcon from '../../../assets/imgs/calendar-add.svg';
 import CursorIcon from '../../../assets/imgs/cursor.svg';
 import {QuestionsBlock} from "./QuestionsBlock.tsx";
 import {Carousel} from "../../../components/Carousel";
@@ -151,11 +152,11 @@ export const MainPage = () => {
                     <div className="hidden sm:flex flex-col md:flex-row items-end gap-10">
                         <div className="flex flex-row items-end">
                             <div className="relative pr-4 lg:pr-7">
-                                <img src={KirillImg} alt="Кирилл Гурбанов"/>
+                                <img src={KirillImg} className="w-180" alt="Кирилл Гурбанов"/>
                                 <div className="absolute bottom-0 left-0 right-0 h-90 lg:h-92 bg-[#F7F7F5] -z-10"></div>
                             </div>
                             <div
-                                className="flex flex-col p-10 justify-between w-76 sm:w-[calc(100vw-392px)] md:w-82 lg:w-96 h-90 lg:h-92 bg-[#F7F7F5]">
+                                className="flex flex-col p-10 justify-between w-76 sm:w-[calc(100vw-392px)] md:w-82 lg:w-96 xl:w-full h-90 lg:h-92 bg-[#F7F7F5]">
                                 <div className="flex flex-col gap-4 xl:gap-5 font-semibold">
                                     <h4 className="text-lg lg:text-2xl xl:text-3xl text-black">Кирилл Гурбанов</h4>
                                     <span
@@ -209,18 +210,30 @@ export const MainPage = () => {
                      className="flex flex-col gap-8 md:gap-6 lg:gap-10 xl:gap-20 mt-20 md:mt-22 lg:mt-32 xl:mt-62">
                     <h2 className="text-black font-semibold text-3xl md:text-2xl lg:text-3xl xl:text-4xl">Связаться</h2>
                     <div
-                        className="flex flex-col md:flex-row gap-6 md:gap-0 md:justify-around md:gap-5 xl:gap-6 md:h-42 lg:h-50 xl:h-58">
+                      className="flex flex-col md:flex-row gap-6 md:gap-0 md:justify-around md:gap-5 xl:gap-6 md:h-42 lg:h-50 xl:h-58">
                         <div
-                            className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">
-                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={EmailIcon} alt="Email"/>
+                          onClick={() => {
+                            const newWindow = window.open('https://calendly.com/gurbanov/intellihub-intro', '_blank', 'noopener,noreferrer');
+                            if (newWindow) newWindow.opener = null;
+                          }}
+                          className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#FF8002] cursor-pointer"
+                          style={{ userSelect: 'none' }}
+                        >
+                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CalendarIcon} alt="Календарь" />
+                            <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-white 2xl:mb-8">Записаться на<br className="flex 2xl:hidden" />
+                                консультацию</h3>
+                        </div>
+                        <div
+                          className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">
+                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={EmailIcon} alt="Email" />
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Почта</h3>
                                 <span className="text-sm xl:text-base text-gray-700">as@intellihub.ru</span>
                             </div>
                         </div>
                         <div
-                            className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">
-                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CursorIcon} alt="Телеграм"/>
+                          className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">
+                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CursorIcon} alt="Телеграм" />
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Телеграм</h3>
                                 <span className="text-sm xl:text-base text-gray-700">@kgurbanov</span>

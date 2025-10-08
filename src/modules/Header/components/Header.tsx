@@ -73,7 +73,7 @@ export const Header = () => {
     return (
         <>
             <div
-                className={`flex w-full h-14 sm:h-20 sticky top-0 justify-between items-center z-50 py-2 sm:py-0 px-4 sm:px-12 lg:px-16 xl:px-28 2xl:px-40 transition-all duration-300 ease-in-out ${
+                className={`flex w-full h-14 sm:h-20 sticky top-0 justify-between items-center z-50 py-2 sm:py-0 px-4 sm:px-12 lg:px-16 xl:px-[calc(calc(100vw-1408px)/2)] transition-all duration-300 ease-in-out ${
                     (isScrolled && !isMenuOpen)
                         ? 'bg-white text-gray-500 shadow-md'
                         : !(isScrolled || isMenuOpen) ? 'bg-transparent text-white' : 'bg-white'
@@ -111,7 +111,7 @@ export const Header = () => {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 40 }}
                                 transition={{ duration: 0.3 }}
-                                className="absolute right-12 lg:right-16 xl:right-28 2xl:right-40"
+                                className="absolute right-12 lg:right-16 xl:right-[calc(calc(100vw-1408px)/2)]"
                             >
                                 <Button
                                     color="black"

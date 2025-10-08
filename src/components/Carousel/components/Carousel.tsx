@@ -39,10 +39,8 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
             if (windowWidth < 1024) {
                 return (cardWidth - 24);
             } else return cardWidth;
-        } else if (windowWidth >= 1680) {
-            return (windowWidth - 320);
         } else if (windowWidth >= 1440) {
-            return (windowWidth - 224);
+            return 1360;
         } else if (windowWidth >= 1280) {
             return (windowWidth - 128);
         } else if (windowWidth >= 768) {
@@ -67,7 +65,7 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
         setCurrentIndex((prev) => Math.max(prev - 1, 0));
     };
 
-    const handleDragEnd = (_event: any, info: { velocity: { x: number } }) => {
+    const handleDragEnd = (_event: never, info: { velocity: { x: number } }) => {
         if (info.velocity.x < -500) {
             nextSlide();
         } else if (info.velocity.x > 500) {
@@ -115,7 +113,7 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
 
             <div
                 ref={carouselRef}
-                className="flex overflow-x-hidden -mr-4 sm:-mr-12 lg:-mr-16 xl:-mr-28 2xl:-mr-40"
+                className="flex overflow-x-hidden -mr-4 sm:-mr-12 lg:-mr-16 xl:-mr-[calc(calc(100vw-1432px)/2)]"
             >
                 <motion.div
                     className="hidden md:flex space-x-6"

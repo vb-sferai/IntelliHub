@@ -39,7 +39,7 @@ export const MainPage = () => {
         <div className="flex flex-col w-full">
             <div style={backgroundStyle} className="-top-14 sm:-top-20"/>
             <div
-                className="absolute top-[29vh] sm:top-[40vh] lg:top-[45vh] left-4 sm:left-12 lg:left-16 xl:left-28 w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-[calc(100vw-224px)] 2xl:left-40 2xl:w-[calc(100vw-320px)] flex flex-col md:flex-row gap-5 md:gap-2 md:justify-between text-white">
+                className="absolute top-[29vh] sm:top-[40vh] lg:top-[45vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-5 md:gap-2 md:justify-between text-white">
                 <div className="flex flex-col gap-4">
                     <h2 className="text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] md:w-152 lg:w-177 font-semibold">
                         Бутик AI NATIVE решений для вашей команды
@@ -58,7 +58,7 @@ export const MainPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="-mt-10 md:-mt-5 lg:mt-12 xl:mt-20 px-4 sm:px-12 lg:px-16 xl:px-28 2xl:px-40">
+            <div className="-mt-10 md:-mt-5 lg:mt-12 xl:mt-20 px-4 sm:px-12 lg:px-16 xl:px-0 xl:max-w-348 xl:mx-auto">
                 <div className="flex flex-col gap-3 lg:gap-6">
                     <h4 className="font-geist uppercase text-sm md:text-base font-semibold text-gray-400">Нам
                         доверяют</h4>
@@ -152,7 +152,7 @@ export const MainPage = () => {
                     <div className="hidden sm:flex flex-col md:flex-row items-end gap-10">
                         <div className="flex flex-row items-end">
                             <div className="relative pr-4 lg:pr-7">
-                                <img src={KirillImg} className="w-180" alt="Кирилл Гурбанов"/>
+                                <img src={KirillImg} className="xl:w-180" alt="Кирилл Гурбанов"/>
                                 <div className="absolute bottom-0 left-0 right-0 h-90 lg:h-92 bg-[#F7F7F5] -z-10"></div>
                             </div>
                             <div

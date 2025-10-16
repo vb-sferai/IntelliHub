@@ -66,9 +66,9 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
     };
 
     const handleDragEnd = (_event: never, info: { velocity: { x: number } }) => {
-        if (info.velocity.x < -500) {
+        if (info.velocity.x < -200) {
             nextSlide();
-        } else if (info.velocity.x > 500) {
+        } else if (info.velocity.x > 200) {
             prevSlide();
         }
     };

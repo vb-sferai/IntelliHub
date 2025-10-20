@@ -228,7 +228,7 @@ export const MainPage = () => {
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={EmailIcon} alt="Email" />
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Почта</h3>
-                                <span className="text-sm xl:text-base text-gray-700">as@intellihub.ru</span>
+                                <span className="text-sm xl:text-base text-gray-700">as@sfer.ai</span>
                             </div>
                         </div>
                         <div

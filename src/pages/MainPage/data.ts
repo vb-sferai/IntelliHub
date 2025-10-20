@@ -8,77 +8,84 @@ import DrawIcon from '../../assets/imgs/draw.svg';
 import GroupIcon from '../../assets/imgs/people-group.svg';
 import AiIcon from '../../assets/imgs/machine-learning-model.svg';
 
+// Note: I've used the product titles from your "Our Products" section.
+// The sections for "AI Strategist Adaptation" and "Community" were not in the final text, 
+// so I've commented them out. You can delete them or add translations if needed.
 export const PRODUCTS = [
     {
         iconUrl: ListIcon,
-        title: 'AI-диагностика',
-        text: 'Быстрый аудит задач, команд и процессов',
+        title: 'AI Diagnostics',
+        text: 'Quick audit of tasks, teams, and processes.',
         list: [
-            'Буст эффективности процессов до 30%',
-            'Ускоренный запуск MVP',
-            'Роадмэп внедрения ИИ',
+            'Up to 30% increase in process efficiency',
+            'Faster pilot launch and implementation',
+            'Tailored AI roadmap for your business',
         ],
     },
     {
         iconUrl: PersonIcon,
-        title: 'Ознакомительные воркшопы',
-        text: 'Погружение в AI через реальные задачи, практические кейсы и интерактив',
+        title: 'Intro AI Workshops',
+        text: 'Immersive sessions on GenAI tools and business use cases.',
         list: [
-            '100% участников понимают, как ИИ работает в их задачах',
-            '80% начинают применять решения сразу на своих задачах',
-            'Команда говорит на одном AI-языке → быстрее внедрение в процессах',
+            'Clear explanations + guided practice',
+            'Learn from real-world examples',
+            'Understand how to apply AI in daily tasks',
         ],
     },
     {
         iconUrl: AudioIcon,
-        title: 'Разработка и внедрение кастомных AI-агентов и решений в автоматизации',
-        text: '',
+        title: 'AI Skills for Teams', // Assuming this maps to "Development and implementation of custom AI agents"
+        text: 'Practical training to integrate AI into everyday workflows.',
         list: [
-            'Готовое решение, встроенное в ежедневную работу отдела',
-            'Экономия времени от 3 до 10 часов в неделю на сотрудника',
-            'Упрощение рутинных процессов и рост продуктивности',
+            'Build AI literacy across roles and teams',
+            'Learn prompt design and automation',
+            'Develop a shared AI culture in your company',
         ],
     },
     {
         iconUrl: CategoryIcon,
-        title: 'Кастомизированные образовательные программы',
-        text: 'Cистемное внедрение в отдел / компанию',
+        title: 'Executive AI Consulting', // Assuming this maps to "Customized educational programs"
+        text: '1:1 strategic AI sessions for C-level leaders and decision-makers.',
         list: [
-            'Сотрудники начинают применять ИИ в своих задачах уже в первые 2 недели',
-            'Руководители получают понятную карту внедрения AI по направлениям',
-            'Уход от теории к практике: перестройка реальных процессов и рост эффективности',
+            'Identify and prioritize high-impact AI opportunities',
+            'Align AI strategy with business objectives',
+            'Accelerate implementation across departments',
         ],
     },
+    /*
     {
         iconUrl: DrawIcon,
-        title: 'Адаптация AI-стратегов',
-        text: 'Подготовка внутренних AI-лидеров и амбассадоров изменений\n',
+        title: 'AI Strategist Adaptation', // Needs translation
+        text: 'Preparation of internal AI leaders and ambassadors of change',
         list: [
-            'У компании есть понятный профиль роли (что должен уметь и делать AI-евангелист)',
-            'Новый специалист или внутренний лидер получает карту внедрения и поддержку на старте',
-            'В первые 90 дней запущены 1–2 реальных пилота, виден экономический эффект',
-            'В компании формируется ядро AI-компетенций, независимое от внешних подрядчиков',
+            'The company has a clear role profile (what an AI evangelist should be able to do)',
+            'A new specialist or internal leader receives an implementation map and support at the start',
+            'In the first 90 days, 1-2 real pilots are launched, the economic effect is visible',
+            'The company forms a core of AI competencies, independent of external contractors',
         ],
     },
+    */
+    /*
     {
         iconUrl: GroupIcon,
-        title: 'Комьюнити',
+        title: 'Community', // Needs translation
         text: '',
         list: [
-            'Постоянная поддержка внедрений',
-            'Обмен практиками и быстрый рост за счёт среды',
-            'Поддержание интереса к ИИ и регулярный апгрейд решений',
+            'Constant support for implementations',
+            'Exchange of practices and rapid growth due to the environment',
+            'Maintaining interest in AI and regular solution upgrades',
         ],
     },
+    */
     {
         iconUrl: AiIcon,
-        title: 'AI - советник для CEO и ТОП-команд',
-        text: 'Индивидуальный AI-навигационный трек: от стратегий до симуляций и решений в режиме реального времени',
+        title: 'AI Advisor for CEO and Top Teams',
+        text: 'Individual AI navigation track: from strategies to simulations and real-time solutions',
         list: [
-            'ТОП-команда владеет единым AI-«языком» и быстрее принимает решения',
-            'У руководителей есть набор проверенных инструментов для анализа, планирования и управления людьми',
-            'Компания получает список реальных сценариев применения ИИ в бизнесе',
-            'CEO получает персональную поддержку для стратегических решений',
+            'The top team speaks a single AI "language" and makes decisions faster',
+            'Managers have a set of proven tools for analysis, planning, and people management',
+            'The company receives a list of real scenarios for using AI in business',
+            'The CEO receives personal support for strategic decisions',
         ],
     },
 ];
@@ -86,53 +93,54 @@ export const PRODUCTS = [
 export const CASES = [
     {
         client: 'Wealth Management Company',
-        request: 'Члены команды, независимо от ролей, должны начать использовать AI‑инструменты ежедневно для решения рабочих задач и повышения эффективности.',
+        request: 'The goal was to integrate AI tools into everyday work across all roles and increase overall productivity.',
         results: [
             {
                 title: '85%',
-                text: 'сотрудников ежедневно используют AI‑инструменты в рабочих процессах',
+                text: 'of employees use AI tools daily in workflows',
             },
             {
                 title: '70%',
-                text: 'рутинных запросов решаются через GPT-ассистента в течение первых 2 недель',
+                text: 'of routine queries resolved via GPT assistant within the first 2 weeks',
             },
             {
                 title: '5 min',
-                text: 'среднее время ответа сократилось с 1 часа до 5 минут',
+                text: 'average response time reduced from 1 hour to 5 minutes',
             },
             {
                 title: '52',
-                text: 'готовых промпта разработаны для ключевых сценариев',
+                text: 'ready-to-use prompts created for key scenarios (finance, presale, legal, HR)',
             },
             {
                 title: '12',
-                text: 'ИИ-агентов внедрены для контроля качества, продаж, финансов и дашбордов',
+                text: 'AI agents deployed for quality, sales, finance, and executive dashboards',
             },
             {
                 title: '100%',
-                text: 'промптов проверены на соответствие политике безопасности данных',
+                text: 'prompts reviewed for data security compliance',
             },
         ],
         stack: 'ChatGPT Enterprise, Yandex GPT, n8n, Cursor, RAGDB (vector database), Power BI + Bloomberg GPT, Miro, Whisper / Coqui',
     },
 ];
 
+// Note: Event dates and links are left as they were. You might want to update them.
 export const EVENTS = [
     {
-        date: '23 сентября',
-        title: 'Открытый вебинар для HR',
+        date: 'September 23',
+        title: 'Open Webinar for HR',
         text: 'Human First, AI Fast',
-        speaker: 'Кирилл Гурбанов',
-        speakerRole: 'Основатель SFER AI, со-основатель и член СД банка СМЛТ, Chief Digital Officer МТС Банк,  CPO Сбер Бизнес Мобайл',
+        speaker: 'Kirill Gurbanov',
+        speakerRole: 'Founder of SFER AI, co-founder and board member of SMLT Bank, Chief Digital Officer at MTS Bank, CPO at Sber Business Mobile',
         speakerPhotoUrl: KirillImg,
         link: 'https://t.me/kgrbnv_bot?start=dl-1757939498db45602a124c',
     },
     {
-        date: '1 октября',
-        title: 'Буткемп',
-        text: 'Введение в ИИ-агенты',
-        speaker: 'Артем Фролов',
-        speakerRole: 'Основатель Veyalab, экс-руководитель продукта в Collextr, Product Manager в Т-Банке',
+        date: 'October 1',
+        title: 'Bootcamp',
+        text: 'Introduction to AI Agents',
+        speaker: 'Artem Frolov',
+        speakerRole: 'Founder of Veyalab, former Head of Product at Collextr, Product Manager at T-Bank',
         speakerPhotoUrl: ArtemImg,
         link: 'https://ai.gurbanov.ru/agents',
     },

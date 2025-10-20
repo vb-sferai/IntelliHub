@@ -162,7 +162,7 @@ export const MainPage = () => {
                                     <span
                                         className="uppercase md:text-sm xl:text-base text-gray-400">фаундер, ex-CPO<br/>Сбер бизнес мобайл</span>
                                 </div>
-                                <span className="text-sm lg:text-base text-gray-500">Основатель ИнтеллиХаб — практик  с 9-летним опытом на топ-позициях в крупнейших компаниях России: со-основатель и член СД банка СМЛТ  (группа «Самолет»), Chief Digital Officer МТС Банк,  CPO Сбер Бизнес Мобайл</span>
+                                <span className="text-sm lg:text-base text-gray-500">Основатель SFER AI — практик  с 9-летним опытом на топ-позициях в крупнейших компаниях России: со-основатель и член СД банка СМЛТ  (группа «Самолет»), Chief Digital Officer МТС Банк,  CPO Сбер Бизнес Мобайл</span>
                             </div>
                         </div>
                         <div

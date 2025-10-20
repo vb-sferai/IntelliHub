@@ -123,7 +123,7 @@ export const EVENTS = [
         title: 'Открытый вебинар для HR',
         text: 'Human First, AI Fast',
         speaker: 'Кирилл Гурбанов',
-        speakerRole: 'Основатель ИнтеллиХаб, со-основатель и член СД банка СМЛТ, Chief Digital Officer МТС Банк,  CPO Сбер Бизнес Мобайл',
+        speakerRole: 'Основатель SFER AI, со-основатель и член СД банка СМЛТ, Chief Digital Officer МТС Банк,  CPO Сбер Бизнес Мобайл',
         speakerPhotoUrl: KirillImg,
         link: 'https://t.me/kgrbnv_bot?start=dl-1757939498db45602a124c',
     },

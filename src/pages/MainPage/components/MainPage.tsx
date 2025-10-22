@@ -6,6 +6,11 @@ import EpicGrowthLogo from '../../../assets/imgs/logo-epic-growth.svg';
 import YangoLogo from '../../../assets/imgs/logo-yango.svg';
 import HaomLogo from '../../../assets/imgs/logo-haom.svg';
 import SMStretchingLogo from '../../../assets/imgs/logo-smstretching.svg';
+import MtsLogo from '../../../assets/imgs/logo-mts.svg';
+import RLogo from '../../../assets/imgs/logo-r.svg';
+import LancetLogo from '../../../assets/imgs/lancet-logo.svg';
+import AliceLogo from '../../../assets/imgs/alice-logo.svg';
+import NubesLogo from '../../../assets/imgs/nubes-logo.svg';
 // You might need to add other logos like Yandex, Alice, etc., if you have English versions.
 import { StatisticBlock } from "./StatisticBlock.tsx";
 import EducationIcon from '../../../assets/imgs/education-icon.svg';

@@ -98,7 +98,7 @@ export const MainPage = () => {
                 <div id="approach" className="w-full flex flex-col mt-20 xl:mt-37 lg:py-16 xl:py-24 gap-8 lg:gap-16">
                     <div className="flex flex-col gap-6 md:gap-4 xl:gap-5 w-full sm:items-center sm:text-center">
                         <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black">What Participants Get</h2>
-                        <span className="text-base lg:text-lg xl:text-xl text-gray-500">We don't teach "AI theory." We help teams transform how they work.</span>
+                        <span className="text-base lg:text-lg xl:text-xl text-gray-500">We don't teach "AI theory" We help teams transform how they work.</span>
                     </div>
                     <div className="flex flex-col md:flex-row gap-8 md:gap-0 items-center md:justify-around">
                         <DignitiesBlockItem
@@ -226,7 +226,7 @@ export const MainPage = () => {
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CursorIcon} alt="Telegram" />
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Telegram</h3>
-                                <span className="text-sm xl:text-base text-gray-700">@sfer_ai</span>
+                                <span className="text-sm xl:text-base text-gray-700">@kgurbanov</span>
                             </div>
                         </div>
                     </div>

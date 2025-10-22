@@ -1,17 +1,13 @@
 import { backgroundStyle } from "../consts.ts";
 import { Button } from "../../../components/Button";
-// Important: Replace these with your English logos. The names should be the same.
-import MtsBankLogo from '../../../assets/imgs/logo-mts-bank.svg';
+// Logos for English version - removed HAOM and Yandex, using MTS instead of MTS Bank
 import EpicGrowthLogo from '../../../assets/imgs/logo-epic-growth.svg';
 import YangoLogo from '../../../assets/imgs/logo-yango.svg';
-import HaomLogo from '../../../assets/imgs/logo-haom.svg';
 import SMStretchingLogo from '../../../assets/imgs/logo-smstretching.svg';
 import MtsLogo from '../../../assets/imgs/logo-mts.svg';
 import RLogo from '../../../assets/imgs/logo-r.svg';
 import LancetLogo from '../../../assets/imgs/lancet-logo.svg';
-import AliceLogo from '../../../assets/imgs/alice-logo.svg';
 import NubesLogo from '../../../assets/imgs/nubes-logo.svg';
-// You might need to add other logos like Yandex, Alice, etc., if you have English versions.
 import { StatisticBlock } from "./StatisticBlock.tsx";
 import EducationIcon from '../../../assets/imgs/education-icon.svg';
 import StarIcon from '../../../assets/imgs/star-icon.svg';
@@ -33,7 +29,7 @@ import {Carousel} from "../../../components/Carousel";
 import {ProductsCarouselItem} from "./ProductsCarouselItem.tsx";
 import {CasesCarouselItem} from "./CasesCarouselItem.tsx";
 import {EventsCarouselItem} from "./EventsCarouselItem.tsx";
-import {CASES, EVENTS, PRODUCTS} from "../data.ts"; // This file should already be translated
+import {CASES, EVENTS, PRODUCTS} from "../data.ts";
 
 export const MainPage = () => {
     return (
@@ -53,7 +49,7 @@ export const MainPage = () => {
                         We help companies integrate artificial intelligence into their everyday operations, reduce manual workload, and increase efficiency from day one.
                     </p>
                     <div className="flex flex-col gap-4 md:gap-2 xl:gap-4">
-                        <Button color="white">Let’s Talk Strategy</Button>
+                        <Button color="white">Let's Talk Strategy</Button>
                     </div>
                 </div>
             </div>
@@ -61,12 +57,13 @@ export const MainPage = () => {
                 <div className="flex flex-col gap-3 lg:gap-6">
                     <h4 className="font-geist uppercase text-sm md:text-base font-semibold text-gray-400">Trusted by</h4>
                     <div className="flex flex-row flex-wrap gap-y-3 gap-x-5 lg:gap-7">
-                        <img className="h-6 lg:h-[29px]" src={MtsBankLogo} alt="MTS Bank"/>
+                        <img className="h-6 lg:h-[29px]" src={MtsLogo} alt="MTS"/>
                         <img className="h-6 lg:h-[29px]" src={EpicGrowthLogo} alt="Epic Growth"/>
+                        <img className="h-6 lg:h-[29px]" src={RLogo} alt="R"/>
                         <img className="h-6 lg:h-[29px]" src={YangoLogo} alt="Yango"/>
-                        <img className="h-6 lg:h-[29px]" src={HaomLogo} alt="Haom"/>
+                        <img className="h-6 lg:h-[29px]" src={LancetLogo} alt="Lancet"/>
                         <img className="h-6 lg:h-[29px]" src={SMStretchingLogo} alt="SMStretching"/>
-                        {/* Add other logos here */}
+                        <img className="h-6 lg:h-[29px]" src={NubesLogo} alt="Nubes"/>
                     </div>
                 </div>
                 <div
@@ -74,7 +71,7 @@ export const MainPage = () => {
                     <div className="flex flex-col gap-6 md:gap-4 lg:gap-5">
                         <h4 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black">Results in Numbers</h4>
                         <span
-                            className="text-base font-medium md:font-normal lg:text-lg xl:text-xl text-gray-400 md:text-gray-600 max-w-76 md:max-w-86 lg:max-w-103 xl:max-w-118">We’ve helped businesses make AI a working tool — not just a buzzword.</span>
+                            className="text-base font-medium md:font-normal lg:text-lg xl:text-xl text-gray-400 md:text-gray-600 max-w-76 md:max-w-86 lg:max-w-103 xl:max-w-118">We've helped businesses make AI a working tool — not just a buzzword.</span>
                     </div>
                     <div className="flex flex-col gap-10 lg:gap-20">
                         {/* The file had 1,600+, but the code has 2500+. I'm using the value from the file. */}
@@ -101,12 +98,12 @@ export const MainPage = () => {
                 <div id="approach" className="w-full flex flex-col mt-20 xl:mt-37 lg:py-16 xl:py-24 gap-8 lg:gap-16">
                     <div className="flex flex-col gap-6 md:gap-4 xl:gap-5 w-full sm:items-center sm:text-center">
                         <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black">What Participants Get</h2>
-                        <span className="text-base lg:text-lg xl:text-xl text-gray-500">We don’t teach “AI theory.” We help teams transform how they work.</span>
+                        <span className="text-base lg:text-lg xl:text-xl text-gray-500">We don't teach "AI theory." We help teams transform how they work.</span>
                     </div>
                     <div className="flex flex-col md:flex-row gap-8 md:gap-0 items-center md:justify-around">
                         <DignitiesBlockItem
                             title="10% theory / 90% hands-on practice"
-                            text="You’ll learn by doing — using your actual tasks and documents, not simulations."
+                            text="You'll learn by doing — using your actual tasks and documents, not simulations."
                             icon={<img className="w-10 md:w-8 xl:w-10" src={EducationOrangeIcon} alt="EducationIcon"/>}
                         />
                         <DignitiesBlockItem
@@ -116,7 +113,7 @@ export const MainPage = () => {
                         />
                         <DignitiesBlockItem
                             title="Expert-curated prompt libraries & use cases"
-                            text="Ready-to-use, field-tested prompts and AI workflows — adapted to your team’s goals."
+                            text="Ready-to-use, field-tested prompts and AI workflows — adapted to your team's goals."
                             icon={<img className="w-10 md:w-8 xl:w-10" src={NotebookIcon} alt="NotebookIcon"/>}
                         />
                     </div>
@@ -197,7 +194,7 @@ export const MainPage = () => {
                 <div className="flex flex-col items-center mt-20 md:mt-22 lg:mt-36 xl:mt-50">
                     <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black">Frequently
                         Asked Questions</h2>
-                    <QuestionsBlock/> {/* Assuming QuestionsBlock fetches its own translated content */}
+                    <QuestionsBlock/>
                 </div>
                 <div id="contacts"
                      className="flex flex-col gap-8 md:gap-6 lg:gap-10 xl:gap-20 mt-20 md:mt-22 lg:mt-32 xl:mt-62">

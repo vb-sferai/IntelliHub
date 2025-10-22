@@ -2,8 +2,8 @@ import {QuestionsBlockItem} from "./QuestionBlockItem.tsx";
 
 const questions = [
     {
-        question: 'How is Sfer.AI different from agencies or large consulting firms?',
-        answer: 'We are not a factory of generic solutions. Sfer.AI works as a boutique consultancy. We don’t scale one-size-fits-all products, but design AI programs tailored to each client’s needs. Every project starts with diagnostics and customization.',
+        question: 'How is SFER AI different from agencies or large consulting firms?',
+        answer: 'We are not a factory of generic solutions. SFER AI works as a boutique consultancy. We don’t scale one-size-fits-all products, but design AI programs tailored to each client’s needs. Every project starts with diagnostics and customization.',
     },
     {
         question: 'What kind of problems do you solve?',

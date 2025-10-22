@@ -75,7 +75,7 @@ export const MainPage = () => {
                     </div>
                     <div className="flex flex-col gap-10 lg:gap-20">
                         {/* The file had 1,600+, but the code has 2500+. I'm using the value from the file. */}
-                        <StatisticBlock title="1,600+" text="Specialists trained"
+                        <StatisticBlock title="2500+" text="Specialists trained"
                                         icon={<img className="w-6 md:w-7" src={EducationIcon} alt="Education"/>}/>
                         <StatisticBlock title="9.4/10" text="Average participant satisfaction"
                                         icon={<img className="w-6 md:w-7" src={StarIcon} alt="Star"/>}/>
@@ -102,7 +102,7 @@ export const MainPage = () => {
                     </div>
                     <div className="flex flex-col md:flex-row gap-8 md:gap-0 items-center md:justify-around">
                         <DignitiesBlockItem
-                            title="10% theory / 90% hands-on practice"
+                            title="20% theory / 80% hands-on practice"
                             text="You'll learn by doing — using your actual tasks and documents, not simulations."
                             icon={<img className="w-10 md:w-8 xl:w-10" src={EducationOrangeIcon} alt="EducationIcon"/>}
                         />

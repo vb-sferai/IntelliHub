@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import LogoImg from '../../../assets/imgs/logo.png';
+import LogoImg from '../../../assets/imgs/logo.svg';
 import BurgerIcon from '../../../assets/imgs/burger.svg';
 import CloseIcon from '../../../assets/imgs/close.svg';
 import { motion, AnimatePresence } from 'framer-motion';

@@ -213,7 +213,7 @@ export const MainPage = () => {
                       className="flex flex-col md:flex-row gap-6 md:gap-0 md:justify-around md:gap-5 xl:gap-6 md:h-42 lg:h-50 xl:h-58">
                         <div
                           onClick={() => {
-                            const newWindow = window.open('https://calendly.com/gurbanov/sfer-intro', '_blank', 'noopener,noreferrer');
+                            const newWindow = window.open('https://calendly.com/as-sfer/30min', '_blank', 'noopener,noreferrer');
                             if (newWindow) newWindow.opener = null;
                           }}
                           className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#FF8002] cursor-pointer"
@@ -236,7 +236,16 @@ export const MainPage = () => {
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CursorIcon} alt="Телеграм" />
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Телеграм</h3>
-                                <span className="text-sm xl:text-base text-gray-700">@kgurbanov</span>
+                                <span 
+                                 className="text-sm xl:text-base text-gray-700 cursor-pointer hover:text-gray-900 underline"
+                                  onClick={() => {
+                                  const newWindow = window.open('https://t.me/kgurbanov', '_blank', 'noopener,noreferrer');
+                                  if (newWindow) newWindow.opener = null;
+                                  }}
+                                >
+                                  @kgurbanov
+                                  </span>
+
                             </div>
                         </div>
                     </div>

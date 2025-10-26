@@ -36,7 +36,9 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
 
     const carouselItemWidth = useMemo(() => {
         if (cardWidth) {
-            if (windowWidth < 1024) {
+            if (windowWidth < 406) {
+                return (windowWidth - 56);
+            } else if (windowWidth < 1024) {
                 return (cardWidth - 24);
             } else return cardWidth;
         } else if (windowWidth >= 1440) {
@@ -45,8 +47,10 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
             return (windowWidth - 128);
         } else if (windowWidth >= 768) {
             return (windowWidth - 96);
+        } else if (windowWidth >= 406) {
+            return 374;
         }
-        return 374;
+        return (windowWidth - 56);
     }, [windowWidth, cardWidth]);
 
     const x = useMotionValue(0);
@@ -110,7 +114,6 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
                     </button>
                 </div>
             </div>
-
             <div
                 ref={carouselRef}
                 className="flex overflow-x-hidden -mr-4 sm:-mr-12 lg:-mr-16 xl:-mr-[calc(calc(100vw-1432px)/2)]"

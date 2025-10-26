@@ -23,7 +23,7 @@ body {
   --color-gray-600: oklch(0.5138 0 0);
   --color-gray-700: oklch(0.4422 0.0355 257.79);
 
-  --breakpoint-xs: 30rem; /* 480 */
+  --breakpoint-xs: 23.75rem; /* 380 */
   --breakpoint-sm: 48rem; /* 768 */
   --breakpoint-md: 64rem; /* 1024 */
   --breakpoint-lg: 80rem; /* 1280 */

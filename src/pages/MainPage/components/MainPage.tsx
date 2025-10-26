@@ -39,21 +39,21 @@ export const MainPage = () => {
         <div className="flex flex-col w-full">
             <div style={backgroundStyle} className="-top-14 sm:-top-20"/>
             <div
-                className="absolute top-[29vh] sm:top-[40vh] lg:top-[45vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-5 md:gap-2 md:justify-between text-white">
-                <div className="flex flex-col gap-4">
-                    <h2 className="text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] md:w-152 lg:w-177 font-semibold">
+                className="absolute top-[15vh] xs:top-[26vh] sm:top-[40vh] lg:top-[45vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-3 xs:gap-5 md:gap-2 md:justify-between text-white">
+                <div className="flex flex-col gap-3 xs:gap-4">
+                    <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] md:w-152 lg:w-177 font-semibold">
                         Бутик AI NATIVE решений для вашей команды
                     </h2>
-                    <h3 className="text-xl sm:text-2xl xl:text-3xl font-semibold">Вдохновляем. Обучаем. Внедряем.
+                    <h3 className="text-lg xs:text-xl sm:text-2xl xl:text-3xl font-semibold">Вдохновляем. Обучаем. Внедряем.
                         Меняем.</h3>
                 </div>
-                <div className="flex flex-col justify-between gap-8 md:gap-3 xl:gap-4">
-                    <p className="md:max-w-95 mr-10 text-base lg:text-lg xl:text-xl font-medium">
+                <div className="flex flex-col justify-between gap-4 xs:gap-8 md:gap-3 xl:gap-4">
+                    <p className="md:max-w-95 mr-10 text-sm xs:text-base lg:text-lg xl:text-xl font-medium">
                         Трансформация начинается там, где сотрудники и люди начинают мыслить иначе. Мы помогаем пройти
                         путь цифровой трансформации от общеобразовательных форматов до автоматизации бизнес - процессов
                         под ключ
                     </p>
-                    <div className="flex flex-col gap-4 md:gap-2 xl:gap-4">
+                    <div className="flex flex-col">
                         <Button color="white">Записаться на консультацию</Button>
                     </div>
                 </div>

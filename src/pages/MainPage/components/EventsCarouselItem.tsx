@@ -11,7 +11,7 @@ type EventsCarouselItemProps = {
 export const EventsCarouselItem = ({ date, title, text, speaker, speakerRole, speakerPhotoUrl, link }: EventsCarouselItemProps) => {
     return (
         <div
-            className="flex flex-col justify-between bg-[#F7F7F5] hover:bg-[#F0F0F0] transition w-90 lg:w-96 min-h-77 p-8 gap-8 cursor-pointer"
+            className="flex flex-col justify-between bg-[#F7F7F5] hover:bg-[#F0F0F0] transition max-w-[calc(100vw-56px)] w-90 lg:w-96 min-h-77 p-8 gap-8 cursor-pointer"
             onClick={() => {
               if (link !== '') {
                   const newWindow = window.open(link, '_blank', 'noopener,noreferrer');

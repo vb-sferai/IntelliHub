@@ -82,7 +82,7 @@ export const Header = () => {
                 <img
                     src={LogoImg}
                     alt="Sfer AI"
-                    className={`w-42 md:w-35 xl:w-[186px] transition-all duration-300 ${
+                    className={`w-42 md:w-35 xl:w-[186px] h-auto transition-all duration-300 ${
                         (isScrolled || isMenuOpen) ? 'filter brightness-0' : ''
                     }`}
                 />

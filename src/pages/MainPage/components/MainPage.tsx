@@ -218,15 +218,24 @@ export const MainPage = () => {
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={EmailIcon} alt="Email" />
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Email</h3>
-                                <span className="text-sm xl:text-base text-gray-700">hello@sfer.ai</span>
+                                <span className="text-sm xl:text-base text-gray-700">as@sfer.ai</span>
                             </div>
                         </div>
                         <div
+                              <div
                           className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CursorIcon} alt="Telegram" />
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Telegram</h3>
-                                <span className="text-sm xl:text-base text-gray-700">@kgurbanov</span>
+                                <span 
+                                 className="text-sm xl:text-base text-gray-700 cursor-pointer hover:text-gray-900 underline"
+                                  onClick={() => {
+                                  const newWindow = window.open('https://t.me/kgurbanov', '_blank', 'noopener,noreferrer');
+                                  if (newWindow) newWindow.opener = null;
+                                  }}
+                                >
+                                  @kgurbanov
+                                  </span>
                             </div>
                         </div>
                     </div>

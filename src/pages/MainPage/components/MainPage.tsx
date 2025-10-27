@@ -210,7 +210,7 @@ export const MainPage = () => {
                           style={{ userSelect: 'none' }}
                         >
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CalendarIcon} alt="Calendar" />
-                            <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-white 2xl:mb-8">Book a<br className="flex 2xl:hidden" />
+                            <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-white 2xl:mb-8">Book a<br className="flex 2xl:hidden" />{' '}
                                 Strategy Call</h3>
                         </div>
                         <div

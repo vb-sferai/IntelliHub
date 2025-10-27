@@ -203,7 +203,7 @@ export const MainPage = () => {
                       className="flex flex-col md:flex-row gap-6 md:gap-0 md:justify-around md:gap-5 xl:gap-6 md:h-42 lg:h-50 xl:h-58">
                         <div
                           onClick={() => {
-                            const newWindow = window.open('https://calendly.com/gurbanov/sfer-intro', '_blank', 'noopener,noreferrer');
+                            const newWindow = window.open('https://calendly.com/as-sfer/30min', '_blank', 'noopener,noreferrer');
                             if (newWindow) newWindow.opener = null;
                           }}
                           className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#FF8002] cursor-pointer"

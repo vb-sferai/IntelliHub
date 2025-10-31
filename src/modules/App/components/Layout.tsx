@@ -1,8 +1,13 @@
+import {useLocation} from "react-router-dom";
 import {Pages} from "./Pages.tsx";
 import {Header} from "../../Header";
 import {Footer} from "../../Footer";
+import {ROUTES} from "../../../constants/routes.ts";
 
 export const Layout = () => {
+    const location = useLocation();
+    const isSupremePage = location.pathname === ROUTES.supreme;
+
     return (
         <div className="min-h-full flex relative">
             <div className="flex flex-col w-full h-full justify-center" style={{
@@ -12,9 +17,9 @@ export const Layout = () => {
                     height: '6px',
                 },
             }}>
-                <Header />
+                {!isSupremePage && <Header />}
                 <Pages />
-                <Footer />
+                {!isSupremePage && <Footer />}
             </div>
         </div>
     );

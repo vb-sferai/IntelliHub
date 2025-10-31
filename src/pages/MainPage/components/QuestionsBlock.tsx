@@ -2,35 +2,35 @@ import {QuestionsBlockItem} from "./QuestionBlockItem.tsx";
 
 const questions = [
     {
-        question: 'How is SFER AI different from agencies or large consulting firms?',
-        answer: 'We are not a factory of generic solutions. SFER AI works as a boutique consultancy. We don’t scale one-size-fits-all products, but design AI programs tailored to each client’s needs. Every project starts with diagnostics and customization.',
+        question: 'Чем SFER AI отличается от агентств или массовых консалтинговых программ?',
+        answer: 'Мы — не «фабрика» решений. SFER AI работает как бутик: мы не стремимся масштабировать типовые продукты, а создаем  AI-решения под конкретные запросы бизнеса. Каждая программа проходит через диагностику и кастомизацию.',
     },
     {
-        question: 'What kind of problems do you solve?',
-        answer: 'We work on two levels:\n' +
-            '– Strategic: AI diagnostics, goal setting, leadership and team preparation\n' +
-            '– Practical: building AI agents, improving workflows, and training employees\n' +
-            'Our main difference is that we stay with you through implementation until real results are achieved, not just deliver the training.',
+        question: 'С какими задачами вы работаете?',
+        answer: 'Мы закрываем два уровня:\n' +
+            '– стратегический (диагностика, постановка AI-целей, подготовка лидеров и команд)\n' +
+            '– практический (разработка AI-агентов, настройка процессов, обучение сотрудников).\n' +
+            'Наша особенность — мы сопровождаем внедрение до реального результата, а не ограничиваемся обучением.',
     },
     {
-        question: 'Can your programs be adapted to my industry?',
-        answer: 'Yes, that is one of our main strengths. We do not offer boxed courses. Whether it is fintech, retail, or real estate, we design each program around your business context and processes.',
+        question: 'Можно ли адаптировать ваши программы под мою отрасль?',
+        answer: 'Да, именно это и есть наша сильная сторона. У нас нет «коробочных» решений: будь то финтех, ритейл или девелопмент, мы собираем образовательные форматы именно под вашу специфику.',
     },
     {
-        question: 'How much time will the training take for my team?',
-        answer: 'We plan the workload carefully, from about 2–3 hours per week for basic tracks to more in-depth sessions for departments or executives. From the very first module, participants start using AI tools in their real work tasks.',
+        question: 'Сколько времени обучение займет у команды?',
+        answer: 'Мы строим программу так, чтобы нагрузка была адекватной: от 2–3 часов в неделю на базовых треках до более глубоких сессий для отделов или руководителей. Важно, что уже на старте сотрудники применяют AI-инструменты в реальных рабочих процессах.',
     },
     {
-        question: 'How do you measure results?',
-        answer: 'Each project begins with a baseline assessment that includes process metrics, speed, and engagement. Together, we define measurable goals such as time saved, efficiency growth, or cost reduction. These KPIs are tracked throughout and after implementation.',
+        question: 'Как вы измеряете результат?',
+        answer: 'Для каждого проекта мы фиксируем стартовую точку (метрики процессов, скорость, вовлеченность) и вместе с вами задаем измеримые цели: экономия времени, рост эффективности, снижение затрат. Эти показатели отслеживаются по итогам внедрения.',
     },
     {
-        question: 'Is it safe for company data?',
-        answer: 'Yes. We create a secure framework for working with AI, train employees to handle confidential information correctly, and use only verified tools. All decisions are coordinated with your internal IT and security teams.',
+        question: 'Это безопасно для данных?',
+        answer: 'Мы выстраиваем «безопасный контур»: обучаем сотрудников работать с конфиденциальной информацией, настраиваем чек-листы и проверенные инструменты. Решения всегда согласуются с вашей внутренней IT-и безопасностью.',
     },
     {
-        question: 'Who will I work with directly?',
-        answer: 'You will work with experienced practitioners: AI strategists, product managers, researchers, and solution designers. We do not outsource our projects. The Sfer.AI team handles everything in-house, and for deep sessions we invite industry experts. You will also have a personal manager and a support team from your first consultation.',
+        question: 'С кем конкретно я буду работать?',
+        answer: 'С вами будут работать практики: AI-стратеги, продакты, исследователи, дизайнеры решений. Мы не привлекаем случайных подрядчиков — за каждым проектом стоит живая команда SFER AI, а в глубинных сессиях участвуют приглашенные лидеры отрасли. У вас будет личный менеджер и служба заботы с момента первой консультации.',
     },
 ];
 

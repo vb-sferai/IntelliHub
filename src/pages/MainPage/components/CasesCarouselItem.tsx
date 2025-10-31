@@ -39,21 +39,18 @@ export const CasesCarouselItem = ({ client, request, results, stack }: CasesCaro
     return (
         <div className={`flex flex-col md:flex-row gap-8 md:gap-12 w-[374px] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-340 md:h-173 bg-[#F7F7F5] pl-6 pt-6 pr-5 pb-11 flex-shrink-0`}>
             <div className="flex flex-col gap-2 md:gap-6 w-61">
-                {/* === TRANSLATED === */}
-                <span className="uppercase text-sm md:text-base font-semibold text-gray-400 font-geist">CLIENT</span>
+                <span className="uppercase text-sm md:text-base font-semibold text-gray-400 font-geist">Клиент</span>
                 <span className="text-xl md:text-[30px] font-semibold text-black">{client}</span>
             </div>
             <div className="flex flex-col w-full h-full justify-between">
                 <div className="flex flex-col">
                     <div className="flex flex-col gap-2 md:gap-4 mb-8 md:mb-10">
-                        {/* === CORRECTED TRANSLATION === */}
-                        <span className="uppercase text-sm md:text-base font-semibold text-gray-400 font-geist">OBJECTIVE</span>
+                        <span className="uppercase text-sm md:text-base font-semibold text-gray-400 font-geist">Запрос</span>
                         <span className="text-base font-normal text-gray-500 max-w-148 leading-5">{request}</span>
                     </div>
                     <div className="flex flex-col gap-4 md:gap-6 max-w-220.5">
-                        {/* === TRANSLATED === */}
                         <span
-                            className="uppercase text-sm md:text-base font-semibold text-gray-400 font-geist">RESULTS</span>
+                            className="uppercase text-sm md:text-base font-semibold text-gray-400 font-geist">Результат</span>
                         <div className="w-full hidden md:flex flex-col gap-8">
                             <div className="flex flex-row justify-between gap-5">
                                 {firstThreeResults.map((result) => (
@@ -93,8 +90,7 @@ export const CasesCarouselItem = ({ client, request, results, stack }: CasesCaro
                     </div>
                 </div>
                 <div className="hidden md:flex flex-col gap-4">
-                    {/* === TRANSLATED === */}
-                    <span className="uppercase text-base font-semibold text-gray-400 font-geist">STACK</span>
+                    <span className="uppercase text-base font-semibold text-gray-400 font-geist">Стек</span>
                     <span className="text-base font-normal text-gray-500 max-w-148 leading-5">{stack}</span>
                 </div>
             </div>

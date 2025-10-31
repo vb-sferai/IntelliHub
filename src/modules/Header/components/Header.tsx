@@ -87,7 +87,7 @@ export const Header = () => {
                     }`}
                 />
 
-                {/* Desktop Menu */}
+                {/* Десктопное меню */}
                 <div className="hidden md:flex items-center">
                     <motion.div
                         className="flex flex-row gap-4 lg:gap-6 xl:gap-8 lg:text-base xl:text-xl font-normal"
@@ -96,12 +96,12 @@ export const Header = () => {
                         }}
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
-                        <span onClick={() => scrollToSection('products')} className="cursor-pointer transition-colors duration-300">Products</span>
-                        <span onClick={() => scrollToSection('cases')} className="cursor-pointer transition-colors duration-300">Cases</span>
-                        <span onClick={() => scrollToSection('approach')} className="cursor-pointer transition-colors duration-300">Approach</span>
-                        <span onClick={() => scrollToSection('team')} className="cursor-pointer transition-colors duration-300">Team</span>
-                        <span onClick={() => scrollToSection('events')} className="cursor-pointer transition-colors duration-300">Events</span>
-                        <span onClick={() => scrollToSection('contacts')} className="cursor-pointer transition-colors duration-300">Contact</span>
+                        <span onClick={() => scrollToSection('products')} className="cursor-pointer transition-colors duration-300">Продукты</span>
+                        <span onClick={() => scrollToSection('cases')} className="cursor-pointer transition-colors duration-300">Кейсы</span>
+                        <span onClick={() => scrollToSection('approach')} className="cursor-pointer transition-colors duration-300">Подход</span>
+                        <span onClick={() => scrollToSection('team')} className="cursor-pointer transition-colors duration-300">Команда</span>
+                        <span onClick={() => scrollToSection('events')} className="cursor-pointer transition-colors duration-300">События</span>
+                        <span onClick={() => scrollToSection('contacts')} className="cursor-pointer transition-colors duration-300">Контакты</span>
                     </motion.div>
 
                     <AnimatePresence>
@@ -117,22 +117,22 @@ export const Header = () => {
                                     color="black"
                                     isInHeader
                                 >
-                                    Let’s Talk Strategy
+                                    Записаться на консультацию
                                 </Button>
                             </motion.div>
                         )}
                     </AnimatePresence>
                 </div>
 
-                {/* Burger Menu for Mobile */}
+                {/* Бургер-меню для мобильных */}
                 <button
                     onClick={toggleMenu}
                     className="md:hidden flex items-center justify-center w-10 h-10"
-                    aria-label="Open menu"
+                    aria-label="Открыть меню"
                 >
                     <img
                         src={isMenuOpen ? CloseIcon : BurgerIcon}
-                        alt="Menu"
+                        alt="Меню"
                         className={`w-6 h-6 transition-all duration-300 ${
                             isScrolled ? 'filter brightness-0' : 'brightness-100'
                         }`}
@@ -140,7 +140,7 @@ export const Header = () => {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Мобильное меню */}
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
@@ -151,12 +151,12 @@ export const Header = () => {
                         className="fixed inset-0 bg-white z-40 md:hidden pt-20 px-4 sm:px-12"
                     >
                         <div className="flex flex-col gap-2 text-base font-semibold text-black uppercase font-geist">
-                            <span onClick={() => scrollToSection('products')} className="cursor-pointer py-3">Products</span>
-                            <span onClick={() => scrollToSection('cases')} className="cursor-pointer py-3">Cases</span>
-                            <span onClick={() => scrollToSection('approach')} className="cursor-pointer py-3">Approach</span>
-                            <span onClick={() => scrollToSection('team')} className="cursor-pointer py-3">Team</span>
-                            <span onClick={() => scrollToSection('events')} className="cursor-pointer py-3">Events</span>
-                            <span onClick={() => scrollToSection('contacts')} className="cursor-pointer py-3">Contact</span>
+                            <span onClick={() => scrollToSection('products')} className="cursor-pointer py-3">Продукты</span>
+                            <span onClick={() => scrollToSection('cases')} className="cursor-pointer py-3">Кейсы</span>
+                            <span onClick={() => scrollToSection('approach')} className="cursor-pointer py-3">Подход</span>
+                            <span onClick={() => scrollToSection('team')} className="cursor-pointer py-3">Команда</span>
+                            <span onClick={() => scrollToSection('events')} className="cursor-pointer py-3">События</span>
+                            <span onClick={() => scrollToSection('contacts')} className="cursor-pointer py-3">Контакты</span>
                         </div>
 
                         <div className="absolute bottom-10 left-6 right-6">
@@ -164,7 +164,7 @@ export const Header = () => {
                                 color="black"
                                 fullWidth
                             >
-                                Let’s Talk Strategy
+                                Записаться на консультацию
                             </Button>
                         </div>
                     </motion.div>

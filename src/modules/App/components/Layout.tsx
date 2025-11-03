@@ -7,6 +7,8 @@ import {ROUTES} from "../../../constants/routes.ts";
 export const Layout = () => {
     const location = useLocation();
     const isSupremePage = location.pathname === ROUTES.supreme;
+    const isCaseStudyPage = location.pathname === ROUTES.casestudies;
+    const hideChrome = isSupremePage || isCaseStudyPage;
 
     return (
         <div className="min-h-full flex relative">
@@ -17,9 +19,9 @@ export const Layout = () => {
                     height: '6px',
                 },
             }}>
-                {!isSupremePage && <Header />}
+                {!hideChrome && <Header />}
                 <Pages />
-                {!isSupremePage && <Footer />}
+                {!hideChrome && <Footer />}
             </div>
         </div>
     );

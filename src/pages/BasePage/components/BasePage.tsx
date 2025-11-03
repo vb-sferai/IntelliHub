@@ -135,8 +135,8 @@ export const BasePage = () => {
                         <span
                             className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-white leading-[120%]">Готовы посмотреть<br className="hidden lg:block"/>на AI по-новому?</span>
                         <div className="hidden lg:flex flex-row gap-8">
-                            <Button color="white" width="240px">Участвовать вживую</Button>
-                            <Button color="blur" width="240px">Купить запись</Button>
+                            <Button color="white" width="240px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Участвовать вживую</Button>
+                            <Button color="blur" width="240px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec">Купить запись</Button>
                         </div>
                         <div className="lg:hidden flex flex-col gap-4">
                             <Button color="white" width="100%" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Участвовать вживую</Button>

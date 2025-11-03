@@ -59,7 +59,7 @@ export const ContactsSection = () => {
                     href={card.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base font-normal leading-[24px] text-[#475467] underline hover:text-[#005ee0] transition-colors"
+                        className="text-base font-normal leading-[24px] text-[#475467] underline hover:text-[#275DD8] transition-colors"
                   >
                     {card.contact}
                   </a>

@@ -27,7 +27,10 @@ export const HeroSection = () => {
           </div>
 
           <nav className="flex w-full max-w-[386px] flex-col space-y-10" aria-label="Primary programs">
-            <p className="text-xl font-medium opacity-90" style={{ letterSpacing: '-0.6px', lineHeight: '1.3' }}>
+            <p
+              className="w-[386px] text-xl font-medium opacity-90"
+              style={{ letterSpacing: '-0.6px', lineHeight: '1.3', minHeight: '78px' }}
+            >
               In three years, AI literacy will be as essential as reading or using a computer. You can start making that shift today.
             </p>
             <div className="flex flex-col border-y border-white/20">
@@ -35,7 +38,7 @@ export const HeroSection = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex items-center justify-between border-b border-white/20 py-5 font-['Geist_Mono'] text-base font-semibold uppercase tracking-[0.8px] transition-all duration-200 last:border-b-0 hover:text-white"
+                  className="group flex items-center justify-between border-b border-white/20 py-5 font-geist text-base font-semibold uppercase tracking-[0.8px] transition-all duration-200 last:border-b-0 hover:text-white"
                 >
                   <span>{item.label}</span>
                   <span className="translate-x-0 opacity-50 transition-transform group-hover:translate-x-1" aria-hidden>

@@ -37,10 +37,12 @@ export const PhilosophySection = () => {
             style={{ width: '832px' }}
           >
             <DitheringBackground />
-            <div className="relative z-10">
+            <div className="relative z-10 flex flex-col gap-6">
               <p className="text-base font-normal leading-[1.3] tracking-[-0.48px] text-white">
                 Our Mission
               </p>
+            </div>
+            <div className="relative z-10">
               <h3
                 className="text-5xl font-semibold leading-[1.2] tracking-[-1.44px] text-white"
                 style={{ width: '459px' }}

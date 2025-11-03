@@ -30,41 +30,44 @@ export const WhatWeDoSection = () => {
       </div>
 
       {/* Cards */}
-      <div className="flex w-full max-w-[1280px] flex-col gap-4 md:flex-row">
-        {SERVICES.map((service, index) => (
-          <div
-            key={index}
-            className="flex h-[521px] min-w-[320px] flex-1 flex-col justify-between bg-[#f7f7f5] p-8"
-          >
-            {/* Content */}
-            <div className="flex flex-col gap-6">
-              <img src={service.icon} alt="" className="size-10" />
-              <div className="flex flex-col gap-2">
-                <h3 className="w-[300px] text-2xl font-semibold leading-[30px] text-black">
-                  {service.title}
-                </h3>
-                <p 
-                  className="text-base font-normal leading-[1.3] tracking-[-0.48px] text-black"
-                  style={{ width: index === 0 ? '367px' : '239px' }}
-                >
-                  {service.description}
-                </p>
+      <div className="flex w-full max-w-[1280px] flex-col gap-6 md:flex-row md:gap-4">
+        {SERVICES.map((service, index) => {
+          const buttonWidthClass = index === 0 ? 'md:w-[240px]' : 'md:w-[308px]';
+
+          return (
+            <div
+              key={index}
+              className="flex w-full flex-col gap-10 rounded-[40px] bg-[#f7f7f5] p-6 md:h-[521px] md:min-w-[320px] md:flex-1 md:justify-between md:p-8"
+            >
+              {/* Content */}
+              <div className="flex flex-col gap-6">
+                <img src={service.icon} alt="" className="size-10" />
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-2xl font-semibold leading-[30px] text-black md:w-[300px]">
+                    {service.title}
+                  </h3>
+                  <p
+                    className="text-base font-normal leading-[1.3] tracking-[-0.48px] text-black md:w-auto"
+                    style={{ maxWidth: index === 0 ? '367px' : '239px' }}
+                  >
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Button */}
+              <div className="flex">
+                <a href={service.buttonHref} className="w-full md:w-auto">
+                  <button
+                    className={`flex h-[70px] w-full items-center justify-center rounded-[68px] bg-[#275DD8] px-6 py-5 font-geist text-base font-semibold uppercase tracking-[0.8px] text-white shadow-sm transition-colors hover:bg-[#1e4db0] md:px-8 ${buttonWidthClass}`}
+                  >
+                    {service.buttonText}
+                  </button>
+                </a>
               </div>
             </div>
-
-            {/* Button */}
-            <div>
-              <a href={service.buttonHref}>
-                <button
-                  className="flex h-[70px] items-center justify-center rounded-[68px] bg-[#005ee0] px-8 py-5 font-['Geist_Mono'] text-base font-semibold leading-[1.2] tracking-[0.8px] text-white shadow-sm transition-colors hover:bg-[#0051c4]"
-                  style={{ width: index === 0 ? '240px' : '308px' }}
-                >
-                  {service.buttonText}
-                </button>
-              </a>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

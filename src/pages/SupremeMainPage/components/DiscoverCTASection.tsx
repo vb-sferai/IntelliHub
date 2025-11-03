@@ -10,7 +10,7 @@ export const DiscoverCTASection = () => {
   return (
     <section className="bg-white px-6 py-24 md:px-12 lg:px-16" id="discover-cta">
       <div
-        className="relative mx-auto flex w-full max-w-[343px] flex-col items-center justify-center gap-[50px] overflow-hidden px-6 py-10 md:h-[256px] md:max-w-[1248px] md:flex-row md:items-center md:justify-between md:gap-0 md:px-[60px] md:py-0"
+        className="relative mx-auto flex w-full max-w-[343px] flex-col gap-[50px] overflow-hidden px-6 py-10 md:h-[256px] md:max-w-[1248px] md:flex-row md:items-center md:justify-between md:gap-0 md:px-[60px] md:py-0"
       >
         <DitheringBackground />
         {/* Heading */}
@@ -19,12 +19,12 @@ export const DiscoverCTASection = () => {
         </h2>
 
         {/* Menu */}
-        <nav className="relative z-10 flex w-full max-w-[286px] flex-col md:max-w-none">
+        <nav className="relative z-10 flex w-full max-w-[286px] flex-col md:ml-auto md:max-w-[416px]">
           {CTA_MENU_ITEMS.map((item, index) => (
             <a
               key={index}
               href={item.href}
-              className="group relative flex items-center border-b border-white py-5 transition-opacity hover:opacity-80 md:w-[386px]"
+              className="group relative flex w-full items-center border-b border-white py-5 transition-opacity hover:opacity-80"
             >
               <span className="font-geist text-base font-semibold uppercase leading-[1.2] tracking-[0.8px] text-white">
                 {item.label}

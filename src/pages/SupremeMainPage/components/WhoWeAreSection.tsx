@@ -28,14 +28,17 @@ const STATISTICS = [
 
 export const WhoWeAreSection = () => {
   return (
-    <section className="bg-[#f7f7f5] px-6 py-24 md:px-12 lg:px-16 xl:px-[112px]" id="who-we-are">
+    <section className="bg-white px-6 py-24 md:px-12 lg:px-16 xl:px-[112px]" id="who-we-are">
       <div className="mx-auto flex w-full max-w-[1216px] flex-col gap-12 md:flex-row md:gap-[276px]">
         {/* Left column - Title and description */}
-        <div className="flex w-full max-w-[452px] flex-col gap-20">
+        <div className="flex w-full max-w-[458px] flex-col gap-4">
           <h2 className="text-5xl font-semibold leading-[1.2] tracking-[-1.44px] text-black">
             Who we are
           </h2>
-          <p className="text-xl font-normal leading-[1.4] tracking-[-0.6px] text-[#676767] opacity-70">
+          <p
+            className="text-xl font-normal leading-[1.4] tracking-[-0.6px] text-[#676767] opacity-70"
+            style={{ width: '458px', minHeight: '84px' }}
+          >
             We run educational programs and practical AI tools for individuals and companies — from workshops to
             corporate training and SaaS solutions.
           </p>
@@ -46,7 +49,7 @@ export const WhoWeAreSection = () => {
           {STATISTICS.map((stat, index) => (
             <div key={index} className="flex flex-col gap-5">
               <p
-                className="text-[140px] font-normal leading-none tracking-[-8.4px] text-[#005ee0]"
+                  className="text-[140px] font-normal leading-none tracking-[-8.4px] text-[#275DD8]"
                 style={{ fontFamily: 'Inter' }}
               >
                 {stat.value}

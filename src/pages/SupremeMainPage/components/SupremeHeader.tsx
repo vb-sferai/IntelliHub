@@ -61,42 +61,44 @@ export const SupremeHeader = () => {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 flex h-20 items-center justify-between px-6 transition-colors duration-300 md:px-12 lg:px-16 xl:px-[calc((100vw-1408px)/2)] ${headerTone}`}
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${headerTone}`}
       >
-        <a href="#programs" className="flex items-center gap-3" onClick={() => handleNavClick('#programs')}>
-          <img
-            src={LogoImg}
-            alt="Sfer AI"
-            className={`h-8 transition-all ${isScrolled || isMenuOpen ? 'filter brightness-0' : 'filter brightness-0 invert'}`}
-          />
-        </a>
+        <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6 md:px-12 lg:px-16 xl:px-0">
+          <a href="#programs" className="flex items-center gap-3" onClick={() => handleNavClick('#programs')}>
+            <img
+              src={LogoImg}
+              alt="Sfer AI"
+              className={`h-8 transition-all ${isScrolled || isMenuOpen ? 'filter brightness-0' : 'filter brightness-0 invert'}`}
+            />
+          </a>
 
-        <nav className="hidden items-center gap-8 text-xl font-normal md:flex" style={{ letterSpacing: '-0.6px' }}>
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.label}
-              type="button"
-              onClick={() => handleNavClick(item.href)}
-              className="relative text-left transition-colors duration-200 hover:opacity-80"
-            >
-              {item.label}
-            </button>
-          ))}
-        </nav>
+          <nav className="hidden items-center gap-8 text-xl font-normal md:flex" style={{ letterSpacing: '-0.6px' }}>
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.label}
+                type="button"
+                onClick={() => handleNavClick(item.href)}
+                className="relative text-left transition-colors duration-200 hover:opacity-80"
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
 
-        <button
-          type="button"
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden"
-          aria-expanded={isMenuOpen}
-          aria-label={isMenuOpen ? 'Close navigation' : 'Open navigation'}
-        >
-          <img
-            src={isMenuOpen ? CloseIcon : BurgerIcon}
-            alt="Menu"
-            className={`h-6 w-6 transition-all ${isScrolled || isMenuOpen ? '' : 'filter invert'}`}
-          />
-        </button>
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="md:hidden"
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? 'Close navigation' : 'Open navigation'}
+          >
+            <img
+              src={isMenuOpen ? CloseIcon : BurgerIcon}
+              alt="Menu"
+              className={`h-6 w-6 transition-all ${isScrolled || isMenuOpen ? '' : 'filter invert'}`}
+            />
+          </button>
+        </div>
       </header>
 
       <AnimatePresence>

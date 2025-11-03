@@ -1,9 +1,7 @@
 export const NAV_ITEMS = [
-  { label: 'Products', href: '#products' },
-  { label: 'Cases', href: '#cases' },
-  { label: 'Approach', href: '#approach' },
-  { label: 'Team', href: '#team' },
-  { label: 'Events', href: '#events' },
+  { label: 'Products', href: '#what-we-do' },
+  { label: 'Cases', href: '#case-studies' },
+  { label: 'Approach', href: '#philosophy' },
   { label: 'Contacts', href: '#contacts' },
 ];
 

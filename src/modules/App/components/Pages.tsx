@@ -6,9 +6,8 @@ import {ROUTES} from "../../../constants/routes.ts";
 export const Pages = () => {
     return (
         <Routes>
-            <Route path="/" element={<Navigate to={ROUTES.supreme} replace />} />
+            <Route path={ROUTES.root} element={<MainPage />} />
             <Route path={ROUTES.supreme} element={<SupremeMainPage />} />
-            <Route path={ROUTES.home} element={<MainPage />} />
         </Routes>
     );
 };

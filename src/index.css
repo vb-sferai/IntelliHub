@@ -16,7 +16,7 @@ body {
   --font-geist: "Geist Mono", monospace;
 
   --color-primary-100: oklch(0.7319 0.1856 52.89);
-  --color-primary-200: oklch(0.656 0.2126 38.09);
+  --color-primary-200: #005EE0;
   --color-gray-200: oklch(0.9271 0.0075 260.73);
   --color-gray-400: oklch(0.7565 0.0048 258.33);
   --color-gray-500: oklch(0.6167 0 0);

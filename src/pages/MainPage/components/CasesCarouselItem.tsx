@@ -38,7 +38,7 @@ export const CasesCarouselItem = ({ client, request, results, stack }: CasesCaro
     const firstThreeResults = results.slice(0, 3);
     const lastThreeResults = results.slice(-3);
     return (
-        <div className={`flex flex-col md:flex-row gap-8 md:gap-12 w-[374px] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-340 md:h-173 bg-[#F7F7F5] pl-6 pt-6 pr-5 pb-11 flex-shrink-0 relative`}>
+        <div className={`flex flex-col md:flex-row gap-8 md:gap-12 w-[374px] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-340 md:h-173 bg-[#F7F7F5] pl-6 pt-6 pr-5 pb-11 flex-shrink-0`}>
             <div className="flex flex-col gap-2 md:gap-6 w-61">
                 <span className="uppercase text-sm md:text-base font-semibold text-gray-400 font-geist">Клиент</span>
                 <span className="text-xl md:text-[30px] font-semibold text-black">{client}</span>
@@ -90,25 +90,18 @@ export const CasesCarouselItem = ({ client, request, results, stack }: CasesCaro
                         </div>
                     </div>
                 </div>
-                <div className="hidden md:flex flex-col gap-4 justify-between items-start md:items-end">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
                     <div className="flex flex-col gap-4">
                         <span className="uppercase text-base font-semibold text-gray-400 font-geist">Стек</span>
                         <span className="text-base font-normal text-gray-500 max-w-148 leading-5">{stack}</span>
                     </div>
-                    <Link to="/casestudies">
-                        <button className="rounded-full bg-black text-white px-6 py-3 font-geist text-sm font-semibold uppercase tracking-wide hover:bg-gray-800 transition-colors">
+                    <Link to="/casestudies" className="md:mb-0">
+                        <button className="rounded-full bg-black text-white px-6 py-3 font-geist text-sm font-semibold uppercase tracking-wide hover:bg-gray-800 transition-colors whitespace-nowrap">
                             Подробнее о кейсе →
                         </button>
                     </Link>
                 </div>
             </div>
-            
-            {/* Мобильная кнопка внизу */}
-            <Link to="/casestudies" className="md:hidden mt-4">
-                <button className="w-full rounded-full bg-black text-white px-6 py-3 font-geist text-sm font-semibold uppercase tracking-wide hover:bg-gray-800 transition-colors">
-                    Подробнее о кейсе →
-                </button>
-            </Link>
         </div>
     );
 };

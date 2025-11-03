@@ -93,6 +93,9 @@ export const CasesCarouselItem = ({ client, request, results, stack }: CasesCaro
                     <span className="uppercase text-base font-semibold text-gray-400 font-geist">Стек</span>
                     <span className="text-base font-normal text-gray-500 max-w-148 leading-5">{stack}</span>
                 </div>
+                <a href="/casestudies" className="inline-flex md:hidden text-base font-semibold text-black underline hover:opacity-75 transition-opacity">
+                    Подробный рассказ о кейсе →
+                </a>
             </div>
         </div>
     );

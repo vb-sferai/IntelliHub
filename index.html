@@ -25,8 +25,7 @@
         // Если найден русский язык и пользователь на главной странице,
         // перенаправляем на ru.sfer.ai. Для /supreme оставляем английскую версию.
         if (isRussian && isMainPage) {
-          const currentPath = pathname + window.location.search + window.location.hash;
-          window.location.href = 'https://ru.sfer.ai' + currentPath;
+          window.location.href = 'https://ru.sfer.ai/';
         }
       }
     </script>

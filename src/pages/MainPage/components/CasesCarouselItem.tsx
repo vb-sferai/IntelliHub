@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from "react";
+import { Link } from "react-router-dom";
 
 type CaseResult = {
     title: string;
@@ -89,13 +90,17 @@ export const CasesCarouselItem = ({ client, request, results, stack }: CasesCaro
                         </div>
                     </div>
                 </div>
-                <div className="hidden md:flex flex-col gap-4">
+                <div className="hidden md:flex md:flex-col gap-4">
                     <span className="uppercase text-base font-semibold text-gray-400 font-geist">Стек</span>
                     <span className="text-base font-normal text-gray-500 max-w-148 leading-5">{stack}</span>
                 </div>
-                <a href="/casestudies" className="inline-flex md:hidden text-base font-semibold text-black underline hover:opacity-75 transition-opacity">
-                    Подробный рассказ о кейсе →
-                </a>
+                <div className="md:hidden flex flex-col gap-2 mb-4">
+                    <span className="uppercase text-sm font-semibold text-gray-400 font-geist">Стек</span>
+                    <span className="text-sm font-normal text-gray-500 leading-5">{stack}</span>
+                </div>
+                <Link to="/casestudies" className="text-base font-semibold text-blue-600 hover:underline flex items-center gap-1">
+                    Подробнее о кейсе →
+                </Link>
             </div>
         </div>
     );

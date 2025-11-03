@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import LogoImg from '../../../assets/imgs/logo.svg';
 import BurgerIcon from '../../../assets/imgs/burger.svg';
 import CloseIcon from '../../../assets/imgs/close.svg';
@@ -6,6 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from "../../../components/Button";
 
 export const Header = () => {
+    const location = useLocation();
+    const isBaseRoute = location.pathname === '/base';
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [buttonMargin, setButtonMargin] = useState('0px');
@@ -92,20 +95,32 @@ export const Header = () => {
                     <motion.div
                         className="flex flex-row gap-4 lg:gap-6 xl:gap-8 lg:text-base xl:text-xl font-normal"
                         animate={{
-                            marginRight: isScrolled ? buttonMargin : '0px'
+                            marginRight: (isScrolled && !isBaseRoute) ? buttonMargin : '0px'
                         }}
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
-                        <span onClick={() => scrollToSection('products')} className="cursor-pointer transition-colors duration-300">Продукты</span>
-                        <span onClick={() => scrollToSection('cases')} className="cursor-pointer transition-colors duration-300">Кейсы</span>
-                        <span onClick={() => scrollToSection('approach')} className="cursor-pointer transition-colors duration-300">Подход</span>
-                        <span onClick={() => scrollToSection('team')} className="cursor-pointer transition-colors duration-300">Команда</span>
-                        <span onClick={() => scrollToSection('events')} className="cursor-pointer transition-colors duration-300">События</span>
-                        <span onClick={() => scrollToSection('contacts')} className="cursor-pointer transition-colors duration-300">Контакты</span>
+                        {isBaseRoute ? (
+                            <>
+                                <span onClick={() => scrollToSection('programs')} className="cursor-pointer transition-colors duration-300">Программа</span>
+                                <span onClick={() => scrollToSection('speaker')} className="cursor-pointer transition-colors duration-300">Ведущий</span>
+                                <span onClick={() => scrollToSection('reviews')} className="cursor-pointer transition-colors duration-300">Отзывы</span>
+                                <span onClick={() => scrollToSection('price')} className="cursor-pointer transition-colors duration-300">Тарифы</span>
+                                <span onClick={() => scrollToSection('faq')} className="cursor-pointer transition-colors duration-300">FAQ</span>
+                            </>
+                        ) : (
+                            <>
+                                <span onClick={() => scrollToSection('products')} className="cursor-pointer transition-colors duration-300">Продукты</span>
+                                <span onClick={() => scrollToSection('cases')} className="cursor-pointer transition-colors duration-300">Кейсы</span>
+                                <span onClick={() => scrollToSection('approach')} className="cursor-pointer transition-colors duration-300">Подход</span>
+                                <span onClick={() => scrollToSection('team')} className="cursor-pointer transition-colors duration-300">Команда</span>
+                                <span onClick={() => scrollToSection('events')} className="cursor-pointer transition-colors duration-300">События</span>
+                                <span onClick={() => scrollToSection('contacts')} className="cursor-pointer transition-colors duration-300">Контакты</span>
+                            </>
+                        )}
                     </motion.div>
 
                     <AnimatePresence>
-                        {isScrolled && (
+                        {isScrolled && !isBaseRoute && (
                             <motion.div
                                 initial={{ opacity: 0, x: 40 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -151,22 +166,36 @@ export const Header = () => {
                         className="fixed inset-0 bg-white z-40 md:hidden pt-20 px-4 sm:px-12"
                     >
                         <div className="flex flex-col gap-2 text-base font-semibold text-black uppercase font-geist">
-                            <span onClick={() => scrollToSection('products')} className="cursor-pointer py-3">Продукты</span>
-                            <span onClick={() => scrollToSection('cases')} className="cursor-pointer py-3">Кейсы</span>
-                            <span onClick={() => scrollToSection('approach')} className="cursor-pointer py-3">Подход</span>
-                            <span onClick={() => scrollToSection('team')} className="cursor-pointer py-3">Команда</span>
-                            <span onClick={() => scrollToSection('events')} className="cursor-pointer py-3">События</span>
-                            <span onClick={() => scrollToSection('contacts')} className="cursor-pointer py-3">Контакты</span>
+                            {isBaseRoute ? (
+                                <>
+                                    <span onClick={() => scrollToSection('programs')} className="cursor-pointer py-3">Программа</span>
+                                    <span onClick={() => scrollToSection('speaker')} className="cursor-pointer py-3">Ведущий</span>
+                                    <span onClick={() => scrollToSection('reviews')} className="cursor-pointer py-3">Отзывы</span>
+                                    <span onClick={() => scrollToSection('price')} className="cursor-pointer py-3">Тарифы</span>
+                                    <span onClick={() => scrollToSection('faq')} className="cursor-pointer py-3">FAQ</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span onClick={() => scrollToSection('products')} className="cursor-pointer py-3">Продукты</span>
+                                    <span onClick={() => scrollToSection('cases')} className="cursor-pointer py-3">Кейсы</span>
+                                    <span onClick={() => scrollToSection('approach')} className="cursor-pointer py-3">Подход</span>
+                                    <span onClick={() => scrollToSection('team')} className="cursor-pointer py-3">Команда</span>
+                                    <span onClick={() => scrollToSection('events')} className="cursor-pointer py-3">События</span>
+                                    <span onClick={() => scrollToSection('contacts')} className="cursor-pointer py-3">Контакты</span>
+                                </>
+                            )}
                         </div>
 
-                        <div className="absolute bottom-10 left-6 right-6">
-                            <Button
-                                color="black"
-                                fullWidth
-                            >
-                                Записаться на консультацию
-                            </Button>
-                        </div>
+                        {!isBaseRoute && (
+                            <div className="absolute bottom-10 left-6 right-6">
+                                <Button
+                                    color="black"
+                                    fullWidth
+                                >
+                                    Записаться на консультацию
+                                </Button>
+                            </div>
+                        )}
                     </motion.div>
                 )}
             </AnimatePresence>

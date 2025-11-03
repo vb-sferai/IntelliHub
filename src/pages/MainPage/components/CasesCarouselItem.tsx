@@ -90,12 +90,12 @@ export const CasesCarouselItem = ({ client, request, results, stack }: CasesCaro
                         </div>
                     </div>
                 </div>
-                <div className="hidden md:flex flex-col gap-4 w-full justify-between">
+                <div className="hidden md:flex flex-col gap-4 justify-between">
                     <div className="flex flex-col gap-4">
                         <span className="uppercase text-base font-semibold text-gray-400 font-geist">Стек</span>
                         <span className="text-base font-normal text-gray-500 max-w-148 leading-5">{stack}</span>
                     </div>
-                    <Link to="/casestudies" className="inline-block px-8 py-3 bg-black text-white font-semibold rounded-full hover:bg-gray-800 transition-colors w-fit text-sm">
+                    <Link to="/casestudies" className="inline-block px-6 py-3 bg-black text-white font-semibold rounded-full hover:bg-gray-800 transition-colors w-fit">
                         Подробнее о кейсе →
                     </Link>
                 </div>

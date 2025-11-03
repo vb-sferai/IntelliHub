@@ -33,7 +33,6 @@ import {ProductsCarouselItem} from "./ProductsCarouselItem.tsx";
 import {CasesCarouselItem} from "./CasesCarouselItem.tsx";
 import {EventsCarouselItem} from "./EventsCarouselItem.tsx";
 import {CASES, EVENTS, PRODUCTS} from "../data.ts";
-import { Link } from "react-router-dom";
 
 export const MainPage = () => {
     return (
@@ -105,11 +104,6 @@ export const MainPage = () => {
                         <CasesCarouselItem client={casesItem.client} request={casesItem.request} results={casesItem.results} stack={casesItem.stack}/>
                     ))}
                 </Carousel>
-                <div className="flex justify-center mt-8 md:mt-10 lg:mt-12 xl:mt-16 mb-4">
-                    <Link to="/casestudies" className="inline-block px-6 py-3 md:px-8 md:py-4 bg-black text-white font-semibold rounded hover:bg-gray-800 transition-colors">
-                        Подробнее о кейсе →
-                    </Link>
-                </div>
                 <div id="approach" className="w-full flex flex-col mt-20 xl:mt-37 lg:py-16 xl:py-24 gap-8 lg:gap-16">
                     <div className="flex flex-col gap-6 md:gap-4 xl:gap-5 w-full sm:items-center sm:text-center">
                         <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black">Что

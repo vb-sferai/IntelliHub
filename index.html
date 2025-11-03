@@ -18,10 +18,14 @@
         
         // Проверяем, есть ли русский язык в настройках браузера
         const isRussian = userLangs.some(lang => lang.toLowerCase().startsWith('ru'));
-        
-        // Если найден русский язык, перенаправляем на ru.sfer.ai
-        if (isRussian) {
-          const currentPath = window.location.pathname + window.location.search + window.location.hash;
+
+        const pathname = window.location.pathname;
+        const isMainPage = pathname === '/' || pathname === '';
+
+        // Если найден русский язык и пользователь на главной странице,
+        // перенаправляем на ru.sfer.ai. Для /supreme оставляем английскую версию.
+        if (isRussian && isMainPage) {
+          const currentPath = pathname + window.location.search + window.location.hash;
           window.location.href = 'https://ru.sfer.ai' + currentPath;
         }
       }

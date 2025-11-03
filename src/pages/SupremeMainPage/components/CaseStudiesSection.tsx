@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const CASE_STUDIES = [
   {
@@ -61,13 +62,21 @@ export const CaseStudiesSection = () => {
                 className="min-w-full rounded-[40px] bg-[#fcfbfa] p-6 md:p-10"
               >
                 <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[240px_1fr] lg:gap-16">
-                  <div className="flex flex-col gap-6">
-                    <p className="font-geist text-base font-semibold uppercase tracking-[0.8px] text-[#275DD8]">
-                      Client
-                    </p>
-                    <h3 className="text-[30px] font-semibold leading-[30px] tracking-[-1.2px] text-black">
-                      {caseStudy.client}
-                    </h3>
+                  <div className="flex flex-col gap-6 justify-between">
+                    <div className="flex flex-col gap-6">
+                      <p className="font-geist text-base font-semibold uppercase tracking-[0.8px] text-[#275DD8]">
+                        Client
+                      </p>
+                      <h3 className="text-[30px] font-semibold leading-[30px] tracking-[-1.2px] text-black">
+                        {caseStudy.client}
+                      </h3>
+                    </div>
+                    <Link 
+                      to="/casestudies"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-black text-white font-semibold rounded hover:bg-gray-800 transition-colors text-center whitespace-nowrap"
+                    >
+                      Learn more about case →
+                    </Link>
                   </div>
 
                   <div className="flex flex-col gap-10">

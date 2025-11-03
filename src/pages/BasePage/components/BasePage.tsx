@@ -2,8 +2,8 @@ import { MeshGradient as MeshGradient1 } from '@paper-design/shaders-react';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
-import EmailIcon from '../../../assets/imgs/email.svg';
-import CursorIcon from '../../../assets/imgs/cursor.svg';
+import EmailIconBlue from '../../../assets/imgs/email-blue.svg';
+import CursorIconBlue from '../../../assets/imgs/cursor-blue.svg';
 import KirillImg from '../../../assets/imgs/kirill.png';
 import {Carousel} from "./Carousel";
 import {CONTENT, AUDIENCE, PRICE, REVIEWS} from "../data";
@@ -14,6 +14,11 @@ import {CarouselReviewsItem} from "./CarouselReviewsItem";
 export const BasePage = () => {
     return (
         <div className="flex flex-col w-full">
+            <style>{`
+                .base-page-primary {
+                    color: #005EE0;
+                }
+            `}</style>
             <MeshGradient1 speed={0.38} colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4} grainMixer={0.3} grainOverlay={0} frame={32579.315000002767} style={{ position: 'relative', height: '100vh', width: '100%' }} className="-top-14 sm:-top-20" />
             <div
                 className="absolute top-[23vh] xs:top-[35vh] sm:top-[40vh] lg:top-[30vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-3 xs:gap-5 md:gap-2 md:justify-between text-white">
@@ -31,12 +36,12 @@ export const BasePage = () => {
                 <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-15 lg:items-center lg:justify-center">
                     <div className="lg:w-104 flex flex-col gap-5 lg:text-center lg:items-center">
                         <span
-                            className="text-[72px] xs:text-[80px] md:text-7xl lg:text-8xl xl:text-[140px] text-primary-200">9.4/10</span>
+                            className="text-[72px] xs:text-[80px] md:text-7xl lg:text-8xl xl:text-[140px] base-page-primary">9.4/10</span>
                         <span className="text-base lg:text-lg xl:text-xl font-medium text-gray-400">Средняя оценка по итогам обратной связи после воркшопов</span>
                     </div>
                     <div className="lg:w-104 flex flex-col gap-5 lg:text-center lg:items-center">
                         <span
-                            className="text-[72px] xs:text-[80px] md:text-7xl lg:text-8xl xl:text-[140px] text-primary-200">2500+</span>
+                            className="text-[72px] xs:text-[80px] md:text-7xl lg:text-8xl xl:text-[140px] base-page-primary">2500+</span>
                         <span className="text-base lg:text-lg xl:text-xl font-medium text-gray-400">Начали применять AI в жизни и работе вместе с нами</span>
                     </div>
                 </div>
@@ -146,7 +151,7 @@ export const BasePage = () => {
                         className="flex flex-col md:flex-row gap-6 md:gap-0 md:justify-around md:gap-5 xl:gap-6 md:h-42 lg:h-50 xl:h-58 w-full">
                         <div
                             className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">
-                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CursorIcon} alt="Телеграм"/>
+                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CursorIconBlue} alt="Телеграм"/>
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Телеграм</h3>
                                 <a href="https://t.me/kgurbanov" target="_blank" rel="noopener noreferrer" className="text-sm xl:text-base text-gray-700 underline hover:text-primary-200 transition-colors">@kgurbanov</a>
@@ -154,7 +159,7 @@ export const BasePage = () => {
                         </div>
                         <div
                             className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">
-                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={EmailIcon} alt="Email"/>
+                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={EmailIconBlue} alt="Email"/>
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Почта</h3>
                                 <span className="text-sm xl:text-base text-gray-700">info@sfer.ai</span>

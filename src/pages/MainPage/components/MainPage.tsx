@@ -216,7 +216,7 @@ export const MainPage = () => {
                             const newWindow = window.open('https://calendly.com/as-sfer/30min', '_blank', 'noopener,noreferrer');
                             if (newWindow) newWindow.opener = null;
                           }}
-                          className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#005EE0] cursor-pointer"
+                          className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#FF8002] cursor-pointer"
                           style={{ userSelect: 'none' }}
                         >
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CalendarIcon} alt="Календарь" />

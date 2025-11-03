@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@paper-design/shaders-react": "^0.0.60",
     "@tailwindcss/vite": "^4.1.13",
     "clsx": "^2.1.1",
     "embla-carousel": "^8.6.0",

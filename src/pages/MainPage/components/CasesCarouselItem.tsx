@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 type CaseResult = {
     title: string;
@@ -11,9 +11,10 @@ type CasesCarouselItemProps = {
     request: string;
     results: CaseResult[];
     stack: string;
+    link?: string;
 };
 
-export const CasesCarouselItem = ({ client, request, results, stack }: CasesCarouselItemProps) => {
+export const CasesCarouselItem = ({ client, request, results, stack, link }: CasesCarouselItemProps) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -90,16 +91,31 @@ export const CasesCarouselItem = ({ client, request, results, stack }: CasesCaro
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+                <div className="flex flex-col gap-4 mt-8 md:hidden">
+                    <span className="uppercase text-sm font-semibold text-gray-400 font-geist">Стек</span>
+                    <span className="text-base font-normal text-gray-500 leading-5">{stack}</span>
+                    {link && (
+                        <Link
+                            to={link}
+                            className="self-end inline-flex items-center justify-center rounded-full bg-black text-white font-geist text-sm font-semibold uppercase px-5 py-3 hover:bg-[#1A1A1A] transition-colors"
+                        >
+                            Подробнее о кейсе
+                        </Link>
+                    )}
+                </div>
+                <div className="hidden md:flex items-end justify-between gap-6">
                     <div className="flex flex-col gap-4">
                         <span className="uppercase text-base font-semibold text-gray-400 font-geist">Стек</span>
                         <span className="text-base font-normal text-gray-500 max-w-148 leading-5">{stack}</span>
                     </div>
-                    <Link to="/casestudies" className="md:mb-0">
-                        <button className="rounded-full bg-black text-white px-6 py-3 font-geist text-sm font-semibold uppercase tracking-wide hover:bg-gray-800 transition-colors whitespace-nowrap">
-                            Подробнее о кейсе →
-                        </button>
-                    </Link>
+                    {link && (
+                        <Link
+                            to={link}
+                            className="inline-flex items-center justify-center rounded-full bg-black text-white font-geist text-sm font-semibold uppercase px-6 py-3 hover:bg-[#1A1A1A] transition-colors"
+                        >
+                            Подробнее о кейсе
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>

@@ -101,7 +101,7 @@ export const MainPage = () => {
                 </Carousel>
                 <Carousel id="cases" title="Кейсы" cardsLength={CASES.length}>
                     {CASES.map((casesItem) => (
-                        <CasesCarouselItem client={casesItem.client} request={casesItem.request} results={casesItem.results} stack={casesItem.stack}/>
+                        <CasesCarouselItem client={casesItem.client} request={casesItem.request} results={casesItem.results} stack={casesItem.stack} link={casesItem.link}/>
                     ))}
                 </Carousel>
                 <div id="approach" className="w-full flex flex-col mt-20 xl:mt-37 lg:py-16 xl:py-24 gap-8 lg:gap-16">

@@ -72,11 +72,6 @@ export const ContactsSection = () => {
         {/* Footer */}
         <div className="flex flex-wrap items-center justify-between gap-6 border-t border-[#e4e7ec] pt-8">
           <p className="text-base font-normal leading-[24px] text-[#667085]">© 2025</p>
-          <div className="flex gap-4 text-base font-normal leading-[24px] text-[#667085]">
-            <p>Terms</p>
-            <p>Privacy</p>
-            <p>Cookies</p>
-          </div>
         </div>
       </div>
     </section>

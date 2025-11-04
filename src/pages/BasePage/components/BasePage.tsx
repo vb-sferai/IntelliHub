@@ -165,7 +165,7 @@ export const BasePage = () => {
                             className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CursorIconBlue} alt="Телеграм"/>
                             <div className="flex flex-col gap-2">
-                                <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Телеграм</h3>
+                                <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Написать Кириллу в Телеграм</h3>
                                 <a href="https://t.me/kgurbanov" target="_blank" rel="noopener noreferrer" className="text-sm xl:text-base text-gray-700 underline hover:text-primary-200 transition-colors">@kgurbanov</a>
                             </div>
                         </div>

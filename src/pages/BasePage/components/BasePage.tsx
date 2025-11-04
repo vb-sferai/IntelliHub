@@ -66,10 +66,10 @@ export const BasePage = () => {
                             Автор и ведущий программы
                         </h3>
                         <div className="relative lg:hidden block mb-10">
-                            <MeshGradient1 className="w-full lg:w-103 h-[calc(100vw-96px)] lg:h-103 rounded-full" speed={0.38}
+                            <MeshGradient1 className="w-full lg:w-103 h-[calc(100vw-96px)] max-h-[500px] lg:h-103 rounded-full" speed={0.38}
                                            colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4}
                                            grainMixer={0.3} grainOverlay={0} frame={32579.315000002767}/>
-                            <img className="absolute top-0 w-full lg:w-103 rounded-full" src={KirillImg}
+                            <img className="absolute top-0 w-full lg:w-103 h-[calc(100vw-96px)] max-h-[500px] object-cover rounded-full" src={KirillImg}
                                  alt="Кирилл Гурбанов"/>
                         </div>
                         <div className="flex flex-col gap-8">

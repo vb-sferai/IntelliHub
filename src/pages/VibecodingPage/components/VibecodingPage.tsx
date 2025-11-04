@@ -6,7 +6,7 @@ import EmailIconBlue from '../assets/imgs/email-blue.svg';
 import CursorIconBlue from '../assets/imgs/cursor-blue.svg';
 import KirillImg from '../assets/imgs/kirill.png';
 import {Carousel} from "./Carousel";
-import {CONTENT, AUDIENCE, PRICE, REVIEWS} from "../data";
+import {METRICS, CONTENT, AUDIENCE, PRICE, REVIEWS} from "../data";
 import {CarouselContentItem} from "./CarouselContentItem";
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
@@ -23,27 +23,46 @@ export const VibecodingPage = () => {
             <div
                 className="absolute top-[23vh] xs:top-[35vh] sm:top-[40vh] lg:top-[30vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-3 xs:gap-5 md:gap-2 md:justify-between text-white">
                 <div className="flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10">
-                    <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold">
-                        AI-база: как эффективно использовать ИИ<br/>в работе и жизни
+                    <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold leading-[110%]">
+                        Введение в Cursor: сделай<br/>свой первый вайб-проект<br/>за 2 недели
                     </h2>
-                    <span className="md:max-w-95 text-center text-sm xs:text-base lg:text-lg xl:text-xl font-medium mb-2.5">
-                        С нуля до продвинутого пользователя
+                    <span className="max-w-[725px] text-center text-sm xs:text-base lg:text-lg xl:text-xl font-medium mb-2.5">
+                        Пошагово изучим инструменты вайбкодинга<br className="hidden md:block"/>и начнём собирать прототипы и продукты без команды и разработчика
                     </span>
-                    <Button color="white" width="190px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Прокачаться</Button>
+                    <Button color="white" width="190px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Записаться</Button>
                 </div>
             </div>
             <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto -mt-4 lg:mt-5">
                 <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-15 lg:items-center lg:justify-center">
-                    <div className="lg:w-104 flex flex-col gap-5 lg:text-center lg:items-center">
-                        <span
-                            className="text-[72px] xs:text-[80px] md:text-7xl lg:text-8xl xl:text-[140px] base-page-primary">9.4/10</span>
-                        <span className="text-base lg:text-lg xl:text-xl font-medium text-gray-400">Средняя оценка по итогам обратной связи после воркшопов</span>
+                    {METRICS.map((metric, index) => (
+                        <div key={index} className="lg:w-104 flex flex-col gap-5 lg:text-center lg:items-center">
+                            <span className="text-[72px] xs:text-[80px] md:text-7xl lg:text-8xl xl:text-[140px] font-normal leading-none tracking-[-0.06em] base-page-primary">
+                                {metric.value}
+                            </span>
+                            <span className="text-base lg:text-lg xl:text-xl font-medium leading-[1.2] tracking-[-0.03em] text-[#AEB0B3]">
+                                {metric.description}
+                            </span>
+                        </div>
+                    ))}
+                </div>
+                <div className="w-full mt-20 xl:mt-37">
+                    <h2 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl font-semibold text-black mb-6 lg:mb-8 xl:mb-10 text-center lg:text-left">
+                        Фрагменты с буткемпа
+                    </h2>
+                    <div className="relative w-full" style={{ paddingBottom: '64.93975903614458%', height: 0 }}>
+                        <iframe
+                            src="https://www.loom.com/embed/936d3985e0934e8a971c64b12d2be6ff"
+                            frameBorder="0"
+                            webkitallowfullscreen="true"
+                            mozallowfullscreen="true"
+                            allowFullScreen
+                            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                            className="rounded-lg"
+                        />
                     </div>
-                    <div className="lg:w-104 flex flex-col gap-5 lg:text-center lg:items-center">
-                        <span
-                            className="text-[72px] xs:text-[80px] md:text-7xl lg:text-8xl xl:text-[140px] base-page-primary">2500+</span>
-                        <span className="text-base lg:text-lg xl:text-xl font-medium text-gray-400">Начали применять AI в жизни и работе вместе с нами</span>
-                    </div>
+                    <p className="text-sm xs:text-base lg:text-lg text-gray-500 mt-4 lg:mt-6 text-center lg:text-left">
+                        за несколько минут копируем любой лендинг и адаптируем блоки под себя
+                    </p>
                 </div>
                 <div id="programs" className="flex flex-col gap-6 lg:gap-16 mt-20 xl:mt-37 items-center">
                     <Title title="3 онлайн-встречи по 2,5 часа"
@@ -55,7 +74,6 @@ export const VibecodingPage = () => {
                         ))}
                     </Carousel>
                 </div>
-                {/* Видео-блок скрыт по требованию */}
                 <h3 className="lg:hidden flex text-[30px] font-semibold text-black mt-20 mb-6">
                     Автор и ведущий программы
                 </h3>

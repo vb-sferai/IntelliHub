@@ -26,10 +26,10 @@ export const BasePage = () => {
                     <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold">
                         AI-база: как эффективно использовать ИИ<br/>в работе и жизни
                     </h2>
-                    <span className="md:max-w-95 mr-10 text-sm xs:text-base lg:text-lg xl:text-xl font-medium mb-2.5">
-                        С нуля до middle-специалиста в ИИ
+                    <span className="md:max-w-95 text-center text-sm xs:text-base lg:text-lg xl:text-xl font-medium mb-2.5">
+                        С нуля до продвинутого пользователя
                     </span>
-                    <Button color="white" width="190px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Записаться</Button>
+                    <Button color="white" width="190px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Прокачаться</Button>
                 </div>
             </div>
             <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto -mt-4 lg:mt-5">
@@ -57,13 +57,13 @@ export const BasePage = () => {
                 </div>
                 {/* Видео-блок скрыт по требованию */}
                 <h3 className="lg:hidden flex text-[30px] font-semibold text-black mt-20 mb-6">
-                    Ведущий воркшопа
+                    Автор и ведущий программы
                 </h3>
                 <div id="speaker"
                      className="w-full flex flex-col lg:flex-row justify-between pl-8 lg:pl-15 py-6 lg:py-10.5 pr-8 lg:pr-20 bg-[#F7F7F5] lg:mt-20 xl:mt-37 gap-4 lg:gap-0">
                     <div className="flex flex-col justify-between my-2 lg:my-4.5">
                         <h3 className="hidden lg:flex text-2xl lg:text-[42px] xl:text-5xl font-semibold text-black">
-                            Ведущий воркшопа
+                            Автор и ведущий программы
                         </h3>
                         <div className="relative lg:hidden block mb-10">
                             <MeshGradient1 className="w-full lg:w-103 h-[calc(100vw-96px)] lg:h-103 rounded-full" speed={0.38}
@@ -75,7 +75,7 @@ export const BasePage = () => {
                         <div className="flex flex-col gap-8">
                             <div className="flex flex-col gap-2">
                                 <span className="text-lg lg:text-2xl font-semibold">Кирилл Гурбанов</span>
-                                <span className="text-base leading-[130%]">Фаундер, ex-CPO Сбер бизнес мобайл</span>
+                                <span className="text-base leading-[130%]">Основатель sfer.ai, ex CPO в Сбере и МТС, CEO в банке группы Самолет</span>
                             </div>
                             <span className="text-base text-gray-500 leading-[24px] max-w-139">Основатель sfer.ai, практик с 9-летним опытом на топ-позициях в крупнейших компаниях России: со-основатель и член СД банка СМЛТ (группа «Самолет»), Chief Digital Officer МТС Банк, CPO Сбер Бизнес Мобайл</span>
                         </div>
@@ -102,7 +102,7 @@ export const BasePage = () => {
                     <Carousel title="Что говорят участники" cardsLength={REVIEWS.length} cardWidth={360}>
                         {REVIEWS.map((review) => (
                             <CarouselReviewsItem title={review.title} text={review.text} author={review.author}
-                                                 role={review.role}/>
+                                                 role={review.role} avatarUrl={review.avatarUrl}/>
                         ))}
                     </Carousel>
                 </div>

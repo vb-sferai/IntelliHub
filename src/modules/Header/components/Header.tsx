@@ -5,10 +5,11 @@ import BurgerIcon from '../../../assets/imgs/burger.svg';
 import CloseIcon from '../../../assets/imgs/close.svg';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from "../../../components/Button";
+import {ROUTES} from "../../../constants/routes.ts";
 
 export const Header = () => {
     const location = useLocation();
-    const isBaseRoute = location.pathname === '/base';
+    const isBaseRoute = location.pathname === ROUTES.base;
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [buttonMargin, setButtonMargin] = useState('0px');

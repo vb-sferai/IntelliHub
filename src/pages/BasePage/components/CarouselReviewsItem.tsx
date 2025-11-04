@@ -1,13 +1,17 @@
 import StarsSvg from '../../../assets/imgs/stars.svg';
+import AvatarPlaceholder from '../../../assets/imgs/avatar-placeholder.svg';
 
 type CarouselReviewsItemProps = {
     title: string;
     text: string;
     author: string;
     role?: string;
+    avatarUrl?: string;
 };
 
-export const CarouselReviewsItem = ({ title, text, author, role }: CarouselReviewsItemProps) => {
+export const CarouselReviewsItem = ({ title, text, author, role, avatarUrl }: CarouselReviewsItemProps) => {
+    const imageSrc = avatarUrl ?? AvatarPlaceholder;
+
     return (
         <div
             className="flex flex-col justify-between max-w-[calc(100vw-56px)] sm:w-80 lg:w-[calc(calc(calc(100vw-128px)-32px)/3)] xl:w-90 min-h-80 xs:min-h-90 lg:min-h-125 bg-[#F7F7F5] p-8 flex-shrink-0 gap-8">
@@ -18,9 +22,17 @@ export const CarouselReviewsItem = ({ title, text, author, role }: CarouselRevie
                     <span className="text-sm xs:text-base text-gray-500" style={{lineHeight: '130%'}}>{text}</span>
                 </div>
             </div>
-            <div className="flex flex-col gap-0.5">
-                <span className="text-sm font-semibold text-black">{author}</span>
-                {!!role && (<span className="text-sm font-normal text-gray-500">{role}</span>)}
+            <div className="flex items-center gap-3">
+                <img
+                    className="w-12 h-12 rounded-full object-cover"
+                    src={imageSrc}
+                    loading="lazy"
+                    alt={`Аватар ${author}`}
+                />
+                <div className="flex flex-col gap-0.5">
+                    <span className="text-sm font-semibold text-black">{author}</span>
+                    {!!role && (<span className="text-sm font-normal text-gray-500">{role}</span>)}
+                </div>
             </div>
         </div>
     );

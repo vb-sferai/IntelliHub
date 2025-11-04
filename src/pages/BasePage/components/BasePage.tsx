@@ -5,6 +5,7 @@ import {Questions} from "../../../components/FAQ";
 import EmailIconBlue from '../../../assets/imgs/email-blue.svg';
 import CursorIconBlue from '../../../assets/imgs/cursor-blue.svg';
 import KirillImg from '../../../assets/imgs/kirill.png';
+import BaseVideo from '../assets/videos/basevideo.mp4';
 import {Carousel} from "./Carousel";
 import {CONTENT, AUDIENCE, PRICE, REVIEWS} from "../data";
 import {CarouselContentItem} from "./CarouselContentItem";
@@ -55,7 +56,18 @@ export const BasePage = () => {
                         ))}
                     </Carousel>
                 </div>
-                {/* Видео-блок скрыт по требованию */}
+                <div className="flex flex-col gap-6 lg:gap-16 mt-20 xl:mt-37 items-center">
+                    <Title title="Адаптируем каждый воркшоп с учётом последних обновлений AI-инструментов"
+                           subTitle="Всё на реальных кейсах участников"/>
+                    <video
+                        className="w-full max-w-5xl rounded-lg shadow-lg"
+                        controls
+                        preload="metadata"
+                    >
+                        <source src={BaseVideo} type="video/mp4" />
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                </div>
                 <h3 className="lg:hidden flex text-[30px] font-semibold text-black mt-20 mb-6">
                     Автор и ведущий программы
                 </h3>

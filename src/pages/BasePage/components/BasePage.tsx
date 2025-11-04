@@ -43,7 +43,7 @@ export const BasePage = () => {
                     <div className="lg:w-104 flex flex-col gap-5 lg:text-center lg:items-center">
                         <span
                             className="text-[72px] xs:text-[80px] md:text-7xl lg:text-8xl xl:text-[140px] base-page-primary">2500+</span>
-                        <span className="text-base lg:text-lg xl:text-xl font-medium text-gray-400">Начали применять AI в жизни и работе вместе с нами</span>
+                        <span className="text-base lg:text-lg xl:text-xl font-medium text-gray-400">Человек начали применять AI в жизни и работе вместе с нами</span>
                     </div>
                 </div>
                 <div id="programs" className="flex flex-col gap-6 lg:gap-16 mt-20 xl:mt-37 items-center">
@@ -174,7 +174,7 @@ export const BasePage = () => {
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={EmailIconBlue} alt="Email"/>
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Почта</h3>
-                                <span className="text-sm xl:text-base text-gray-700">info@sfer.ai</span>
+                                <span className="text-sm xl:text-base text-gray-700">human@sfer.ai</span>
                             </div>
                         </div>
                     </div>

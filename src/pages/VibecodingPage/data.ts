@@ -4,6 +4,9 @@ import SettingsIcon from './assets/imgs/settings.svg';
 import PeopleIcon from './assets/imgs/people.svg';
 import HeartIcon from './assets/imgs/favorite.svg';
 import FlashIcon from './assets/imgs/flash.svg';
+import DataEnrichmentIcon from './assets/icons/data-enrichment.svg';
+import GatewayUserAccessIcon from './assets/icons/gateway-user-access.svg';
+import MoneyIcon from './assets/icons/money.svg';
 import ReviewEkaterinaImg from './assets/imgs/reviews/ekaterina.jpg';
 import ReviewIrinaImg from './assets/imgs/reviews/irina-starshenbaum.jpg';
 import ReviewLavrentisImg from './assets/imgs/reviews/lavrentis.jpg';
@@ -13,6 +16,82 @@ import ReviewNatalyaImg from './assets/imgs/reviews/natalya.jpg';
 import ReviewOlgaImg from './assets/imgs/reviews/olga-sokolova.jpg';
 import ReviewReginaImg from './assets/imgs/reviews/regina.jpg';
 import ReviewZaytsevImg from './assets/imgs/reviews/zaytsev_ev.jpg';
+
+export const METRICS = [
+    {
+        value: '>25%',
+        description: 'Всего кода Google теперь создаёт ИИ',
+    },
+    {
+        value: '40%',
+        description: 'Корпоративного ПО будет создаваться на практиках вайбкодинга к 2028 году',
+    },
+];
+
+export const WHO_NEEDS_CODING = [
+    {
+        iconUrl: DataEnrichmentIcon,
+        title: 'Маркетологи',
+        description: 'Быстро собирать лендинги, A/B-тесты, формы обратной связи — и проверять гипотезы за вечер, а не за неделю.',
+    },
+    {
+        iconUrl: GatewayUserAccessIcon,
+        title: 'Продакт-менеджеры',
+        description: 'Проверять гипотезы, создавать рабочие прототипы за один день и наконец начать понимать разработчиков.',
+    },
+    {
+        iconUrl: MoneyIcon,
+        title: 'Предприниматели\nи основатели бизнеса',
+        description: 'Быстро собирать лендинги, A/B-тесты, формы обратной связи — и проверять гипотезы за вечер, а не за неделю.',
+    },
+];
+
+export const WEBINAR_SESSIONS = [
+    {
+        day: 'День 1',
+        title: 'Основы Cursor',
+        items: [
+            'Знакомство с Cursor (интерфейс, скачивание, регистрация)',
+            'Настройка rules',
+            'Обзор диалогового окна, моделей, режимов',
+            'Создание структуры проектов',
+        ],
+    },
+    {
+        day: 'День 2',
+        title: 'Знакомство с MCP-серверами',
+        items: [
+            'Добавляем базовые МСР (скрапинг и Figma)',
+            'Создание простых сервисов (калькуляторы, конверторы)',
+            'Создание лендингов (копирование, с нуля, по ссылке, по html-блокам, по скриншотам)',
+        ],
+    },
+    {
+        day: 'День 3',
+        title: 'Создаём проекты',
+        items: [
+            'Деплой проекта',
+            'Работа с данными через диалоговое окно',
+            'Создаем игры и более сложные продукты (с бэкенд-частью)',
+        ],
+    },
+    {
+        day: 'День 4',
+        title: 'Управление проектами',
+        items: [
+            'Как с нуля выстроить работу над продуктом прямо внутри Cursor.',
+            'Присваиваем Cursor роли (CMO, стратег, CFO, методолог), распределяем задачи между ними и получить готовый план запуска — всё в одном рабочем пространстве.',
+        ],
+    },
+    {
+        day: 'День 5',
+        title: 'Демо-день\nи подведение итогов',
+        items: [
+            'Презентация проектов участников',
+            'Разборы, комментарии и идеи от экспертов',
+        ],
+    },
+];
 
 export const CONTENT = [
     {

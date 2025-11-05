@@ -6,8 +6,7 @@ import EmailIconBlue from '../assets/imgs/email-blue.svg';
 import CursorIconBlue from '../assets/imgs/cursor-blue.svg';
 import KirillImg from '../assets/imgs/kirill.png';
 import {Carousel} from "./Carousel";
-import {METRICS, CONTENT, AUDIENCE, PRICE, REVIEWS} from "../data";
-import {CarouselContentItem} from "./CarouselContentItem";
+import {METRICS, WHO_NEEDS_CODING, WEBINAR_SESSIONS, PRICE, REVIEWS} from "../data";
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
 
@@ -64,15 +63,110 @@ export const VibecodingPage = () => {
                         за несколько минут копируем любой лендинг и адаптируем блоки под себя
                     </p>
                 </div>
-                <div id="programs" className="flex flex-col gap-6 lg:gap-16 mt-20 xl:mt-37 items-center">
-                    <Title title="3 онлайн-встречи по 2,5 часа"
-                           subTitle="Изучаем теорию и решаем практические кейсы прямо в Zoom"/>
-                    <Carousel cardsLength={CONTENT.length} cardWidth={400}>
-                        {CONTENT.map((item) => (
-                            <CarouselContentItem iconUrl={item.iconUrl} title={item.title} text={item.text}
-                                                 list={item.list}/>
+                <div className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
+                    <div className="flex flex-col gap-8 items-center max-w-[768px] mx-auto">
+                        <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-center w-full">
+                            Мне нужно уметь программировать? (нет)
+                        </h2>
+                        <p className="text-base lg:text-lg xl:text-xl font-normal leading-[1.5] text-[#858585] text-center w-full max-w-[642px]">
+                            Мы спроектировали курс так, чтобы он подходил специалистам с разным бэкграундом и без знаний программирования
+                        </p>
+                    </div>
+                    <div className="flex flex-col lg:flex-row gap-4 w-full">
+                        {WHO_NEEDS_CODING.map((item, index) => (
+                            <div key={index} className="flex-1 min-w-[320px] bg-[#F7F7F5] p-8 flex flex-col justify-between h-auto lg:h-[398px]">
+                                <div className="flex flex-col gap-6">
+                                    <img src={item.iconUrl} alt={item.title} className="w-10 h-10" />
+                                    <h3 className="text-2xl font-semibold leading-[1.25] text-black whitespace-pre-line">
+                                        {item.title}
+                                    </h3>
+                                </div>
+                                <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-[#858585] mt-6">
+                                    {item.description}
+                                </p>
+                            </div>
                         ))}
-                    </Carousel>
+                    </div>
+                </div>
+                <div className="w-full mt-20 xl:mt-37">
+                    <div className="relative w-full" style={{ paddingBottom: '64.93975903614458%', height: 0 }}>
+                        <iframe
+                            src="https://www.loom.com/embed/9e8890c5003446f2857c93c265fbe197"
+                            frameBorder="0"
+                            webkitallowfullscreen="true"
+                            mozallowfullscreen="true"
+                            allowFullScreen
+                            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                            className="rounded-lg"
+                        />
+                    </div>
+                    <p className="text-sm xs:text-base lg:text-lg text-gray-500 mt-4 lg:mt-6 text-center lg:text-left">
+                        Легко создаём сервисы и приложения и проверяем гипотезы
+                    </p>
+                </div>
+                <div className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
+                    <div className="flex flex-col gap-8 items-center max-w-[768px] mx-auto">
+                        <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-center w-full">
+                            5 вебинаров по 2,5 часа
+                        </h2>
+                        <p className="text-base lg:text-lg xl:text-xl font-normal leading-[1.5] text-[#858585] text-center w-full">
+                            Подробный обзор инструмента прямо в Zoom
+                        </p>
+                    </div>
+                    <div className="flex flex-col gap-4 w-full">
+                        <div className="flex flex-col lg:flex-row gap-4 w-full">
+                            {WEBINAR_SESSIONS.slice(0, 3).map((session, index) => (
+                                <div key={index} className="flex-1 min-w-[320px] bg-[#F7F7F5] p-8 flex flex-col justify-between h-auto lg:h-[400px]">
+                                    <div className="flex flex-col gap-6">
+                                        <div className="flex flex-col gap-2">
+                                            <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-black">
+                                                {session.day}
+                                            </p>
+                                            <h3 className="text-2xl font-semibold leading-[1.25] text-black whitespace-pre-line">
+                                                {session.title}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col gap-3 mt-6">
+                                        {session.items.map((item, itemIndex) => (
+                                            <div key={itemIndex} className="flex gap-6 items-start">
+                                                <div className="w-[5px] h-[5px] bg-[#858585] rounded-full shrink-0 mt-2" />
+                                                <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-[#858585] flex-1">
+                                                    {item}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex flex-col lg:flex-row gap-4 w-full">
+                            {WEBINAR_SESSIONS.slice(3, 5).map((session, index) => (
+                                <div key={index} className="flex-1 min-w-[320px] bg-[#F7F7F5] p-8 flex flex-col justify-between h-auto lg:h-[400px]">
+                                    <div className="flex flex-col gap-6">
+                                        <div className="flex flex-col gap-2">
+                                            <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-black">
+                                                {session.day}
+                                            </p>
+                                            <h3 className="text-2xl font-semibold leading-[1.25] text-black whitespace-pre-line">
+                                                {session.title}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col gap-3 mt-6">
+                                        {session.items.map((item, itemIndex) => (
+                                            <div key={itemIndex} className="flex gap-6 items-start">
+                                                <div className="w-[5px] h-[5px] bg-[#858585] rounded-full shrink-0 mt-2" />
+                                                <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-[#858585] flex-1">
+                                                    {item}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
                 <h3 className="lg:hidden flex text-[30px] font-semibold text-black mt-20 mb-6">
                     Автор и ведущий программы
@@ -105,16 +199,6 @@ export const VibecodingPage = () => {
                         <img className="absolute top-0 w-80 h-80 lg:w-72 lg:h-72 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 rounded-full object-cover" src={KirillImg}
                              alt="Кирилл Гурбанов"/>
                     </div>
-                </div>
-                <div className="flex flex-col gap-6 lg:gap-16 mt-20 xl:mt-37 items-center">
-                    <Title title="Кому подойдёт воркшоп"
-                           subTitle="Неважно, с чего вы начинаете и в какой сфере работаете — поможем адаптировать AI под ваши задачи. От вас нужно только желание учиться :)"/>
-                    <Carousel cardsLength={AUDIENCE.length} cardWidth={400}>
-                        {AUDIENCE.map((item) => (
-                            <CarouselContentItem iconUrl={item.iconUrl} title={item.title} text={item.text}
-                                                 list={item.list}/>
-                        ))}
-                    </Carousel>
                 </div>
                 <div id="reviews" className="mt-20 xl:mt-37">
                     <Carousel title="Что говорят участники" cardsLength={REVIEWS.length} cardWidth={360}>

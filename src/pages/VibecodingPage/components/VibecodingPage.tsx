@@ -14,13 +14,14 @@ export const VibecodingPage = () => {
         <div className="flex flex-col w-full">
             <style>{`
                 .base-page-primary {
-                    color: #005EE0;
+                    color: #015177;
                 }
             `}</style>
-            <Dithering1 colorBack="#00000000" colorFront="#262559" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={52277.68800003016} style={{ position: 'relative', height: '100vh', width: '100%', backgroundColor: '#16151F' }} className="-top-14 sm:-top-20" />
+            <Dithering1 colorBack="#00000000" colorFront="#015177" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={72643.8470000289} style={{ position: 'relative', height: '100vh', width: '100%', backgroundColor: '#16151F' }} className="-top-14 sm:-top-20" />
             <div
                 className="absolute top-[23vh] xs:top-[35vh] sm:top-[40vh] lg:top-[30vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-3 xs:gap-5 md:gap-2 md:justify-between text-white">
                 <div className="flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10">
+                    <span className="text-xl xs:text-[22px] lg:text-2xl font-medium text-white">24 ноября — 8 декабря</span>
                     <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold leading-[110%]">
                         Введение в Cursor: сделай<br/>свой первый вайб-проект<br/>за 2 недели
                     </h2>
@@ -124,6 +125,9 @@ export const VibecodingPage = () => {
                                             <h3 className="text-2xl font-semibold leading-[1.25] text-black whitespace-pre-line">
                                                 {session.title}
                                             </h3>
+                                            <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-black">
+                                                {session.dateTime}
+                                            </p>
                                         </div>
                                     </div>
                                     <div className="flex flex-col gap-3 mt-6">
@@ -150,6 +154,9 @@ export const VibecodingPage = () => {
                                             <h3 className="text-2xl font-semibold leading-[1.25] text-black whitespace-pre-line">
                                                 {session.title}
                                             </h3>
+                                            <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-black">
+                                                {session.dateTime}
+                                            </p>
                                         </div>
                                     </div>
                                     <div className="flex flex-col gap-3 mt-6">
@@ -177,7 +184,7 @@ export const VibecodingPage = () => {
                         {SPEAKERS.map((speaker, index) => (
                             <div key={index} className="w-full max-w-[343px] lg:max-w-none mx-auto lg:w-[632px] h-[563px] lg:h-[301px] bg-[#F7F7F5] p-8 flex flex-col lg:flex-row-reverse gap-6 lg:gap-8 items-center lg:items-start">
                                 <div className="relative shrink-0">
-                                    <Dithering1 className="w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full" colorBack="#00000000" colorFront="#262559" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={52277.68800003016} style={{ backgroundColor: '#16151F' }} />
+                                    <Dithering1 className="w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full" colorBack="#00000000" colorFront="#015177" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={72643.8470000289} style={{ backgroundColor: '#16151F' }} />
                                     <img
                                         className="absolute top-0 w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full object-cover"
                                         src={speaker.photo}
@@ -225,7 +232,7 @@ export const VibecodingPage = () => {
                     <Questions/>
                 </div>
                 <div className="flex relative w-full mt-20 xl:mt-37 min-h-[586px] lg:h-[454px] items-center justify-center py-12 lg:py-0">
-                    <Dithering1 colorBack="#00000000" colorFront="#262559" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={52277.68800003016} style={{ position: 'absolute', inset: 0, backgroundColor: '#16151F' }} />
+                    <Dithering1 colorBack="#00000000" colorFront="#015177" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={72643.8470000289} style={{ position: 'absolute', inset: 0, backgroundColor: '#16151F' }} />
                     <div className="relative flex flex-col gap-10 lg:gap-15 w-full max-w-[323px] lg:max-w-[1012px] px-6 lg:px-0 z-10">
                         <div className="flex flex-col gap-6 text-white">
                             <h2 className="text-3xl xs:text-4xl lg:text-5xl font-semibold leading-[1.2] tracking-[-0.03em]">

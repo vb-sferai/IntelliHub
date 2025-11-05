@@ -24,6 +24,7 @@ export const BasePage = () => {
             <div
                 className="absolute top-[23vh] xs:top-[35vh] sm:top-[40vh] lg:top-[30vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-3 xs:gap-5 md:gap-2 md:justify-between text-white">
                 <div className="flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10">
+                    <span className="text-xl xs:text-[22px] lg:text-2xl font-medium text-white">25-27 ноября</span>
                     <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold">
                         AI-база: как эффективно использовать ИИ<br/>в работе и жизни
                     </h2>
@@ -52,7 +53,7 @@ export const BasePage = () => {
                     <Carousel cardsLength={CONTENT.length} cardWidth={400}>
                         {CONTENT.map((item) => (
                             <CarouselContentItem iconUrl={item.iconUrl} title={item.title} text={item.text}
-                                                 list={item.list}/>
+                                                 list={item.list} date={item.date}/>
                         ))}
                     </Carousel>
                 </div>
@@ -122,7 +123,7 @@ export const BasePage = () => {
                     <Carousel title="Сколько стоит?" cardsLength={PRICE.length} cardWidth={612}>
                         {PRICE.map((item) => (
                             <CarouselPriceItem title={item.title} price={item.price} forMonth={item.forMonth}
-                                               list={item.list} buttonText={item.buttonText} link={item.link}/>
+                                               list={item.list} buttonText={item.buttonText} link={item.link} date={item.date}/>
                         ))}
                     </Carousel>
                 </div>

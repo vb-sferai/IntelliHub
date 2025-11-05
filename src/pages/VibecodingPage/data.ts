@@ -293,7 +293,7 @@ export const PRICE = [
             'Доступ к сообществу выпускников на 200+ человек',
         ],
         buttonText: 'Забронировать место',
-        link: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai',
+        link: 'https://kirillgurbanov.getcourse.ru/vibecoding_workshop',
     },
     {
         title: 'Только запись',
@@ -301,7 +301,7 @@ export const PRICE = [
         forMonth: '3 999 ₽ / месяц',
         list: [],
         buttonText: 'Получить запись',
-        link: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec',
+        link: 'https://kirillgurbanov.getcourse.ru/vibecoding_only_record',
     },
 ];
 

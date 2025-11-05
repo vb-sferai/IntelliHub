@@ -27,7 +27,7 @@ export const VibecodingPage = () => {
                     <span className="max-w-[725px] text-center text-sm xs:text-base lg:text-lg xl:text-xl font-medium mb-2.5">
                         Пошагово изучим инструменты вайбкодинга<br className="hidden md:block"/>и начнём собирать прототипы и продукты без команды и разработчика
                     </span>
-                    <Button color="white" width="190px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Записаться</Button>
+                    <Button color="white" width="190px" link="https://kirillgurbanov.getcourse.ru/vibecoding_workshop">Записаться</Button>
                 </div>
             </div>
             <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto -mt-4 lg:mt-5">
@@ -236,8 +236,8 @@ export const VibecodingPage = () => {
                             </p>
                         </div>
                         <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
-                            <Button color="white" width="267px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Участвовать вживую</Button>
-                            <Button color="blur" width="221px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec">Купить запись</Button>
+                            <Button color="white" width="267px" link="https://kirillgurbanov.getcourse.ru/vibecoding_workshop">Участвовать вживую</Button>
+                            <Button color="blur" width="221px" link="https://kirillgurbanov.getcourse.ru/vibecoding_only_record">Купить запись</Button>
                         </div>
                     </div>
                 </div>
@@ -259,7 +259,7 @@ export const VibecodingPage = () => {
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={EmailIconBlue} alt="Email"/>
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Почта</h3>
-                                <span className="text-sm xl:text-base text-gray-700">info@sfer.ai</span>
+                                <span className="text-sm xl:text-base text-gray-700">human@sfer.ai</span>
                             </div>
                         </div>
                     </div>

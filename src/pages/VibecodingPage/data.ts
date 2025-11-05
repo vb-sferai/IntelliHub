@@ -16,7 +16,7 @@ import ReviewNatalyaImg from './assets/imgs/reviews/natalya.jpg';
 import ReviewOlgaImg from './assets/imgs/reviews/olga-sokolova.jpg';
 import ReviewReginaImg from './assets/imgs/reviews/regina.jpg';
 import ReviewZaytsevImg from './assets/imgs/reviews/zaytsev_ev.jpg';
-import EduardImg from './assets/imgs/eduard.jpg';
+import EduardImg from './assets/imgs/eduard.png';
 import KirillImg from './assets/imgs/kirill.png';
 
 export const SPEAKERS = [

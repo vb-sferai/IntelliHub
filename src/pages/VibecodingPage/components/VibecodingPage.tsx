@@ -175,7 +175,7 @@ export const VibecodingPage = () => {
                     </div>
                     <div className="flex flex-col lg:flex-row gap-4 w-full">
                         {SPEAKERS.map((speaker, index) => (
-                            <div key={index} className="w-full max-w-[343px] lg:max-w-none mx-auto lg:w-[632px] h-[563px] lg:h-[301px] bg-[#F7F7F5] p-8 flex flex-col lg:flex-row gap-6 lg:gap-8 items-center lg:items-start">
+                            <div key={index} className={`w-full max-w-[343px] lg:max-w-none mx-auto lg:w-[632px] h-[563px] lg:h-[301px] bg-[#F7F7F5] p-8 flex flex-col gap-6 lg:gap-8 items-center lg:items-start ${index === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
                                 <div className="relative shrink-0">
                                     <MeshGradient1 className="w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full" speed={0.38}
                                                    colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4}
@@ -184,6 +184,9 @@ export const VibecodingPage = () => {
                                         className="absolute top-0 w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full object-cover"
                                         src={speaker.photo}
                                         alt={speaker.name}
+                                        style={{
+                                            transform: index === 1 ? 'scaleX(-1)' : 'none'
+                                        }}
                                     />
                                 </div>
                                 <div className="flex flex-col gap-4 lg:gap-6 justify-center flex-1">

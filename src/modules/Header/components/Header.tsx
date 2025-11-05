@@ -10,6 +10,7 @@ import {ROUTES} from "../../../constants/routes.ts";
 export const Header = () => {
     const location = useLocation();
     const isBaseRoute = location.pathname === ROUTES.base;
+    const isVibecodingRoute = location.pathname === ROUTES.vibecoding;
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [buttonMargin, setButtonMargin] = useState('0px');
@@ -96,14 +97,14 @@ export const Header = () => {
                     <motion.div
                         className="flex flex-row gap-4 lg:gap-6 xl:gap-8 lg:text-base xl:text-xl font-normal"
                         animate={{
-                            marginRight: (isScrolled && !isBaseRoute) ? buttonMargin : '0px'
+                            marginRight: (isScrolled && !isBaseRoute && !isVibecodingRoute) ? buttonMargin : '0px'
                         }}
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
-                        {isBaseRoute ? (
+                        {(isBaseRoute || isVibecodingRoute) ? (
                             <>
                                 <span onClick={() => scrollToSection('programs')} className="cursor-pointer transition-colors duration-300">Программа</span>
-                                <span onClick={() => scrollToSection('speaker')} className="cursor-pointer transition-colors duration-300">Ведущий</span>
+                                <span onClick={() => scrollToSection('speaker')} className="cursor-pointer transition-colors duration-300">Ведущие</span>
                                 <span onClick={() => scrollToSection('reviews')} className="cursor-pointer transition-colors duration-300">Отзывы</span>
                                 <span onClick={() => scrollToSection('price')} className="cursor-pointer transition-colors duration-300">Тарифы</span>
                                 <span onClick={() => scrollToSection('faq')} className="cursor-pointer transition-colors duration-300">FAQ</span>
@@ -121,7 +122,7 @@ export const Header = () => {
                     </motion.div>
 
                     <AnimatePresence>
-                        {isScrolled && !isBaseRoute && (
+                        {isScrolled && !isBaseRoute && !isVibecodingRoute && (
                             <motion.div
                                 initial={{ opacity: 0, x: 40 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -167,10 +168,10 @@ export const Header = () => {
                         className="fixed inset-0 bg-white z-40 md:hidden pt-20 px-4 sm:px-12"
                     >
                         <div className="flex flex-col gap-2 text-base font-semibold text-black uppercase font-geist">
-                            {isBaseRoute ? (
+                            {(isBaseRoute || isVibecodingRoute) ? (
                                 <>
                                     <span onClick={() => scrollToSection('programs')} className="cursor-pointer py-3">Программа</span>
-                                    <span onClick={() => scrollToSection('speaker')} className="cursor-pointer py-3">Ведущий</span>
+                                    <span onClick={() => scrollToSection('speaker')} className="cursor-pointer py-3">Ведущие</span>
                                     <span onClick={() => scrollToSection('reviews')} className="cursor-pointer py-3">Отзывы</span>
                                     <span onClick={() => scrollToSection('price')} className="cursor-pointer py-3">Тарифы</span>
                                     <span onClick={() => scrollToSection('faq')} className="cursor-pointer py-3">FAQ</span>
@@ -187,7 +188,7 @@ export const Header = () => {
                             )}
                         </div>
 
-                        {!isBaseRoute && (
+                        {!isBaseRoute && !isVibecodingRoute && (
                             <div className="absolute bottom-10 left-6 right-6">
                                 <Button
                                     color="black"

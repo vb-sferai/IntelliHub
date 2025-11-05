@@ -36,7 +36,7 @@ export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, li
                     </li>
                 ))}
             </div>
-            <Button color="white" link={link} width="fit-content">{buttonText}</Button>
+            <Button color="blue" link={link} width="fit-content">{buttonText}</Button>
         </div>
     );
 };

@@ -284,8 +284,8 @@ export const REVIEWS = [
 export const PRICE = [
     {
         title: 'Живое участие',
-        price: '24 990 ₽',
-        forMonth: '8 330 ₽ / месяц',
+        price: '49 990 ₽',
+        forMonth: '4 999 ₽ / месяц',
         list: [
             'Ответы на вопросы вживую и в чате, разбор кейса с экспертом',
             'Доступ к записи воркшопа на 60 дней',
@@ -297,8 +297,8 @@ export const PRICE = [
     },
     {
         title: 'Только запись',
-        price: '19 990 ₽',
-        forMonth: '6 663 ₽ / месяц',
+        price: '39 990 ₽',
+        forMonth: '3 999 ₽ / месяц',
         list: [],
         buttonText: 'Получить запись',
         link: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec',

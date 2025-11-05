@@ -4,6 +4,7 @@ import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
 import EmailIconBlue from '../assets/imgs/email-blue.svg';
 import CursorIconBlue from '../assets/imgs/cursor-blue.svg';
+import CursorBgImg from '../assets/imgs/cursor-bg.jpg';
 import {Carousel} from "./Carousel";
 import {METRICS, WHO_NEEDS_CODING, WEBINAR_SESSIONS, SPEAKERS, PRICE, REVIEWS} from "../data";
 import {CarouselPriceItem} from "./CarouselPriceItem";
@@ -103,7 +104,7 @@ export const VibecodingPage = () => {
                         Легко создаём сервисы и приложения и проверяем гипотезы
                     </p>
                 </div>
-                <div className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
+                <div id="programs" className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
                     <div className="flex flex-col gap-8 items-center max-w-[768px] mx-auto">
                         <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-center w-full">
                             5 вебинаров по 2,5 часа
@@ -167,7 +168,7 @@ export const VibecodingPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
+                <div id="speaker" className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
                     <div className="flex flex-col gap-8 items-center max-w-[768px] mx-auto">
                         <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-center w-full">
                             Ведущие буткэмпа
@@ -175,7 +176,7 @@ export const VibecodingPage = () => {
                     </div>
                     <div className="flex flex-col lg:flex-row gap-4 w-full">
                         {SPEAKERS.map((speaker, index) => (
-                            <div key={index} className={`w-full max-w-[343px] lg:max-w-none mx-auto lg:w-[632px] h-[563px] lg:h-[301px] bg-[#F7F7F5] p-8 flex flex-col gap-6 lg:gap-8 items-center lg:items-start ${index === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+                            <div key={index} className="w-full max-w-[343px] lg:max-w-none mx-auto lg:w-[632px] h-[563px] lg:h-[301px] bg-[#F7F7F5] p-8 flex flex-col lg:flex-row-reverse gap-6 lg:gap-8 items-center lg:items-start">
                                 <div className="relative shrink-0">
                                     <MeshGradient1 className="w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full" speed={0.38}
                                                    colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4}
@@ -226,29 +227,27 @@ export const VibecodingPage = () => {
                     <Title title="FAQ"/>
                     <Questions/>
                 </div>
-                <div className="flex relative w-full mt-20 xl:mt-37 lg:items-center">
-                    <MeshGradient1
-                        speed={0.38}
-                        colors={['#80C2FF', '#061346', '#3A83E8']}
-                        distortion={0.79}
-                        swirl={0.4}
-                        grainMixer={0.3}
-                        grainOverlay={0}
-                        frame={32579.315000002767}
-                        style={{width: '100%'}}
-                        className="h-96 sm:h-92 lg:h-64"
-                    />
+                <div className="flex relative w-full mt-20 xl:mt-37 min-h-[586px] lg:h-[454px] items-center justify-center py-12 lg:py-0">
                     <div
-                        className="absolute flex flex-col lg:flex-row lg:justify-between w-full h-96 sm:h-92 lg:h-64 p-6 xs:p-8 sm:p-10 lg:p-15 lg:items-center gap-12 lg:gap-0">
-                        <span
-                            className="text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-white leading-[120%] z-10 relative max-w-xs xs:max-w-sm sm:max-w-md">Готовы посмотреть{' '}<br className="hidden lg:block"/>на AI по-новому?</span>
-                        <div className="hidden lg:flex flex-row gap-8">
-                            <Button color="white" width="240px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Участвовать вживую</Button>
-                            <Button color="blur" width="240px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec">Купить запись</Button>
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{
+                            backgroundImage: `url(${CursorBgImg})`,
+                            filter: 'brightness(0.7)'
+                        }}
+                    />
+                    <div className="absolute inset-0 bg-black/20" />
+                    <div className="relative flex flex-col gap-10 lg:gap-15 w-full max-w-[323px] lg:max-w-[1012px] px-6 lg:px-0">
+                        <div className="flex flex-col gap-6 text-white">
+                            <h2 className="text-3xl xs:text-4xl lg:text-5xl font-semibold leading-[1.2] tracking-[-0.03em]">
+                                Освоив Cursor, вы начнёте понимать логику работы других вайб-инструментов
+                            </h2>
+                            <p className="text-base font-normal leading-[1.5]">
+                                И сможете создавать проекты любого уровня — от лендингов до прототипов сервисов.
+                            </p>
                         </div>
-                        <div className="lg:hidden flex flex-col gap-4">
-                            <Button color="white" width="100%" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Участвовать вживую</Button>
-                            <Button color="blur" width="100%" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec">Купить запись</Button>
+                        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
+                            <Button color="white" width="267px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Участвовать вживую</Button>
+                            <Button color="blur" width="221px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec">Купить запись</Button>
                         </div>
                     </div>
                 </div>

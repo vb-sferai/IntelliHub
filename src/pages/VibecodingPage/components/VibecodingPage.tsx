@@ -4,9 +4,8 @@ import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
 import EmailIconBlue from '../assets/imgs/email-blue.svg';
 import CursorIconBlue from '../assets/imgs/cursor-blue.svg';
-import KirillImg from '../assets/imgs/kirill.png';
 import {Carousel} from "./Carousel";
-import {METRICS, WHO_NEEDS_CODING, WEBINAR_SESSIONS, PRICE, REVIEWS} from "../data";
+import {METRICS, WHO_NEEDS_CODING, WEBINAR_SESSIONS, SPEAKERS, PRICE, REVIEWS} from "../data";
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
 
@@ -168,36 +167,40 @@ export const VibecodingPage = () => {
                         </div>
                     </div>
                 </div>
-                <h3 className="lg:hidden flex text-[30px] font-semibold text-black mt-20 mb-6">
-                    Автор и ведущий программы
-                </h3>
-                <div id="speaker"
-                     className="w-full flex flex-col lg:flex-row justify-between pl-8 lg:pl-15 py-6 lg:py-10.5 pr-8 lg:pr-20 bg-[#F7F7F5] lg:mt-20 xl:mt-37 gap-4 lg:gap-0">
-                    <div className="flex flex-col justify-between my-2 lg:my-4.5">
-                        <h3 className="hidden lg:flex text-2xl lg:text-[42px] xl:text-5xl font-semibold text-black">
-                            Автор и ведущий программы
-                        </h3>
-                        <div className="relative lg:hidden block mb-10">
-                            <MeshGradient1 className="w-full lg:w-103 h-[calc(100vw-96px)] max-h-[500px] lg:h-103 rounded-full" speed={0.38}
-                                           colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4}
-                                           grainMixer={0.3} grainOverlay={0} frame={32579.315000002767}/>
-                            <img className="absolute top-0 w-full lg:w-103 h-[calc(100vw-96px)] max-h-[500px] object-cover rounded-full" src={KirillImg}
-                                 alt="Кирилл Гурбанов"/>
-                        </div>
-                        <div className="flex flex-col gap-8">
-                            <div className="flex flex-col gap-2">
-                                <span className="text-lg lg:text-2xl font-semibold">Кирилл Гурбанов</span>
-                                <span className="text-base leading-[130%]">Основатель sfer.ai, ex CPO в Сбере и МТС, CEO в банке группы Самолет</span>
-                            </div>
-                            <span className="text-base text-gray-500 leading-[24px] max-w-139">Основатель sfer.ai, практик с 9-летним опытом на топ-позициях в крупнейших компаниях России: со-основатель и член СД банка СМЛТ (группа «Самолет»), Chief Digital Officer МТС Банк, CPO Сбер Бизнес Мобайл</span>
-                        </div>
+                <div className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
+                    <div className="flex flex-col gap-8 items-center max-w-[768px] mx-auto">
+                        <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-center w-full">
+                            Ведущие буткэмпа
+                        </h2>
                     </div>
-                    <div className="relative hidden lg:block">
-                        <MeshGradient1 className="w-80 h-80 lg:w-72 lg:h-72 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 rounded-full" speed={0.38}
-                                       colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4}
-                                       grainMixer={0.3} grainOverlay={0} frame={32579.315000002767}/>
-                        <img className="absolute top-0 w-80 h-80 lg:w-72 lg:h-72 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 rounded-full object-cover" src={KirillImg}
-                             alt="Кирилл Гурбанов"/>
+                    <div className="flex flex-col lg:flex-row gap-4 w-full">
+                        {SPEAKERS.map((speaker, index) => (
+                            <div key={index} className="w-full max-w-[343px] lg:max-w-none mx-auto lg:w-[632px] h-[563px] lg:h-[301px] bg-[#F7F7F5] p-8 flex flex-col lg:flex-row gap-6 lg:gap-8 items-center lg:items-start">
+                                <div className="relative shrink-0">
+                                    <MeshGradient1 className="w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full" speed={0.38}
+                                                   colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4}
+                                                   grainMixer={0.3} grainOverlay={0} frame={32579.315000002767}/>
+                                    <img
+                                        className="absolute top-0 w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full object-cover"
+                                        src={speaker.photo}
+                                        alt={speaker.name}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-4 lg:gap-6 justify-center flex-1">
+                                    <div className="flex flex-col gap-2">
+                                        <h3 className="text-xl lg:text-2xl font-semibold leading-[1.2] text-black">
+                                            {speaker.name}
+                                        </h3>
+                                        <p className="text-base font-normal leading-[1.3] text-black whitespace-pre-line">
+                                            {speaker.title}
+                                        </p>
+                                    </div>
+                                    <p className="text-sm lg:text-base font-normal leading-[1.3] tracking-[-0.03em] text-[#858585]">
+                                        {speaker.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div id="reviews" className="mt-20 xl:mt-37">

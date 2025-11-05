@@ -16,6 +16,23 @@ import ReviewNatalyaImg from './assets/imgs/reviews/natalya.jpg';
 import ReviewOlgaImg from './assets/imgs/reviews/olga-sokolova.jpg';
 import ReviewReginaImg from './assets/imgs/reviews/regina.jpg';
 import ReviewZaytsevImg from './assets/imgs/reviews/zaytsev_ev.jpg';
+import EduardImg from './assets/imgs/eduard.jpg';
+import KirillImg from './assets/imgs/kirill.png';
+
+export const SPEAKERS = [
+    {
+        name: 'Эдуард Эпштейн',
+        title: 'Head of Growth Спортс"',
+        description: 'Уже более 7 лет на рынке медиа, IT и digital-маркетинга. Последние 1,5 года занимается AI-трансформацией бизнеса, внедряет AI-инструменты в отделы продаж, маркетинга, продукта и разработки',
+        photo: EduardImg,
+    },
+    {
+        name: 'Кирилл Гурбанов',
+        title: 'фаундер SFER.AI,\nex-CPO Сбер бизнес мобайл',
+        description: 'Основатель sfer.ai, практик с 9-летним опытом на топ-позициях в крупнейших компаниях России: со-основатель и член СД банка СМЛТ (группа «Самолет»), Chief Digital Officer МТС Банк, CPO Сбер Бизнес Мобайл',
+        photo: KirillImg,
+    },
+];
 
 export const METRICS = [
     {

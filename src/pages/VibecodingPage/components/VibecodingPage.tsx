@@ -1,10 +1,9 @@
-import { MeshGradient as MeshGradient1 } from '@paper-design/shaders-react';
+import { Dithering as Dithering1 } from '@paper-design/shaders-react';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
 import EmailIconBlue from '../assets/imgs/email-blue.svg';
 import CursorIconBlue from '../assets/imgs/cursor-blue.svg';
-import CursorBgImg from '../assets/imgs/cursor-bg.jpg';
 import {Carousel} from "./Carousel";
 import {METRICS, WHO_NEEDS_CODING, WEBINAR_SESSIONS, SPEAKERS, PRICE, REVIEWS} from "../data";
 import {CarouselPriceItem} from "./CarouselPriceItem";
@@ -18,7 +17,7 @@ export const VibecodingPage = () => {
                     color: #005EE0;
                 }
             `}</style>
-            <MeshGradient1 speed={0.38} colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4} grainMixer={0.3} grainOverlay={0} frame={32579.315000002767} style={{ position: 'relative', height: '100vh', width: '100%' }} className="-top-14 sm:-top-20" />
+            <Dithering1 colorBack="#00000000" colorFront="#262559" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={52277.68800003016} style={{ position: 'relative', height: '100vh', width: '100%', backgroundColor: '#16151F' }} className="-top-14 sm:-top-20" />
             <div
                 className="absolute top-[23vh] xs:top-[35vh] sm:top-[40vh] lg:top-[30vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-3 xs:gap-5 md:gap-2 md:justify-between text-white">
                 <div className="flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10">
@@ -178,9 +177,7 @@ export const VibecodingPage = () => {
                         {SPEAKERS.map((speaker, index) => (
                             <div key={index} className="w-full max-w-[343px] lg:max-w-none mx-auto lg:w-[632px] h-[563px] lg:h-[301px] bg-[#F7F7F5] p-8 flex flex-col lg:flex-row-reverse gap-6 lg:gap-8 items-center lg:items-start">
                                 <div className="relative shrink-0">
-                                    <MeshGradient1 className="w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full" speed={0.38}
-                                                   colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4}
-                                                   grainMixer={0.3} grainOverlay={0} frame={32579.315000002767}/>
+                                    <Dithering1 className="w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full" colorBack="#00000000" colorFront="#262559" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={52277.68800003016} style={{ backgroundColor: '#16151F' }} />
                                     <img
                                         className="absolute top-0 w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full object-cover"
                                         src={speaker.photo}
@@ -228,15 +225,8 @@ export const VibecodingPage = () => {
                     <Questions/>
                 </div>
                 <div className="flex relative w-full mt-20 xl:mt-37 min-h-[586px] lg:h-[454px] items-center justify-center py-12 lg:py-0">
-                    <div
-                        className="absolute inset-0 bg-cover bg-center"
-                        style={{
-                            backgroundImage: `url(${CursorBgImg})`,
-                            filter: 'brightness(0.7)'
-                        }}
-                    />
-                    <div className="absolute inset-0 bg-black/20" />
-                    <div className="relative flex flex-col gap-10 lg:gap-15 w-full max-w-[323px] lg:max-w-[1012px] px-6 lg:px-0">
+                    <Dithering1 colorBack="#00000000" colorFront="#262559" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={52277.68800003016} style={{ position: 'absolute', inset: 0, backgroundColor: '#16151F' }} />
+                    <div className="relative flex flex-col gap-10 lg:gap-15 w-full max-w-[323px] lg:max-w-[1012px] px-6 lg:px-0 z-10">
                         <div className="flex flex-col gap-6 text-white">
                             <h2 className="text-3xl xs:text-4xl lg:text-5xl font-semibold leading-[1.2] tracking-[-0.03em]">
                                 Освоив Cursor, вы начнёте понимать логику работы других вайб-инструментов

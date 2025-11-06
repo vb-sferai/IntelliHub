@@ -10,7 +10,7 @@ import { ContactsSection } from './ContactsSection';
 
 export const SupremeMainPage = () => {
   return (
-    <div className="relative flex min-h-screen flex-col">
+    <div className="relative flex min-h-screen flex-col overflow-x-hidden">
       <SupremeHeader />
       <main className="flex-1">
         <HeroSection />

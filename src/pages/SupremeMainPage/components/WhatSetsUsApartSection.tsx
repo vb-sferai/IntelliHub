@@ -7,13 +7,11 @@ const FEATURES = [
     icon: PedestrianIcon,
     title: 'Small groups with personal guidance',
     description: "We're here to help when something doesn't click",
-    titleWidth: '300px',
   },
   {
     icon: GrowthIcon,
     title: 'Real impact',
     description: '96% of participants start using AI at work within a week',
-    descriptionWidth: '253px',
   },
   {
     icon: GraphicalDataFlowIcon,
@@ -41,19 +39,17 @@ export const WhatSetsUsApartSection = () => {
           {FEATURES.map((feature, index) => (
             <div
               key={index}
-              className="flex h-[299px] min-w-[320px] flex-1 flex-col justify-between bg-[#f7f7f5] p-8"
+              className="flex min-h-[240px] min-w-[320px] flex-1 flex-col justify-between bg-[#f7f7f5] p-8 md:h-[299px]"
             >
               <img src={feature.icon} alt="" className="size-10" />
               <div className="flex flex-col gap-4">
                 <h3
                   className="text-2xl font-semibold leading-[30px] text-black"
-                  style={{ width: feature.titleWidth || 'auto' }}
                 >
                   {feature.title}
                 </h3>
                 <p
                   className="text-base font-normal leading-[1.3] tracking-[-0.48px] text-[#858585]"
-                  style={{ width: feature.descriptionWidth || 'auto' }}
                 >
                   {feature.description}
                 </p>

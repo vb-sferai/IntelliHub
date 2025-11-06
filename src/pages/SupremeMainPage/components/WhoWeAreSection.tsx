@@ -36,8 +36,7 @@ export const WhoWeAreSection = () => {
             Who we are
           </h2>
           <p
-            className="text-xl font-normal leading-[1.4] tracking-[-0.6px] text-[#676767] opacity-70"
-            style={{ width: '458px', minHeight: '84px' }}
+            className="w-full text-xl font-normal leading-[1.4] tracking-[-0.6px] text-[#676767] opacity-70"
           >
             We run educational programs and practical AI tools for individuals and companies — from workshops to
             corporate training and SaaS solutions.
@@ -45,11 +44,11 @@ export const WhoWeAreSection = () => {
         </div>
 
         {/* Right column - Statistics */}
-        <div className="flex w-full max-w-[488px] flex-col gap-[60px]">
+        <div className="flex w-full max-w-[488px] flex-col gap-10 md:gap-[60px]">
           {STATISTICS.map((stat, index) => (
             <div key={index} className="flex flex-col gap-5">
               <p
-                  className="text-[140px] font-normal leading-none tracking-[-8.4px] text-[#275DD8]"
+                  className="text-[80px] font-normal leading-none tracking-[-4.8px] text-[#275DD8] md:text-[140px] md:tracking-[-8.4px]"
                 style={{ fontFamily: 'Inter' }}
               >
                 {stat.value}

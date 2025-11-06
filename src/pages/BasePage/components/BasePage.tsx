@@ -94,10 +94,10 @@ export const BasePage = () => {
                         </div>
                     </div>
                     <div className="relative hidden lg:block">
-                        <MeshGradient1 className="w-80 h-80 lg:w-72 lg:h-72 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 rounded-full" speed={0.38}
+                        <MeshGradient1 className="w-72 h-72 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 rounded-full" speed={0.38}
                                        colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4}
                                        grainMixer={0.3} grainOverlay={0} frame={32579.315000002767}/>
-                        <img className="absolute top-0 w-80 h-80 lg:w-72 lg:h-72 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 rounded-full object-cover" src={KirillImg}
+                        <img className="absolute top-0 w-72 h-72 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 rounded-full object-cover" src={KirillImg}
                              alt="Кирилл Гурбанов"/>
                     </div>
                 </div>

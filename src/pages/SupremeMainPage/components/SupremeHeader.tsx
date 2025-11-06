@@ -95,7 +95,7 @@ export const SupremeHeader = () => {
             <img
               src={isMenuOpen ? CloseIcon : BurgerIcon}
               alt="Menu"
-              className={`h-6 w-6 transition-all ${isScrolled || isMenuOpen ? '' : 'filter invert'}`}
+              className={`h-6 w-6 transition-all ${isScrolled || isMenuOpen ? 'brightness-0' : 'brightness-0 invert'}`}
             />
           </button>
         </div>

@@ -11,12 +11,10 @@ const PHILOSOPHY_CARDS = [
   {
     icon: UnlockedIcon,
     text: 'For businesses, AI unlocks automation and drives higher margins',
-    textWidth: '368px',
   },
   {
     icon: TimePlotIcon,
     text: 'Today, you can create products in hours instead of weeks or months',
-    textWidth: '351px',
   },
 ];
 
@@ -30,22 +28,20 @@ export const PhilosophySection = () => {
         </h2>
 
         {/* Content */}
-        <div className="flex w-full flex-col gap-[14px] md:flex-row">
+        <div className="flex w-full flex-col gap-[16px] md:flex-row md:gap-[14px]">
           {/* Large card with mission */}
           <div
-            className="relative flex h-[551px] min-w-[320px] flex-col justify-between overflow-hidden p-8"
-            style={{ width: '832px' }}
+            className="relative flex h-[388px] w-full flex-col justify-between overflow-hidden px-[20px] py-[24px] md:h-[551px] md:w-[832px] md:p-8"
           >
             <DitheringBackground />
-            <div className="relative z-10 flex flex-col gap-6">
+            <div className="relative z-10">
               <p className="text-base font-normal leading-[1.3] tracking-[-0.48px] text-white">
                 Our Mission
               </p>
             </div>
             <div className="relative z-10">
               <h3
-                className="text-5xl font-semibold leading-[1.2] tracking-[-1.44px] text-white"
-                style={{ width: '459px' }}
+                className="text-[36px] font-semibold leading-none tracking-[-0.72px] text-white md:text-5xl md:leading-[1.2] md:tracking-[-1.44px]"
               >
                 To help people and companies become AI-native
               </h3>
@@ -53,16 +49,15 @@ export const PhilosophySection = () => {
           </div>
 
           {/* Small cards column */}
-          <div className="flex flex-1 flex-col gap-4">
+          <div className="flex flex-1 flex-col gap-[16px] md:gap-4">
             {PHILOSOPHY_CARDS.map((card, index) => (
               <div
                 key={index}
-                className="flex h-[173px] min-w-[320px] flex-col justify-between bg-[#f7f7f5] p-6"
+                className="flex h-[193px] w-full flex-col justify-between bg-[#f7f7f5] px-[20px] py-[24px] md:h-[173px] md:p-6"
               >
                 <img src={card.icon} alt="" className="size-10" />
                 <p
                   className="text-base font-normal leading-[1.3] tracking-[-0.48px] text-black"
-                  style={{ width: card.textWidth || 'auto' }}
                 >
                   {card.text}
                 </p>

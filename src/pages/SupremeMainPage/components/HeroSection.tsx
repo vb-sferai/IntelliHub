@@ -14,11 +14,11 @@ const TRUSTED_LOGOS = [
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-black" id="hero">
+    <section className="relative flex min-h-0 items-center overflow-hidden bg-black md:min-h-screen" id="hero">
       <MeshGradientBackground />
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-black/30" />
 
-      <div className="relative z-10 flex w-full flex-col px-6 pb-24 pt-32 text-white md:px-12 lg:px-16 xl:mx-auto xl:max-w-[1280px] xl:px-0">
+      <div className="relative z-10 flex w-full flex-col px-6 pb-16 pt-24 text-white md:pb-24 md:pt-32 md:px-12 lg:px-16 xl:mx-auto xl:max-w-[1280px] xl:px-0">
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
           <div className="flex max-w-[586px] flex-col">
             <h1 className="text-4xl font-semibold md:text-6xl xl:text-[80px] xl:leading-none" style={{ letterSpacing: '-3.2px' }}>
@@ -26,10 +26,10 @@ export const HeroSection = () => {
             </h1>
           </div>
 
-          <nav className="flex w-full max-w-[386px] flex-col space-y-10" aria-label="Primary programs">
+          <nav className="flex w-full max-w-[386px] flex-col space-y-6 md:space-y-10" aria-label="Primary programs">
             <p
-              className="w-[386px] text-xl font-medium opacity-90"
-              style={{ letterSpacing: '-0.6px', lineHeight: '1.3', minHeight: '78px' }}
+              className="w-full text-xl font-medium opacity-90"
+              style={{ letterSpacing: '-0.6px', lineHeight: '1.3' }}
             >
               In three years, AI literacy will be as essential as reading or using a computer. You can start making that shift today.
             </p>
@@ -50,7 +50,7 @@ export const HeroSection = () => {
           </nav>
         </div>
 
-        <div className="mt-40 flex flex-col space-y-4" aria-label="Trusted by">
+        <div className="mt-16 flex flex-col space-y-4 md:mt-40" aria-label="Trusted by">
           <p className="text-xl font-medium opacity-45" style={{ letterSpacing: '-0.6px' }}>
             Trusted by
           </p>

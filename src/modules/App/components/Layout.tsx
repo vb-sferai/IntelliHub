@@ -8,7 +8,8 @@ export const Layout = () => {
     const location = useLocation();
     const isSupremePage = location.pathname === ROUTES.supreme;
     const isCaseStudyPage = location.pathname === ROUTES.casestudies;
-    const hideChrome = isSupremePage || isCaseStudyPage;
+    const isPmJobPage = location.pathname === ROUTES.jobsPm;
+    const hideChrome = isSupremePage || isCaseStudyPage || isPmJobPage;
 
     return (
         <div className="min-h-full flex relative">

@@ -5,4 +5,5 @@ export const ROUTES = {
     base: '/baza',
     vibecoding: '/vibecoding',
     agents: '/agents',
+    jobsPm: '/jobs/pm',
 };

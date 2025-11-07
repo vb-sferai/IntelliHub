@@ -1,9 +1,8 @@
 import { DitheringBackground } from './DitheringBackground';
 
 const CTA_MENU_ITEMS = [
-  { label: 'Programs', href: '#programs' },
-  { label: 'Team training', href: '#team-training' },
-  { label: 'Custom AI automations', href: '#custom-ai-automations' },
+  { label: 'Открытые воркшопы', href: '#programs' },
+  { label: 'Обучение для команд', href: '#team-training' },
 ];
 
 export const DiscoverCTASection = () => {
@@ -15,7 +14,8 @@ export const DiscoverCTASection = () => {
         <DitheringBackground />
         {/* Heading */}
         <h2 className="relative z-10 w-full max-w-[286px] text-4xl font-semibold leading-none tracking-[-0.72px] text-white md:max-w-[429px] md:text-5xl md:leading-[1.2] md:tracking-[-1.44px]">
-          Discover how AI can work for you
+          Стань AI-native<br />
+          уже сегодня
         </h2>
 
         {/* Menu */}

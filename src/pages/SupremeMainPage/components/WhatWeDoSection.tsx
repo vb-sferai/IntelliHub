@@ -5,17 +5,17 @@ import { Button } from '../../../components/Button';
 const SERVICES = [
   {
     icon: TeamsIcon,
-    title: 'For teams',
-    description: 'AI programs, consulting, and strategy sessions for teams ready to bring AI into their everyday work.',
-    buttonText: 'TEAM TRAINING',
-    buttonHref: '#team-training',
+    title: 'Открытые программы',
+    description: 'Воркшопы и практикумы для всех, кто хочет применять AI в жизни и работе.',
+    buttonText: 'СМОТРЕТЬ ВСЕ ПРОГРАММЫ',
+    buttonHref: '#programs',
   },
   {
     icon: FlashIcon,
-    title: 'Custom AI automations',
-    description: 'End-to-end AI solutions tailored to your business needs.',
-    buttonText: 'CUSTOM AI AUTOMATIONS',
-    buttonHref: '#custom-ai-automations',
+    title: 'Обучение для команд',
+    description: 'Корпоративные программы, консалтинг и стратегические сессии для компаний, которые хотят внедрить AI в свои процессы.',
+    buttonText: 'ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ',
+    buttonHref: '#team-training',
   },
 ];
 
@@ -25,15 +25,13 @@ export const WhatWeDoSection = () => {
       {/* Title */}
       <div className="w-full max-w-[1280px]">
         <h2 className="text-center text-5xl font-semibold leading-[1.2] tracking-[-1.44px] text-black">
-          What we do
+          Что мы делаем
         </h2>
       </div>
 
       {/* Cards */}
       <div className="flex w-full max-w-[1280px] flex-col gap-6 md:flex-row md:gap-4">
         {SERVICES.map((service, index) => {
-          const buttonWidthClass = index === 0 ? 'md:w-[240px]' : 'md:w-[308px]';
-
           return (
             <div
               key={index}
@@ -47,8 +45,8 @@ export const WhatWeDoSection = () => {
                     {service.title}
                   </h3>
                   <p
-                    className="text-base font-normal leading-[1.3] tracking-[-0.48px] text-black md:w-auto"
-                    style={{ maxWidth: index === 0 ? '367px' : '239px' }}
+                    className="text-base font-normal leading-[1.3] tracking-[-0.48px] text-black"
+                    style={{ maxWidth: '367px' }}
                   >
                     {service.description}
                   </p>
@@ -57,9 +55,9 @@ export const WhatWeDoSection = () => {
 
               {/* Button */}
               <div className="flex">
-                <a href={service.buttonHref} className="w-full md:w-auto">
+                <a href={service.buttonHref} className="w-full">
                   <button
-                    className={`flex h-[70px] w-full items-center justify-center rounded-[68px] bg-[#275DD8] px-6 py-5 font-geist text-base font-semibold uppercase tracking-[0.8px] text-white shadow-sm transition-colors hover:bg-[#1e4db0] md:px-8 ${buttonWidthClass}`}
+                    className="flex h-[70px] w-full items-center justify-center rounded-[68px] bg-[#005ee0] px-6 py-5 font-geist text-base font-semibold uppercase tracking-[0.8px] text-white shadow-sm transition-colors hover:bg-[#004bb8] md:px-8"
                   >
                     {service.buttonText}
                   </button>

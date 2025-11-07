@@ -31,10 +31,10 @@ export const ContactsSection = () => {
         {/* Heading */}
         <div className="flex max-w-[768px] flex-col gap-[20px]">
           <h2 className="text-4xl font-semibold leading-none tracking-[-0.72px] text-black">
-            We'd love to hear from you
+            Как с нами связаться
           </h2>
           <p className="text-xl font-normal leading-[1.4] tracking-[-0.6px] text-[#676767]">
-            Our friendly team is always here to chat
+            Напишите нам — мы ответим на любые вопросы
           </p>
         </div>
 

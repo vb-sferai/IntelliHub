@@ -3,36 +3,78 @@ import { useState } from 'react';
 const CASE_STUDIES = [
   {
     client: 'Wealth Management Company',
-    objective:
-      'The goal was to integrate AI tools into everyday work across all roles and increase overall productivity.',
+    objective: (
+      <>
+        Обеспечить ежедневное использование AI-инструментов всеми членами<br />
+        команды для  повышения эффективности.
+      </>
+    ),
     results: [
       {
         value: '85%',
-        description: 'of employees use AI tools daily in workflows',
+        description: (
+          <>
+            сотрудников ежедневно<br />
+            используют AI-инструменты в<br />
+            рабочих процессах
+          </>
+        ),
       },
       {
         value: '70%',
-        description: 'of routine queries resolved via GPT assistant within the first 2 weeks',
+        description: (
+          <>
+            рутинных запросов решаются<br />
+            через GPT-ассистента в течение<br />
+            первых 2 недель
+          </>
+        ),
       },
       {
-        value: '5 min',
-        description: 'Average response time reduced from 1 hour to 5 minutes',
+        value: '5 минут',
+        description: (
+          <>
+            среднее время ответа<br />
+            сократилось с 1 часа до 5 минут
+          </>
+        ),
       },
       {
         value: '52',
-        description: 'ready-to-use prompts created for key scenarios (finance, presale, legal, HR)',
+        description: (
+          <>
+            готовых промпта разработаны<br />
+            для ключевых сценариев
+          </>
+        ),
       },
       {
         value: '12',
-        description: 'AI agents deployed for quality, sales, finance, and executive dashboards',
+        description: (
+          <>
+            ИИ-агентов внедрены для<br />
+            контроля качества, продаж,<br />
+            финансов и дашбордов
+          </>
+        ),
       },
       {
         value: '100%',
-        description: 'prompts reviewed for data security compliance',
+        description: (
+          <>
+            промптов проверены на<br />
+            соответствие политике<br />
+            безопасности данных
+          </>
+        ),
       },
     ],
-    stack:
-      'ChatGPT Enterprise, Yandex GPT, n8n, Cursor, RAGDB (vector database), Power BI + Bloomberg GPT, Miro, Whisper / Coqui',
+    stack: (
+      <>
+        ChatGPT Enterprise, Yandex GPT, n8n, Cursor, RAGDB (vector database), Power BI + Bloomberg GPT,<br />
+        Miro, Whisper / Coqui
+      </>
+    ),
   },
 ];
 
@@ -45,7 +87,7 @@ export const CaseStudiesSection = () => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <h2 className="text-5xl font-semibold leading-[1.2] tracking-[-1.44px] text-black">
-            Case studies
+            Кейсы и отзывы
           </h2>
         </div>
 
@@ -62,8 +104,8 @@ export const CaseStudiesSection = () => {
               >
                 <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[240px_1fr] lg:gap-16">
                   <div className="flex flex-col gap-6">
-                    <p className="font-geist text-base font-semibold uppercase tracking-[0.8px] text-[#275DD8]">
-                      Client
+                    <p className="font-geist text-base font-semibold uppercase tracking-[0.8px] text-[#005ee0]">
+                      Клиент
                     </p>
                     <h3 className="text-[30px] font-semibold leading-[30px] tracking-[-1.2px] text-black">
                       {caseStudy.client}
@@ -72,8 +114,8 @@ export const CaseStudiesSection = () => {
 
                   <div className="flex flex-col gap-10">
                     <div className="flex flex-col gap-4">
-                      <p className="font-geist text-base font-semibold uppercase tracking-[0.8px] text-[#275DD8]">
-                        Objective
+                      <p className="font-geist text-base font-semibold uppercase tracking-[0.8px] text-[#005ee0]">
+                        Запрос
                       </p>
                       <p className="text-base font-normal leading-[1.3] tracking-[-0.48px] text-[#676767]">
                         {caseStudy.objective}
@@ -81,8 +123,8 @@ export const CaseStudiesSection = () => {
                     </div>
 
                     <div className="flex flex-col gap-6">
-                      <p className="font-geist text-base font-semibold uppercase tracking-[0.8px] text-[#275DD8]">
-                        Results
+                      <p className="font-geist text-base font-semibold uppercase tracking-[0.8px] text-[#005ee0]">
+                        Результаты
                       </p>
                       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
                         {caseStudy.results.map((result, idx) => (
@@ -102,8 +144,8 @@ export const CaseStudiesSection = () => {
                     </div>
 
                     <div className="flex flex-col gap-4">
-                      <p className="font-geist text-base font-semibold uppercase tracking-[0.8px] text-[#275DD8]">
-                        Stack
+                      <p className="font-geist text-base font-semibold uppercase tracking-[0.8px] text-[#005ee0]">
+                        Стек
                       </p>
                       <p className="text-base font-normal leading-[1.3] tracking-[-0.48px] text-[#676767]">
                         {caseStudy.stack}

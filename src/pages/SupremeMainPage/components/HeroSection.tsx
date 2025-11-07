@@ -20,19 +20,24 @@ export const HeroSection = () => {
 
       <div className="relative z-10 flex w-full flex-col px-6 pb-16 pt-24 text-white md:pb-24 md:pt-32 md:px-12 lg:px-16 xl:mx-auto xl:max-w-[1280px] xl:px-0">
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
-          <div className="flex max-w-[586px] flex-col">
-            <h1 className="text-4xl font-semibold md:text-6xl xl:text-[80px] xl:leading-none" style={{ letterSpacing: '-3.2px' }}>
-              Helping people and teams use AI mindfully
+          <div className="flex max-w-full flex-col">
+            <h1 className="text-[36px] font-semibold leading-none md:text-6xl md:leading-tight xl:min-h-[320px] xl:text-[80px] xl:leading-none" style={{ letterSpacing: '-0.72px' }}>
+              Помогаем&nbsp;людям<br />
+              и&nbsp;командам<br />
+              использовать&nbsp;AI<br />
+              осознанно
             </h1>
           </div>
 
           <nav className="flex w-full max-w-[386px] flex-col space-y-6 md:space-y-10" aria-label="Primary programs">
-            <p
-              className="w-full text-xl font-medium opacity-90"
-              style={{ letterSpacing: '-0.6px', lineHeight: '1.3' }}
-            >
-              In three years, AI literacy will be as essential as reading or using a computer. You can start making that shift today.
-            </p>
+            <div className="flex w-full flex-col gap-5 font-medium opacity-90" style={{ letterSpacing: '-0.48px', lineHeight: '1.3' }}>
+              <p className="text-base md:text-xl">
+                Через 3 года владение AI станет базовым навыком — как умение читать или пользоваться компьютером.
+              </p>
+              <p className="text-base md:text-xl">
+                Этот переход можно сделать прямо сейчас.
+              </p>
+            </div>
             <div className="flex flex-col border-y border-white/20">
               {MENU_ITEMS.map((item) => (
                 <a

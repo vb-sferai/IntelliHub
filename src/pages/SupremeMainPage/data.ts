@@ -1,14 +1,13 @@
 export const NAV_ITEMS = [
-  { label: 'Products', href: '#what-we-do' },
-  { label: 'Cases', href: '#case-studies' },
-  { label: 'Approach', href: '#philosophy' },
-  { label: 'Contacts', href: '#contacts' },
+  { label: 'Продукты', href: '#what-we-do' },
+  { label: 'Кейсы', href: '#case-studies' },
+  { label: 'Подход', href: '#philosophy' },
+  { label: 'Контакты', href: '#contacts' },
 ];
 
 export const MENU_ITEMS = [
-  { label: 'Programs', href: '#programs' },
-  { label: 'Team training', href: '#team-training' },
-  { label: 'Custom AI automations', href: '#custom-ai-automations' },
+  { label: 'Открытые воркшопы', href: '#programs' },
+  { label: 'Обучение для команд', href: '#team-training' },
 ];
 
 export const TRUSTED_BY_LOGOS = [

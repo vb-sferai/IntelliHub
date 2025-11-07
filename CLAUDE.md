@@ -108,8 +108,8 @@ Page content is separated from components:
 - Each page has a `data.ts` file containing content arrays (CONTENT, AUDIENCE, PRICE, REVIEWS)
 - Carousel items receive data via props and render using specialized item components (CarouselContentItem, CarouselPriceItem, CarouselReviewsItem)
 
-### Git Workflow
+### Important Patterns
 
-- Main branch: `main`
-- Current working branch: `supreme_main_ru_products`
-- Recent work includes fixes to BasePage, contact updates, statistics, and portrait optimizations
+**Carousel Components**: Product pages (Base, Vibecoding, Agents) each have their own Carousel component in `PageName/components/Carousel/` rather than using the shared `src/components/Carousel/`. These are page-specific implementations with custom styling.
+
+**MeshGradient Configurations**: Hero sections use `@paper-design/shaders-react` with specific configuration values (speed, colors, distortion, swirl, grainMixer, frame). Preserve these exact values when editing to maintain visual consistency.

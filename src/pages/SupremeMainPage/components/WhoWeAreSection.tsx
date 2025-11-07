@@ -7,22 +7,44 @@ const STATISTICS = [
   {
     value: '1,600+',
     icon: EducationIcon,
-    description: 'people have completed our programs',
+    description: (
+      <>
+        участников прошли<br />
+        обучение
+      </>
+    ),
   },
   {
     value: '200+',
     icon: GroupIcon,
-    description: 'companies have integrated AI into their workflows with our support.',
+    description: (
+      <>
+        компаний внедрили<br />
+        искусственный интеллект в свои<br />
+        процессы с нашей помощью
+      </>
+    ),
   },
   {
     value: '9.4/10',
     icon: StarIcon,
-    description: 'Average rating based on post-workshop feedback',
+    description: (
+      <>
+        средняя оценка наших<br />
+        воркшопов
+      </>
+    ),
   },
   {
     value: '96%',
     icon: BatchIcon,
-    description: 'of employees start using AI tools within 7 days of training.',
+    description: (
+      <>
+        сотрудников начинают применять<br />
+        AI-решения в последующие 7 дней<br />
+        после обучения
+      </>
+    ),
   },
 ];
 
@@ -33,13 +55,12 @@ export const WhoWeAreSection = () => {
         {/* Left column - Title and description */}
         <div className="flex w-full max-w-[458px] flex-col gap-4">
           <h2 className="text-5xl font-semibold leading-[1.2] tracking-[-1.44px] text-black">
-            Who we are
+            Кто мы
           </h2>
           <p
             className="w-full text-xl font-normal leading-[1.4] tracking-[-0.6px] text-[#676767] opacity-70"
           >
-            We run educational programs and practical AI tools for individuals and companies — from workshops to
-            corporate training and SaaS solutions.
+            Мы создаём образовательные решения и практические инструменты для работы с AI для людей и компаний: от воркшопов до корпоративных программ и SaaS.
           </p>
         </div>
 
@@ -48,7 +69,7 @@ export const WhoWeAreSection = () => {
           {STATISTICS.map((stat, index) => (
             <div key={index} className="flex flex-col gap-5">
               <p
-                  className="text-[80px] font-normal leading-none tracking-[-4.8px] text-[#275DD8] md:text-[140px] md:tracking-[-8.4px]"
+                  className="text-[80px] font-normal leading-none tracking-[-4.8px] text-[#005ee0] md:text-[140px] md:tracking-[-8.4px]"
                 style={{ fontFamily: 'Inter' }}
               >
                 {stat.value}

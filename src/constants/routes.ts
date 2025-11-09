@@ -6,4 +6,5 @@ export const ROUTES = {
     vibecoding: '/vibecoding',
     agents: '/agents',
     jobsPm: '/jobs/pm',
+    jobsApply: '/jobs/:position/apply',
 };

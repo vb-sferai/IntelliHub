@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MeshGradient } from '@paper-design/shaders-react';
-import { Button } from '../../../../components/Button';
 import { JOB_DATA } from '../data';
 import kirill from '../../../../assets/imgs/kirill.png';
 import LogoImg from '../../../../assets/imgs/logo.svg';
 
 export const PmJobPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = 'Вакансия руководителя проектов в sfer.ai';
+    return () => {
+      document.title = 'sfer.ai';
+    };
+  }, []);
+
   const handleApply = () => {
-    // For now, just a placeholder - will need to be connected to actual form
-    window.open(JOB_DATA.cta.formUrl, '_blank');
+    navigate('/jobs/pm/apply');
   };
 
   return (
@@ -178,9 +186,12 @@ export const PmJobPage: React.FC = () => {
               Если вам интересно<br className="hidden lg:block"/>поработать вместе,<br className="hidden lg:block"/>заполните небольшую форму
             </span>
             <div className="flex">
-              <Button color="white" width="100%" onClick={handleApply}>
+              <button
+                onClick={handleApply}
+                className="cursor-pointer rounded-full bg-white text-black py-4.5 md:py-3 lg:py-3.5 xl:py-4.5 max-h-15 font-geist text-base md:text-sm xl:text-base font-semibold px-5 lg:px-6 xl:px-8 uppercase hover:scale-105 transition-transform"
+              >
                 <span className="whitespace-nowrap">{JOB_DATA.cta.buttonText}</span>
-              </Button>
+              </button>
             </div>
           </div>
         </div>

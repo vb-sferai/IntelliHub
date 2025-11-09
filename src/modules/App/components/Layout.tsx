@@ -9,7 +9,8 @@ export const Layout = () => {
     const isSupremePage = location.pathname === ROUTES.supreme;
     const isCaseStudyPage = location.pathname === ROUTES.casestudies;
     const isPmJobPage = location.pathname === ROUTES.jobsPm;
-    const hideChrome = isSupremePage || isCaseStudyPage || isPmJobPage;
+    const isJobApplicationPage = location.pathname.includes('/jobs/') && location.pathname.includes('/apply');
+    const hideChrome = isSupremePage || isCaseStudyPage || isPmJobPage || isJobApplicationPage;
 
     return (
         <div className="min-h-full flex relative">

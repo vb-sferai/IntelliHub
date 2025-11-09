@@ -1,4 +1,4 @@
-import {Navigate, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {MainPage} from "../../../pages/MainPage";
 import {SupremeMainPage} from "../../../pages/SupremeMainPage";
 import {CaseStudyLancetPage} from "../../../pages/CaseStudyLancet";
@@ -6,6 +6,7 @@ import {BasePage} from "../../../pages/BasePage";
 import {VibecodingPage} from "../../../pages/VibecodingPage";
 import {AgentsPage} from "../../../pages/AgentsPage";
 import {PmJobPage} from "../../../pages/JobPages/PmJobPage";
+import {ApplicationPage} from "../../../pages/JobPages/ApplicationPage";
 import {ROUTES} from "../../../constants/routes.ts";
 
 export const Pages = () => {
@@ -18,6 +19,7 @@ export const Pages = () => {
             <Route path={ROUTES.vibecoding} element={<VibecodingPage />} />
             <Route path={ROUTES.agents} element={<AgentsPage />} />
             <Route path={ROUTES.jobsPm} element={<PmJobPage />} />
+            <Route path={ROUTES.jobsApply} element={<ApplicationPage />} />
         </Routes>
     );
 };

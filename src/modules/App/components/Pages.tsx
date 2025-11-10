@@ -7,6 +7,7 @@ import {VibecodingPage} from "../../../pages/VibecodingPage";
 import {AgentsPage} from "../../../pages/AgentsPage";
 import {PmJobPage} from "../../../pages/JobPages/PmJobPage";
 import {ApplicationPage} from "../../../pages/JobPages/ApplicationPage";
+import {NotFoundPage} from "../../../pages/NotFoundPage";
 import {ROUTES} from "../../../constants/routes.ts";
 
 export const Pages = () => {
@@ -20,6 +21,7 @@ export const Pages = () => {
             <Route path={ROUTES.agents} element={<AgentsPage />} />
             <Route path={ROUTES.jobsPm} element={<PmJobPage />} />
             <Route path={ROUTES.jobsApply} element={<ApplicationPage />} />
+            <Route path={ROUTES.notFound} element={<NotFoundPage />} />
         </Routes>
     );
 };

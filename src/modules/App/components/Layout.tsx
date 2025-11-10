@@ -10,7 +10,14 @@ export const Layout = () => {
     const isCaseStudyPage = location.pathname === ROUTES.casestudies;
     const isPmJobPage = location.pathname === ROUTES.jobsPm;
     const isJobApplicationPage = location.pathname.includes('/jobs/') && location.pathname.includes('/apply');
-    const hideChrome = isSupremePage || isCaseStudyPage || isPmJobPage || isJobApplicationPage;
+    const isNotFoundPage = !Object.values(ROUTES).slice(0, -1).some(route => {
+        if (route.includes(':')) {
+            const baseRoute = route.split(':')[0];
+            return location.pathname.startsWith(baseRoute);
+        }
+        return location.pathname === route;
+    });
+    const hideChrome = isSupremePage || isCaseStudyPage || isPmJobPage || isJobApplicationPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

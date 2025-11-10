@@ -2,6 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Project Owner
+
+- **Name**: Kirill Gurbanov
+- **Email**: gk@sfer.ai
+- **Git Config**:
+  ```bash
+  git config user.name "Kirill Gurbanov"
+  git config user.email "gk@sfer.ai"
+  ```
+
 ## Project Overview
 
 IntelliHub is a React + TypeScript website showcasing AI products and services. The project uses Vite for build tooling, React Router for navigation, and Tailwind CSS for styling. The site features multiple product pages (Base, Vibecoding, Agents) along with case studies and a main landing page.

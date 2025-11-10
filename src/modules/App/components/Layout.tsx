@@ -8,6 +8,13 @@ export const Layout = () => {
     const location = useLocation();
     const isSupremePage = location.pathname === ROUTES.root || location.pathname === ROUTES.customAutomations;
 
+    // Check if current page is 404 (not found in known routes)
+    const isNotFoundPage = !Object.values(ROUTES).slice(0, -1).some(route => {
+        return location.pathname === route;
+    });
+
+    const hideChrome = isSupremePage || isNotFoundPage;
+
     return (
         <div className="min-h-full flex relative">
             <div className="flex flex-col w-full h-full justify-center" style={{
@@ -17,9 +24,9 @@ export const Layout = () => {
                     height: '6px',
                 },
             }}>
-                {!isSupremePage && <Header />}
+                {!hideChrome && <Header />}
                 <Pages />
-                {!isSupremePage && <Footer />}
+                {!hideChrome && <Footer />}
             </div>
         </div>
     );

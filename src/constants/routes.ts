@@ -7,4 +7,5 @@ export const ROUTES = {
     agents: '/agents',
     jobsPm: '/jobs/pm',
     jobsApply: '/jobs/:position/apply',
+    notFound: '*',
 };

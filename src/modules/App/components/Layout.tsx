@@ -6,7 +6,7 @@ import {ROUTES} from "../../../constants/routes.ts";
 
 export const Layout = () => {
     const location = useLocation();
-    const isRootPage = location.pathname === ROUTES.root;
+    const isSupremePage = location.pathname === ROUTES.root || location.pathname === ROUTES.customAutomations;
 
     return (
         <div className="min-h-full flex relative">
@@ -17,9 +17,9 @@ export const Layout = () => {
                     height: '6px',
                 },
             }}>
-                {!isRootPage && <Header />}
+                {!isSupremePage && <Header />}
                 <Pages />
-                {!isRootPage && <Footer />}
+                {!isSupremePage && <Footer />}
             </div>
         </div>
     );

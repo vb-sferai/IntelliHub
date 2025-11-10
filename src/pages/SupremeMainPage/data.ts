@@ -7,7 +7,7 @@ export const NAV_ITEMS = [
 
 export const MENU_ITEMS = [
   { label: 'Team training', href: '/teams' },
-  { label: 'Custom AI automations', href: '#contacts' },
+  { label: 'Custom AI automations', href: '/custom-automations' },
 ];
 
 export const TRUSTED_BY_LOGOS = [

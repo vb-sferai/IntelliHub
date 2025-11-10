@@ -2,7 +2,7 @@ import { DitheringBackground } from './DitheringBackground';
 
 const CTA_MENU_ITEMS = [
   { label: 'Team training', href: '/teams' },
-  { label: 'Custom AI automations', href: '#contacts' },
+  { label: 'Custom AI automations', href: '/custom-automations' },
 ];
 
 export const DiscoverCTASection = () => {

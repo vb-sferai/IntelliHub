@@ -1,36 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../constants/routes";
-import { useState, useEffect } from "react";
 
 export const NotFoundPage = () => {
     const navigate = useNavigate();
-    const [isRussian, setIsRussian] = useState(false);
-
-    useEffect(() => {
-        // Check if the domain is ru.sfer.ai or if lang=ru query parameter is present
-        const hostname = window.location.hostname;
-        const urlParams = new URLSearchParams(window.location.search);
-        const langParam = urlParams.get('lang');
-
-        setIsRussian(
-            hostname.startsWith('ru.') ||
-            hostname.includes('ru.sfer') ||
-            langParam === 'ru'
-        );
-    }, []);
 
     const handleGoHome = () => {
         navigate(ROUTES.root);
     };
 
-    // Translations
-    const errorMessage = isRussian
-        ? "Упс, похоже эта страница ещё не вайбкожена..."
-        : "Oops, looks like this page is not vibecoded yet...";
-
-    const buttonText = isRussian
-        ? "На главную"
-        : "Go to Homepage";
+    // Russian version (ru.sfer.ai deployment)
+    const errorMessage = "Упс, похоже эта страница ещё не вайбкожена...";
+    const buttonText = "На главную";
 
     return (
         <div className="min-h-screen bg-[#1e1e1e] text-[#cccccc] font-mono flex flex-col overflow-hidden">

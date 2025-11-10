@@ -1,4 +1,4 @@
 export const ROUTES = {
     root: '/',
-    supreme: '/supreme',
+    teams: '/teams',
 };

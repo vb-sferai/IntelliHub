@@ -5,17 +5,17 @@ import { Button } from '../../../components/Button';
 const SERVICES = [
   {
     icon: TeamsIcon,
-    title: 'For teams',
+    title: 'AI Training for Teams',
     description: 'AI programs, consulting, and strategy sessions for teams ready to bring AI into their everyday work.',
     buttonText: 'TEAM TRAINING',
-    buttonHref: '#team-training',
+    buttonHref: '/teams',
   },
   {
     icon: FlashIcon,
     title: 'Custom AI automations',
     description: 'End-to-end AI solutions tailored to your business needs.',
     buttonText: 'CUSTOM AI AUTOMATIONS',
-    buttonHref: '#custom-ai-automations',
+    buttonHref: '#contacts',
   },
 ];
 

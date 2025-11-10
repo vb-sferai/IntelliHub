@@ -15,8 +15,31 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Repository Information
 
 - **Remote Repository**: https://github.com/vb-sferai/IntelliHub
-- **Main Production Branch**: `supreme_main_ru_products`
 - **Local Directory**: `sfer.ai website`
+
+### Branch Structure
+
+This repository uses **separate branches for language versions** instead of a single codebase with i18n:
+
+#### Russian Version Branch
+- **Branch**: `supreme_main_ru_products`
+- **Domain**: ru.sfer.ai
+- **Language**: Russian
+- **Content**: Russian landing page (MainPage), Russian workshop pages, Russian 404 page
+- **Target Audience**: Russian-speaking users
+
+#### English Version Branch
+- **Branch**: `supreme_main_eng`
+- **Domain**: sfer.ai
+- **Language**: English
+- **Content**: English landing page (SupremeMainPage), English workshop pages, English 404 page
+- **Target Audience**: International users, investors, partners
+
+**Important Notes**:
+- Each branch has its own deployment pipeline to respective domains
+- 404 pages are language-specific per branch (not runtime language detection between branches)
+- Feature branches should be created from the appropriate language branch
+- Changes to shared components may need to be applied to both branches
 
 ## Project Overview
 
@@ -287,10 +310,16 @@ The application has **10 pages** organized by purpose:
   - Status bar with git branch, language, position
   - Chat panel (AI assistant UI)
   - VS Code Dark+ theme colors
-- **i18n**: Bilingual support
-  - English: "Oops, looks like this page is not vibecoded yet..."
-  - Russian: "Упс, похоже эта страница ещё не вайбкожена..."
-- **Language Detection**: Hostname check (ru.sfer.ai) or ?lang=ru parameter
+- **Branch-Specific Implementation**:
+  - **RU Branch** (`supreme_main_ru_products`): Russian language version for ru.sfer.ai
+    - Error message: "Упс, похоже эта страница ещё не вайбкожена..."
+    - Button: "На главную"
+  - **EN Branch** (`supreme_main_eng`): English language version for sfer.ai
+    - Error message: "Oops, looks like this page is not vibecoded yet..."
+    - Button: "Go to Homepage"
+- **Language Detection** (legacy, can be simplified per branch):
+  - Current implementation checks hostname (ru.sfer.ai) or ?lang=ru parameter
+  - Can be simplified to hardcoded language per branch since deployments are separate
 - **Responsive**:
   - Desktop (>1024px): Full IDE interface
   - Tablet (768-1024px): Simplified layout
@@ -429,15 +458,34 @@ export const pmApplicationSchema = z.object({
 
 ## Internationalization (i18n)
 
-### Domain-Based Strategy
+### Branch-Based Strategy
 
-#### Primary Domains
-- **sfer.ai**: English version (default)
-- **ru.sfer.ai**: Russian version
+**Important**: This project uses **separate Git branches** for language versions instead of a single codebase with i18n library.
+
+#### Primary Domains and Branches
+- **sfer.ai** (English) → Deployed from `supreme_main_eng` branch
+- **ru.sfer.ai** (Russian) → Deployed from `supreme_main_ru_products` branch
 
 ### Implementation
 
-#### 1. Automatic Language Detection ([index.html](index.html))
+#### 1. Separate Branches Approach
+
+**Why Separate Branches:**
+- Complete independence between language versions
+- Different content, different marketing strategies
+- Separate deployment pipelines
+- No runtime language switching overhead
+- Simpler maintenance for two distinct websites
+
+**Branch Details:**
+- **`supreme_main_eng`**: Full English site content
+- **`supreme_main_ru_products`**: Full Russian site content
+- Each branch has its own 404 page in respective language
+- Shared technical architecture, different content
+
+#### 2. Automatic Language Detection (Optional, [index.html](index.html))
+
+For user convenience, optional redirect script on English domain:
 
 ```javascript
 <script>
@@ -459,55 +507,52 @@ export const pmApplicationSchema = z.object({
 - Only redirects on sfer.ai (not ru.sfer.ai)
 - Only redirects Russian-language users (browser language detection)
 - Only redirects on main page (`/`)
-- `/supreme` stays in English regardless of browser language
 - Preserves path, query params, and hash
 
-#### 2. Component-Level i18n (404 Page)
+#### 3. Legacy Language Detection in Components
 
+**Note**: Since branches are deployed separately, runtime language detection (hostname checks) in components can be simplified:
+
+**Current (legacy) implementation:**
 ```typescript
 const [isRussian, setIsRussian] = useState(false);
 
 useEffect(() => {
   const hostname = window.location.hostname;
-  const urlParams = new URLSearchParams(window.location.search);
-  const langParam = urlParams.get('lang');
-
-  setIsRussian(
-    hostname.startsWith('ru.') ||
-    hostname.includes('ru.sfer') ||
-    langParam === 'ru'
-  );
+  setIsRussian(hostname.startsWith('ru.') || hostname.includes('ru.sfer'));
 }, []);
-
-const errorMessage = isRussian
-  ? "Упс, похоже эта страница ещё не вайбкожена..."
-  : "Oops, looks like this page is not vibecoded yet...";
 ```
 
-**Features**:
-- Hostname detection (ru. prefix)
-- Query parameter support (?lang=ru for testing)
-- Runtime language switching
-- Bilingual content
+**Recommended simplification:**
+```typescript
+// In RU branch: just use Russian text directly
+const errorMessage = "Упс, похоже эта страница ещё не вайбкожена...";
+
+// In EN branch: just use English text directly
+const errorMessage = "Oops, looks like this page is not vibecoded yet...";
+```
 
 ### Content Strategy
 
-#### Russian Content (ru.sfer.ai)
-- MainPage: Full Russian content
+#### Russian Branch (`supreme_main_ru_products` → ru.sfer.ai)
+- MainPage: Russian landing page
 - Product pages: Russian workshop descriptions
 - Job pages: Russian job listings
 - 404 page: Russian error message
+- All UI text in Russian
 
-#### English Content (sfer.ai)
-- SupremeMainPage: English landing
-- Product pages: Can be English or Russian (currently Russian)
+#### English Branch (`supreme_main_eng` → sfer.ai)
+- SupremeMainPage: English premium landing
+- Product pages: English workshop descriptions
+- Job pages: English job listings
 - 404 page: English error message
+- All UI text in English
 
 ### No Formal i18n Library
-- **No react-i18next**: Manual implementation
-- **No translation files**: Content duplicated in data files
-- **Simple approach**: Suitable for small bilingual site
-- **Future consideration**: May need react-i18next for scale
+- **No react-i18next**: Not needed with separate branches
+- **No translation files**: Content exists in respective branches
+- **Branch-based approach**: Two separate websites sharing architecture
+- **Simpler than i18n**: Each branch is monolingual
 
 ## External Integrations
 
@@ -581,23 +626,63 @@ export default defineConfig({
 
 ### Branch Strategy
 
-**Main Production Branch**: `supreme_main_ru_products`
+**Main Production Branches**:
+- `supreme_main_ru_products` - Russian version (ru.sfer.ai)
+- `supreme_main_eng` - English version (sfer.ai)
 
 **Creating Feature Branches**:
+
+#### For Russian Version Features
 ```bash
-# Always start from the latest production branch
+# Start from Russian production branch
 git fetch origin
 git checkout supreme_main_ru_products
 git pull origin supreme_main_ru_products
 
 # Create feature branch
-git checkout -b kirill-[feature-name]
+git checkout -b kirill-[feature-name]-ru
+```
+
+#### For English Version Features
+```bash
+# Start from English production branch
+git fetch origin
+git checkout supreme_main_eng
+git pull origin supreme_main_eng
+
+# Create feature branch
+git checkout -b kirill-[feature-name]-en
+```
+
+#### For Features Affecting Both Versions
+```bash
+# Option 1: Separate feature branches (Recommended)
+# Create RU version
+git checkout supreme_main_ru_products
+git checkout -b kirill-[feature-name]-ru
+# ... make changes, commit, push, create PR
+
+# Create EN version
+git checkout supreme_main_eng
+git checkout -b kirill-[feature-name]-en
+# ... make changes, commit, push, create PR
+
+# Option 2: Cherry-pick between branches
+# Make changes in RU branch first
+git checkout kirill-[feature-name]-ru
+git commit -m "feat: ..."
+# Apply to EN branch
+git checkout supreme_main_eng
+git checkout -b kirill-[feature-name]-en
+git cherry-pick <commit-hash>
+# Adjust content for English, amend commit
 ```
 
 **Branch Naming Convention**:
-- `kirill-[feature]` for feature development
-- `kirill-[bugfix]` for bug fixes
-- Use kebab-case: `kirill-404-page`, `kirill-job-application`
+- `kirill-[feature]-ru` for Russian version features
+- `kirill-[feature]-en` for English version features
+- `kirill-[feature]` for general/documentation changes
+- Use kebab-case: `kirill-404-page-ru`, `kirill-job-application-en`
 
 ### Commit Message Format
 
@@ -630,15 +715,28 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 ### Pull Request Process
 
+#### For Russian Version PR
 ```bash
 # Push feature branch
-git push -u origin kirill-[feature-name]
+git push -u origin kirill-[feature-name]-ru
 
-# Create pull request
-gh pr create --title "feat: Feature description" --body "Detailed description"
+# Create pull request targeting RU branch
+gh pr create --base supreme_main_ru_products --title "feat: Feature description (RU)" --body "Detailed description"
 ```
 
-**PR Target Branch**: Always create PRs to `supreme_main_ru_products`
+#### For English Version PR
+```bash
+# Push feature branch
+git push -u origin kirill-[feature-name]-en
+
+# Create pull request targeting EN branch
+gh pr create --base supreme_main_eng --title "feat: Feature description (EN)" --body "Detailed description"
+```
+
+**PR Target Branches**:
+- Russian features → `supreme_main_ru_products`
+- English features → `supreme_main_eng`
+- **Important**: Always specify `--base` flag to ensure PR targets correct branch
 
 ## Documentation Files
 

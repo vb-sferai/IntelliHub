@@ -1,10 +1,9 @@
 import { backgroundStyle } from "../consts.ts";
 import { Button } from "../../../components/Button";
-// Logos for English version - removed HAOM and Yandex, using MTS instead of MTS Bank
+// Logos for English version - removed HAOM, Yandex, and MTS
 import EpicGrowthLogo from '../../../assets/imgs/logo-epic-growth.svg';
 import YangoLogo from '../../../assets/imgs/logo-yango.svg';
 import SMStretchingLogo from '../../../assets/imgs/logo-smstretching.svg';
-import MtsLogo from '../../../assets/imgs/logo-mts.svg';
 import RLogo from '../../../assets/imgs/logo-r.svg';
 import LancetLogo from '../../../assets/imgs/lancet-logo.svg';
 import NubesLogo from '../../../assets/imgs/nubes-logo.svg';
@@ -57,7 +56,6 @@ export const MainPage = () => {
                 <div className="flex flex-col gap-3 lg:gap-6">
                     <h4 className="font-geist uppercase text-sm md:text-base font-semibold text-gray-400">Trusted by</h4>
                     <div className="flex flex-row flex-wrap gap-y-3 gap-x-5 lg:gap-7">
-                        <img className="h-6 lg:h-[29px]" src={MtsLogo} alt="MTS"/>
                         <img className="h-6 lg:h-[29px]" src={EpicGrowthLogo} alt="Epic Growth"/>
                         <img className="h-6 lg:h-[29px]" src={RLogo} alt="R"/>
                         <img className="h-6 lg:h-[29px]" src={YangoLogo} alt="Yango"/>

@@ -1,6 +1,5 @@
 import { backgroundStyle } from "../consts.ts";
 import { Button } from "../../../components/Button";
-import MtsBankLogo from '../../../assets/imgs/logo-mts-bank.svg';
 import MtsLogo from '../../../assets/imgs/logo-mts.svg';
 import EpicGrowthLogo from '../../../assets/imgs/logo-epic-growth.svg';
 import RLogo from '../../../assets/imgs/logo-r.svg';
@@ -63,7 +62,6 @@ export const MainPage = () => {
                     <h4 className="font-geist uppercase text-sm md:text-base font-semibold text-gray-400">Нам
                         доверяют</h4>
                     <div className="flex flex-row flex-wrap gap-y-3 gap-x-5 lg:gap-7">
-                        <img className="h-6 lg:h-[29px]" src={MtsBankLogo} alt="МТС Банк"/>
                         <img className="h-6 lg:h-[29px]" src={MtsLogo} alt="МТС"/>
                         <img className="h-6 lg:h-[29px]" src={EpicGrowthLogo} alt="Epic growth"/>
                         <img className="h-6 lg:h-[29px]" src={RLogo} alt="R"/>

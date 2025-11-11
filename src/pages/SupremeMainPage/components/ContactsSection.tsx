@@ -6,8 +6,8 @@ const CONTACT_CARDS = [
   {
     icon: EmailIcon,
     title: 'Email',
-    contact: 'hello@sfer.ai',
-    href: 'mailto:hello@sfer.ai',
+    contact: 'human@sfer.ai',
+    href: 'mailto:human@sfer.ai',
   },
   {
     icon: LinkedinIcon,

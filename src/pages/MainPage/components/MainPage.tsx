@@ -184,11 +184,12 @@ export const MainPage = () => {
                         </div>
                     </div>
                 </div>
-                <Carousel id="events" title="Upcoming Events" cardWidth={384} cardsLength={EVENTS.length}>
+                {/* Upcoming Events section - hidden */}
+                {/* <Carousel id="events" title="Upcoming Events" cardWidth={384} cardsLength={EVENTS.length}>
                     {EVENTS.map((event) => (
                         <EventsCarouselItem date={event.date} title={event.title} text={event.text} speaker={event.speaker} speakerRole={event.speakerRole} speakerPhotoUrl={event.speakerPhotoUrl} link={event.link ?? ''} />
                     ))}
-                </Carousel>
+                </Carousel> */}
                 <div className="flex flex-col items-center mt-20 md:mt-22 lg:mt-36 xl:mt-50">
                     <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black">Frequently
                         Asked Questions</h2>

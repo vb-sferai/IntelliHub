@@ -26,15 +26,22 @@ export const useJobApplicationSubmit = () => {
         timestamp: new Date().toISOString(),
       };
 
+      console.log('Submitting application...', {
+        url: GOOGLE_SCRIPT_URL,
+        dataKeys: Object.keys(formData),
+        timestamp: new Date().toISOString(),
+      });
+
       // Отправка в Google Sheets через Apps Script
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors', // Google Apps Script не поддерживает CORS
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        // Убрали headers - они вызывают preflight запрос в Chromium браузерах
+        // что приводит к ERR_CONNECTION_RESET
         body: JSON.stringify(formData),
       });
+
+      console.log('Submission successful', response);
 
       // При mode: 'no-cors' мы не получаем тело ответа,
       // поэтому просто считаем успешным если не было исключения
@@ -47,6 +54,12 @@ export const useJobApplicationSubmit = () => {
       return { success: true };
     } catch (error) {
       console.error('Error submitting application:', error);
+      console.error('Detailed error:', {
+        message: error instanceof Error ? error.message : 'Unknown error',
+        name: error instanceof Error ? error.name : 'Unknown',
+        stack: error instanceof Error ? error.stack : undefined,
+        type: error?.constructor?.name,
+      });
       setStatus({
         isSubmitting: false,
         isSuccess: false,

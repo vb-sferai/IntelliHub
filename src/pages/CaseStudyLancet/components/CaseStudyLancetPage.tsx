@@ -132,7 +132,7 @@ export const CaseStudyLancetPage = () => {
       {/* CTA Section */}
       <CaseStudyCTA
         title="Есть похожая задача?"
-        description="Давайте встретимся и обсудим вашу задачу"
+        description="Давайте встретимся и обсудим!"
       />
     </div>
   );

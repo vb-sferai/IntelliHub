@@ -33,7 +33,7 @@ export const BasePage = () => {
                     <Button color="white" width="190px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Прокачаться</Button>
                 </div>
             </div>
-            <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto -mt-4 lg:mt-5">
+            <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto pt-12 md:pt-16 lg:pt-20 xl:pt-24 pb-16 md:pb-20 lg:pb-24 xl:pb-32">
                 <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-15 lg:items-center lg:justify-center">
                     <div className="lg:w-104 flex flex-col gap-5 lg:text-center lg:items-center">
                         <span
@@ -46,7 +46,7 @@ export const BasePage = () => {
                         <span className="text-base lg:text-lg xl:text-xl font-medium text-gray-400">Человек начали применять AI в жизни и работе вместе с нами</span>
                     </div>
                 </div>
-                <div id="programs" className="flex flex-col gap-6 lg:gap-16 mt-20 xl:mt-37 items-center">
+                <div id="programs" className="flex flex-col gap-6 lg:gap-16 mt-12 md:mt-16 lg:mt-20 xl:mt-24 items-center">
                     <Title title="3 онлайн-встречи по 2,5 часа"
                            subTitle="Изучаем теорию и решаем практические кейсы прямо в Zoom"/>
                     <Carousel cardsLength={CONTENT.length} cardWidth={400}>

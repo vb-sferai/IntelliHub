@@ -30,7 +30,7 @@ export const VibecodingPage = () => {
                     <Button color="white" width="190px" link="https://kirillgurbanov.getcourse.ru/vibecoding_workshop">Записаться</Button>
                 </div>
             </div>
-            <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto -mt-4 lg:mt-5">
+            <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto pt-12 md:pt-16 lg:pt-20 xl:pt-24 pb-16 md:pb-20 lg:pb-24 xl:pb-32">
                 <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-15 lg:items-center lg:justify-center">
                     {METRICS.map((metric, index) => (
                         <div key={index} className="lg:w-104 flex flex-col gap-5 lg:text-center lg:items-center">
@@ -43,7 +43,7 @@ export const VibecodingPage = () => {
                         </div>
                     ))}
                 </div>
-                <div className="w-full mt-20 xl:mt-37">
+                <div className="w-full mt-12 md:mt-16 lg:mt-20 xl:mt-24">
                     <h2 className="text-2xl xs:text-3xl lg:text-4xl xl:text-5xl font-semibold text-black mb-6 lg:mb-8 xl:mb-10 text-center lg:text-left">
                         Фрагменты с буткемпа
                     </h2>

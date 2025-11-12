@@ -1,9 +1,16 @@
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { CaseStudyHero } from './CaseStudyHero';
 import { CaseStudyCTA } from './CaseStudyCTA';
 
 const baseTextClass = "text-base md:text-lg leading-relaxed text-[#1A1A1A]";
 
 export const CaseStudyLancetPage = () => {
+  // Scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#f9f7f4] text-[#0f0f10]">
       {/* Hero Section */}
@@ -124,6 +131,29 @@ export const CaseStudyLancetPage = () => {
               <p>
                 <a href="https://eduzdrav.ru/courses/neiroseti-dlia-lpu-prikladnye-instrumenty-dlia-rukovoditelei-i-klinicistov" target="_blank" rel="noopener noreferrer" className="text-[#275DD8] hover:underline">Курс уже доступен на платформе EduZdrav.</a> На наш взгляд, это отличная работа, которая получилась благодаря тесному альянсу с медиками. Для нас это новый опыт, который показал, что мы способны на большее.
               </p>
+
+              {/* Back Button */}
+              <div className="mt-12 flex justify-center md:justify-start">
+                <Link
+                  to="/"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#275DD8] px-8 py-3 text-base font-semibold text-[#275DD8] transition-colors hover:bg-[#275DD8] hover:text-white"
+                >
+                  <svg
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                    />
+                  </svg>
+                  Назад на главную
+                </Link>
+              </div>
             </div>
           </article>
         </section>

@@ -17,10 +17,9 @@ export const VibecodingPage = () => {
                     color: #015177;
                 }
             `}</style>
-            <Dithering1 colorBack="#00000000" colorFront="#015177" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={72643.8470000289} style={{ position: 'relative', height: '100vh', width: '100%', backgroundColor: '#16151F' }} className="-top-14 sm:-top-20" />
-            <div
-                className="absolute top-[23vh] xs:top-[35vh] sm:top-[40vh] lg:top-[30vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-3 xs:gap-5 md:gap-2 md:justify-between text-white">
-                <div className="flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10">
+            <div className="relative min-h-screen w-full flex items-center justify-center -mt-14 sm:-mt-20">
+                <Dithering1 colorBack="#00000000" colorFront="#015177" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={72643.8470000289} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: '#16151F' }} />
+                <div className="relative z-10 flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10 px-4 sm:px-12 lg:px-16 xl:px-0 max-w-[1408px] text-white py-20">
                     <span className="text-xl xs:text-[22px] lg:text-2xl font-medium text-white">24 ноября — 8 декабря</span>
                     <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold leading-[110%]">
                         Введение в Cursor: сделай<br/>свой первый вайб-проект<br/>за 2 недели

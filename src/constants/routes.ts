@@ -1,7 +1,7 @@
 export const ROUTES = {
     root: '/',
     supreme: '/supreme',
-    casestudies: '/casestudies',
+    casestudies: '/cases/lancet',
     base: '/baza',
     vibecoding: '/vibecoding',
     agents: '/agents',

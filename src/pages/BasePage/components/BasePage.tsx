@@ -20,10 +20,9 @@ export const BasePage = () => {
                     color: #005EE0;
                 }
             `}</style>
-            <MeshGradient1 speed={0.38} colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4} grainMixer={0.3} grainOverlay={0} frame={32579.315000002767} style={{ position: 'relative', height: '100vh', width: '100%' }} className="-top-14 sm:-top-20" />
-            <div
-                className="absolute top-[23vh] xs:top-[35vh] sm:top-[40vh] lg:top-[30vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-3 xs:gap-5 md:gap-2 md:justify-between text-white">
-                <div className="flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10">
+            <div className="relative min-h-screen w-full flex items-center justify-center -mt-14 sm:-mt-20">
+                <MeshGradient1 speed={0.38} colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4} grainMixer={0.3} grainOverlay={0} frame={32579.315000002767} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} />
+                <div className="relative z-10 flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10 px-4 sm:px-12 lg:px-16 xl:px-0 max-w-[1408px] text-white py-20">
                     <span className="text-xl xs:text-[22px] lg:text-2xl font-medium text-white">25-27 ноября</span>
                     <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold">
                         AI-база: как эффективно использовать ИИ<br/>в работе и жизни

@@ -1,14 +1,19 @@
+import { CaseStudyHero } from './CaseStudyHero';
+import { CaseStudyCTA } from './CaseStudyCTA';
+
 const baseTextClass = "text-base md:text-lg leading-relaxed text-[#1A1A1A]";
 
 export const CaseStudyLancetPage = () => {
   return (
-    <div className="min-h-screen bg-[#f9f7f4] py-16 text-[#0f0f10]">
-      <div className="mx-auto w-full max-w-[960px] px-6 md:px-10">
-        <header className="mb-16">
-          <h1 className="text-3xl font-semibold leading-tight md:text-[48px] md:leading-[1.1]">
-            Кейс «Нейросети для ЛПУ: прикладные инструменты для руководителей и клиницистов» для компании «Ланцет»
-          </h1>
-        </header>
+    <div className="min-h-screen bg-[#f9f7f4] text-[#0f0f10]">
+      {/* Hero Section */}
+      <CaseStudyHero
+        title="Нейросети для ЛПУ: прикладные инструменты для руководителей и клиницистов"
+        subtitle="Кейс для компании «Ланцет»"
+      />
+
+      {/* Main Content */}
+      <div className="mx-auto w-full max-w-[960px] px-6 py-16 md:px-10">
 
         <section className="mb-16 space-y-6">
           <div className={"space-y-6 " + baseTextClass}>
@@ -123,6 +128,12 @@ export const CaseStudyLancetPage = () => {
           </article>
         </section>
       </div>
+
+      {/* CTA Section */}
+      <CaseStudyCTA
+        title="Есть похожая задача?"
+        description="Давайте встретимся и обсудим вашу задачу"
+      />
     </div>
   );
 };

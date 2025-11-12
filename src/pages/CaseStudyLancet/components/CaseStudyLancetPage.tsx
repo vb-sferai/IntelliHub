@@ -8,8 +8,8 @@ export const CaseStudyLancetPage = () => {
     <div className="min-h-screen bg-[#f9f7f4] text-[#0f0f10]">
       {/* Hero Section */}
       <CaseStudyHero
-        title="Нейросети для ЛПУ: прикладные инструменты для руководителей и клиницистов"
-        subtitle="Кейс для компании «Ланцет»"
+        title="Кейс: нейросети для медицинских организаций — прикладные инструменты для руководителей и клиницистов"
+        subtitle="Проект для компании «Ланцет»"
       />
 
       {/* Main Content */}

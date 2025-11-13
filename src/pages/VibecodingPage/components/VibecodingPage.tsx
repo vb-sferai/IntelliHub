@@ -1,4 +1,5 @@
 import { Dithering as Dithering1 } from '@paper-design/shaders-react';
+import { useState } from 'react';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
@@ -8,8 +9,18 @@ import {Carousel} from "./Carousel";
 import {METRICS, WHO_NEEDS_CODING, WEBINAR_SESSIONS, SPEAKERS, PRICE, REVIEWS} from "../data";
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
+import {StreamTabs} from "./StreamTabs";
 
 export const VibecodingPage = () => {
+    const [activeStream, setActiveStream] = useState('stream2');
+
+    const scrollToPrice = () => {
+        const priceSection = document.getElementById('price');
+        if (priceSection) {
+            priceSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
         <div className="flex flex-col w-full">
             <style>{`
@@ -20,14 +31,13 @@ export const VibecodingPage = () => {
             <div className="relative min-h-screen w-full flex items-center justify-center -mt-14 sm:-mt-20">
                 <Dithering1 colorBack="#00000000" colorFront="#015177" speed={0.11} shape="warp" type="4x4" size={3.3} scale={1.66} frame={72643.8470000289} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: '#16151F' }} />
                 <div className="relative z-10 flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10 px-4 sm:px-12 lg:px-16 xl:px-0 max-w-[1408px] text-white py-20">
-                    <span className="text-xl xs:text-[22px] lg:text-2xl font-medium text-white">24 ноября — 8 декабря</span>
                     <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold leading-[110%]">
                         Введение в Cursor: сделай<br/>свой первый вайб-проект<br/>за 2 недели
                     </h2>
                     <span className="max-w-[725px] text-center text-sm xs:text-base lg:text-lg xl:text-xl font-medium mb-2.5">
                         Пошагово изучим инструменты вайбкодинга<br className="hidden md:block"/>и начнём собирать прототипы и продукты без команды и разработчика
                     </span>
-                    <Button color="white" width="190px" link="https://kirillgurbanov.getcourse.ru/vibecoding_workshop">Записаться</Button>
+                    <Button color="white" width="190px" onClick={scrollToPrice}>Записаться</Button>
                 </div>
             </div>
             <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto pt-12 md:pt-16 lg:pt-20 xl:pt-24 pb-16 md:pb-20 lg:pb-24 xl:pb-32">
@@ -106,12 +116,13 @@ export const VibecodingPage = () => {
                 <div id="programs" className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
                     <div className="flex flex-col gap-8 items-center max-w-[768px] mx-auto">
                         <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-center w-full">
-                            5 вебинаров по 2,5 часа
+                            5 вебинаров по 2 часа
                         </h2>
                         <p className="text-base lg:text-lg xl:text-xl font-normal leading-[1.5] text-[#858585] text-center w-full">
                             Подробный обзор инструмента прямо в Zoom
                         </p>
                     </div>
+                    <StreamTabs activeStream={activeStream} onStreamChange={setActiveStream} />
                     <div className="flex flex-col gap-4 w-full">
                         <div className="flex flex-col lg:flex-row gap-4 w-full">
                             {WEBINAR_SESSIONS.slice(0, 3).map((session, index) => (
@@ -125,7 +136,7 @@ export const VibecodingPage = () => {
                                                 {session.title}
                                             </h3>
                                             <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-black">
-                                                {session.dateTime}
+                                                {session.streamDates[activeStream as 'stream2' | 'stream3']}
                                             </p>
                                         </div>
                                     </div>
@@ -154,7 +165,7 @@ export const VibecodingPage = () => {
                                                 {session.title}
                                             </h3>
                                             <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-black">
-                                                {session.dateTime}
+                                                {session.streamDates[activeStream as 'stream2' | 'stream3']}
                                             </p>
                                         </div>
                                     </div>
@@ -219,10 +230,20 @@ export const VibecodingPage = () => {
                     </Carousel>
                 </div>
                 <div id="price" className="mt-20 xl:mt-37">
-                    <Carousel title="Сколько стоит?" cardsLength={PRICE.length} cardWidth={612}>
+                    <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black leading-[120%]">
+                        Тарифы
+                    </h2>
+                    <StreamTabs activeStream={activeStream} onStreamChange={setActiveStream} />
+                    <Carousel cardsLength={PRICE.length} cardWidth={612}>
                         {PRICE.map((item) => (
-                            <CarouselPriceItem title={item.title} price={item.price} forMonth={item.forMonth}
-                                               list={item.list} buttonText={item.buttonText} link={item.link}/>
+                            <CarouselPriceItem
+                                title={item.title}
+                                price={item.price}
+                                forMonth={item.forMonth}
+                                list={item.list}
+                                buttonText={item.streamButtonTexts[activeStream as 'stream2' | 'stream3']}
+                                link={item.streamLinks[activeStream as 'stream2' | 'stream3']}
+                            />
                         ))}
                     </Carousel>
                 </div>
@@ -242,8 +263,7 @@ export const VibecodingPage = () => {
                             </p>
                         </div>
                         <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
-                            <Button color="white" width="267px" link="https://kirillgurbanov.getcourse.ru/vibecoding_workshop">Участвовать вживую</Button>
-                            <Button color="blur" width="221px" link="https://kirillgurbanov.getcourse.ru/vibecoding_only_record">Купить запись</Button>
+                            <Button color="white" width="190px" onClick={scrollToPrice}>Записаться</Button>
                         </div>
                     </div>
                 </div>

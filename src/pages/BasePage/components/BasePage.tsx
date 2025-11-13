@@ -1,4 +1,5 @@
 import { MeshGradient as MeshGradient1 } from '@paper-design/shaders-react';
+import { useState } from 'react';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
@@ -11,8 +12,18 @@ import {CONTENT, AUDIENCE, PRICE, REVIEWS} from "../data";
 import {CarouselContentItem} from "./CarouselContentItem";
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
+import {StreamTabs} from "./StreamTabs";
 
 export const BasePage = () => {
+    const [activeStream, setActiveStream] = useState('stream8');
+
+    const scrollToPrice = () => {
+        const priceSection = document.getElementById('price');
+        if (priceSection) {
+            priceSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
         <div className="flex flex-col w-full">
             <style>{`
@@ -23,14 +34,13 @@ export const BasePage = () => {
             <div className="relative min-h-screen w-full flex items-center justify-center -mt-14 sm:-mt-20">
                 <MeshGradient1 speed={0.38} colors={['#80C2FF', '#061346', '#3A83E8']} distortion={0.79} swirl={0.4} grainMixer={0.3} grainOverlay={0} frame={32579.315000002767} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} />
                 <div className="relative z-10 flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10 px-4 sm:px-12 lg:px-16 xl:px-0 max-w-[1408px] text-white py-20">
-                    <span className="text-xl xs:text-[22px] lg:text-2xl font-medium text-white">25-27 ноября</span>
                     <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold">
                         AI-база: как эффективно использовать ИИ<br/>в работе и жизни
                     </h2>
                     <span className="md:max-w-95 text-center text-sm xs:text-base lg:text-lg xl:text-xl font-medium mb-2.5">
                         С нуля до продвинутого пользователя
                     </span>
-                    <Button color="white" width="190px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Прокачаться</Button>
+                    <Button color="white" width="190px" onClick={scrollToPrice}>Прокачаться</Button>
                 </div>
             </div>
             <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto pt-12 md:pt-16 lg:pt-20 xl:pt-24 pb-16 md:pb-20 lg:pb-24 xl:pb-32">
@@ -46,13 +56,21 @@ export const BasePage = () => {
                         <span className="text-base lg:text-lg xl:text-xl font-medium text-gray-400">Человек начали применять AI в жизни и работе вместе с нами</span>
                     </div>
                 </div>
-                <div id="programs" className="flex flex-col gap-6 lg:gap-16 mt-12 md:mt-16 lg:mt-20 xl:mt-24 items-center">
-                    <Title title="3 онлайн-встречи по 2,5 часа"
-                           subTitle="Изучаем теорию и решаем практические кейсы прямо в Zoom"/>
+                <div id="programs" className="flex flex-col gap-6 lg:gap-16 mt-12 md:mt-16 lg:mt-20 xl:mt-24">
+                    <div className="flex flex-col items-center">
+                        <Title title="3 онлайн-встречи по 2,5 часа"
+                               subTitle="Изучаем теорию и решаем практические кейсы прямо в Zoom"/>
+                    </div>
+                    <StreamTabs activeStream={activeStream} onStreamChange={setActiveStream} />
                     <Carousel cardsLength={CONTENT.length} cardWidth={400}>
                         {CONTENT.map((item) => (
-                            <CarouselContentItem iconUrl={item.iconUrl} title={item.title} text={item.text}
-                                                 list={item.list} date={item.date}/>
+                            <CarouselContentItem
+                                iconUrl={item.iconUrl}
+                                title={item.title}
+                                text={item.text}
+                                list={item.list}
+                                date={item.streamDates[activeStream as 'stream8' | 'stream9']}
+                            />
                         ))}
                     </Carousel>
                 </div>
@@ -119,10 +137,20 @@ export const BasePage = () => {
                     </Carousel>
                 </div>
                 <div id="price" className="mt-20 xl:mt-37">
-                    <Carousel title="Сколько стоит?" cardsLength={PRICE.length} cardWidth={612}>
+                    <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black leading-[120%]">
+                        Тарифы
+                    </h2>
+                    <StreamTabs activeStream={activeStream} onStreamChange={setActiveStream} />
+                    <Carousel cardsLength={PRICE.length} cardWidth={612}>
                         {PRICE.map((item) => (
-                            <CarouselPriceItem title={item.title} price={item.price} forMonth={item.forMonth}
-                                               list={item.list} buttonText={item.buttonText} link={item.link} date={item.date}/>
+                            <CarouselPriceItem
+                                title={item.title}
+                                price={item.price}
+                                forMonth={item.forMonth}
+                                list={item.list}
+                                buttonText={item.streamButtonTexts[activeStream as 'stream8' | 'stream9']}
+                                link={item.streamLinks[activeStream as 'stream8' | 'stream9']}
+                            />
                         ))}
                     </Carousel>
                 </div>
@@ -146,14 +174,7 @@ export const BasePage = () => {
                         className="absolute flex flex-col lg:flex-row lg:justify-between w-full h-96 sm:h-92 lg:h-64 p-6 xs:p-8 sm:p-10 lg:p-15 lg:items-center gap-12 lg:gap-0">
                         <span
                             className="text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-white leading-[120%] z-10 relative max-w-xs xs:max-w-sm sm:max-w-md">Готовы посмотреть{' '}<br className="hidden lg:block"/>на AI по-новому?</span>
-                        <div className="hidden lg:flex flex-row gap-8">
-                            <Button color="white" width="240px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Участвовать вживую</Button>
-                            <Button color="blur" width="240px" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec">Купить запись</Button>
-                        </div>
-                        <div className="lg:hidden flex flex-col gap-4">
-                            <Button color="white" width="100%" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai">Участвовать вживую</Button>
-                            <Button color="blur" width="100%" link="https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec">Купить запись</Button>
-                        </div>
+                        <Button color="white" width="190px" onClick={scrollToPrice}>Прокачаться</Button>
                     </div>
                 </div>
                 <div id="contacts"

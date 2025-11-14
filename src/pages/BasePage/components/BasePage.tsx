@@ -171,7 +171,7 @@ export const BasePage = () => {
                         className="h-96 sm:h-92 lg:h-64"
                     />
                     <div
-                        className="absolute flex flex-col lg:flex-row lg:justify-between w-full h-96 sm:h-92 lg:h-64 p-6 xs:p-8 sm:p-10 lg:p-15 lg:items-center gap-12 lg:gap-0">
+                        className="absolute flex flex-col lg:flex-row lg:justify-between w-full h-96 sm:h-92 lg:h-64 p-6 xs:p-8 sm:p-10 lg:p-15 lg:items-center justify-between lg:gap-0">
                         <span
                             className="text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-white leading-[120%] z-10 relative max-w-xs xs:max-w-sm sm:max-w-md">Готовы посмотреть{' '}<br className="hidden lg:block"/>на AI по-новому?</span>
                         <Button color="white" width="190px" onClick={scrollToPrice}>Прокачаться</Button>

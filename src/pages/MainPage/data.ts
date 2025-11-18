@@ -141,7 +141,7 @@ export const CASES = [
                 text: 'просмотров записи после вебинара',
             },
         ],
-        stack: 'Яндекс.Алиса AI',
+        stack: 'Яндекс Алиса AI',
         link: '/cases/yandex',
     },
     {

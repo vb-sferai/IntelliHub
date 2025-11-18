@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CaseStudyHero } from '../../CaseStudyLancet/components/CaseStudyHero';
 import { CaseStudyCTA } from '../../CaseStudyLancet/components/CaseStudyCTA';
+import YandexLogo from '../../../assets/imgs/yandex-logo.svg';
 
 const baseTextClass = "text-base md:text-lg leading-relaxed text-[#1A1A1A]";
 
@@ -15,6 +16,7 @@ export const CaseStudyYandexPage = () => {
     <div className="min-h-screen bg-[#f9f7f4] text-[#0f0f10]">
       {/* Hero Section */}
       <CaseStudyHero
+        logoUrl={YandexLogo}
         title="Кейс: 11 000 человек на вебинаре: как мы провели самое масштабное публичное обучение по AI от Яндекса"
         gradientColors={['#FFCC00', '#FF0000', '#000000']}
       />

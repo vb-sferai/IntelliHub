@@ -21,8 +21,12 @@ export interface TrafficParams extends UTMParams {
 /**
  * Извлекает UTM-параметры из URL
  */
-export function getUTMParams(url: string = window.location.href): UTMParams {
-  const urlObj = new URL(url);
+export function getUTMParams(url?: string): UTMParams {
+  // Используем текущий URL только если window доступен (не во время SSR)
+  const targetUrl = url || (typeof window !== 'undefined' ? window.location.href : '');
+  if (!targetUrl) return {};
+
+  const urlObj = new URL(targetUrl);
   const params: UTMParams = {};
 
   const utmKeys: (keyof UTMParams)[] = [
@@ -48,6 +52,11 @@ export function getUTMParams(url: string = window.location.href): UTMParams {
  * Используем sessionStorage, чтобы параметры сохранялись в рамках одной сессии
  */
 export function saveUTMParams(): TrafficParams | null {
+  // Проверяем, что мы в браузере (не в SSR)
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
   const utmParams = getUTMParams();
 
   // Если нет UTM-параметров, не сохраняем
@@ -57,7 +66,7 @@ export function saveUTMParams(): TrafficParams | null {
 
   const trafficParams: TrafficParams = {
     ...utmParams,
-    referrer: document.referrer || 'direct',
+    referrer: typeof document !== 'undefined' ? (document.referrer || 'direct') : 'direct',
     landing_page: window.location.pathname,
     timestamp: new Date().toISOString(),
   };
@@ -70,6 +79,11 @@ export function saveUTMParams(): TrafficParams | null {
  * Получает сохраненные UTM-параметры из sessionStorage
  */
 export function getSavedUTMParams(): TrafficParams | null {
+  // Проверяем, что мы в браузере (не в SSR)
+  if (typeof window === 'undefined' || typeof sessionStorage === 'undefined') {
+    return null;
+  }
+
   const saved = sessionStorage.getItem('traffic_params');
   return saved ? JSON.parse(saved) : null;
 }
@@ -78,6 +92,11 @@ export function getSavedUTMParams(): TrafficParams | null {
  * Очищает сохраненные UTM-параметры
  */
 export function clearUTMParams(): void {
+  // Проверяем, что мы в браузере (не в SSR)
+  if (typeof window === 'undefined' || typeof sessionStorage === 'undefined') {
+    return;
+  }
+
   sessionStorage.removeItem('traffic_params');
 }
 

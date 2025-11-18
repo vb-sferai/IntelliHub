@@ -1,6 +1,7 @@
 import {Navigate, Route, Routes} from "react-router-dom";
 import {MainPage} from "../../../pages/MainPage";
 import {SupremeMainPage} from "../../../pages/SupremeMainPage";
+import {CustomAutomationsPage} from "../../../pages/CustomAutomationsPage";
 import {CaseStudyLancetPage} from "../../../pages/CaseStudyLancet";
 import {BasePage} from "../../../pages/BasePage";
 import {VibecodingPage} from "../../../pages/VibecodingPage";
@@ -15,6 +16,7 @@ export const Pages = () => {
         <Routes>
             <Route path={ROUTES.root} element={<SupremeMainPage />} />
             <Route path={ROUTES.teams} element={<MainPage />} />
+            <Route path={ROUTES.programs} element={<CustomAutomationsPage />} />
             <Route path={ROUTES.casestudies} element={<CaseStudyLancetPage />} />
             <Route path={ROUTES.base} element={<BasePage />} />
             <Route path={ROUTES.vibecoding} element={<VibecodingPage />} />

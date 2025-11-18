@@ -36,9 +36,16 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
 
     const carouselItemWidth = useMemo(() => {
         if (cardWidth) {
+            // На мобильных всегда используем адаптивную ширину
+            if (windowWidth < 768) {
+                return (windowWidth - 32);
+            }
+            // На sm и md используем cardWidth - 24
             if (windowWidth < 1024) {
                 return (cardWidth - 24);
-            } else return cardWidth;
+            }
+            // На lg+ используем полный cardWidth
+            return cardWidth;
         } else if (windowWidth >= 1440) {
             return 1360;
         } else if (windowWidth >= 1280) {
@@ -46,16 +53,20 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
         } else if (windowWidth >= 768) {
             return (windowWidth - 96);
         }
-        return 374;
+        return (windowWidth - 32);
     }, [windowWidth, cardWidth]);
+
+    const spacing = useMemo(() => {
+        return windowWidth >= 768 ? 24 : 16;
+    }, [windowWidth]);
 
     const x = useMotionValue(0);
 
     const maxIndex = useMemo(() => {
         if (containerWidth === 0 || carouselItemWidth === 0) return cardsLength - 1;
-        const visibleCards = Math.floor(containerWidth / (carouselItemWidth + 24));
+        const visibleCards = Math.floor(containerWidth / (carouselItemWidth + spacing));
         return Math.max(0, cardsLength - visibleCards);
-    }, [cardsLength, carouselItemWidth, containerWidth]);
+    }, [cardsLength, carouselItemWidth, containerWidth, spacing]);
 
     const nextSlide = () => {
         setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
@@ -76,18 +87,18 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
     const dragConstraints = useMemo(() => {
         if (maxIndex === 0) return { left: 0, right: 0 };
 
-        const totalDragDistance = maxIndex * (carouselItemWidth + 16);
+        const totalDragDistance = maxIndex * (carouselItemWidth + spacing);
         return {
             left: -totalDragDistance,
             right: 0
         };
-    }, [maxIndex, carouselItemWidth]);
+    }, [maxIndex, carouselItemWidth, spacing]);
 
     return (
         <div id={id} className="flex flex-col gap-6 md:gap-8 lg:gap-12 xl:gap-21 mt-20 md:mt-24 lg:mt-40 xl:mt-50">
             <div className="flex flex-row justify-between items-center">
                 <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black">{title}</h2>
-                <div className={`${maxIndex <= 0 ? 'hidden' : 'hidden md:flex'} flex-row gap-4`}>
+                <div className={`${maxIndex <= 0 ? 'hidden' : 'flex'} flex-row gap-4`}>
                     <button
                         onClick={prevSlide}
                         disabled={currentIndex === 0}
@@ -118,7 +129,7 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
                 <motion.div
                     className="hidden md:flex space-x-6"
                     style={{x}}
-                    animate={{x: -currentIndex * (carouselItemWidth + 24)}}
+                    animate={{x: -currentIndex * (carouselItemWidth + spacing)}}
                     transition={{type: "spring", stiffness: 300, damping: 30}}
                     drag="x"
                     dragConstraints={dragConstraints}
@@ -131,7 +142,7 @@ export const Carousel = ({ id, title, cardWidth, cardsLength, children }: Carous
                 <motion.div
                     className="md:hidden flex space-x-4"
                     style={{x}}
-                    animate={{x: -currentIndex * (carouselItemWidth + 16)}}
+                    animate={{x: -currentIndex * (carouselItemWidth + spacing)}}
                     transition={{type: "spring", stiffness: 300, damping: 30}}
                     drag="x"
                     dragConstraints={dragConstraints}

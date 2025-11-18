@@ -6,7 +6,7 @@ export const NAV_ITEMS = [
 ];
 
 export const MENU_ITEMS = [
-  { label: 'Открытые воркшопы', href: '#programs' },
+  { label: 'Открытые воркшопы', href: '/programs' },
   { label: 'Обучение для команд', href: '/teams' },
 ];
 

@@ -1,6 +1,7 @@
 export const ROUTES = {
     root: '/',
     teams: '/teams',
+    programs: '/programs',
     casestudies: '/cases/lancet',
     base: '/baza',
     vibecoding: '/vibecoding',

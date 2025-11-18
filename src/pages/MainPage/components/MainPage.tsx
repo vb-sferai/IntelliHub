@@ -62,14 +62,14 @@ export const MainPage = () => {
                     <h4 className="font-geist uppercase text-sm md:text-base font-semibold text-gray-400">Нам
                         доверяют</h4>
                     <div className="flex flex-row flex-wrap gap-y-3 gap-x-5 lg:gap-7">
-                        <img className="h-6 lg:h-[29px]" src={MtsLogo} alt="МТС"/>
                         <img className="h-6 lg:h-[29px]" src={EpicGrowthLogo} alt="Epic growth"/>
                         <img className="h-6 lg:h-[29px]" src={RLogo} alt="R"/>
-                        <img className="h-6 lg:h-[29px]" src={YangoLogo} alt="Yango"/>
                         <img className="h-6 lg:h-[29px]" src={HaomLogo} alt="Haom"/>
                         <img className="h-6 lg:h-[29px]" src={LancetLogo} alt="Lancet"/>
-                        <img className="h-6 lg:h-[29px]" src={SMStretchingLogo} alt="SMStretching"/>
+                        <img className="h-6 lg:h-[29px]" src={MtsLogo} alt="МТС"/>
+                        <img className="h-6 lg:h-[29px]" src={YangoLogo} alt="Yango"/>
                         <img className="h-6 lg:h-[29px]" src={YandexLogo} alt="Яндекс"/>
+                        <img className="h-6 lg:h-[29px]" src={SMStretchingLogo} alt="SMStretching"/>
                         <img className="h-6 lg:h-[29px]" src={AliceLogo} alt="Яндекс Алиса"/>
                         <img className="h-6 lg:h-[29px]" src={NubesLogo} alt="Nubes"/>
                     </div>
@@ -194,11 +194,11 @@ export const MainPage = () => {
                         </div>
                     </div>
                 </div>
-                <Carousel id="events" title="Ближайшие мероприятия" cardWidth={384} cardsLength={EVENTS.length}>
+                {/* <Carousel id="events" title="Ближайшие мероприятия" cardWidth={384} cardsLength={EVENTS.length}>
                     {EVENTS.map((event) => (
                         <EventsCarouselItem date={event.date} title={event.title} text={event.text} speaker={event.speaker} speakerRole={event.speakerRole} speakerPhotoUrl={event.speakerPhotoUrl} link={event.link ?? ''} />
                     ))}
-                </Carousel>
+                </Carousel> */}
                 <div className="flex flex-col items-center mt-20 md:mt-22 lg:mt-36 xl:mt-50">
                     <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black">Часто
                         задаваемые вопросы</h2>
@@ -218,8 +218,7 @@ export const MainPage = () => {
                           style={{ userSelect: 'none' }}
                         >
                             <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CalendarIcon} alt="Календарь" />
-                            <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-white 2xl:mb-8">Записаться на<br className="flex 2xl:hidden" />
-                                консультацию</h3>
+                            <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-white 2xl:mb-8">Записаться на<br className="flex 2xl:hidden" /> консультацию</h3>
                         </div>
                         <div
                           className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">

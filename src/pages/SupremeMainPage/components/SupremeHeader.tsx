@@ -53,7 +53,14 @@ export const SupremeHeader = () => {
 
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
-    scrollToAnchor(href);
+
+    // Если это маршрут (начинается с / но не /#), делаем переход
+    if (href.startsWith('/') && !href.startsWith('/#')) {
+      window.location.href = href;
+    } else {
+      // Иначе это якорная ссылка, скроллим
+      scrollToAnchor(href);
+    }
   };
 
   const headerTone = isScrolled || isMenuOpen ? 'bg-white text-gray-900 shadow-sm' : 'bg-transparent text-white';
@@ -64,7 +71,7 @@ export const SupremeHeader = () => {
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${headerTone}`}
       >
         <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6 md:px-12 lg:px-16 xl:px-0">
-          <a href="#programs" className="flex items-center gap-3" onClick={() => handleNavClick('#programs')}>
+          <a href="/programs" className="flex items-center gap-3" onClick={() => handleNavClick('/programs')}>
             <img
               src={LogoImg}
               alt="Sfer AI"

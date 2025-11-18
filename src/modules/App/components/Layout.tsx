@@ -8,6 +8,7 @@ export const Layout = () => {
     const location = useLocation();
     const isSupremePage = location.pathname === ROUTES.root;
     const isCaseStudyPage = location.pathname === ROUTES.casestudies;
+    const isProgramsPage = location.pathname === ROUTES.programs;
     const isPmJobPage = location.pathname === ROUTES.jobsPm;
     const isJobApplicationPage = location.pathname.includes('/jobs/') && location.pathname.includes('/apply');
     const isNotFoundPage = !Object.values(ROUTES).slice(0, -1).some(route => {
@@ -17,7 +18,7 @@ export const Layout = () => {
         }
         return location.pathname === route;
     });
-    const hideChrome = isSupremePage || isCaseStudyPage || isPmJobPage || isJobApplicationPage || isNotFoundPage;
+    const hideChrome = isSupremePage || isCaseStudyPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

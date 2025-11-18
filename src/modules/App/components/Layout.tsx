@@ -6,7 +6,7 @@ import {ROUTES} from "../../../constants/routes.ts";
 
 export const Layout = () => {
     const location = useLocation();
-    const isSupremePage = location.pathname === ROUTES.supreme;
+    const isSupremePage = location.pathname === ROUTES.root;
     const isCaseStudyPage = location.pathname === ROUTES.casestudies;
     const isPmJobPage = location.pathname === ROUTES.jobsPm;
     const isJobApplicationPage = location.pathname.includes('/jobs/') && location.pathname.includes('/apply');

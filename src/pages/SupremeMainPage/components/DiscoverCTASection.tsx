@@ -2,7 +2,7 @@ import { DitheringBackground } from './DitheringBackground';
 
 const CTA_MENU_ITEMS = [
   { label: 'Открытые воркшопы', href: '#programs' },
-  { label: 'Обучение для команд', href: '#team-training' },
+  { label: 'Обучение для команд', href: '/teams' },
 ];
 
 export const DiscoverCTASection = () => {

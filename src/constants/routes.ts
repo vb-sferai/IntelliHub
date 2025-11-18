@@ -1,6 +1,6 @@
 export const ROUTES = {
     root: '/',
-    supreme: '/supreme',
+    teams: '/teams',
     casestudies: '/cases/lancet',
     base: '/baza',
     vibecoding: '/vibecoding',

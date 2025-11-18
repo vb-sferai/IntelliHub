@@ -13,8 +13,8 @@ import {ROUTES} from "../../../constants/routes.ts";
 export const Pages = () => {
     return (
         <Routes>
-            <Route path={ROUTES.root} element={<MainPage />} />
-            <Route path={ROUTES.supreme} element={<SupremeMainPage />} />
+            <Route path={ROUTES.root} element={<SupremeMainPage />} />
+            <Route path={ROUTES.teams} element={<MainPage />} />
             <Route path={ROUTES.casestudies} element={<CaseStudyLancetPage />} />
             <Route path={ROUTES.base} element={<BasePage />} />
             <Route path={ROUTES.vibecoding} element={<VibecodingPage />} />

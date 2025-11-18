@@ -135,7 +135,7 @@ export const CaseStudyLancetPage = () => {
               {/* Back Button */}
               <div className="mt-12 flex justify-center md:justify-start">
                 <Link
-                  to="/"
+                  to="/teams"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-[#275DD8] px-8 py-3 text-base font-semibold text-[#275DD8] transition-colors hover:bg-[#275DD8] hover:text-white"
                 >
                   <svg

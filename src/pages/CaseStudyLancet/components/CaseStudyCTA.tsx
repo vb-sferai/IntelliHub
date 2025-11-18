@@ -7,6 +7,7 @@ interface CaseStudyCTAProps {
   calendlyUrl?: string;
   email?: string;
   gradientColors?: string[];
+  primaryButtonTextColor?: string;
 }
 
 /**
@@ -19,6 +20,7 @@ export const CaseStudyCTA: React.FC<CaseStudyCTAProps> = ({
   calendlyUrl = 'https://calendly.com/as-sfer/30min',
   email = 'human@sfer.ai',
   gradientColors = ['#80C2FF', '#061346', '#3A83E8'],
+  primaryButtonTextColor = '#005EE0',
 }) => {
   return (
     <div className="relative w-full py-16 lg:py-20">
@@ -57,7 +59,8 @@ export const CaseStudyCTA: React.FC<CaseStudyCTAProps> = ({
             href={calendlyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-white px-8 py-4 text-center text-base font-semibold text-[#005EE0] transition-colors hover:bg-gray-100 md:text-lg"
+            className="rounded-full bg-white px-8 py-4 text-center text-base font-semibold transition-colors hover:bg-gray-100 md:text-lg"
+            style={{ color: primaryButtonTextColor }}
           >
             Запланировать звонок
           </a>

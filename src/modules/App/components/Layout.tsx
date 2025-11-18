@@ -7,7 +7,8 @@ import {ROUTES} from "../../../constants/routes.ts";
 export const Layout = () => {
     const location = useLocation();
     const isSupremePage = location.pathname === ROUTES.root;
-    const isCaseStudyPage = location.pathname === ROUTES.casestudies;
+    const isCaseStudyLancetPage = location.pathname === ROUTES.casestudiesLancet;
+    const isCaseStudyYandexPage = location.pathname === ROUTES.casestudiesYandex;
     const isProgramsPage = location.pathname === ROUTES.programs;
     const isPmJobPage = location.pathname === ROUTES.jobsPm;
     const isJobApplicationPage = location.pathname.includes('/jobs/') && location.pathname.includes('/apply');
@@ -18,7 +19,7 @@ export const Layout = () => {
         }
         return location.pathname === route;
     });
-    const hideChrome = isSupremePage || isCaseStudyPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNotFoundPage;
+    const hideChrome = isSupremePage || isCaseStudyLancetPage || isCaseStudyYandexPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

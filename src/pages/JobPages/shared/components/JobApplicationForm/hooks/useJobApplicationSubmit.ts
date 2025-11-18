@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { PmApplicationFormData, SubmissionStatus } from '../types';
+import { getSavedUTMParams, trackGoal } from '../../../../../../utils/analytics';
 
 // URL Google Apps Script для отправки заявок
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxIjOtBEmS_KzStXt7k54_Mmnh0Ib1EhAhbhy7TUfpAiWhoVeqymj4Fv4gFPuVaU4br/exec';
@@ -19,11 +20,22 @@ export const useJobApplicationSubmit = () => {
     });
 
     try {
+      // Получаем сохраненные UTM-параметры
+      const utmParams = getSavedUTMParams();
+
       // Подготовка данных для отправки
       const formData = {
         ...data,
         jobPosition,
         timestamp: new Date().toISOString(),
+        // Добавляем UTM-параметры
+        utm_source: utmParams?.utm_source || '',
+        utm_medium: utmParams?.utm_medium || '',
+        utm_campaign: utmParams?.utm_campaign || '',
+        utm_term: utmParams?.utm_term || '',
+        utm_content: utmParams?.utm_content || '',
+        referrer: utmParams?.referrer || '',
+        landing_page: utmParams?.landing_page || '',
       };
 
       console.log('Submitting application...', {
@@ -42,6 +54,12 @@ export const useJobApplicationSubmit = () => {
       });
 
       console.log('Submission successful', response);
+
+      // Отправляем цель в Яндекс.Метрику
+      trackGoal('job_application_submitted', {
+        position: jobPosition,
+        ...utmParams,
+      });
 
       // При mode: 'no-cors' мы не получаем тело ответа,
       // поэтому просто считаем успешным если не было исключения

@@ -3,9 +3,13 @@ import {Pages} from "./Pages.tsx";
 import {Header} from "../../Header";
 import {Footer} from "../../Footer";
 import {ROUTES} from "../../../constants/routes.ts";
+import {useAnalytics} from "../../../hooks/useAnalytics.ts";
 
 export const Layout = () => {
     const location = useLocation();
+
+    // Инициализация аналитики и UTM-трекинга
+    useAnalytics();
     const isSupremePage = location.pathname === ROUTES.root;
     const isCaseStudyLancetPage = location.pathname === ROUTES.casestudiesLancet;
     const isCaseStudyYandexPage = location.pathname === ROUTES.casestudiesYandex;
@@ -23,13 +27,7 @@ export const Layout = () => {
 
     return (
         <div className="min-h-full flex relative">
-            <div className="flex flex-col w-full h-full justify-center" style={{
-                // eslint-disable-next-line @typescript-eslint/naming-convention
-                // @ts-ignore
-                '&::-webkit-scrollbar': {
-                    height: '6px',
-                },
-            }}>
+            <div className="flex flex-col w-full h-full justify-center">
                 {!hideChrome && <Header />}
                 <Pages />
                 {!hideChrome && <Footer />}

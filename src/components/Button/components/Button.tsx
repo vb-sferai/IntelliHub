@@ -1,4 +1,5 @@
 import type {ReactElement} from "react";
+import { trackGoal } from "../../../utils/analytics";
 
 type ButtonProps = {
     color: 'white' | 'black' | 'blur' | 'blue' | 'primary',
@@ -8,6 +9,8 @@ type ButtonProps = {
     link?: string,
     width?: string,
     onClick?: () => void,
+    trackingGoal?: string, // Название цели для Яндекс.Метрики
+    trackingParams?: Record<string, any>, // Дополнительные параметры для цели
 };
 
 export const Button = ({
@@ -18,8 +21,19 @@ export const Button = ({
     link,
     width,
     onClick,
+    trackingGoal,
+    trackingParams,
 }: ButtonProps) => {
     const handleClick = () => {
+        // Отправляем цель в Яндекс.Метрику, если указана
+        if (trackingGoal) {
+            trackGoal(trackingGoal, {
+                link: link ?? 'https://calendly.com/as-sfer/30min',
+                button_text: typeof children === 'string' ? children : 'button',
+                ...trackingParams,
+            });
+        }
+
         if (onClick) {
             onClick();
         } else {

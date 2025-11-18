@@ -11,6 +11,10 @@ type CarouselPriceItemProps = {
 };
 
 export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, link }: CarouselPriceItemProps) => {
+    // Определяем цель в зависимости от типа тарифа
+    const isLive = title.toLowerCase().includes('живое') || title.toLowerCase().includes('участие');
+    const trackingGoal = isLive ? 'workshop_live_click' : 'workshop_record_click';
+
     return (
         <div
             className="flex flex-col justify-between w-[calc(100vw-56px)] sm:w-[calc(calc(calc(100vw-96px)-16px)/2)] lg:w-[calc(calc(calc(100vw-128px)-16px)/2)] xl:w-153 min-h-80 xs:min-h-90 lg:min-h-148 bg-[#F7F7F5] p-8 flex-shrink-0 justify-between">
@@ -40,7 +44,8 @@ export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, li
                 color="blue"
                 link={link}
                 fullWidth
-                trackingGoal="workshop_purchase_click"
+                metrikaId={105367822}
+                trackingGoal={trackingGoal}
                 trackingParams={{
                     workshop: 'vibecoding',
                     tier: title.toLowerCase(),

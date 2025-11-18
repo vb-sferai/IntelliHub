@@ -101,16 +101,75 @@ export function clearUTMParams(): void {
 }
 
 /**
+ * Инициализирует дополнительный счетчик Яндекс.Метрики
+ * @param metrikaId - ID счетчика для инициализации
+ */
+export function initMetrika(metrikaId: number): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  // Проверяем, что базовая функция ym существует
+  if (!(window as any).ym) {
+    console.warn('⚠️ Яндекс.Метрика не загружена, не могу инициализировать счетчик', metrikaId);
+    return;
+  }
+
+  // Динамически загружаем и инициализируем счетчик
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.async = true;
+  script.src = `https://mc.yandex.ru/metrika/tag.js`;
+
+  script.onload = () => {
+    try {
+      (window as any).ym(metrikaId, 'init', {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true,
+      });
+      console.log('✅ Метрика инициализирована:', metrikaId);
+    } catch (e) {
+      console.error('❌ Ошибка инициализации метрики', metrikaId, e);
+    }
+  };
+
+  // Проверяем, не загружен ли уже скрипт для этого счетчика
+  const existingScript = document.querySelector(`script[data-metrika-id="${metrikaId}"]`);
+  if (!existingScript) {
+    script.setAttribute('data-metrika-id', metrikaId.toString());
+    document.head.appendChild(script);
+  } else {
+    // Если скрипт уже есть, просто инициализируем счетчик
+    try {
+      (window as any).ym(metrikaId, 'init', {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true,
+      });
+      console.log('✅ Метрика переинициализирована:', metrikaId);
+    } catch (e) {
+      console.error('❌ Ошибка инициализации метрики', metrikaId, e);
+    }
+  }
+}
+
+/**
  * Отправляет цель в Яндекс.Метрику
+ * @param metrikaId - ID счетчика Яндекс.Метрики (обязательный параметр)
+ * @param goalName - Название цели
+ * @param params - Дополнительные параметры
  */
 export function trackGoal(
+  metrikaId: number,
   goalName: string,
   params?: Record<string, any>
 ): void {
   if (typeof window !== 'undefined' && (window as any).ym) {
-    const metrikaId = 105383064; // ID вашего счетчика
     (window as any).ym(metrikaId, 'reachGoal', goalName, params);
-    console.log('✅ Метрика: цель достигнута', goalName, params);
+    console.log('✅ Метрика: цель достигнута', `[${metrikaId}]`, goalName, params);
   } else {
     console.warn('⚠️ Яндекс.Метрика не загружена');
   }

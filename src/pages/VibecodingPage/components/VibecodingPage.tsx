@@ -1,5 +1,5 @@
 import { Dithering as Dithering1 } from '@paper-design/shaders-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
@@ -10,9 +10,15 @@ import {METRICS, WHO_NEEDS_CODING, WEBINAR_SESSIONS, SPEAKERS, PRICE, REVIEWS} f
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
 import {StreamTabs} from "./StreamTabs";
+import { initMetrika } from '../../../utils/analytics';
 
 export const VibecodingPage = () => {
     const [activeStream, setActiveStream] = useState('stream2');
+
+    // Инициализируем счетчик Яндекс.Метрики для страницы Vibecoding
+    useEffect(() => {
+        initMetrika(105367822);
+    }, []);
 
     const scrollToPrice = () => {
         const priceSection = document.getElementById('price');

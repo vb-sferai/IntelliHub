@@ -1,5 +1,5 @@
 import { MeshGradient as MeshGradient1 } from '@paper-design/shaders-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
@@ -13,9 +13,15 @@ import {CarouselContentItem} from "./CarouselContentItem";
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
 import {StreamTabs} from "./StreamTabs";
+import { initMetrika } from '../../../utils/analytics';
 
 export const BasePage = () => {
     const [activeStream, setActiveStream] = useState('stream8');
+
+    // Инициализируем счетчик Яндекс.Метрики для страницы Base
+    useEffect(() => {
+        initMetrika(105383668);
+    }, []);
 
     const scrollToPrice = () => {
         const priceSection = document.getElementById('price');

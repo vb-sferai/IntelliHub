@@ -9,6 +9,7 @@ type ButtonProps = {
     link?: string,
     width?: string,
     onClick?: () => void,
+    metrikaId?: number, // ID счетчика Яндекс.Метрики
     trackingGoal?: string, // Название цели для Яндекс.Метрики
     trackingParams?: Record<string, any>, // Дополнительные параметры для цели
 };
@@ -21,6 +22,7 @@ export const Button = ({
     link,
     width,
     onClick,
+    metrikaId,
     trackingGoal,
     trackingParams,
 }: ButtonProps) => {
@@ -50,9 +52,9 @@ export const Button = ({
             }
         }
 
-        // Отправляем цель в Яндекс.Метрику, если указана
-        if (trackingGoal) {
-            trackGoal(trackingGoal, {
+        // Отправляем цель в Яндекс.Метрику, если указаны metrikaId и trackingGoal
+        if (metrikaId && trackingGoal) {
+            trackGoal(metrikaId, trackingGoal, {
                 link: targetUrl,
                 button_text: typeof children === 'string' ? children : 'button',
                 ...trackingParams,

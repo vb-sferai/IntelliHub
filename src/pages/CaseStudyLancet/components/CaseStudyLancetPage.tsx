@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CaseStudyHero } from './CaseStudyHero';
 import { CaseStudyCTA } from './CaseStudyCTA';
+import LancetLogo from '../../../assets/imgs/lancet-logo.svg';
 
 const baseTextClass = "text-base md:text-lg leading-relaxed text-[#1A1A1A]";
 
@@ -15,6 +16,7 @@ export const CaseStudyLancetPage = () => {
     <div className="min-h-screen bg-[#f9f7f4] text-[#0f0f10]">
       {/* Hero Section */}
       <CaseStudyHero
+        logoUrl={LancetLogo}
         title="Кейс: нейросети для медицинских организаций — прикладные инструменты для руководителей и клиницистов"
         subtitle="Проект для компании «Ланцет»"
       />

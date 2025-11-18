@@ -8,13 +8,14 @@ type CaseResult = {
 
 type CasesCarouselItemProps = {
     client: string;
+    logoUrl?: string;
     request: string;
     results: CaseResult[];
     stack: string;
     link?: string;
 };
 
-export const CasesCarouselItem = ({ client, request, results, stack, link }: CasesCarouselItemProps) => {
+export const CasesCarouselItem = ({ client, logoUrl, request, results, stack, link }: CasesCarouselItemProps) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -42,6 +43,9 @@ export const CasesCarouselItem = ({ client, request, results, stack, link }: Cas
         <div className={`flex flex-col md:flex-row gap-8 md:gap-12 w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-340 md:h-173 bg-[#F7F7F5] pl-6 pt-6 pr-5 pb-11 flex-shrink-0`}>
             <div className="flex flex-col gap-2 md:gap-6 w-61">
                 <span className="uppercase text-sm md:text-base font-semibold text-gray-400 font-geist">Клиент</span>
+                {logoUrl && (
+                    <img src={logoUrl} alt={`${client} logo`} className="h-8 md:h-10 w-auto object-contain object-left mb-2" />
+                )}
                 <span className="text-xl md:text-[30px] font-semibold text-black">{client}</span>
             </div>
             <div className="flex flex-col w-full h-full justify-between">

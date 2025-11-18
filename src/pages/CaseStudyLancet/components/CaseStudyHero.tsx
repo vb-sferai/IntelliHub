@@ -4,6 +4,7 @@ import { MeshGradient } from '@paper-design/shaders-react';
 interface CaseStudyHeroProps {
   title: string;
   subtitle?: string;
+  logoUrl?: string;
   gradientColors?: string[];
 }
 
@@ -14,6 +15,7 @@ interface CaseStudyHeroProps {
 export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
   title,
   subtitle,
+  logoUrl,
   gradientColors = ['#80C2FF', '#061346', '#3A83E8'],
 }) => {
   return (
@@ -38,6 +40,9 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
 
       {/* Content */}
       <div className="relative z-10 flex w-full flex-col items-center gap-3 px-4 text-center text-white xs:gap-4 sm:px-12 lg:px-16 xl:max-w-[1408px] xl:px-0">
+        {logoUrl && (
+          <img src={logoUrl} alt="Company logo" className="h-12 md:h-16 w-auto object-contain mb-4" />
+        )}
         <h1 className="text-2xl font-semibold xs:text-3xl md:text-[42px] lg:text-[48px] xl:text-[56px]">
           {title}
         </h1>

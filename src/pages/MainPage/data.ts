@@ -7,6 +7,8 @@ import CategoryIcon from '../../assets/imgs/category-icon.svg';
 import DrawIcon from '../../assets/imgs/draw.svg';
 import GroupIcon from '../../assets/imgs/people-group.svg';
 import AiIcon from '../../assets/imgs/machine-learning-model.svg';
+import LancetLogo from '../../assets/imgs/lancet-logo.svg';
+import YandexLogo from '../../assets/imgs/yandex-logo.svg';
 
 export const PRODUCTS = [
     {
@@ -86,6 +88,7 @@ export const PRODUCTS = [
 export const CASES = [
     {
         client: 'Ланцет',
+        logoUrl: LancetLogo,
         request: 'Создать прикладной обучающий курс по использованию ИИ для административных медицинских работников — от главврачей до клиницистов. Курс должен автоматизировать рутинную бумажную работу и освободить время для врачебной практики.',
         results: [
             {
@@ -118,6 +121,7 @@ export const CASES = [
     },
     {
         client: 'Яндекс',
+        logoUrl: YandexLogo,
         request: 'Команда маркетинга Яндекс Алиса обратилась к нам с запросом на популяризацию нейросети через массовое обучение. Алиса недавно получила серьезное обновление, и нужно было рассказать, что изменилось, и как это работает.',
         results: [
             {

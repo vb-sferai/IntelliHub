@@ -131,7 +131,7 @@ export const EVENTS = [
         title: 'Open Webinar for HR',
         text: 'Human First, AI Fast',
         speaker: 'Kirill Gurbanov',
-        speakerRole: 'Founder of SFER AI, co-founder and board member of SMLT Bank, Chief Digital Officer at MTS Bank, CPO at Sber Business Mobile',
+        speakerRole: 'Founder of SFER AI, co-founder and board member of SMLT Bank, Chief Digital Officer at MTS Bank, EX корпорат с восьмилетним опытом работы',
         speakerPhotoUrl: KirillImg,
         link: 'https://t.me/kgrbnv_bot?start=dl-1757939498db45602a124c',
     },

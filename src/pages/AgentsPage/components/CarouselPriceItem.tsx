@@ -36,7 +36,19 @@ export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, li
                     </li>
                 ))}
             </div>
-            <Button color="white" link={link} width="fit-content">{buttonText}</Button>
+            <Button
+                color="white"
+                link={link}
+                width="fit-content"
+                trackingGoal="workshop_purchase_click"
+                trackingParams={{
+                    workshop: 'agents',
+                    tier: title.toLowerCase(),
+                    price: price,
+                }}
+            >
+                {buttonText}
+            </Button>
         </div>
     );
 };

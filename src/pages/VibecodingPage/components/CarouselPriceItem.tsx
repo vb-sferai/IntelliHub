@@ -36,7 +36,19 @@ export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, li
                     </li>
                 ))}
             </div>
-            <Button color="blue" link={link} fullWidth>{buttonText}</Button>
+            <Button
+                color="blue"
+                link={link}
+                fullWidth
+                trackingGoal="workshop_purchase_click"
+                trackingParams={{
+                    workshop: 'vibecoding',
+                    tier: title.toLowerCase(),
+                    price: price,
+                }}
+            >
+                {buttonText}
+            </Button>
         </div>
     );
 };

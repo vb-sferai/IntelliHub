@@ -18,7 +18,7 @@ export const CaseStudyYandexPage = () => {
       <CaseStudyHero
         logoUrl={YandexLogo}
         title="Кейс: 11 000 человек на вебинаре: как мы провели самое масштабное публичное обучение по AI от Яндекса"
-        gradientColors={['#FFCC00', '#FF0000', '#000000']}
+        gradientColors={['#CC6600', '#CC0000', '#000000']}
       />
 
       {/* Main Content */}

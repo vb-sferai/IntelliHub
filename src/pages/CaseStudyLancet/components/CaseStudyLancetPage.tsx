@@ -18,7 +18,6 @@ export const CaseStudyLancetPage = () => {
       <CaseStudyHero
         logoUrl={LancetLogo}
         title="Кейс: нейросети для медицинских организаций — прикладные инструменты для руководителей и клиницистов"
-        subtitle="Проект для компании «Ланцет»"
       />
 
       {/* Main Content */}

@@ -8,12 +8,16 @@ type CarouselPriceItemProps = {
     list: string[];
     buttonText: string;
     link: string;
+    activeStream: 'stream2' | 'stream3';
 };
 
-export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, link }: CarouselPriceItemProps) => {
-    // Определяем цель в зависимости от типа тарифа
+export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, link, activeStream }: CarouselPriceItemProps) => {
+    // Определяем цель в зависимости от типа тарифа и потока
     const isLive = title.toLowerCase().includes('живое') || title.toLowerCase().includes('участие');
-    const trackingGoal = isLive ? 'workshop_live_click' : 'workshop_record_click';
+    const streamNumber = activeStream === 'stream2' ? '2' : '3';
+    const trackingGoal = isLive
+        ? `workshop_live_stream${streamNumber}_click`
+        : `workshop_record_stream${streamNumber}_click`;
 
     return (
         <div

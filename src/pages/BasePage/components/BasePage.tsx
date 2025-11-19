@@ -156,6 +156,7 @@ export const BasePage = () => {
                                 list={item.list}
                                 buttonText={item.streamButtonTexts[activeStream as 'stream8' | 'stream9']}
                                 link={item.streamLinks[activeStream as 'stream8' | 'stream9']}
+                                activeStream={activeStream as 'stream8' | 'stream9'}
                             />
                         ))}
                     </Carousel>

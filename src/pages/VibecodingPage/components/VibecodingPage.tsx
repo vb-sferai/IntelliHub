@@ -249,6 +249,7 @@ export const VibecodingPage = () => {
                                 list={item.list}
                                 buttonText={item.streamButtonTexts[activeStream as 'stream2' | 'stream3']}
                                 link={item.streamLinks[activeStream as 'stream2' | 'stream3']}
+                                activeStream={activeStream as 'stream2' | 'stream3'}
                             />
                         ))}
                     </Carousel>

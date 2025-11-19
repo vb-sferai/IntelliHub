@@ -28,7 +28,7 @@ export const SPEAKERS = [
     },
     {
         name: 'Кирилл Гурбанов',
-        title: 'фаундер SFER.AI,\nex-CPO Сбер бизнес мобайл',
+        title: 'фаундер SFER.AI',
         description: 'Основатель sfer.ai, практик с 9-летним опытом на топ-позициях в крупнейших компаниях России: со-основатель и член СД банка СМЛТ (группа «Самолет»), Chief Digital Officer МТС Банк, CPO Сбер Бизнес Мобайл',
         photo: KirillImg,
     },

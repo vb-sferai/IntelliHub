@@ -109,50 +109,72 @@ export function initMetrika(metrikaId: number): void {
     return;
   }
 
-  // Проверяем, что базовая функция ym существует
-  if (!(window as any).ym) {
-    console.warn('⚠️ Яндекс.Метрика не загружена, не могу инициализировать счетчик', metrikaId);
-    return;
-  }
-
-  // Динамически загружаем и инициализируем счетчик
-  const script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.async = true;
-  script.src = `https://mc.yandex.ru/metrika/tag.js`;
-
-  script.onload = () => {
+  // Функция для инициализации счетчика
+  const initCounter = () => {
     try {
+      // Проверяем, существует ли уже функция ym
+      if (!(window as any).ym) {
+        // Создаем функцию ym если её еще нет
+        (window as any).ym = (window as any).ym || function() {
+          ((window as any).ym.a = (window as any).ym.a || []).push(arguments);
+        };
+        (window as any).ym.l = 1 * new Date().getTime();
+      }
+
+      // Инициализируем счетчик
       (window as any).ym(metrikaId, 'init', {
         clickmap: true,
         trackLinks: true,
         accurateTrackBounce: true,
         webvisor: true,
+        ecommerce: "dataLayer"
       });
       console.log('✅ Метрика инициализирована:', metrikaId);
+
+      // Отправляем событие просмотра страницы
+      setTimeout(() => {
+        (window as any).ym(metrikaId, 'hit', window.location.href);
+      }, 100);
     } catch (e) {
       console.error('❌ Ошибка инициализации метрики', metrikaId, e);
     }
   };
 
-  // Проверяем, не загружен ли уже скрипт для этого счетчика
-  const existingScript = document.querySelector(`script[data-metrika-id="${metrikaId}"]`);
-  if (!existingScript) {
-    script.setAttribute('data-metrika-id', metrikaId.toString());
-    document.head.appendChild(script);
-  } else {
-    // Если скрипт уже есть, просто инициализируем счетчик
-    try {
-      (window as any).ym(metrikaId, 'init', {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        webvisor: true,
-      });
-      console.log('✅ Метрика переинициализирована:', metrikaId);
-    } catch (e) {
-      console.error('❌ Ошибка инициализации метрики', metrikaId, e);
+  // Проверяем, загружен ли уже основной скрипт метрики
+  const metrikaScript = document.querySelector('script[src*="mc.yandex.ru/metrika/tag.js"]');
+
+  if (metrikaScript) {
+    // Если скрипт уже есть в DOM, ждем его загрузки или инициализируем сразу
+    if ((window as any).ym && typeof (window as any).ym === 'function') {
+      // Скрипт уже загружен, инициализируем сразу
+      initCounter();
+    } else {
+      // Ждем загрузки основного скрипта
+      metrikaScript.addEventListener('load', initCounter);
+      // Также пробуем через небольшую задержку (на случай если событие load уже прошло)
+      setTimeout(() => {
+        if ((window as any).ym && typeof (window as any).ym === 'function') {
+          initCounter();
+        }
+      }, 1000);
     }
+  } else {
+    // Если скрипта нет, загружаем его
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = `https://mc.yandex.ru/metrika/tag.js`;
+    script.setAttribute('data-metrika-id', metrikaId.toString());
+
+    script.onload = () => {
+      initCounter();
+    };
+
+    script.onerror = () => {
+      console.error('❌ Не удалось загрузить скрипт Яндекс.Метрики');
+    };
+
+    document.head.appendChild(script);
   }
 }
 

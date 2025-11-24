@@ -9,5 +9,6 @@ export const ROUTES = {
     agents: '/agents',
     jobsPm: '/jobs/pm',
     jobsApply: '/jobs/:position/apply',
+    newyear2026: '/newyear2026',
     notFound: '*',
 };

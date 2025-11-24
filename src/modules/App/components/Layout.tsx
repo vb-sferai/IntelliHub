@@ -16,6 +16,7 @@ export const Layout = () => {
     const isProgramsPage = location.pathname === ROUTES.programs;
     const isPmJobPage = location.pathname === ROUTES.jobsPm;
     const isJobApplicationPage = location.pathname.includes('/jobs/') && location.pathname.includes('/apply');
+    const isNewYearRedirectPage = location.pathname === ROUTES.newyear2026;
     const isNotFoundPage = !Object.values(ROUTES).slice(0, -1).some(route => {
         if (route.includes(':')) {
             const baseRoute = route.split(':')[0];
@@ -23,7 +24,7 @@ export const Layout = () => {
         }
         return location.pathname === route;
     });
-    const hideChrome = isSupremePage || isCaseStudyLancetPage || isCaseStudyYandexPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNotFoundPage;
+    const hideChrome = isSupremePage || isCaseStudyLancetPage || isCaseStudyYandexPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

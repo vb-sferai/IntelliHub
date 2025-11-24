@@ -1,0 +1,1 @@
+export { NewYearRedirectPage } from './components/NewYearRedirectPage';

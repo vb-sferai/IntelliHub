@@ -219,17 +219,10 @@ export const AgentsPage = () => {
                         className="h-96 sm:h-92 lg:h-64"
                     />
                     <div
-                        className="absolute flex flex-col lg:flex-row lg:justify-between w-full h-96 sm:h-92 lg:h-64 p-6 xs:p-8 sm:p-10 lg:p-15 lg:items-center justify-center lg:justify-start gap-12 lg:gap-0">
+                        className="absolute flex flex-col lg:flex-row justify-between lg:justify-between w-full h-96 sm:h-92 lg:h-64 p-6 xs:p-8 sm:p-10 lg:p-15 items-center lg:items-center">
                         <span
-                            className="text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-white leading-[120%] z-10 relative max-w-xs xs:max-w-sm sm:max-w-md lg:max-w-none">Готовы собрать{' '}<br className="hidden lg:block"/>своего AI-агента?</span>
-                        <div className="hidden lg:flex flex-row gap-8">
-                            <Button color="white" width="240px" onClick={scrollToPrice}>Записаться</Button>
-                        </div>
-                        <div className="lg:hidden flex items-center justify-center w-full">
-                            <div className="text-base sm:text-lg w-full max-w-[400px]">
-                                <Button color="white" width="100%" onClick={scrollToPrice}>Записаться</Button>
-                            </div>
-                        </div>
+                            className="text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-white leading-[120%] z-10 relative text-center lg:text-left pt-4 lg:pt-0">Готовы собрать{' '}<br className="hidden lg:block"/>своего AI-агента?</span>
+                        <Button color="white" width="240px" onClick={scrollToPrice}>Записаться</Button>
                     </div>
                 </div>
 

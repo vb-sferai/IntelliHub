@@ -8,6 +8,7 @@ type ButtonProps = {
     fullWidth?: boolean,
     link?: string,
     width?: string,
+    height?: string,
     onClick?: () => void,
     metrikaId?: number, // ID счетчика Яндекс.Метрики
     trackingGoal?: string, // Название цели для Яндекс.Метрики
@@ -21,6 +22,7 @@ export const Button = ({
     fullWidth = false,
     link,
     width,
+    height,
     onClick,
     metrikaId,
     trackingGoal,
@@ -72,7 +74,7 @@ export const Button = ({
     return (
         <button
             className={`cursor-pointer rounded-full flex items-center justify-center text-center ${color === 'white' ? 'bg-white text-black' : color === 'black' ? 'bg-black text-white' : color === 'blue' ? 'bg-[#015177] text-white' : color === 'primary' ? 'bg-[#005EE0] text-white' : 'bg-[#FFFFFF33] backdrop-blur-3xl text-white'} ${isInHeader ? 'max-h-13 py-3 lg:py-3.5' : 'py-4.5 md:py-3 lg:py-3.5 xl:py-4.5'} ${fullWidth && 'w-full'} font-geist text-xs sm:text-sm md:text-sm xl:text-base font-semibold px-4 sm:px-5 lg:px-6 xl:px-8 uppercase leading-tight`}
-            style={{ width: width ? width : undefined }}
+            style={{ width: width ? width : undefined, height: height ? height : undefined }}
             onClick={handleClick}
         >
             {children}

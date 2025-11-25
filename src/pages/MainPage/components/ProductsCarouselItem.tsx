@@ -16,8 +16,8 @@ export const ProductsCarouselItem = ({ iconUrl, title, text, list }: ProductsCar
                 </div>
             </div>
             <div className="flex flex-col gap-3 text-gray-500 ml-5">
-                {list.map((listItem) => (
-                    <li style={{ lineHeight: '130%' }}>{listItem}</li>
+                {list.map((listItem, index) => (
+                    <li key={index} style={{ lineHeight: '130%' }}>{listItem}</li>
                 ))}
             </div>
         </div>

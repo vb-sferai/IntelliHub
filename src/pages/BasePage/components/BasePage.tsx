@@ -63,8 +63,9 @@ export const BasePage = () => {
                     </div>
                     <StreamTabs activeStream={activeStream} onStreamChange={setActiveStream} />
                     <Carousel cardsLength={CONTENT.length} cardWidth={400}>
-                        {CONTENT.map((item) => (
+                        {CONTENT.map((item, index) => (
                             <CarouselContentItem
+                                key={index}
                                 iconUrl={item.iconUrl}
                                 title={item.title}
                                 text={item.text}
@@ -122,16 +123,16 @@ export const BasePage = () => {
                     <Title title="Кому подойдёт воркшоп"
                            subTitle="Неважно, с чего вы начинаете и в какой сфере работаете — поможем адаптировать AI под ваши задачи. От вас нужно только желание учиться :)"/>
                     <Carousel cardsLength={AUDIENCE.length} cardWidth={400}>
-                        {AUDIENCE.map((item) => (
-                            <CarouselContentItem iconUrl={item.iconUrl} title={item.title} text={item.text}
+                        {AUDIENCE.map((item, index) => (
+                            <CarouselContentItem key={index} iconUrl={item.iconUrl} title={item.title} text={item.text}
                                                  list={item.list}/>
                         ))}
                     </Carousel>
                 </div>
                 <div id="reviews" className="mt-20 xl:mt-37">
                     <Carousel title="Что говорят участники" cardsLength={REVIEWS.length} cardWidth={360}>
-                        {REVIEWS.map((review) => (
-                            <CarouselReviewsItem title={review.title} text={review.text} author={review.author}
+                        {REVIEWS.map((review, index) => (
+                            <CarouselReviewsItem key={index} title={review.title} text={review.text} author={review.author}
                                                  role={review.role} avatarUrl={review.avatarUrl}/>
                         ))}
                     </Carousel>
@@ -142,8 +143,9 @@ export const BasePage = () => {
                     </h2>
                     <StreamTabs activeStream={activeStream} onStreamChange={setActiveStream} />
                     <Carousel cardsLength={PRICE.length} cardWidth={612}>
-                        {PRICE.map((item) => (
+                        {PRICE.map((item, index) => (
                             <CarouselPriceItem
+                                key={index}
                                 title={item.title}
                                 price={item.price}
                                 forMonth={item.forMonth}

@@ -23,7 +23,7 @@ export const Questions = () => {
     return (
         <div className="flex flex-col w-full lg:w-192">
             {questions.map((question, index) => (
-                <QuestionsBlockItem question={question.question} answer={question.answer}
+                <QuestionsBlockItem key={index} question={question.question} answer={question.answer}
                                     isLast={questions.length - 1 === index}/>
             ))}
         </div>

@@ -120,7 +120,7 @@ export const AgentsPage = () => {
                 <div id="programs" className="flex flex-col gap-6 lg:gap-10 mt-20 xl:mt-37 w-full">
                     <div className="flex flex-col items-center text-center">
                         <h2 className="text-3xl lg:text-4xl xl:text-5xl font-semibold text-black leading-[1.2] tracking-[-0.03em]">
-                            6 встреч по 2 часа
+                            6 встреч по 2.5 часа
                         </h2>
                         <p className="text-base lg:text-xl text-[#AEB0B3] mt-4 lg:mt-6">
                             Подробный обзор платформы n8n прямо в Zoom

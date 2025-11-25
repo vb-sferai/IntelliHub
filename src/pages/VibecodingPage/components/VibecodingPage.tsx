@@ -222,7 +222,7 @@ export const VibecodingPage = () => {
                     </div>
                 </div>
                 <div id="reviews" className="mt-20 xl:mt-37">
-                    <Carousel title="Что говорят участники" cardsLength={REVIEWS.length} cardWidth={360}>
+                    <Carousel title="Что говорят участники программ sfer.ai" cardsLength={REVIEWS.length} cardWidth={360}>
                         {REVIEWS.map((review) => (
                             <CarouselReviewsItem title={review.title} text={review.text} author={review.author}
                                                  role={review.role} avatarUrl={review.avatarUrl}/>

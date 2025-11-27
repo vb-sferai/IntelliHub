@@ -33,7 +33,7 @@ export const Button = ({
         const utmParams = getSavedUTMParams();
 
         // Формируем финальную ссылку с UTM-параметрами
-        let targetUrl = link ?? 'https://calendly.com/as-sfer/30min';
+        let targetUrl = link ?? 'https://t.me/colorc_t';
 
         // Добавляем UTM к ссылке, если они есть
         if (utmParams && Object.keys(utmParams).length > 0) {

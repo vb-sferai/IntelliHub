@@ -8,7 +8,7 @@ const SERVICES = [
     title: 'Открытые программы',
     description: 'Воркшопы и практикумы для всех, кто хочет применять AI в жизни и работе.',
     buttonText: 'СМОТРЕТЬ ВСЕ ПРОГРАММЫ',
-    buttonHref: '/programs',
+    buttonHref: '/edu',
   },
   {
     icon: FlashIcon,

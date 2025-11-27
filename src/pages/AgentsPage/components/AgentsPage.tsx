@@ -1,4 +1,4 @@
-import { MeshGradient as MeshGradient1 } from '@paper-design/shaders-react';
+import { Dithering as Dithering1 } from '@paper-design/shaders-react';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
@@ -22,11 +22,11 @@ export const AgentsPage = () => {
         <div className="flex flex-col w-full">
             <style>{`
                 .base-page-primary {
-                    color: #005EE0;
+                    color: #7F56B4;
                 }
             `}</style>
             {/* Hero Section */}
-            <MeshGradient1 speed={0.38} colors={['#2D1B69', '#0A0A1A', '#1A1A3E']} distortion={0.79} swirl={0.4} grainMixer={0.3} grainOverlay={0} frame={32579.315000002767} style={{ position: 'relative', height: '100vh', width: '100%' }} className="-top-14 sm:-top-20" />
+            <Dithering1 speed={0.11} shape="simplex" type="4x4" size={3.3} scale={1.66} frame={55135.7740000361} colorBack="#00000000" colorFront="#7F56B4" style={{ position: 'relative', height: '100vh', width: '100%', backgroundColor: '#16151F' }} className="-top-14 sm:-top-20" />
             <div
                 className="absolute top-[28vh] sm:top-[40vh] lg:top-[30vh] left-4 sm:left-12 lg:left-16 xl:left-[calc(calc(100vw-1408px)/2)] w-[calc(100vw-32px)] sm:w-[calc(100vw-96px)] lg:w-[calc(100vw-128px)] xl:w-352 flex flex-col md:flex-row gap-3 xs:gap-5 md:gap-2 md:justify-between text-white">
                 <div className="flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10">
@@ -150,7 +150,7 @@ export const AgentsPage = () => {
                         {SPEAKERS.map((speaker, index) => (
                             <div key={index} className="w-full max-w-[343px] lg:max-w-none mx-auto lg:w-[632px] h-[563px] lg:h-[301px] bg-[#F7F7F5] p-8 flex flex-col lg:flex-row-reverse gap-6 lg:gap-8 items-center lg:items-start">
                                 <div className="relative shrink-0">
-                                    <MeshGradient1 className="w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full" speed={0.38} colors={['#2D1B69', '#0A0A1A', '#1A1A3E']} distortion={0.79} swirl={0.4} grainMixer={0.3} grainOverlay={0} frame={32579.315000002767} />
+                                    <Dithering1 className="w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full" speed={0.11} shape="simplex" type="4x4" size={3.3} scale={1.66} frame={55135.7740000361} colorBack="#00000000" colorFront="#7F56B4" style={{ backgroundColor: '#16151F' }} />
                                     <img
                                         className="absolute top-0 w-[250px] h-[250px] lg:w-[239px] lg:h-[239px] rounded-full object-cover"
                                         src={speaker.photo}
@@ -207,15 +207,16 @@ export const AgentsPage = () => {
 
                 {/* Блок 9: CTA */}
                 <div className="flex relative w-full mt-20 xl:mt-37 lg:items-center">
-                    <MeshGradient1
-                        speed={0.38}
-                        colors={['#2D1B69', '#0A0A1A', '#1A1A3E']}
-                        distortion={0.79}
-                        swirl={0.4}
-                        grainMixer={0.3}
-                        grainOverlay={0}
-                        frame={32579.315000002767}
-                        style={{width: '100%'}}
+                    <Dithering1
+                        speed={0.11}
+                        shape="simplex"
+                        type="4x4"
+                        size={3.3}
+                        scale={1.66}
+                        frame={55135.7740000361}
+                        colorBack="#00000000"
+                        colorFront="#7F56B4"
+                        style={{width: '100%', backgroundColor: '#16151F'}}
                         className="h-96 sm:h-92 lg:h-64"
                     />
                     <div

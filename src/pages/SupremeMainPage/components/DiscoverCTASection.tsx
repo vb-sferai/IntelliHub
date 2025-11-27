@@ -1,7 +1,7 @@
 import { DitheringBackground } from './DitheringBackground';
 
 const CTA_MENU_ITEMS = [
-  { label: 'Открытые воркшопы', href: '/programs' },
+  { label: 'Открытые воркшопы', href: '/edu' },
   { label: 'Обучение для команд', href: '/teams' },
 ];
 

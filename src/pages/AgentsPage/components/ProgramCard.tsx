@@ -15,7 +15,7 @@ export const ProgramCard = ({ day, date, title, list }: ProgramCardProps) => {
                 <h3 className="text-xl lg:text-2xl font-semibold text-black leading-[1.25]">
                     {title}
                 </h3>
-                <span className="font-geist font-semibold text-sm lg:text-base text-[#08228D] tracking-[0.05em]">
+                <span className="font-geist font-semibold text-sm lg:text-base text-[#7F56B4] tracking-[0.05em]">
                     {date}
                 </span>
             </div>

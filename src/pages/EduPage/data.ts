@@ -82,7 +82,7 @@ export const COURSES = [
             'Эффективный промптинг,\nпамять, кастомизация',
             'Основы вайбкодинга\nи продвинутые инструменты',
         ],
-        buttonText: 'Записаться',
+        buttonText: 'Подробнее',
         buttonLink: 'https://ru.sfer.ai/baza',
     },
     {
@@ -93,7 +93,7 @@ export const COURSES = [
             'Создание приложений и сайтов',
             'MCP, скрэпинг и Figma,\nдеплой проектов',
         ],
-        buttonText: 'Записаться',
+        buttonText: 'Подробнее',
         buttonLink: 'https://ru.sfer.ai/vibecoding',
     },
     {
@@ -104,7 +104,7 @@ export const COURSES = [
             'Создание автоматизаций',
             'Подключение почты,\nкалендаря, базы данных,\nсервисов по API',
         ],
-        buttonText: 'Записаться',
+        buttonText: 'Подробнее',
         buttonLink: 'https://ru.sfer.ai/agents',
     },
 ];

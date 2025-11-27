@@ -24,7 +24,7 @@ export const EduPage = () => {
                 <Dithering1 colorBack="#00000000" colorFront="#29337f" speed={0.68} shape="wave" type="4x4" size={5.2} scale={1.26} frame={89049.01300004251} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: '#16151F' }} />
                 <div className="relative z-10 flex flex-col w-full text-center items-center gap-3 xs:gap-4 xl:gap-10 px-4 sm:px-12 lg:px-16 xl:px-0 max-w-[1408px] text-white py-20">
                     <h2 className="text-3xl xs:text-4xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold leading-[110%]">
-                        Все говорят про ИИ.<br/>Мы учим им пользоваться
+                        Все говорят про ИИ<br/>Мы учим им пользоваться
                     </h2>
                     <span className="max-w-[725px] text-center text-sm xs:text-base lg:text-lg xl:text-xl font-medium mb-2.5">
                         Три практических программы для разных задач и уровней

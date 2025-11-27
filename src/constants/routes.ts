@@ -6,6 +6,7 @@ export const ROUTES = {
     casestudiesYandex: '/cases/yandex',
     base: '/baza',
     vibecoding: '/vibecoding',
+    edu: '/edu',
     agents: '/agents',
     jobsPm: '/jobs/pm',
     jobsApply: '/jobs/:position/apply',

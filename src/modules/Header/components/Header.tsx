@@ -12,7 +12,9 @@ export const Header = () => {
     const isBaseRoute = location.pathname === ROUTES.base;
     const isVibecodingRoute = location.pathname === ROUTES.vibecoding;
     const isAgentsRoute = location.pathname === ROUTES.agents;
+    const isEduRoute = location.pathname === ROUTES.edu;
     const isProductPage = isBaseRoute || isVibecodingRoute || isAgentsRoute;
+    const isEduPage = isEduRoute;
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [buttonMargin, setButtonMargin] = useState('0px');
@@ -99,7 +101,7 @@ export const Header = () => {
                     <motion.div
                         className="flex flex-row gap-4 lg:gap-6 xl:gap-8 lg:text-base xl:text-xl font-normal"
                         animate={{
-                            marginRight: (isScrolled && !isProductPage) ? buttonMargin : '0px'
+                            marginRight: (isScrolled && !isProductPage && !isEduPage) ? buttonMargin : '0px'
                         }}
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
@@ -109,6 +111,14 @@ export const Header = () => {
                                 <span onClick={() => scrollToSection('speaker')} className="cursor-pointer transition-colors duration-300">Ведущие</span>
                                 <span onClick={() => scrollToSection('reviews')} className="cursor-pointer transition-colors duration-300">Отзывы</span>
                                 <span onClick={() => scrollToSection('price')} className="cursor-pointer transition-colors duration-300">Тарифы</span>
+                                <span onClick={() => scrollToSection('faq')} className="cursor-pointer transition-colors duration-300">FAQ</span>
+                            </>
+                        ) : isEduPage ? (
+                            <>
+                                <span onClick={() => scrollToSection('programs')} className="cursor-pointer transition-colors duration-300">Кейсы</span>
+                                <span onClick={() => scrollToSection('speaker')} className="cursor-pointer transition-colors duration-300">Преподаватели</span>
+                                <span onClick={() => scrollToSection('courses')} className="cursor-pointer transition-colors duration-300">Курсы</span>
+                                <span onClick={() => scrollToSection('reviews')} className="cursor-pointer transition-colors duration-300">Отзывы</span>
                                 <span onClick={() => scrollToSection('faq')} className="cursor-pointer transition-colors duration-300">FAQ</span>
                             </>
                         ) : (
@@ -124,7 +134,7 @@ export const Header = () => {
                     </motion.div>
 
                     <AnimatePresence>
-                        {isScrolled && !isProductPage && (
+                        {isScrolled && !isProductPage && !isEduPage && (
                             <motion.div
                                 initial={{ opacity: 0, x: 40 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -178,6 +188,14 @@ export const Header = () => {
                                     <span onClick={() => scrollToSection('price')} className="cursor-pointer py-3">Тарифы</span>
                                     <span onClick={() => scrollToSection('faq')} className="cursor-pointer py-3">FAQ</span>
                                 </>
+                            ) : isEduPage ? (
+                                <>
+                                    <span onClick={() => scrollToSection('programs')} className="cursor-pointer py-3">Кейсы</span>
+                                    <span onClick={() => scrollToSection('speaker')} className="cursor-pointer py-3">Преподаватели</span>
+                                    <span onClick={() => scrollToSection('courses')} className="cursor-pointer py-3">Курсы</span>
+                                    <span onClick={() => scrollToSection('reviews')} className="cursor-pointer py-3">Отзывы</span>
+                                    <span onClick={() => scrollToSection('faq')} className="cursor-pointer py-3">FAQ</span>
+                                </>
                             ) : (
                                 <>
                                     <span onClick={() => scrollToSection('products')} className="cursor-pointer py-3">Продукты</span>
@@ -190,7 +208,7 @@ export const Header = () => {
                             )}
                         </div>
 
-                        {!isProductPage && (
+                        {!isProductPage && !isEduPage && (
                             <div className="absolute bottom-10 left-6 right-6">
                                 <Button
                                     color="black"

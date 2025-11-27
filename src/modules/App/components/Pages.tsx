@@ -6,6 +6,7 @@ import {CaseStudyLancetPage} from "../../../pages/CaseStudyLancet";
 import {CaseStudyYandexPage} from "../../../pages/CaseStudyYandex";
 import {BasePage} from "../../../pages/BasePage";
 import {VibecodingPage} from "../../../pages/VibecodingPage";
+import {EduPage} from "../../../pages/EduPage";
 import {AgentsPage} from "../../../pages/AgentsPage";
 import {PmJobPage} from "../../../pages/JobPages/PmJobPage";
 import {ApplicationPage} from "../../../pages/JobPages/ApplicationPage";
@@ -23,6 +24,7 @@ export const Pages = () => {
             <Route path={ROUTES.casestudiesYandex} element={<CaseStudyYandexPage />} />
             <Route path={ROUTES.base} element={<BasePage />} />
             <Route path={ROUTES.vibecoding} element={<VibecodingPage />} />
+            <Route path={ROUTES.edu} element={<EduPage />} />
             <Route path={ROUTES.agents} element={<AgentsPage />} />
             <Route path={ROUTES.jobsPm} element={<PmJobPage />} />
             <Route path={ROUTES.jobsApply} element={<ApplicationPage />} />

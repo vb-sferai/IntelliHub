@@ -178,6 +178,7 @@ export const CASES = [
             },
         ],
         stack: 'ChatGPT Enterprise, Yandex GPT, n8n, Cursor, RAGDB (vector database), Power BI + Bloomberg GPT, Miro, Whisper / Coqui',
+        link: '/cases/uae',
     },
 ];
 

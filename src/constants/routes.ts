@@ -4,6 +4,7 @@ export const ROUTES = {
     programs: '/programs',
     casestudiesLancet: '/cases/lancet',
     casestudiesYandex: '/cases/yandex',
+    casestudiesUAE: '/cases/uae',
     base: '/baza',
     vibecoding: '/vibecoding',
     edu: '/edu',

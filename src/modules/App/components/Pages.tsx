@@ -4,6 +4,7 @@ import {SupremeMainPage} from "../../../pages/SupremeMainPage";
 import {CustomAutomationsPage} from "../../../pages/CustomAutomationsPage";
 import {CaseStudyLancetPage} from "../../../pages/CaseStudyLancet";
 import {CaseStudyYandexPage} from "../../../pages/CaseStudyYandex";
+import {CaseStudyUAEPage} from "../../../pages/CaseStudyUAE";
 import {BasePage} from "../../../pages/BasePage";
 import {VibecodingPage} from "../../../pages/VibecodingPage";
 import {EduPage} from "../../../pages/EduPage";
@@ -22,6 +23,7 @@ export const Pages = () => {
             <Route path={ROUTES.programs} element={<CustomAutomationsPage />} />
             <Route path={ROUTES.casestudiesLancet} element={<CaseStudyLancetPage />} />
             <Route path={ROUTES.casestudiesYandex} element={<CaseStudyYandexPage />} />
+            <Route path={ROUTES.casestudiesUAE} element={<CaseStudyUAEPage />} />
             <Route path={ROUTES.base} element={<BasePage />} />
             <Route path={ROUTES.vibecoding} element={<VibecodingPage />} />
             <Route path={ROUTES.edu} element={<EduPage />} />

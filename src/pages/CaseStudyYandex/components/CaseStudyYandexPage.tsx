@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { CaseStudyHero } from '../../CaseStudyLancet/components/CaseStudyHero';
 import { CaseStudyCTA } from '../../CaseStudyLancet/components/CaseStudyCTA';
 import YandexLogo from '../../../assets/imgs/yandex-logo.svg';
@@ -7,6 +7,12 @@ import YandexLogo from '../../../assets/imgs/yandex-logo.svg';
 const baseTextClass = "text-base md:text-lg leading-relaxed text-[#1A1A1A]";
 
 export const CaseStudyYandexPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get the referrer from location state or default to /teams
+  const referrer = (location.state as { from?: string })?.from || '/teams';
+
   // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -290,8 +296,8 @@ export const CaseStudyYandexPage = () => {
 
             {/* Back Button */}
             <div className="mt-12 flex justify-center md:justify-start">
-              <Link
-                to="/teams"
+              <button
+                onClick={() => navigate(referrer)}
                 className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-black px-8 py-3 text-base font-semibold text-white transition-colors hover:bg-gray-800 hover:border-gray-800"
               >
                 <svg
@@ -307,8 +313,8 @@ export const CaseStudyYandexPage = () => {
                     d="M10 19l-7-7m0 0l7-7m-7 7h18"
                   />
                 </svg>
-                Назад на главную
-              </Link>
+                Назад
+              </button>
             </div>
           </div>
         </section>

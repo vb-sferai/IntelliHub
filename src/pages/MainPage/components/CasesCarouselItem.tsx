@@ -103,6 +103,7 @@ export const CasesCarouselItem = ({ client, logoUrl, request, results, stack, li
                     {link && (
                         <Link
                             to={link}
+                            state={{ from: '/teams' }}
                             className="self-end inline-flex items-center justify-center rounded-full bg-black text-white font-geist text-sm font-semibold uppercase px-5 py-3 hover:bg-[#1A1A1A] transition-colors"
                         >
                             Подробнее о кейсе
@@ -117,6 +118,7 @@ export const CasesCarouselItem = ({ client, logoUrl, request, results, stack, li
                     {link && (
                         <Link
                             to={link}
+                            state={{ from: '/teams' }}
                             className="inline-flex items-center justify-center rounded-full bg-black text-white font-geist text-sm font-semibold uppercase px-6 py-3 hover:bg-[#1A1A1A] transition-colors"
                         >
                             Подробнее о кейсе

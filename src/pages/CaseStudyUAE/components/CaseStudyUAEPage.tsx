@@ -1,11 +1,17 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { CaseStudyHero } from '../../CaseStudyLancet/components/CaseStudyHero';
 import { CaseStudyCTA } from '../../CaseStudyLancet/components/CaseStudyCTA';
 
 const baseTextClass = "text-base md:text-lg leading-relaxed text-[#1A1A1A]";
 
 export const CaseStudyUAEPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get the referrer from location state or default to /teams
+  const referrer = (location.state as { from?: string })?.from || '/teams';
+
   // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -68,7 +74,7 @@ export const CaseStudyUAEPage = () => {
 
               <blockquote className="border-l-4 border-[#9c8cff] bg-white/70 p-6 italic text-[#2a2a2a]">
                 <p className="mb-4">
-                  «Мы решили организовать трендвотчинг-сессию, чтобы вдохновить наших слушателей. Для этого пригласили звездного гостя – Марию Полтанову. Все прошло просто прекрасно: мы увидели высокую вовлеченность, множество интересных сгенерированных идей, которые помогли в разработке AI-агентов».
+                  Мы решили организовать трендвотчинг-сессию, чтобы вдохновить наших слушателей. Для этого пригласили звездного гостя – Марию Полтанову. Все прошло просто прекрасно: мы увидели высокую вовлеченность, множество интересных сгенерированных идей, которые помогли в разработке AI-агентов.
                 </p>
                 <p className="not-italic font-semibold text-[#1f1f1f]">Анна Бурикова, руководитель проектов sfer.ai</p>
               </blockquote>
@@ -85,13 +91,13 @@ export const CaseStudyUAEPage = () => {
             <div className={"space-y-6 " + baseTextClass}>
               <blockquote className="border-l-4 border-[#9c8cff] bg-white/70 p-6 italic text-[#2a2a2a]">
                 <p className="mb-6">
-                  «Первый агент подключался к базе знаний AML (Anti-Money Laundering). Он проверял клиента на возможность выдачи денег и на то, можно ли с ним работать для финансовых организаций. Мы создали агента, который отвечал на вопросы по поводу законодательства: брал нужные официальные данные с сайта правительства и складывал их в базу».
+                  Первый агент подключался к базе знаний AML (Anti-Money Laundering). Он проверял клиента на возможность выдачи денег и на то, можно ли с ним работать для финансовых организаций. Мы создали агента, который отвечал на вопросы по поводу законодательства: брал нужные официальные данные с сайта правительства и складывал их в базу.
                 </p>
                 <p className="mb-6">
-                  «Второй агент подключался к почте и календарю, добавлял встречи и другую информацию, получал переписку между клиентом и поддержкой, давал оценку, правильно ли она отработала. Если неправильно, сообщал об этом менеджеру оператора».
+                  Второй агент подключался к почте и календарю, добавлял встречи и другую информацию, получал переписку между клиентом и поддержкой, давал оценку, правильно ли она отработала. Если неправильно, сообщал об этом менеджеру оператора.
                 </p>
                 <p className="mb-4">
-                  «Третий агент проверял стоимость акций на бирже через API».
+                  Третий агент проверял стоимость акций на бирже через API.
                 </p>
                 <p className="not-italic font-semibold text-[#1f1f1f]">Артем Фролов, разработчик</p>
               </blockquote>
@@ -155,8 +161,8 @@ export const CaseStudyUAEPage = () => {
 
         {/* Back Button */}
         <div className="mt-12 flex justify-center md:justify-start">
-          <Link
-            to="/teams"
+          <button
+            onClick={() => navigate(referrer)}
             className="inline-flex items-center gap-2 rounded-full border-2 border-[#275DD8] px-8 py-3 text-base font-semibold text-[#275DD8] transition-colors hover:bg-[#275DD8] hover:text-white"
           >
             <svg
@@ -172,8 +178,8 @@ export const CaseStudyUAEPage = () => {
                 d="M10 19l-7-7m0 0l7-7m-7 7h18"
               />
             </svg>
-            Назад на главную
-          </Link>
+            Назад
+          </button>
         </div>
       </div>
 

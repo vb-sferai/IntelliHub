@@ -13,6 +13,7 @@ export const Layout = () => {
     const isSupremePage = location.pathname === ROUTES.root;
     const isCaseStudyLancetPage = location.pathname === ROUTES.casestudiesLancet;
     const isCaseStudyYandexPage = location.pathname === ROUTES.casestudiesYandex;
+    const isCaseStudyGoBeyondPage = location.pathname === ROUTES.casestudiesGoBeyond;
     const isCaseStudyUAEPage = location.pathname === ROUTES.casestudiesUAE;
     const isProgramsPage = location.pathname === ROUTES.programs;
     const isPmJobPage = location.pathname === ROUTES.jobsPm;
@@ -25,7 +26,7 @@ export const Layout = () => {
         }
         return location.pathname === route;
     });
-    const hideChrome = isSupremePage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyUAEPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isNotFoundPage;
+    const hideChrome = isSupremePage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

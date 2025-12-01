@@ -216,6 +216,7 @@ export const PRICE = [
             stream8: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai',
             stream9: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai_december',
         },
+        disabledStreams: ['stream8'], // Поток 8 недоступен для живого участия
     },
     {
         title: 'Только запись',
@@ -232,6 +233,7 @@ export const PRICE = [
             stream8: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec',
             stream9: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec_december',
         },
+        disabledStreams: [], // Запись доступна для всех потоков
     },
 ];
 

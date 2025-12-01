@@ -8,16 +8,15 @@ type CarouselPriceItemProps = {
     list: string[];
     buttonText: string;
     link: string;
-    activeStream: 'stream2' | 'stream3';
+    disabled?: boolean;
 };
 
-export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, link, activeStream }: CarouselPriceItemProps) => {
-    // Определяем цель в зависимости от типа тарифа и потока
+export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, link, disabled = false }: CarouselPriceItemProps) => {
+    // Определяем цель в зависимости от типа тарифа (всегда поток 2)
     const isLive = title.toLowerCase().includes('живое') || title.toLowerCase().includes('участие');
-    const streamNumber = activeStream === 'stream2' ? '2' : '3';
     const trackingGoal = isLive
-        ? `workshop_live_stream${streamNumber}_click`
-        : `workshop_record_stream${streamNumber}_click`;
+        ? 'workshop_live_stream2_click'
+        : 'workshop_record_stream2_click';
 
     return (
         <div
@@ -44,20 +43,26 @@ export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, li
                     </li>
                 ))}
             </div>
-            <Button
-                color="blue"
-                link={link}
-                fullWidth
-                metrikaId={105367822}
-                trackingGoal={trackingGoal}
-                trackingParams={{
-                    workshop: 'vibecoding',
-                    tier: title.toLowerCase(),
-                    price: price,
-                }}
-            >
-                {buttonText}
-            </Button>
+            {disabled ? (
+                <div className="w-full px-6 py-3 bg-gray-300 text-gray-500 rounded-lg text-center font-medium text-sm cursor-not-allowed">
+                    <span className="line-through">{buttonText}</span>
+                </div>
+            ) : (
+                <Button
+                    color="blue"
+                    link={link}
+                    fullWidth
+                    metrikaId={105367822}
+                    trackingGoal={trackingGoal}
+                    trackingParams={{
+                        workshop: 'vibecoding',
+                        tier: title.toLowerCase(),
+                        price: price,
+                    }}
+                >
+                    {buttonText}
+                </Button>
+            )}
         </div>
     );
 };

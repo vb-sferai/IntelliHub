@@ -6,7 +6,6 @@ type StreamTabsProps = {
 export const StreamTabs = ({ activeStream, onStreamChange }: StreamTabsProps) => {
     const streams = [
         { id: 'stream2', label: 'Поток №2', dates: '24 ноября - 8 декабря' },
-        { id: 'stream3', label: 'Поток №3', dates: '10-24 декабря' },
     ];
 
     return (

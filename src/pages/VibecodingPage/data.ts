@@ -67,10 +67,7 @@ export const WEBINAR_SESSIONS = [
     {
         day: 'День 1',
         title: 'Основы Cursor',
-        streamDates: {
-            stream2: '24 ноября (пн) 19:00-21:00',
-            stream3: '10 декабря (ср) 19:00-21:00',
-        },
+        date: '24 ноября (пн) 19:00-21:00',
         items: [
             'Знакомство с Cursor (интерфейс, скачивание, регистрация)',
             'Настройка rules',
@@ -81,10 +78,7 @@ export const WEBINAR_SESSIONS = [
     {
         day: 'День 2',
         title: 'Создание сервисов, приложений и сайтов',
-        streamDates: {
-            stream2: '26 ноября (ср) 19:00-21:00',
-            stream3: '15 декабря (пн) 19:00-21:00',
-        },
+        date: '26 ноября (ср) 19:00-21:00',
         items: [
             'Добавляем базовые МСР (скрапинг и Figma)',
             'Создание простых сервисов (калькуляторы, конверторы)',
@@ -94,10 +88,7 @@ export const WEBINAR_SESSIONS = [
     {
         day: 'День 3',
         title: 'Клонирование сайтов и работа с Figma',
-        streamDates: {
-            stream2: '1 декабря (пн) 19:00-21:00',
-            stream3: '17 декабря (ср) 19:00-21:00',
-        },
+        date: '1 декабря (пн) 19:00-21:00',
         items: [
             'Деплой проекта',
             'Работа с данными через диалоговое окно',
@@ -107,10 +98,7 @@ export const WEBINAR_SESSIONS = [
     {
         day: 'День 4',
         title: 'Управление проектами в Cursor',
-        streamDates: {
-            stream2: '4 декабря (ср) 19:00-21:00',
-            stream3: '22 декабря (пн) 19:00-21:00',
-        },
+        date: '4 декабря (ср) 19:00-21:00',
         items: [
             'Как с нуля выстроить работу над продуктом прямо внутри Cursor.',
             'Присваиваем Cursor роли (CMO, стратег, CFO, методолог), распределяем задачи между ними и получить готовый план запуска — всё в одном рабочем пространстве.',
@@ -119,10 +107,7 @@ export const WEBINAR_SESSIONS = [
     {
         day: 'День 5',
         title: 'Демо-день',
-        streamDates: {
-            stream2: '8 декабря (пн) 19:00-21:00',
-            stream3: '24 декабря (ср) 19:00-21:00',
-        },
+        date: '8 декабря (пн) 19:00-21:00',
         items: [
             'Презентация проектов участников',
             'Разборы, комментарии и идеи от экспертов',
@@ -312,14 +297,9 @@ export const PRICE = [
             'Бонус: материалы и шпаргалки по промптам для ИИ',
             'Доступ к сообществу выпускников на 200+ человек',
         ],
-        streamButtonTexts: {
-            stream2: 'Забронировать место 24 ноября — 8 декабря',
-            stream3: 'Забронировать место 10-24 декабря',
-        },
-        streamLinks: {
-            stream2: 'https://kirillgurbanov.getcourse.ru/vibecoding_workshop',
-            stream3: 'https://kirillgurbanov.getcourse.ru/vibecoding_workshop_december',
-        },
+        buttonText: 'Забронировать место 24 ноября — 8 декабря',
+        link: 'https://kirillgurbanov.getcourse.ru/vibecoding_workshop',
+        disabled: true,
     },
     {
         title: 'Только запись',
@@ -328,14 +308,9 @@ export const PRICE = [
         list: [
             'Доступ к записи воркшопа на 60 дней',
         ],
-        streamButtonTexts: {
-            stream2: 'Получить запись 24 ноября — 8 декабря',
-            stream3: 'Получить запись 10-24 декабря',
-        },
-        streamLinks: {
-            stream2: 'https://kirillgurbanov.getcourse.ru/vibecoding_only_record',
-            stream3: 'https://kirillgurbanov.getcourse.ru/vibecoding_workshop_december_copy_onlyrecord',
-        },
+        buttonText: 'Получить запись 24 ноября — 8 декабря',
+        link: 'https://kirillgurbanov.getcourse.ru/vibecoding_only_record',
+        disabled: false,
     },
 ];
 

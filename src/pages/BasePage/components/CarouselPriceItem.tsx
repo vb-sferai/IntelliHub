@@ -9,9 +9,10 @@ type CarouselPriceItemProps = {
     buttonText: string;
     link: string;
     activeStream: 'stream8' | 'stream9';
+    disabled?: boolean;
 };
 
-export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, link, activeStream }: CarouselPriceItemProps) => {
+export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, link, activeStream, disabled = false }: CarouselPriceItemProps) => {
     // Определяем цель в зависимости от типа тарифа и потока
     const isLive = title.toLowerCase().includes('живое') || title.toLowerCase().includes('участие');
     const streamNumber = activeStream === 'stream8' ? '8' : '9';
@@ -44,20 +45,26 @@ export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, li
                     </li>
                 ))}
             </div>
-            <Button
-                color="primary"
-                link={link}
-                fullWidth
-                metrikaId={105383668}
-                trackingGoal={trackingGoal}
-                trackingParams={{
-                    workshop: 'base',
-                    tier: title.toLowerCase(),
-                    price: price,
-                }}
-            >
-                {buttonText}
-            </Button>
+            {disabled ? (
+                <div className="w-full px-6 py-3 bg-gray-300 text-gray-500 rounded-lg text-center font-medium text-sm cursor-not-allowed">
+                    <span className="line-through">{buttonText}</span>
+                </div>
+            ) : (
+                <Button
+                    color="primary"
+                    link={link}
+                    fullWidth
+                    metrikaId={105383668}
+                    trackingGoal={trackingGoal}
+                    trackingParams={{
+                        workshop: 'base',
+                        tier: title.toLowerCase(),
+                        price: price,
+                    }}
+                >
+                    {buttonText}
+                </Button>
+            )}
         </div>
     );
 };

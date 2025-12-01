@@ -15,7 +15,7 @@ import {CarouselReviewsItem} from "./CarouselReviewsItem";
 import {StreamTabs} from "./StreamTabs";
 
 export const BasePage = () => {
-    const [activeStream, setActiveStream] = useState('stream8');
+    const [activeStream, setActiveStream] = useState('stream9');
 
     const scrollToPrice = () => {
         const priceSection = document.getElementById('price');
@@ -143,18 +143,22 @@ export const BasePage = () => {
                     </h2>
                     <StreamTabs activeStream={activeStream} onStreamChange={setActiveStream} />
                     <Carousel cardsLength={PRICE.length} cardWidth={612}>
-                        {PRICE.map((item, index) => (
-                            <CarouselPriceItem
-                                key={index}
-                                title={item.title}
-                                price={item.price}
-                                forMonth={item.forMonth}
-                                list={item.list}
-                                buttonText={item.streamButtonTexts[activeStream as 'stream8' | 'stream9']}
-                                link={item.streamLinks[activeStream as 'stream8' | 'stream9']}
-                                activeStream={activeStream as 'stream8' | 'stream9'}
-                            />
-                        ))}
+                        {PRICE.map((item, index) => {
+                            const isDisabled = item.disabledStreams?.includes(activeStream) || false;
+                            return (
+                                <CarouselPriceItem
+                                    key={index}
+                                    title={item.title}
+                                    price={item.price}
+                                    forMonth={item.forMonth}
+                                    list={item.list}
+                                    buttonText={item.streamButtonTexts[activeStream as 'stream8' | 'stream9']}
+                                    link={item.streamLinks[activeStream as 'stream8' | 'stream9']}
+                                    activeStream={activeStream as 'stream8' | 'stream9'}
+                                    disabled={isDisabled}
+                                />
+                            );
+                        })}
                     </Carousel>
                 </div>
                 <div id="faq" className="flex flex-col gap-6 lg:gap-16 xl:gap-26 mt-20 xl:mt-37 lg:items-center">

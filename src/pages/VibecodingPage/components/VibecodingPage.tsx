@@ -136,7 +136,7 @@ export const VibecodingPage = () => {
                                                 {session.title}
                                             </h3>
                                             <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-black">
-                                                {session.streamDates[activeStream as 'stream2' | 'stream3']}
+                                                {session.date}
                                             </p>
                                         </div>
                                     </div>
@@ -165,7 +165,7 @@ export const VibecodingPage = () => {
                                                 {session.title}
                                             </h3>
                                             <p className="text-base font-normal leading-[1.3] tracking-[-0.03em] text-black">
-                                                {session.streamDates[activeStream as 'stream2' | 'stream3']}
+                                                {session.date}
                                             </p>
                                         </div>
                                     </div>
@@ -242,9 +242,9 @@ export const VibecodingPage = () => {
                                 price={item.price}
                                 forMonth={item.forMonth}
                                 list={item.list}
-                                buttonText={item.streamButtonTexts[activeStream as 'stream2' | 'stream3']}
-                                link={item.streamLinks[activeStream as 'stream2' | 'stream3']}
-                                activeStream={activeStream as 'stream2' | 'stream3'}
+                                buttonText={item.buttonText}
+                                link={item.link}
+                                disabled={item.disabled}
                             />
                         ))}
                     </Carousel>

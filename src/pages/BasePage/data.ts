@@ -21,7 +21,6 @@ export const CONTENT = [
         text: 'Как «думает» ИИ и как с ним взаимодействовать',
         streamDates: {
             stream8: '25 ноября (вт) 18:00-20:00',
-            stream9: '9 декабря (вт) 18:00-20:00',
         },
         list: [
             'Разберём, как «думает» ИИ на примере ChatGPT, Claude, Алисы и др.',
@@ -35,7 +34,6 @@ export const CONTENT = [
         text: 'Продвинутые настройки, чтобы решать задачи быстрее',
         streamDates: {
             stream8: '26 ноября (ср) 18:00-20:00',
-            stream9: '10 декабря (ср) 18:00-20:00',
         },
         list: [
             'Настроим личный стиль общения и тон ответов',
@@ -49,7 +47,6 @@ export const CONTENT = [
         text: 'Разные инструменты для разных задач',
         streamDates: {
             stream8: '27 ноября (чт) 18:00-20:00',
-            stream9: '11 декабря (чт) 18:00-20:00',
         },
         list: [
             'Генерация видео',
@@ -210,11 +207,9 @@ export const PRICE = [
         ],
         streamButtonTexts: {
             stream8: 'Забронировать место 25-27 ноября',
-            stream9: 'Забронировать место 9-11 декабря',
         },
         streamLinks: {
             stream8: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai',
-            stream9: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai_december',
         },
         disabledStreams: ['stream8'], // Поток 8 недоступен для живого участия
     },
@@ -227,11 +222,9 @@ export const PRICE = [
         ],
         streamButtonTexts: {
             stream8: 'Получить запись 25-27 ноября',
-            stream9: 'Получить запись 9-11 декабря',
         },
         streamLinks: {
             stream8: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec',
-            stream9: 'https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec_december',
         },
         disabledStreams: [], // Запись доступна для всех потоков
     },

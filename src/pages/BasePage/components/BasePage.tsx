@@ -1,5 +1,4 @@
 import { MeshGradient as MeshGradient1 } from '@paper-design/shaders-react';
-import { useState } from 'react';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
@@ -12,10 +11,8 @@ import {CONTENT, AUDIENCE, PRICE, REVIEWS} from "../data";
 import {CarouselContentItem} from "./CarouselContentItem";
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
-import {StreamTabs} from "./StreamTabs";
-
 export const BasePage = () => {
-    const [activeStream, setActiveStream] = useState('stream9');
+    const activeStream = 'stream8';
 
     const scrollToPrice = () => {
         const priceSection = document.getElementById('price');
@@ -61,7 +58,6 @@ export const BasePage = () => {
                         <Title title="3 онлайн-встречи по 2,5 часа"
                                subTitle="Изучаем теорию и решаем практические кейсы прямо в Zoom"/>
                     </div>
-                    <StreamTabs activeStream={activeStream} onStreamChange={setActiveStream} />
                     <Carousel cardsLength={CONTENT.length} cardWidth={400}>
                         {CONTENT.map((item, index) => (
                             <CarouselContentItem
@@ -70,7 +66,7 @@ export const BasePage = () => {
                                 title={item.title}
                                 text={item.text}
                                 list={item.list}
-                                date={item.streamDates[activeStream as 'stream8' | 'stream9']}
+                                date={item.streamDates[activeStream as 'stream8']}
                             />
                         ))}
                     </Carousel>
@@ -141,7 +137,6 @@ export const BasePage = () => {
                     <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black leading-[120%]">
                         Тарифы
                     </h2>
-                    <StreamTabs activeStream={activeStream} onStreamChange={setActiveStream} />
                     <Carousel cardsLength={PRICE.length} cardWidth={612}>
                         {PRICE.map((item, index) => {
                             const isDisabled = item.disabledStreams?.includes(activeStream) || false;
@@ -152,9 +147,9 @@ export const BasePage = () => {
                                     price={item.price}
                                     forMonth={item.forMonth}
                                     list={item.list}
-                                    buttonText={item.streamButtonTexts[activeStream as 'stream8' | 'stream9']}
-                                    link={item.streamLinks[activeStream as 'stream8' | 'stream9']}
-                                    activeStream={activeStream as 'stream8' | 'stream9'}
+                                    buttonText={item.streamButtonTexts[activeStream as 'stream8']}
+                                    link={item.streamLinks[activeStream as 'stream8']}
+                                    activeStream={activeStream as 'stream8'}
                                     disabled={isDisabled}
                                 />
                             );

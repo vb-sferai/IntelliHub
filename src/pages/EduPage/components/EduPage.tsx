@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Dithering as Dithering1, MeshGradient as MeshGradient1 } from '@paper-design/shaders-react';
 import {Button} from "./Button";
 import {Questions} from "./FAQ";
@@ -6,6 +7,11 @@ import {METRICS, WHO_NEEDS_CODING, SPEAKERS, REVIEWS, VIDEOS, COURSES} from "../
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
 
 export const EduPage = () => {
+    // Scroll to top on mount
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const scrollToCourses = () => {
         const coursesSection = document.getElementById('courses');
         if (coursesSection) {

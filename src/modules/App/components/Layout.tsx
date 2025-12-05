@@ -11,6 +11,7 @@ export const Layout = () => {
     // Инициализация аналитики и UTM-трекинга
     useAnalytics();
     const isSupremePage = location.pathname === ROUTES.root;
+    const isReviewsPage = location.pathname === ROUTES.reviews;
     const isCaseStudyLancetPage = location.pathname === ROUTES.casestudiesLancet;
     const isCaseStudyYandexPage = location.pathname === ROUTES.casestudiesYandex;
     const isCaseStudyGoBeyondPage = location.pathname === ROUTES.casestudiesGoBeyond;
@@ -26,7 +27,7 @@ export const Layout = () => {
         }
         return location.pathname === route;
     });
-    const hideChrome = isSupremePage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isNotFoundPage;
+    const hideChrome = isSupremePage || isReviewsPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

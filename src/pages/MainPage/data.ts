@@ -170,7 +170,7 @@ export const CASES = [
                 text: 'участников применили полученные знания в первую же неделю'
             },
         ],
-        stack: 'ChatGPT, Claude, Gamma, Google Docs, Notion, Miro',
+        stack: 'Яндекс Алиса AI',
         link: '/cases/gobeyond',
     },
     {

@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { Dithering as Dithering1, MeshGradient as MeshGradient1 } from '@paper-design/shaders-react';
+import { Link } from 'react-router-dom';
 import {Button} from "./Button";
 import {Questions} from "./FAQ";
 import {Carousel} from "./Carousel";
 import {METRICS, WHO_NEEDS_CODING, SPEAKERS, REVIEWS, VIDEOS, COURSES} from "../data";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
+import {ROUTES} from "../../../constants/routes";
 
 export const EduPage = () => {
     // Scroll to top on mount
@@ -216,6 +218,15 @@ export const EduPage = () => {
                                                  role={review.role} avatarUrl={review.avatarUrl}/>
                         ))}
                     </Carousel>
+                    <div className="mt-6 lg:mt-8">
+                        <Link
+                            to={ROUTES.reviews}
+                            className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-[#29337f] hover:bg-[#1F2760] text-white font-geist text-xs sm:text-sm xl:text-base font-semibold uppercase transition-colors duration-200"
+                        >
+                            Смотреть все отзывы
+                            <span className="text-lg">→</span>
+                        </Link>
+                    </div>
                 </div>
                 <div id="faq" className="flex flex-col gap-8 lg:gap-12 mt-20 xl:mt-37 w-full">
                     <div className="flex flex-col gap-4 items-center text-center">

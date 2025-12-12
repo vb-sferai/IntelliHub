@@ -1,4 +1,5 @@
 import { MeshGradient as MeshGradient1 } from '@paper-design/shaders-react';
+import { Link } from 'react-router-dom';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
@@ -11,6 +12,7 @@ import {CONTENT, AUDIENCE, PRICE, REVIEWS} from "../data";
 import {CarouselContentItem} from "./CarouselContentItem";
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
+import {ROUTES} from "../../../constants/routes";
 export const BasePage = () => {
     const activeStream = 'stream8';
 
@@ -132,6 +134,15 @@ export const BasePage = () => {
                                                  role={review.role} avatarUrl={review.avatarUrl}/>
                         ))}
                     </Carousel>
+                    <div className="mt-6 lg:mt-8">
+                        <Link
+                            to={ROUTES.reviews}
+                            className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-[#005EE0] hover:bg-[#0050C0] text-white font-geist text-xs sm:text-sm xl:text-base font-semibold uppercase transition-colors duration-200"
+                        >
+                            Смотреть все отзывы
+                            <span className="text-lg">→</span>
+                        </Link>
+                    </div>
                 </div>
                 <div id="price" className="mt-20 xl:mt-37">
                     <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black leading-[120%]">

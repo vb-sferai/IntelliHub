@@ -1,4 +1,5 @@
 import { Dithering as Dithering1 } from '@paper-design/shaders-react';
+import { Link } from 'react-router-dom';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
@@ -9,6 +10,7 @@ import {PROGRAM, WHO_NEEDS, PRICE, REVIEWS, SPEAKERS} from "../data";
 import {ProgramCard} from "./ProgramCard";
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
+import {ROUTES} from "../../../constants/routes";
 
 export const AgentsPage = () => {
     const scrollToPrice = () => {
@@ -187,6 +189,15 @@ export const AgentsPage = () => {
                                                  role={review.role} avatarUrl={review.avatarUrl}/>
                         ))}
                     </Carousel>
+                    <div className="mt-6 lg:mt-8">
+                        <Link
+                            to={ROUTES.reviews}
+                            className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-[#7F56B4] hover:bg-[#6B469A] text-white font-geist text-xs sm:text-sm xl:text-base font-semibold uppercase transition-colors duration-200"
+                        >
+                            Смотреть все отзывы
+                            <span className="text-lg">→</span>
+                        </Link>
+                    </div>
                 </div>
 
                 {/* Блок 7: Цены */}

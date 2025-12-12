@@ -14,8 +14,9 @@ import { useReviewsFilter } from '../hooks/useReviewsFilter';
 export const ReviewsPage: React.FC = () => {
   const { activeFilter, filteredReviews, setFilter } = useReviewsFilter();
 
-  // SEO: установка заголовка страницы
+  // Scroll to top on mount + SEO title
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.title = 'Отзывы | SFER.AI';
   }, []);
 

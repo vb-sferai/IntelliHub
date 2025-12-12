@@ -1,4 +1,3 @@
-import {Button} from "../../../components/Button";
 import CheckMark from '../assets/imgs/checkmark.svg';
 
 type CarouselPriceItemProps = {
@@ -36,19 +35,14 @@ export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, li
                     </li>
                 ))}
             </div>
-            <Button
-                color="white"
-                link={link}
-                width="fit-content"
-                trackingGoal="workshop_purchase_click"
-                trackingParams={{
-                    workshop: 'agents',
-                    tier: title.toLowerCase(),
-                    price: price,
-                }}
+            <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer rounded-full flex items-center justify-center text-center bg-[#7F56B4] hover:bg-[#6B469A] text-white py-4.5 md:py-3 lg:py-3.5 xl:py-4.5 font-geist text-xs sm:text-sm md:text-sm xl:text-base font-semibold px-4 sm:px-5 lg:px-6 xl:px-8 uppercase leading-tight transition-colors w-fit"
             >
                 {buttonText}
-            </Button>
+            </a>
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import { Dithering as Dithering1 } from '@paper-design/shaders-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {Button} from "../../../components/Button";
 import {Title} from "../../../components/Title";
 import {Questions} from "../../../components/FAQ";
@@ -10,6 +11,7 @@ import {METRICS, WHO_NEEDS_CODING, WEBINAR_SESSIONS, SPEAKERS, PRICE, REVIEWS} f
 import {CarouselPriceItem} from "./CarouselPriceItem";
 import {CarouselReviewsItem} from "./CarouselReviewsItem";
 import {StreamTabs} from "./StreamTabs";
+import {ROUTES} from "../../../constants/routes";
 
 export const VibecodingPage = () => {
     const [activeStream, setActiveStream] = useState('stream2');
@@ -228,6 +230,15 @@ export const VibecodingPage = () => {
                                                  role={review.role} avatarUrl={review.avatarUrl}/>
                         ))}
                     </Carousel>
+                    <div className="mt-6 lg:mt-8">
+                        <Link
+                            to={ROUTES.reviews}
+                            className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-[#015177] hover:bg-[#013D5A] text-white font-geist text-xs sm:text-sm xl:text-base font-semibold uppercase transition-colors duration-200"
+                        >
+                            Смотреть все отзывы
+                            <span className="text-lg">→</span>
+                        </Link>
+                    </div>
                 </div>
                 <div id="price" className="mt-20 xl:mt-37">
                     <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black leading-[120%]">

@@ -3,6 +3,7 @@ import {MainPage} from "../../../pages/MainPage";
 import {SupremeMainPage} from "../../../pages/SupremeMainPage";
 import {CustomAutomationsPage} from "../../../pages/CustomAutomationsPage";
 import {ReviewsPage} from "../../../pages/ReviewsPage";
+import {CaseStudiesPage} from "../../../pages/CaseStudiesPage";
 import {CaseStudyLancetPage} from "../../../pages/CaseStudyLancet";
 import {CaseStudyYandexPage} from "../../../pages/CaseStudyYandex";
 import {CaseStudyGoBeyondPage} from "../../../pages/CaseStudyGoBeyond";
@@ -24,6 +25,7 @@ export const Pages = () => {
             <Route path={ROUTES.teams} element={<MainPage />} />
             <Route path={ROUTES.programs} element={<CustomAutomationsPage />} />
             <Route path={ROUTES.reviews} element={<ReviewsPage />} />
+            <Route path={ROUTES.cases} element={<CaseStudiesPage />} />
             <Route path={ROUTES.casestudiesLancet} element={<CaseStudyLancetPage />} />
             <Route path={ROUTES.casestudiesYandex} element={<CaseStudyYandexPage />} />
             <Route path={ROUTES.casestudiesGoBeyond} element={<CaseStudyGoBeyondPage />} />

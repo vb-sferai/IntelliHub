@@ -3,6 +3,7 @@ export const ROUTES = {
     teams: '/teams',
     programs: '/programs',
     reviews: '/edu/reviews',
+    cases: '/cases',
     casestudiesLancet: '/cases/lancet',
     casestudiesYandex: '/cases/yandex',
     casestudiesGoBeyond: '/cases/gobeyond',

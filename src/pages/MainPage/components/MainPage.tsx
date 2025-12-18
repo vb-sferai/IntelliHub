@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { backgroundStyle } from "../consts.ts";
 import { Button } from "../../../components/Button";
 import MtsLogo from '../../../assets/imgs/logo-mts.svg';
@@ -30,36 +29,11 @@ import CursorIcon from '../../../assets/imgs/cursor.svg';
 import {QuestionsBlock} from "./QuestionsBlock.tsx";
 import {Carousel} from "../../../components/Carousel";
 import {ProductCard} from "./ProductCard.tsx";
-import {CasesCarouselItem} from "./CasesCarouselItem.tsx";
 import {EventsCarouselItem} from "./EventsCarouselItem.tsx";
 import {CASES, EVENTS, PRODUCTS} from "../data.ts";
-import { Stories } from "../../../components/Stories";
-import { ProductsStorySlide } from "./ProductsStorySlide.tsx";
-import { CasesStorySlide } from "./CasesStorySlide.tsx";
-
-// Градиенты для слайдов Products
-const PRODUCT_GRADIENTS = [
-    'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
-    'linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b4e 100%)',
-    'linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%)',
-    'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #16213e 100%)',
-    'linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0d1117 100%)',
-    'linear-gradient(135deg, #1e1e2e 0%, #2d2d44 50%, #1a1a2e 100%)',
-    'linear-gradient(135deg, #0f1a2e 0%, #1a2e4e 50%, #0a1628 100%)',
-];
-
-// Градиенты для слайдов Cases (по id)
-const CASE_GRADIENTS: Record<string, string> = {
-    'lancet': 'linear-gradient(135deg, #1e3a5f 0%, #0d2137 100%)',
-    'yandex-webinar': 'linear-gradient(135deg, #cc0000 0%, #8b0000 50%, #1a0000 100%)',
-    'yandex-gobeyond': 'linear-gradient(135deg, #ffcc00 0%, #cc6600 50%, #1a1a00 100%)',
-    'uae-wealth': 'linear-gradient(135deg, #0a3d62 0%, #1e5f74 50%, #0d2137 100%)',
-};
+import { CasesStories } from "./CasesStories.tsx";
 
 export const MainPage = () => {
-    // Состояние для Stories
-    const [productsStories, setProductsStories] = useState<{open: boolean, index: number}>({open: false, index: 0});
-    const [casesStories, setCasesStories] = useState<{open: boolean, index: number}>({open: false, index: 0});
     return (
         <div className="flex flex-col w-full">
             <div style={backgroundStyle} className="-top-14 sm:-top-20"/>
@@ -128,11 +102,7 @@ export const MainPage = () => {
                         ))}
                     </div>
                 </section>
-                <Carousel id="cases" title="Кейсы" cardsLength={CASES.length}>
-                    {CASES.map((casesItem) => (
-                        <CasesCarouselItem client={casesItem.client} logoUrl={casesItem.logoUrl} request={casesItem.request} results={casesItem.results} stack={casesItem.stack} link={casesItem.link}/>
-                    ))}
-                </Carousel>
+                <CasesStories cases={CASES} />
                 <div id="approach" className="w-full flex flex-col mt-20 xl:mt-37 lg:py-16 xl:py-24 gap-8 lg:gap-16">
                     <div className="flex flex-col gap-6 md:gap-4 xl:gap-5 w-full sm:items-center sm:text-center">
                         <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black">Что

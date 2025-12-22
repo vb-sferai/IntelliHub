@@ -2,11 +2,12 @@ import { SupremeHeader } from './SupremeHeader';
 import { HeroSection } from './HeroSection';
 import { WhoWeAreSection } from './WhoWeAreSection';
 import { WhatWeDoSection } from './WhatWeDoSection';
-import { CaseStudiesSection } from './CaseStudiesSection';
+import { CasesStories } from './CasesStories';
 import { PhilosophySection } from './PhilosophySection';
 import { WhatSetsUsApartSection } from './WhatSetsUsApartSection';
 import { DiscoverCTASection } from './DiscoverCTASection';
 import { ContactsSection } from './ContactsSection';
+import { CASES } from '../../../data/cases';
 
 export const SupremeMainPage = () => {
   return (
@@ -16,7 +17,7 @@ export const SupremeMainPage = () => {
         <HeroSection />
         <WhoWeAreSection />
         <WhatWeDoSection />
-        <CaseStudiesSection />
+        <CasesStories cases={CASES} />
         <PhilosophySection />
         <WhatSetsUsApartSection />
         <DiscoverCTASection />

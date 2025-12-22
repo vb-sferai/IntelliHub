@@ -104,7 +104,7 @@ const AnimatedCounter = ({ value, isActive }: AnimatedCounterProps) => {
   return (
     <motion.span
       ref={ref}
-      className="text-2xl md:text-3xl font-bold text-primary-200 leading-none tabular-nums"
+      className="text-2xl md:text-3xl font-bold text-[#005ee0] leading-none tabular-nums"
     >
       {displayed}
     </motion.span>
@@ -134,7 +134,7 @@ const NavButton = ({ direction, onClick, disabled }: NavButtonProps) => {
         border-2 border-gray-200
         shadow-lg shadow-black/5
         transition-all duration-300
-        ${disabled ? 'opacity-30 cursor-not-allowed' : 'hover:border-primary-200 hover:shadow-primary-200/20 cursor-pointer'}
+        ${disabled ? 'opacity-30 cursor-not-allowed' : 'hover:border-[#005ee0] hover:shadow-[#005ee0]/20 cursor-pointer'}
         group
       `}
       whileHover={!disabled ? { scale: 1.05 } : {}}
@@ -148,7 +148,7 @@ const NavButton = ({ direction, onClick, disabled }: NavButtonProps) => {
         xmlns="http://www.w3.org/2000/svg"
         className={`
           transition-colors duration-300
-          ${disabled ? 'text-gray-300' : 'text-gray-600 group-hover:text-primary-200'}
+          ${disabled ? 'text-gray-300' : 'text-gray-600 group-hover:text-[#005ee0]'}
           ${direction === 'left' ? 'rotate-180' : ''}
         `}
       >
@@ -254,119 +254,121 @@ export const CasesStories = ({ cases }: CasesStoriesProps) => {
   return (
     <section
       id="cases"
-      className="flex flex-col gap-6 md:gap-8 mt-20 md:mt-24 lg:mt-40 xl:mt-50"
+      className="bg-white px-6 pt-8 pb-16 md:px-12 lg:px-16"
     >
-      {/* Заголовок */}
-      <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-semibold text-black">
-        Кейсы
-      </h2>
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-6 md:gap-8">
+        {/* Заголовок */}
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-black tracking-[-1.44px]">
+          Кейсы
+        </h2>
 
-      {/* Прогресс-бар — НАД карточками */}
-      <div
-        className="flex gap-2 mx-auto"
-        style={{ width: Math.min(cardWidth, 800) }}
-      >
-        {cases.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToIndex(index)}
-            className={`
-              flex-1 h-1.5 md:h-2 rounded-full transition-all duration-300
-              ${index <= currentIndex ? 'bg-primary-200' : 'bg-gray-300'}
-              hover:bg-primary-100 cursor-pointer
-            `}
-            aria-label={`Перейти к кейсу ${index + 1}`}
-          />
-        ))}
-      </div>
+        {/* Прогресс-бар — НАД карточками */}
+        <div
+          className="flex gap-2 mx-auto"
+          style={{ width: Math.min(cardWidth, 800) }}
+        >
+          {cases.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToIndex(index)}
+              className={`
+                flex-1 h-1.5 md:h-2 rounded-full transition-all duration-300
+                ${index <= currentIndex ? 'bg-[#005ee0]' : 'bg-gray-300'}
+                hover:bg-[#004bb8] cursor-pointer
+              `}
+              aria-label={`Перейти к кейсу ${index + 1}`}
+            />
+          ))}
+        </div>
 
-      {/* Карусель с кнопками по бокам */}
-      <div className="relative flex items-center justify-center">
-        {/* Кнопка ВЛЕВО — слева от карточек (desktop) */}
-        <div className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20">
+        {/* Карусель с кнопками по бокам */}
+        <div className="relative flex items-center justify-center">
+          {/* Кнопка ВЛЕВО — слева от карточек (desktop) */}
+          <div className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20">
+            <NavButton
+              direction="left"
+              onClick={goToPrev}
+              disabled={currentIndex === 0}
+            />
+          </div>
+
+          {/* Карусель */}
+          <div
+            className="relative w-full overflow-hidden touch-pan-y"
+            onMouseDown={handleDragStart}
+            onMouseUp={handleDragEnd}
+            onMouseLeave={handleDragCancel}
+            onTouchStart={handleDragStart}
+            onTouchEnd={handleDragEnd}
+            onTouchCancel={handleDragCancel}
+          >
+            <motion.div
+              className="flex"
+              style={{ gap }}
+              animate={{
+                x: `calc(50% - ${(cardWidth + gap) * currentIndex + cardWidth / 2}px)`,
+              }}
+              transition={smoothTransition}
+            >
+              {cases.map((caseStudy, index) => (
+                <motion.div
+                  key={caseStudy.id}
+                  className="flex-shrink-0"
+                  style={{ width: cardWidth }}
+                  animate={{
+                    scale: index === currentIndex ? 1 : 0.95,
+                    opacity: index === currentIndex ? 1 : 0.4,
+                  }}
+                  transition={smoothTransition}
+                >
+                  <StoryCard
+                    caseStudy={caseStudy}
+                    isActive={index === currentIndex}
+                    onClick={() => goToIndex(index)}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Тап-зоны для переключения (mobile + desktop) */}
+            <div
+              className="absolute left-0 top-0 w-1/3 h-full z-10 cursor-pointer"
+              onClick={goToPrev}
+              aria-label="Предыдущий кейс"
+            />
+            <div
+              className="absolute right-0 top-0 w-1/3 h-full z-10 cursor-pointer"
+              onClick={goToNext}
+              aria-label="Следующий кейс"
+            />
+          </div>
+
+          {/* Кнопка ВПРАВО — справа от карточек (desktop) */}
+          <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-20">
+            <NavButton
+              direction="right"
+              onClick={goToNext}
+              disabled={currentIndex === cases.length - 1}
+            />
+          </div>
+        </div>
+
+        {/* Навигационные кнопки — mobile (под каруселью) */}
+        <div className="flex md:hidden items-center justify-center gap-4 mt-2">
           <NavButton
             direction="left"
             onClick={goToPrev}
             disabled={currentIndex === 0}
           />
-        </div>
-
-        {/* Карусель */}
-        <div
-          className="relative w-full overflow-hidden touch-pan-y"
-          onMouseDown={handleDragStart}
-          onMouseUp={handleDragEnd}
-          onMouseLeave={handleDragCancel}
-          onTouchStart={handleDragStart}
-          onTouchEnd={handleDragEnd}
-          onTouchCancel={handleDragCancel}
-        >
-          <motion.div
-            className="flex"
-            style={{ gap }}
-            animate={{
-              x: `calc(50% - ${(cardWidth + gap) * currentIndex + cardWidth / 2}px)`,
-            }}
-            transition={smoothTransition}
-          >
-            {cases.map((caseStudy, index) => (
-              <motion.div
-                key={caseStudy.id}
-                className="flex-shrink-0"
-                style={{ width: cardWidth }}
-                animate={{
-                  scale: index === currentIndex ? 1 : 0.95,
-                  opacity: index === currentIndex ? 1 : 0.4,
-                }}
-                transition={smoothTransition}
-              >
-                <StoryCard
-                  caseStudy={caseStudy}
-                  isActive={index === currentIndex}
-                  onClick={() => goToIndex(index)}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Тап-зоны для переключения (mobile + desktop) */}
-          <div
-            className="absolute left-0 top-0 w-1/3 h-full z-10 cursor-pointer"
-            onClick={goToPrev}
-            aria-label="Предыдущий кейс"
-          />
-          <div
-            className="absolute right-0 top-0 w-1/3 h-full z-10 cursor-pointer"
-            onClick={goToNext}
-            aria-label="Следующий кейс"
-          />
-        </div>
-
-        {/* Кнопка ВПРАВО — справа от карточек (desktop) */}
-        <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-20">
+          <span className="text-sm font-medium text-gray-500 font-geist tabular-nums">
+            {currentIndex + 1} / {cases.length}
+          </span>
           <NavButton
             direction="right"
             onClick={goToNext}
             disabled={currentIndex === cases.length - 1}
           />
         </div>
-      </div>
-
-      {/* Навигационные кнопки — mobile (под каруселью) */}
-      <div className="flex md:hidden items-center justify-center gap-4 mt-2">
-        <NavButton
-          direction="left"
-          onClick={goToPrev}
-          disabled={currentIndex === 0}
-        />
-        <span className="text-sm font-medium text-gray-500 font-geist tabular-nums">
-          {currentIndex + 1} / {cases.length}
-        </span>
-        <NavButton
-          direction="right"
-          onClick={goToNext}
-          disabled={currentIndex === cases.length - 1}
-        />
       </div>
     </section>
   );
@@ -391,15 +393,15 @@ const StoryCard = ({ caseStudy, isActive, onClick }: StoryCardProps) => {
       className={`
         flex flex-col gap-6 md:gap-8
         w-full
-        bg-[#F7F7F5]
-        rounded-2xl
+        bg-[#fcfbfa]
+        rounded-[40px]
         p-6 md:p-8 lg:p-10
         ${!isActive ? 'cursor-pointer' : ''}
       `}
     >
       {/* КЛИЕНТ — сверху по центру */}
       <div className="flex flex-col items-center gap-3">
-        <span className="uppercase text-xs md:text-sm font-semibold text-gray-400 font-geist tracking-widest">
+        <span className="uppercase text-xs md:text-sm font-semibold text-[#005ee0] font-geist tracking-widest">
           Клиент
         </span>
         {logoUrl ? (
@@ -417,7 +419,7 @@ const StoryCard = ({ caseStudy, isActive, onClick }: StoryCardProps) => {
 
       {/* ЗАПРОС */}
       <div className="flex flex-col gap-3">
-        <span className="uppercase text-xs md:text-sm font-semibold text-gray-400 font-geist tracking-widest">
+        <span className="uppercase text-xs md:text-sm font-semibold text-[#005ee0] font-geist tracking-widest">
           Запрос
         </span>
         <p className="text-sm md:text-base text-gray-600 leading-relaxed">
@@ -427,7 +429,7 @@ const StoryCard = ({ caseStudy, isActive, onClick }: StoryCardProps) => {
 
       {/* РЕЗУЛЬТАТЫ — квадратики в 2 ряда с анимированными счётчиками */}
       <div className="flex flex-col gap-4">
-        <span className="uppercase text-xs md:text-sm font-semibold text-gray-400 font-geist tracking-widest">
+        <span className="uppercase text-xs md:text-sm font-semibold text-[#005ee0] font-geist tracking-widest">
           Результаты
         </span>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
@@ -454,7 +456,7 @@ const StoryCard = ({ caseStudy, isActive, onClick }: StoryCardProps) => {
 
       {/* СТЕК */}
       <div className="flex flex-col gap-3 text-center">
-        <span className="uppercase text-xs md:text-sm font-semibold text-gray-400 font-geist tracking-widest">
+        <span className="uppercase text-xs md:text-sm font-semibold text-[#005ee0] font-geist tracking-widest">
           Стек
         </span>
         <p className="text-xs md:text-sm text-gray-500 leading-relaxed">
@@ -467,7 +469,7 @@ const StoryCard = ({ caseStudy, isActive, onClick }: StoryCardProps) => {
         <div className="flex justify-center mt-2">
           <Link
             to={link}
-            state={{ from: '/teams' }}
+            state={{ from: '/' }}
             className="
               inline-flex items-center justify-center gap-2
               px-6 py-3.5

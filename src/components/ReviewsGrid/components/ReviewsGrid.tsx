@@ -111,8 +111,8 @@ export const ReviewsGrid = ({
             ease: [0.4, 0, 0.2, 1],
           }}
         >
-          {reviews.map((review, index) => (
-            <ReviewCard key={review.id} review={review} index={index} />
+          {reviews.map((review) => (
+            <ReviewCard key={review.id} review={review} />
           ))}
         </motion.div>
 

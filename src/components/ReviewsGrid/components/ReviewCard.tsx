@@ -6,10 +6,9 @@ import AvatarPlaceholder from '../../../assets/imgs/avatar-placeholder.svg';
 
 type ReviewCardProps = {
   review: Review;
-  index: number;
 };
 
-export const ReviewCard = ({ review, index }: ReviewCardProps) => {
+export const ReviewCard = ({ review }: ReviewCardProps) => {
   const imageSrc = review.avatarUrl ?? AvatarPlaceholder;
   const ref = useRef(null);
 
@@ -19,42 +18,41 @@ export const ReviewCard = ({ review, index }: ReviewCardProps) => {
     margin: '-50px', // Триггер когда карточка на 50px в viewport
   });
 
-  // Stagger задержка по колонкам (0, 1, 2 -> 0ms, 100ms, 200ms)
-  const staggerDelay = (index % 3) * 0.1;
-
   return (
     <motion.article
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isInView ? 1 : 0 }}
       transition={{
-        duration: 0.5,
-        delay: staggerDelay,
+        duration: 0.3,
         ease: 'easeOut',
       }}
-      className="bg-[#F7F7F5] p-6 sm:p-8 rounded-xl
+      className="bg-[#F7F7F5] p-6 sm:p-8 rounded-xl h-full flex flex-col
                  hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
     >
-      {/* Звёзды рейтинга */}
-      <div className="mb-3">
-        <img className="w-24" src={StarsSvg} alt="Рейтинг 5 звёзд" />
+      {/* Контент отзыва */}
+      <div className="flex-1">
+        {/* Звёзды рейтинга */}
+        <div className="mb-3">
+          <img className="w-24" src={StarsSvg} alt="Рейтинг 5 звёзд" />
+        </div>
+
+        {/* Заголовок */}
+        <h4 className="text-lg xs:text-xl lg:text-2xl font-semibold text-black mb-2">
+          {review.title}
+        </h4>
+
+        {/* Текст отзыва (полный, без обрезки) */}
+        <p
+          className="text-sm xs:text-base text-gray-500"
+          style={{ lineHeight: '130%' }}
+        >
+          {review.text}
+        </p>
       </div>
 
-      {/* Заголовок */}
-      <h4 className="text-lg xs:text-xl lg:text-2xl font-semibold text-black mb-2">
-        {review.title}
-      </h4>
-
-      {/* Текст отзыва (полный, без обрезки) */}
-      <p
-        className="text-sm xs:text-base text-gray-500 mb-4"
-        style={{ lineHeight: '130%' }}
-      >
-        {review.text}
-      </p>
-
-      {/* Автор */}
-      <div className="flex items-center gap-3 pt-4 border-t border-gray-200">
+      {/* Автор (приклеен к низу) */}
+      <div className="flex items-center gap-3 pt-4 mt-4 border-t border-gray-200">
         <img
           src={imageSrc}
           alt={review.author}

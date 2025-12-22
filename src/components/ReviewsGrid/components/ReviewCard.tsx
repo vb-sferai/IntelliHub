@@ -1,5 +1,3 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
 import type { Review } from '../../../data/reviews/types';
 import StarsSvg from '../../../assets/imgs/stars.svg';
 import AvatarPlaceholder from '../../../assets/imgs/avatar-placeholder.svg';
@@ -10,23 +8,9 @@ type ReviewCardProps = {
 
 export const ReviewCard = ({ review }: ReviewCardProps) => {
   const imageSrc = review.avatarUrl ?? AvatarPlaceholder;
-  const ref = useRef(null);
-
-  // Отслеживаем видимость карточки в viewport
-  const isInView = useInView(ref, {
-    once: true, // Анимация только один раз
-    margin: '-50px', // Триггер когда карточка на 50px в viewport
-  });
 
   return (
-    <motion.article
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isInView ? 1 : 0 }}
-      transition={{
-        duration: 0.3,
-        ease: 'easeOut',
-      }}
+    <article
       className="bg-[#F7F7F5] p-6 sm:p-8 rounded-xl h-full flex flex-col
                  hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
     >
@@ -67,6 +51,6 @@ export const ReviewCard = ({ review }: ReviewCardProps) => {
           )}
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 };

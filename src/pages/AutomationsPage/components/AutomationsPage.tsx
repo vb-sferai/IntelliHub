@@ -4,6 +4,7 @@ import { HeroSection } from './HeroSection';
 import { ServicesSection } from './ServicesSection';
 import { RoadmapSection } from './RoadmapSection';
 import { CasesSection } from './CasesSection';
+import { CTASection } from './CTASection';
 
 /**
  * AutomationsPage - страница B2B услуг по AI-автоматизации
@@ -22,6 +23,7 @@ export const AutomationsPage = () => {
             <ServicesSection />
             <RoadmapSection />
             <CasesSection />
+            <CTASection />
         </div>
     );
 };

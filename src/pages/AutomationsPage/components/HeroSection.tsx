@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ColorPanels } from '@paper-design/shaders-react';
+import { Dithering } from '@paper-design/shaders-react';
 
 // Client logos for "Trusted by"
 import stoneLogo from '../assets/logos/stone.png';
@@ -29,31 +29,18 @@ const scrollToAnchor = (href: string) => {
 // ═══════════════════════════════════════════════════════════════════
 // ВАРИАНТ A: Центрированный минимализм
 // ═══════════════════════════════════════════════════════════════════
-const HeroVariantA = ({ isMobile }: { isMobile: boolean }) => (
+const HeroVariantA = ({ isMobile: _isMobile }: { isMobile: boolean }) => (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-black">
-        <ColorPanels
-            colors={['#4d0000']}
-            colorBack="#0a5271"
-            density={1.88}
-            angle1={-1}
-            angle2={-1}
-            length={0.62}
-            edges={false}
-            blur={0}
-            fadeIn={0.64}
-            fadeOut={1}
-            gradient={0}
-            speed={2}
-            scale={isMobile ? 2.5 : 2.32}
-            rotation={360}
-            offsetX={-0.02}
-            offsetY={isMobile ? -0.05 : 0.6}
+        <Dithering
+            colorBack="#000000"
+            colorFront="#0a5271"
+            shape="swirl"
+            type="4x4"
+            size={5}
+            speed={0.04}
+            scale={1.84}
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
         />
-        {/* Gradient overlay to hide shader artifacts on mobile */}
-        {isMobile && (
-            <div className="absolute inset-x-0 bottom-0 z-[1] h-24 bg-gradient-to-t from-black/50 to-transparent" />
-        )}
 
         <div className="relative z-10 flex flex-col items-center px-6 text-center text-white">
             {/* Headline: 2 строки */}
@@ -101,31 +88,18 @@ const HeroVariantA = ({ isMobile }: { isMobile: boolean }) => (
 // ═══════════════════════════════════════════════════════════════════
 // ВАРИАНТ B: Асимметрия, но короче
 // ═══════════════════════════════════════════════════════════════════
-const HeroVariantB = ({ isMobile }: { isMobile: boolean }) => (
+const HeroVariantB = ({ isMobile: _isMobile }: { isMobile: boolean }) => (
     <section className="relative flex min-h-screen w-full items-end overflow-hidden bg-black pb-16 md:items-center md:pb-0">
-        <ColorPanels
-            colors={['#4d0000']}
-            colorBack="#0a5271"
-            density={1.88}
-            angle1={-1}
-            angle2={-1}
-            length={0.62}
-            edges={false}
-            blur={0}
-            fadeIn={0.64}
-            fadeOut={1}
-            gradient={0}
-            speed={2}
-            scale={isMobile ? 2.5 : 2.32}
-            rotation={360}
-            offsetX={-0.02}
-            offsetY={isMobile ? -0.05 : 0.6}
+        <Dithering
+            colorBack="#000000"
+            colorFront="#0a5271"
+            shape="swirl"
+            type="4x4"
+            size={5}
+            speed={0.04}
+            scale={1.84}
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
         />
-        {/* Gradient overlay to hide shader artifacts on mobile */}
-        {isMobile && (
-            <div className="absolute inset-x-0 bottom-0 z-[1] h-24 bg-gradient-to-t from-black/50 to-transparent" />
-        )}
 
         <div className="relative z-10 flex w-full flex-col gap-12 px-6 pt-24 text-white md:flex-row md:items-end md:justify-between md:px-12 lg:px-16 xl:mx-auto xl:max-w-[1280px] xl:px-0">
             {/* Left: Headline */}

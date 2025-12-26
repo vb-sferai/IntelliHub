@@ -4,31 +4,13 @@ import { useEffect } from 'react';
 declare global {
   interface Window {
     Marquiz?: {
-      init: (config: {
-        host: string;
-        region: string;
-        id: string;
-        autoOpen: boolean;
-        autoOpenFreq: string;
-        openOnExit: boolean;
-        disableOnMobile: boolean;
-      }) => void;
+      init: (config: Record<string, unknown>) => void;
       add: (args: [string, Record<string, unknown>]) => void;
     };
   }
 }
 
 const MARQUIZ_ID = '694bb2e54a3af00019ef5802';
-
-const MARQUIZ_CONFIG = {
-  host: '//quiz.marquiz.ru',
-  region: 'ru',
-  id: MARQUIZ_ID,
-  autoOpen: false,
-  autoOpenFreq: 'once',
-  openOnExit: false,
-  disableOnMobile: false,
-};
 
 const WIDGET_CONFIG = {
   id: MARQUIZ_ID,
@@ -46,40 +28,21 @@ const WIDGET_CONFIG = {
 
 export const QuizPage = () => {
   useEffect(() => {
-    // Создаём скрипт Marquiz
-    const script = document.createElement('script');
-    script.src = '//script.marquiz.ru/v2.js';
-    script.async = true;
-
-    // Инициализация после загрузки скрипта (как в оригинале)
-    script.onload = () => {
-      if (document.readyState !== 'loading') {
-        window.Marquiz?.init(MARQUIZ_CONFIG);
-      } else {
-        document.addEventListener('DOMContentLoaded', () => {
-          window.Marquiz?.init(MARQUIZ_CONFIG);
-        });
-      }
-    };
-
-    // Обработчик события marquizLoaded для добавления виджета
-    const handleMarquizLoaded = () => {
+    // Добавляем inline-виджет когда Marquiz готов
+    const addWidget = () => {
       window.Marquiz?.add(['Inline', WIDGET_CONFIG]);
     };
 
-    // Добавляем виджет: сразу если Marquiz готов, иначе ждём событие
+    // Если Marquiz уже загружен — добавляем сразу
     if (window.Marquiz) {
-      window.Marquiz.add(['Inline', WIDGET_CONFIG]);
+      addWidget();
     } else {
-      document.addEventListener('marquizLoaded', handleMarquizLoaded);
+      // Иначе ждём события marquizLoaded
+      document.addEventListener('marquizLoaded', addWidget);
     }
 
-    document.head.insertBefore(script, document.head.firstElementChild);
-
-    // Cleanup при размонтировании компонента
     return () => {
-      script.remove();
-      document.removeEventListener('marquizLoaded', handleMarquizLoaded);
+      document.removeEventListener('marquizLoaded', addWidget);
     };
   }, []);
 

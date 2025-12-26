@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { CaseStudyHero } from '../../CaseStudyLancet/components/CaseStudyHero';
 import { CaseStudyCTA } from '../../CaseStudyLancet/components/CaseStudyCTA';
 import YandexLogo from '../../../assets/imgs/yandex-logo.svg';
+import ViktoriaPhoto from '../assets/viktoria-arsenyeva.png';
 
 const baseTextClass = "text-base md:text-lg leading-relaxed text-[#1A1A1A]";
 
@@ -42,6 +43,39 @@ export const CaseStudyGoBeyondPage = () => {
             <p>
               <strong>Команда маркетинга Яндекс.Алиса</strong> отвечает за продвижение, позиционирование и коммуникацию одного из самых технологически продвинутых продуктов российского рынка. В этом заключался парадокс: сотрудники, которые ежедневно рассказывают миру о возможностях AI, сами не всегда в полной мере используют инструменты искусственного интеллекта в своей работе.
             </p>
+
+            {/* Отзыв сотрудника Яндекс */}
+            <blockquote className="border-l-4 border-[#FFCC00] bg-white/70 p-6 text-[#2a2a2a]">
+              <p className="italic mb-4">
+                Благодарим Кирилла и компанию sfer.ai за два насыщенных дня живых воркшопов по ИИ для нашей команды!
+              </p>
+              <p className="italic mb-4">
+                Офлайн-формат оказался по-настоящему ценным: мы могли задать вопросы, обсудить именно нашу ситуацию и тут же получить конкретный разбор с примерами из реальной практики. Благодаря этому материал сразу «ложился» на нашу специфику, а не оставался «теорией».
+              </p>
+              <p className="italic mb-4">
+                Отдельно хочется отметить подачу материала — всё было чётко, без «воды», но при этом доступно и с юмором, как любит наша команда)
+              </p>
+              <p className="italic mb-4">
+                Кирилл показал, как под наши задачи можно выстраивать рабочие процессы с ИИ — от генерации контента и аналитики до автоматизации рутинных шагов в проектах и даже в повседневных делах.
+              </p>
+              <p className="italic mb-4">
+                Воркшоп получился максимально практичным: многие приёмы и сервисы мы попробовали прямо на месте, и у нас появилось понимание, как внедрить их в свою работу и развивать дальше.
+              </p>
+              <p className="italic mb-6">
+                Могу рекомендовать sfer.ai как надежного партнера!
+              </p>
+              <div className="flex items-center gap-4 not-italic">
+                <img
+                  src={ViktoriaPhoto}
+                  alt="Виктория Арсеньева"
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-semibold text-[#1f1f1f] uppercase tracking-wide">Виктория Арсеньева</p>
+                  <p className="text-sm text-[#2a2a2a]">Руководитель группы Growth-маркетинга (Яндекс)</p>
+                </div>
+              </div>
+            </blockquote>
           </div>
         </section>
 

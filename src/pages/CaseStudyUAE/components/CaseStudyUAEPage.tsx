@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { CaseStudyHero } from '../../CaseStudyLancet/components/CaseStudyHero';
 import { CaseStudyCTA } from '../../CaseStudyLancet/components/CaseStudyCTA';
+import YuliaPhoto from '../assets/yulia-netsenko.png';
 
 const baseTextClass = "text-base md:text-lg leading-relaxed text-[#1A1A1A]";
 
@@ -34,6 +35,39 @@ export const CaseStudyUAEPage = () => {
             <p>
               Компания по управлению активами из Объединенных Арабских Эмиратов решила обучить 70 сотрудников основам работы с нейросетями и сделать их AI-native. Мы представили базовый курс на русском и английском языках, с приглашением эксперта – руководителем AI-проектов в мексиканском банке Марией Полтановой.
             </p>
+
+            {/* Отзыв клиента */}
+            <blockquote className="border-l-4 border-[#9c8cff] bg-white/70 p-6 text-[#2a2a2a]">
+              <p className="italic mb-4">
+                Рекомендую sfer.ai как настоящих профи в обучении искусственному интеллекту.
+              </p>
+              <p className="italic mb-4">
+                Наша международная команда в ОАЭ прошла серию из 6 AI-воркшопов — от базовых принципов до разработки собственных AI-агентов под конкретные бизнес-задачи.
+              </p>
+              <p className="italic mb-4">
+                Сессии шли и на русском, и на английском, что сделало программу комфортной для всех участников.
+              </p>
+              <p className="italic mb-4">
+                Отдельный плюс — приглашённые эксперты: сильнейшие специалисты из нашей отрасли и AI-сферы, которых команда ИнтеллиХаб привлекла для отдельных блоков.
+              </p>
+              <p className="italic mb-4">
+                Программа была выстроена очень логично и прикладно: от понимания основ до реального создания инструментов. Каждый участник, независимо от уровня, ушёл с конкретными навыками и готовыми решениями.
+              </p>
+              <p className="italic mb-6">
+                Спасибо, sfer.ai, что сделали программу «под нас» — с учётом разных уровней участников, языков и нашей международной специфики!
+              </p>
+              <div className="flex items-center gap-4 not-italic">
+                <img
+                  src={YuliaPhoto}
+                  alt="Юлия Неценко"
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-semibold text-[#1f1f1f] uppercase tracking-wide">Юлия Неценко</p>
+                  <p className="text-sm text-[#2a2a2a]">Head of HR в Wealth Management компании ОАЭ (NDA)</p>
+                </div>
+              </div>
+            </blockquote>
           </div>
         </section>
 
@@ -121,32 +155,6 @@ export const CaseStudyUAEPage = () => {
                 В компании <strong>появилась группа энтузиастов</strong>, которая серьезно занимается автоматизацией задач и «дотягивает» всех остальных. Это отличное «послевкусие».
               </li>
             </ol>
-          </div>
-        </section>
-
-        {/* Отзыв */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold md:text-[32px] mb-6">Отзыв</h2>
-          <div className={"space-y-6 " + baseTextClass}>
-            <blockquote className="border-l-4 border-[#9c8cff] bg-white/70 p-6 italic text-[#2a2a2a]">
-              <h3 className="not-italic font-semibold text-[#1f1f1f] text-xl mb-4">
-                Юлия Неценко, Head of HR в WEALTH MANAGEMENT
-              </h3>
-              <div className="space-y-4">
-                <p>
-                  Рекомендую sfer.ai как настоящих профи в обучении искусственному интеллекту. Наша международная команда в ОАЭ прошла серию из 6 Al-воркшопов — от базовых принципов до разработки собственных AI-агентов под конкретные бизнес-задачи. Сессии шли и на русском, и на английском, что сделало программу комфортной для всех участников.
-                </p>
-                <p>
-                  Отдельный плюс — приглашённые эксперты: сильнейшие специалисты из нашей отрасли и Al-сферы, которых команда ИнтеллиХаб привлекла для отдельных блоков.
-                </p>
-                <p>
-                  Программа была выстроена очень логично и прикладно: от понимания основ до реального создания инструментов. Каждый участник, независимо от уровня, ушел с конкретными навыками и готовыми решениями.
-                </p>
-                <p>
-                  Спасибо, sfer.ai, что сделали программу «под нас» — с учётом разных уровней участников, языков и нашей международной специфики!
-                </p>
-              </div>
-            </blockquote>
           </div>
         </section>
 

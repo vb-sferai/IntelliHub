@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { CaseStudyHero } from './CaseStudyHero';
 import { CaseStudyCTA } from './CaseStudyCTA';
 import LancetLogo from '../../../assets/imgs/lancet-logo.svg';
+import RitaPhoto from '../assets/rita-khanbekova.png';
 
 const baseTextClass = "text-base md:text-lg leading-relaxed text-[#1A1A1A]";
 
@@ -45,6 +46,33 @@ export const CaseStudyLancetPage = () => {
             <p>
               Пожалуй, в настоящий момент это единственный прикладной курс по ИИ для оптимизации рутинной практики специалистов здравоохранения.
             </p>
+
+            {/* Отзыв сотрудника Ланцет */}
+            <blockquote className="border-l-4 border-[#9c8cff] bg-white/70 p-6 text-[#2a2a2a]">
+              <p className="italic mb-4">
+                Команда sfer.ai сделала для нас курс «под ключ». От идеи и сценариев до съёмок и монтажа. Вышло больше 10 часов материала плюс удобные шпаргалки и домашние задания, чтобы всё закрепить.
+              </p>
+              <p className="italic mb-4">
+                Отдельное спасибо за погружение в медицину. Ребята реально разобрались, как живут процессы будущих слушателей, и дали примеры «с полей»: где ИИ ускоряет документооборот, как распределять обращения, как навести порядок в коммуникациях и рутине. За счёт этого контент не «про теорию», а про то, что можно сразу внедрять.
+              </p>
+              <p className="italic mb-4">
+                Коммуникация была быстрой и понятной. Правки учитывались оперативно, по пожеланиям шли навстречу. В итоге получили понятный и практичный продукт, на котором можно масштабно учить административный персонал.
+              </p>
+              <p className="italic mb-6">
+                Можем смело рекомендовать ИнтеллиХаб как надёжного партнёра по AI-обучению!
+              </p>
+              <div className="flex items-center gap-4 not-italic">
+                <img
+                  src={RitaPhoto}
+                  alt="Рита Ханбекова"
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-semibold text-[#1f1f1f] uppercase tracking-wide">Рита Ханбекова</p>
+                  <p className="text-sm text-[#2a2a2a]">Руководитель отдела сервисов и инструментов продаж (АО «Ланцет»)</p>
+                </div>
+              </div>
+            </blockquote>
           </div>
         </section>
 

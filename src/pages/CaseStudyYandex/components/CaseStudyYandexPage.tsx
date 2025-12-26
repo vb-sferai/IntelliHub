@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { CaseStudyHero } from '../../CaseStudyLancet/components/CaseStudyHero';
 import { CaseStudyCTA } from '../../CaseStudyLancet/components/CaseStudyCTA';
 import YandexLogo from '../../../assets/imgs/yandex-logo.svg';
+import NadezhdaPhoto from '../assets/nadezhda-golovina.png';
 
 const baseTextClass = "text-base md:text-lg leading-relaxed text-[#1A1A1A]";
 
@@ -39,6 +40,36 @@ export const CaseStudyYandexPage = () => {
             <p>
               Перед нами поставили амбициозную задачу: рассказать про возможности Алисы широкой аудитории – от новичков до продвинутых пользователей. Без сложных терминов и избыточной теории, но так, чтобы каждый нашел для себя что-то полезное.
             </p>
+
+            {/* Отзыв сотрудника Яндекс */}
+            <blockquote className="border-l-4 border-[#FFCC00] bg-white/70 p-6 text-[#2a2a2a]">
+              <p className="italic mb-4">
+                Выражаю благодарность компании sfer.ai и лично Кириллу Гурбанову за успешно проведенное мероприятие для 11 тысяч человек!
+              </p>
+              <p className="italic mb-4">
+                Вместе с командой sfer.ai мы провели открытый вебинар по нейросети Алисе для широкой аудитории. Задача была: рассказать про возможности Алисы в чате и вовлечь людей в категорию, без сложных терминов и избыточной теории.
+              </p>
+              <p className="italic mb-4">
+                Участники были разной степени погружения: кто-то только начинал знакомство с нейросетями, кто-то уже использовал ИИ. Именно поэтому было важно выстроить программу так, чтобы каждый нашел в ней что-то полезное.
+              </p>
+              <p className="italic mb-4">
+                Кирилл и команда sfer.ai отлично справились с задачей. Ребята проделали большую работу: разработали формат, подход к проведению мероприятия, детализировали структуру, учитывая все наши пожелания.
+              </p>
+              <p className="italic mb-6">
+                Благодарим команду за профессиональную, оперативную и внимательную работу!
+              </p>
+              <div className="flex items-center gap-4 not-italic">
+                <img
+                  src={NadezhdaPhoto}
+                  alt="Надежда Головина"
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-semibold text-[#1f1f1f] uppercase tracking-wide">Надежда Головина</p>
+                  <p className="text-sm text-[#2a2a2a]">Product Marketing Lead Алиса AI (Яндекс)</p>
+                </div>
+              </div>
+            </blockquote>
           </div>
         </section>
 
@@ -223,28 +254,7 @@ export const CaseStudyYandexPage = () => {
             </div>
           </article>
 
-          <article className="space-y-6">
-            <h3 className="text-xl font-semibold md:text-[28px]">Отзыв заказчика</h3>
-            <blockquote className="border-l-4 border-[#FFCC00] bg-white/70 p-6 italic text-[#2a2a2a]">
-              <p className="mb-4">
-                Выражаю благодарность компании sfer.ai и лично Кириллу Гурбанову за успешно проведенное мероприятие для 11 тысяч человек!
-              </p>
-              <p className="mb-4">
-                Вместе с командой sfer.ai мы провели открытый вебинар по нейросети Алисы для широкой аудитории. Задача была: рассказать про возможности Алисы в чате и вовлечь людей в категорию, без сложных терминов и избыточной теории.
-              </p>
-              <p className="mb-4">
-                Участники были разной степени погружения: кто-то только начинал знакомство с нейросетями, кто-то уже использовал ИИ. Именно поэтому было важно выстроить программу так, чтобы каждый нашел в ней что-то полезное.
-              </p>
-              <p className="mb-4">
-                Кирилл и команда sfer.ai отлично справились с задачей. Ребята проделали большую работу: разработали формат, подход к проведению мероприятия, детализировали структуру, учитывая все наши пожелания.
-              </p>
-              <p className="mb-4">
-                Благодарим команду за профессиональную, оперативную и внимательную работу!
-              </p>
-              <p className="not-italic font-semibold text-[#1f1f1f]">Надежда Головина, Product Marketing Lead Алиса</p>
-            </blockquote>
-          </article>
-        </section>
+          </section>
 
         <section className="mb-16 space-y-6">
           <h2 className="text-2xl font-semibold md:text-[32px]">Что этот проект дал нашей команде</h2>

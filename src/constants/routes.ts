@@ -21,5 +21,6 @@ export const ROUTES = {
     jobsPm: '/jobs/pm',
     jobsApply: '/jobs/:position/apply',
     newyear2026: '/newyear2026',
+    survey: '/survey',
     notFound: '*',
 };

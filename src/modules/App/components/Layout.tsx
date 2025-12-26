@@ -7,13 +7,14 @@ import {ROUTES} from "../../../constants/routes.ts";
 export const Layout = () => {
     const location = useLocation();
     const isSupremePage = location.pathname === ROUTES.root || location.pathname === ROUTES.customAutomations;
+    const isAutomationsPage = location.pathname === ROUTES.automations;
 
     // Check if current page is 404 (not found in known routes)
     const isNotFoundPage = !Object.values(ROUTES).slice(0, -1).some(route => {
         return location.pathname === route;
     });
 
-    const hideChrome = isSupremePage || isNotFoundPage;
+    const hideChrome = isSupremePage || isAutomationsPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

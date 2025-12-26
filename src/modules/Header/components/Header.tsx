@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import LogoImg from '../../../assets/imgs/logo.svg';
 import BurgerIcon from '../../../assets/imgs/burger.svg';
 import CloseIcon from '../../../assets/imgs/close.svg';
@@ -88,13 +88,18 @@ export const Header = () => {
                         : !(isScrolled || isMenuOpen) ? 'bg-transparent text-white' : 'bg-white'
                 }`}
             >
-                <img
-                    src={LogoImg}
-                    alt="Sfer AI"
-                    className={`w-42 md:w-35 xl:w-[186px] transition-all duration-300 ${
-                        (isScrolled || isMenuOpen) ? 'filter brightness-0' : ''
-                    }`}
-                />
+                <Link
+                    to="/"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                    <img
+                        src={LogoImg}
+                        alt="Sfer AI"
+                        className={`w-42 md:w-35 xl:w-[186px] transition-all duration-300 ${
+                            (isScrolled || isMenuOpen) ? 'filter brightness-0' : ''
+                        }`}
+                    />
+                </Link>
 
                 {/* Десктопное меню */}
                 <div className="hidden md:flex items-center">

@@ -71,7 +71,7 @@ export const SupremeHeader = () => {
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${headerTone}`}
       >
         <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6 md:px-12 lg:px-16 xl:px-0">
-          <a href="/programs" className="flex items-center gap-3" onClick={() => handleNavClick('/programs')}>
+          <a href="/" className="flex items-center gap-3" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img
               src={LogoImg}
               alt="Sfer AI"

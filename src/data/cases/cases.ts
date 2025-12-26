@@ -1,5 +1,6 @@
 import LancetLogo from '../../assets/imgs/lancet-logo.svg';
 import YandexLogo from '../../assets/imgs/yandex-logo.svg';
+import NubesLogo from '../../assets/imgs/nubes-logo.svg';
 import type { CaseStudy } from './types';
 
 /**
@@ -133,5 +134,32 @@ export const CASES: CaseStudy[] = [
     stack:
       'ChatGPT Enterprise, Yandex GPT, n8n, Cursor, RAGDB (vector database), Power BI + Bloomberg GPT, Miro, Whisper / Coqui',
     link: '/cases/uae',
+  },
+  {
+    id: 'nubes',
+    client: 'Nubes',
+    logoUrl: NubesLogo,
+    request:
+      'Обучить сотрудников компании (от генерального директора до технических специалистов и коммерческой команды) взаимодействию с AI-инструментами, с фокусом на рабочих задачах.',
+    results: [
+      {
+        title: '20',
+        text: 'участников команды от CEO до технических специалистов',
+      },
+      {
+        title: '3',
+        text: 'онлайн-встречи по 2,5 часа каждая',
+      },
+      {
+        title: '7',
+        text: 'AI-инструментов освоено на практике',
+      },
+      {
+        title: '50/50',
+        text: 'баланс технических и нетехнических участников',
+      },
+    ],
+    stack: 'ChatGPT, Claude, Gemini, Grok, Яндекс.GPT, DeepSeek, Perplexity',
+    link: '/cases/nubes',
   },
 ];

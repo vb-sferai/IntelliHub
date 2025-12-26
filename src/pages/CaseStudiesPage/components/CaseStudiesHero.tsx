@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MeshGradient } from '@paper-design/shaders-react';
+import Logo from '../../../assets/imgs/logo.svg';
 
 interface CaseStudiesHeroProps {
   title?: string;
@@ -34,6 +36,11 @@ export const CaseStudiesHero: React.FC<CaseStudiesHeroProps> = ({
           height: '100%',
         }}
       />
+
+      {/* Logo */}
+      <Link to="/" className="absolute top-6 left-6 z-20 sm:left-12 lg:left-16">
+        <img src={Logo} alt="SFER.AI" className="h-8 md:h-10" />
+      </Link>
 
       {/* Content */}
       <div className="relative z-10 flex w-full flex-col items-center gap-3 px-4 text-center text-white sm:px-12 lg:px-16 xl:max-w-[1408px] xl:px-0">

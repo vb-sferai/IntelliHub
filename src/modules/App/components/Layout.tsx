@@ -17,6 +17,7 @@ export const Layout = () => {
     const isCaseStudyYandexPage = location.pathname === ROUTES.casestudiesYandex;
     const isCaseStudyGoBeyondPage = location.pathname === ROUTES.casestudiesGoBeyond;
     const isCaseStudyUAEPage = location.pathname === ROUTES.casestudiesUAE;
+    const isCaseStudyNubesPage = location.pathname === ROUTES.casestudiesNubes;
     const isProgramsPage = location.pathname === ROUTES.programs;
     const isPmJobPage = location.pathname === ROUTES.jobsPm;
     const isJobApplicationPage = location.pathname.includes('/jobs/') && location.pathname.includes('/apply');
@@ -28,7 +29,7 @@ export const Layout = () => {
         }
         return location.pathname === route;
     });
-    const hideChrome = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isNotFoundPage;
+    const hideChrome = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

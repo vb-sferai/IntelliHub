@@ -8,6 +8,7 @@ export const ROUTES = {
     casestudiesYandex: '/cases/yandex',
     casestudiesGoBeyond: '/cases/gobeyond',
     casestudiesUAE: '/cases/uae',
+    casestudiesNubes: '/cases/nubes',
     // Новые пути под /edu
     base: '/edu/baza',
     vibecoding: '/edu/vibecoding',

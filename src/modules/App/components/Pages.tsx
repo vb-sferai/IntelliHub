@@ -18,6 +18,7 @@ import {ApplicationPage} from "../../../pages/JobPages/ApplicationPage";
 import {NotFoundPage} from "../../../pages/NotFoundPage";
 import {NewYearRedirectPage} from "../../../pages/NewYearRedirectPage";
 import {QuizPage} from "../../../pages/QuizPage";
+import {OrderSuccessPage} from "../../../pages/OrderSuccessPage";
 import {ROUTES} from "../../../constants/routes.ts";
 
 export const Pages = () => {
@@ -46,6 +47,7 @@ export const Pages = () => {
             <Route path={ROUTES.jobsApply} element={<ApplicationPage />} />
             <Route path={ROUTES.newyear2026} element={<NewYearRedirectPage />} />
             <Route path={ROUTES.survey} element={<QuizPage />} />
+            <Route path={ROUTES.orderSuccess} element={<OrderSuccessPage />} />
             <Route path={ROUTES.notFound} element={<NotFoundPage />} />
         </Routes>
     );

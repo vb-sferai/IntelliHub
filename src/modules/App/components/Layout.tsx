@@ -23,6 +23,7 @@ export const Layout = () => {
     const isJobApplicationPage = location.pathname.includes('/jobs/') && location.pathname.includes('/apply');
     const isNewYearRedirectPage = location.pathname === ROUTES.newyear2026;
     const isSurveyPage = location.pathname === ROUTES.survey;
+    const isOrderSuccessPage = location.pathname === ROUTES.orderSuccess;
     const isNotFoundPage = !Object.values(ROUTES).slice(0, -1).some(route => {
         if (route.includes(':')) {
             const baseRoute = route.split(':')[0];
@@ -30,14 +31,19 @@ export const Layout = () => {
         }
         return location.pathname === route;
     });
-    const hideChrome = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isNotFoundPage;
+
+    // Страницы без header (включая OrderSuccessPage)
+    const hideHeader = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isOrderSuccessPage || isNotFoundPage;
+
+    // Страницы без footer (OrderSuccessPage показывает footer)
+    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">
             <div className="flex flex-col w-full h-full justify-center">
-                {!hideChrome && <Header />}
+                {!hideHeader && <Header />}
                 <Pages />
-                {!hideChrome && <Footer />}
+                {!hideFooter && <Footer />}
             </div>
         </div>
     );

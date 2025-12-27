@@ -22,5 +22,6 @@ export const ROUTES = {
     jobsApply: '/jobs/:position/apply',
     newyear2026: '/newyear2026',
     survey: '/survey',
+    orderSuccess: '/order/success',
     notFound: '*',
 };

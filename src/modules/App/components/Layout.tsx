@@ -24,6 +24,7 @@ export const Layout = () => {
     const isNewYearRedirectPage = location.pathname === ROUTES.newyear2026;
     const isSurveyPage = location.pathname === ROUTES.survey;
     const isOrderSuccessPage = location.pathname === ROUTES.orderSuccess;
+    const isPrivacyPolicyPage = location.pathname === ROUTES.privacyPolicy;
     const isNotFoundPage = !Object.values(ROUTES).slice(0, -1).some(route => {
         if (route.includes(':')) {
             const baseRoute = route.split(':')[0];
@@ -33,10 +34,10 @@ export const Layout = () => {
     });
 
     // Страницы без header (включая OrderSuccessPage)
-    const hideHeader = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isOrderSuccessPage || isNotFoundPage;
+    const hideHeader = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isOrderSuccessPage || isPrivacyPolicyPage || isNotFoundPage;
 
     // Страницы без footer (OrderSuccessPage показывает footer)
-    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isNotFoundPage;
+    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isPrivacyPolicyPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

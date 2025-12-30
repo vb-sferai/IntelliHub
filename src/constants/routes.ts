@@ -23,5 +23,7 @@ export const ROUTES = {
     newyear2026: '/newyear2026',
     survey: '/survey',
     orderSuccess: '/order/success',
+    // Юридические страницы
+    privacyPolicy: '/privacy-policy',
     notFound: '*',
 };

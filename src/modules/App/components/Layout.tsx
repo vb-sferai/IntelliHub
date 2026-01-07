@@ -25,6 +25,7 @@ export const Layout = () => {
     const isSurveyPage = location.pathname === ROUTES.survey;
     const isOrderSuccessPage = location.pathname === ROUTES.orderSuccess;
     const isPrivacyPolicyPage = location.pathname === ROUTES.privacyPolicy;
+    const isSferKumarSoloPage = location.pathname === ROUTES.sferKumarSolo;
     const isNotFoundPage = !Object.values(ROUTES).slice(0, -1).some(route => {
         if (route.includes(':')) {
             const baseRoute = route.split(':')[0];

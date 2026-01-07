@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import LogoImg from '../../../assets/imgs/logo.svg';
+import KumarSoloLogo from '../../../pages/SferKumarSoloPage/assets/kumar-solo-logo.svg';
 import BurgerIcon from '../../../assets/imgs/burger.svg';
 import CloseIcon from '../../../assets/imgs/close.svg';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,8 +13,9 @@ export const Header = () => {
     const isBaseRoute = location.pathname === ROUTES.base;
     const isVibecodingRoute = location.pathname === ROUTES.vibecoding;
     const isAgentsRoute = location.pathname === ROUTES.agents;
+    const isSferKumarSoloRoute = location.pathname === ROUTES.sferKumarSolo;
     const isEduRoute = location.pathname === ROUTES.edu;
-    const isProductPage = isBaseRoute || isVibecodingRoute || isAgentsRoute;
+    const isProductPage = isBaseRoute || isVibecodingRoute || isAgentsRoute || isSferKumarSoloRoute;
     const isEduPage = isEduRoute;
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -91,14 +93,32 @@ export const Header = () => {
                 <Link
                     to="/"
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="flex items-center"
                 >
                     <img
                         src={LogoImg}
                         alt="Sfer AI"
-                        className={`w-42 md:w-35 xl:w-[186px] transition-all duration-300 ${
+                        className={`${isSferKumarSoloRoute ? 'w-[100px] md:w-[168px]' : 'w-42 md:w-35 xl:w-[186px]'} transition-all duration-300 ${
                             (isScrolled || isMenuOpen) ? 'filter brightness-0' : ''
                         }`}
                     />
+                    {isSferKumarSoloRoute && (
+                        <span
+                            className="mx-2 md:mx-4 text-base md:text-xl font-light select-none transition-all duration-300"
+                            style={{ color: (isScrolled || isMenuOpen) ? '#000' : '#fff' }}
+                        >
+                            ×
+                        </span>
+                    )}
+                    {isSferKumarSoloRoute && (
+                        <img
+                            src={KumarSoloLogo}
+                            alt="Kumar&Solo"
+                            className={`w-[100px] h-auto mt-[3px] md:mt-[5px] md:w-[164px] transition-all duration-300 ${
+                                (isScrolled || isMenuOpen) ? 'filter brightness-0' : ''
+                            }`}
+                        />
+                    )}
                 </Link>
 
                 {/* Десктопное меню */}

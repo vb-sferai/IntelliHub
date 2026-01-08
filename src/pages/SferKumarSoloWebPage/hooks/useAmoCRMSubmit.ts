@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getSavedUTMParams } from '../../../utils/analytics';
+import { getSavedUTMParams, getUTMParams } from '../../../utils/analytics';
 
 // URL твоего Google Apps Script
 const AMOCRM_PROXY_URL = 'https://script.google.com/macros/s/AKfycbyhl-7jAFI2qVzC5a6h0IOJaR5rtjdDPWv8A0Cs3Yvy_OlGCupjxcyLmcNc7ObVA0sF/exec';
@@ -20,9 +20,16 @@ export const useAmoCRMSubmit = () => {
     setError(null);
 
     try {
-      // Получаем сохранённые UTM-параметры
-      const utmParams = getSavedUTMParams();
-      console.log('🔍 UTM params from sessionStorage:', utmParams);
+      // Получаем сохранённые UTM-параметры (с fallback на текущий URL)
+      let utmParams = getSavedUTMParams();
+
+      // Fallback: если sessionStorage пуст, пробуем получить из текущего URL
+      if (!utmParams || Object.keys(utmParams).length === 0) {
+        utmParams = getUTMParams();
+        console.log('🔍 UTM params from current URL (fallback):', utmParams);
+      } else {
+        console.log('🔍 UTM params from sessionStorage:', utmParams);
+      }
 
       // Формируем данные для отправки
       const payload = {

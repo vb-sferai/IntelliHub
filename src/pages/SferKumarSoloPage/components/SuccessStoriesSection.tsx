@@ -146,11 +146,11 @@ export const SuccessStoriesSection = () => {
             <div className="px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto">
 
                 {/* Section Header */}
-                <div className="flex flex-col items-center gap-3 mb-10 lg:mb-12">
-                    <h2 className="text-2xl xs:text-3xl lg:text-[42px] xl:text-[48px] font-semibold text-white text-center leading-[1.2] tracking-[-0.03em]">
+                <div className="flex flex-col items-start sm:items-center gap-3 mb-10 lg:mb-12">
+                    <h2 className="text-2xl xs:text-3xl lg:text-[42px] xl:text-[48px] font-semibold text-white text-left sm:text-center leading-[1.2] tracking-[-0.03em] w-full">
                         Что создают наши ученики
                     </h2>
-                    <p className="text-base lg:text-lg text-[#858585] text-center">
+                    <p className="text-base lg:text-lg text-[#858585] text-left sm:text-center w-full">
                         В каждом модуле можно собрать один или несколько проектов
                     </p>
                 </div>
@@ -169,11 +169,11 @@ export const SuccessStoriesSection = () => {
                 </div>
 
                 {/* Testimonial Quote */}
-                <div className="flex flex-col items-center gap-5 mt-16 lg:mt-20 xl:mt-24 max-w-[768px] mx-auto">
-                    <h2 className="text-2xl xs:text-3xl lg:text-[42px] xl:text-[48px] font-semibold text-white text-center leading-[1.2] tracking-[-0.03em]">
+                <div className="flex flex-col items-start sm:items-center gap-5 mt-16 lg:mt-20 xl:mt-24 max-w-[768px] sm:mx-auto">
+                    <h2 className="text-2xl xs:text-3xl lg:text-[42px] xl:text-[48px] font-semibold text-white text-left sm:text-center leading-[1.2] tracking-[-0.03em] w-full">
                         {SUCCESS_TESTIMONIAL.quote}
                     </h2>
-                    <p className="text-base lg:text-lg xl:text-xl font-normal text-[#F2F2F7] text-center leading-[30px] max-w-[642px]">
+                    <p className="text-base lg:text-lg xl:text-xl font-normal text-[#F2F2F7] text-left sm:text-center leading-[30px] w-full sm:max-w-[642px]">
                         {SUCCESS_TESTIMONIAL.description}
                     </p>
                 </div>

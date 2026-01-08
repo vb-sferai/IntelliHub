@@ -117,8 +117,8 @@ export const SferKumarSoloPage = () => {
             <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto pb-16 md:pb-20 lg:pb-24 xl:pb-32">
 
                 {/* ========== AI-FIRST SECTION ========== */}
-                <div className="flex flex-col gap-6 lg:gap-12 mt-12 md:mt-16 lg:mt-20 xl:mt-24 items-center">
-                    <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-black text-center leading-[1.2] tracking-[-0.03em]">
+                <div className="flex flex-col gap-6 lg:gap-12 mt-12 md:mt-16 lg:mt-20 xl:mt-24 items-start sm:items-center">
+                    <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-black text-left sm:text-center leading-[1.2] tracking-[-0.03em] w-full">
                         Быть AI-first — это:
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -166,10 +166,10 @@ export const SferKumarSoloPage = () => {
                 {/* ========== WHO NEEDS CODING ========== */}
                 <div className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
                     <div className="flex flex-col gap-8 items-center max-w-[768px] mx-auto">
-                        <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-center w-full">
+                        <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-left sm:text-center w-full">
                             Мне нужно уметь программировать? (нет)
                         </h2>
-                        <p className="text-base lg:text-lg xl:text-xl font-normal leading-[1.5] text-[#858585] text-center w-full max-w-[642px]">
+                        <p className="text-base lg:text-lg xl:text-xl font-normal leading-[1.5] text-[#858585] text-left sm:text-center w-full max-w-[642px]">
                             Мы спроектировали курс так, чтобы он подходил специалистам с разным бэкграундом и без знаний программирования
                         </p>
                     </div>
@@ -199,10 +199,10 @@ export const SferKumarSoloPage = () => {
                 <div id="programs" className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
                     {/* Header */}
                     <div className="flex flex-col gap-8 items-center max-w-[900px] mx-auto">
-                        <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-center w-full">
+                        <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-left sm:text-center w-full">
                             Никакого FOMO: по полочкам разложим всё, что происходит в мире нейросетей
                         </h2>
-                        <p className="text-base lg:text-lg xl:text-xl font-normal leading-[1.5] text-[#858585] text-center w-full">
+                        <p className="text-base lg:text-lg xl:text-xl font-normal leading-[1.5] text-[#858585] text-left sm:text-center w-full">
                             Подробный обзор инструментов и решение кейсов прямо в Zoom
                         </p>
                     </div>

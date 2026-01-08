@@ -1,20 +1,12 @@
-import { Button } from './Button';
+import { useEffect } from 'react';
 import { MeshGradient } from '@paper-design/shaders-react';
+import { saveUTMParams } from '../../../utils/analytics';
 import HeroBg from '../assets/Rectangle 266.png';
-import { Title } from '../../../components/Title';
-import { QuestionsBlockItem } from '../../../components/FAQ/components/QuestionBlockItem';
 import { ReviewsGrid } from '../../../components/ReviewsGrid';
-import EmailIconBlue from '../assets/icons/email-blue.svg';
-import CursorIconBlue from '../assets/icons/cursor-blue.svg';
 import LogoGray from '../assets/logo-gray.svg';
-import { HERO, AI_FIRST_FEATURES, PRICE, CTA, CONTACTS, REVIEWS, COURSE_STATS, LIFE_PROGRAM_FEATURES, WHO_NEEDS_CODING, PROGRAM_MODULES, INSTRUCTORS, FAQ_ITEMS } from '../data';
+import { HERO, AI_FIRST_FEATURES, CTA, REVIEWS, WHO_NEEDS_CODING, PROGRAM_MODULES, INSTRUCTORS } from '../data';
 import { SuccessStoriesSection } from './SuccessStoriesSection';
-import LogoYandex from '../assets/logo-yandex.svg';
-import LogoSber from '../assets/logo-sber.svg';
-import LogoT from '../assets/logo-t.svg';
-import LogoAvito from '../assets/logo-avito.svg';
-import LogoTechstars from '../assets/logo-techstars.svg';
-import Logo500 from '../assets/logo-500.svg';
+import { RegistrationForm } from './RegistrationForm';
 // Tool logos
 import LogoMake from '../assets/logo-make.svg';
 import LogoCursor from '../assets/logo-cursor.svg';
@@ -29,15 +21,13 @@ import LogoN8n from '../assets/logo-n8n.svg';
 import LogoSupabase from '../assets/logo-supabase.svg';
 
 export const SferKumarSoloWebPage = () => {
-    const scrollToPrice = () => {
-        const priceSection = document.getElementById('price');
-        if (priceSection) {
-            priceSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    };
+    // Сохраняем UTM-параметры при загрузке страницы
+    useEffect(() => {
+        saveUTMParams();
+    }, []);
 
     return (
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full overflow-x-clip">
             {/* Custom CSS variables */}
             <style>{`
                 .sfer-kumar-solo-primary {
@@ -54,62 +44,21 @@ export const SferKumarSoloWebPage = () => {
                     className="absolute inset-0 w-full h-full object-cover"
                 />
 
-                <div className="relative z-10 flex flex-col w-full text-center items-center gap-6 xl:gap-10 px-4 sm:px-12 lg:px-16 xl:px-0 max-w-[1039px] text-white py-20">
-                    <h1 className="text-[44px] xs:text-5xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold leading-[1.1] tracking-[-0.04em] whitespace-pre-line md:whitespace-normal">
-                        {HERO.title}
-                    </h1>
-                    <p className="text-base xs:text-lg sm:text-xl lg:text-lg xl:text-xl font-medium opacity-90 max-w-[725px] leading-[1.3] whitespace-pre-line md:whitespace-normal">
-                        {HERO.subtitle}
-                    </p>
-                    <Button color="white" width="190px" onClick={scrollToPrice}>
-                        {HERO.ctaText}
-                    </Button>
-                </div>
-            </div>
+                <div className="relative z-10 flex flex-col lg:flex-row lg:justify-between lg:items-center w-full gap-8 lg:gap-12 px-4 sm:px-12 lg:px-16 xl:px-[calc((100vw-1248px)/2)] text-white py-20 lg:py-0">
+                    {/* Left side - Title and Subtitle */}
+                    <div className="flex flex-col gap-6 lg:gap-8 lg:max-w-[650px] xl:max-w-[700px]">
+                        <h1 className="text-[56px] xs:text-[64px] md:text-[72px] lg:text-[80px] xl:text-[96px] font-semibold leading-[1] tracking-[-0.04em] xl:tracking-[-3.2px] whitespace-pre-line">
+                            {HERO.title}
+                        </h1>
+                        <p className="text-lg xs:text-xl lg:text-2xl xl:text-[24px] font-medium leading-[1.3] lg:leading-[130%] tracking-[-0.6px] opacity-90 whitespace-pre-line">
+                            {HERO.subtitle}
+                        </p>
+                    </div>
 
-            {/* ========== PARTNER LOGOS (placeholder) ========== */}
-            <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto py-8 lg:py-12">
-                <p className="text-center text-gray-500 text-sm mb-6">
-                    Работаем с
-                </p>
-                <div className="flex flex-wrap lg:flex-nowrap justify-center items-center gap-6 lg:gap-[72px]">
-                    <img src={LogoYandex} alt="Yandex" className="w-[85px] h-[20px] lg:w-[141px] lg:h-[34px]" />
-                    <img src={LogoT} alt="T-Bank" className="w-[95px] h-[34px] lg:w-[158px] lg:h-[57px]" />
-                    <img src={Logo500} alt="500 Global" className="w-[68px] h-[45px] lg:w-[113px] lg:h-[75px]" />
-                    <img src={LogoAvito} alt="Avito" className="w-[94px] h-[27px] lg:w-[156px] lg:h-[45px]" />
-                    <img src={LogoSber} alt="Sber" className="w-[89px] h-[27px] lg:w-[149px] lg:h-[45px]" />
-                    <img src={LogoTechstars} alt="Techstars" className="w-[117px] h-[25px] lg:w-[195px] lg:h-[42px]" />
-                </div>
-            </div>
-
-            {/* ========== COURSE STATS ========== */}
-            <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto py-8 lg:py-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {COURSE_STATS.map((stat, index) => (
-                        <div
-                            key={index}
-                            className="bg-[#F7F7F5] p-8 flex flex-col justify-between min-h-[186px]"
-                        >
-                            <h3 className="text-2xl font-semibold text-black text-center leading-[30px]">
-                                {stat.value}
-                            </h3>
-                            <p className="text-[#858585] text-base leading-[1.3] tracking-[-0.48px] text-center">
-                                {stat.description}
-                            </p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* ========== AGI SECTION ========== */}
-            <div className="flex flex-col items-start lg:items-center px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto py-12 lg:py-16">
-                <div className="flex flex-col gap-5 items-start lg:items-center max-w-[768px]">
-                    <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-black text-left lg:text-center leading-[1.2] tracking-[-0.03em]">
-                        Осталось 4–5 лет до AGI:<span className="hidden lg:inline"><br /></span><span className="lg:whitespace-nowrap"> окно возможностей уменьшается</span>
-                    </h2>
-                    <p className="text-lg lg:text-xl text-[#858585] text-left lg:text-center leading-[30px]">
-                        AGI — Artificial General Intelligence — способность ИИ к рассуждению, адаптации, самообучению и творчеству
-                    </p>
+                    {/* Right side - Registration Form */}
+                    <div className="w-full lg:w-[360px] xl:w-[400px]">
+                        <RegistrationForm />
+                    </div>
                 </div>
             </div>
 
@@ -135,31 +84,6 @@ export const SferKumarSoloWebPage = () => {
                                 </p>
                             </div>
                         ))}
-                    </div>
-                </div>
-
-                {/* ========== LIFE PROGRAM FEATURES ========== */}
-                <div className="relative mt-20 xl:mt-37 py-12 lg:py-16 overflow-hidden">
-                    {/* MeshGradient background */}
-                    <MeshGradient
-                        className="absolute inset-0 w-full h-full"
-                        speed={0.18}
-                        colors={['#2152ba', '#0e0967', '#f075a6', '#005194']}
-                        distortion={0.8}
-                        swirl={0.1}
-                        grainMixer={0}
-                    />
-                    <div className="relative z-10 px-4 sm:px-8 lg:px-12">
-                        <h2 className="text-2xl md:text-3xl lg:text-[38px] font-semibold text-white text-center leading-[1.2] mb-8 lg:mb-12">
-                            Самые актуальные инструменты за счёт life-программы
-                        </h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                            {LIFE_PROGRAM_FEATURES.map((feature, index) => (
-                                <div key={index} className="bg-[#F7F7F5] p-8 flex items-center justify-center min-h-[118px]">
-                                    <p className="text-base text-black text-center leading-[1.3]">{feature}</p>
-                                </div>
-                            ))}
-                        </div>
                     </div>
                 </div>
 
@@ -194,6 +118,13 @@ export const SferKumarSoloWebPage = () => {
                         ))}
                     </div>
                 </div>
+
+            </div>
+
+            {/* ========== SUCCESS STORIES SECTION ========== */}
+            <SuccessStoriesSection />
+
+            <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto pb-16 md:pb-20 lg:pb-24 xl:pb-32">
 
                 {/* ========== PROGRAM MODULES ========== */}
                 <div id="programs" className="flex flex-col gap-8 lg:gap-16 mt-20 xl:mt-37 w-full">
@@ -372,9 +303,6 @@ export const SferKumarSoloWebPage = () => {
 
             </div>
 
-            {/* ========== SUCCESS STORIES SECTION ========== */}
-            <SuccessStoriesSection />
-
             <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto pb-16 md:pb-20 lg:pb-24 xl:pb-32">
 
                 {/* ========== REVIEWS SECTION ========== */}
@@ -392,67 +320,11 @@ export const SferKumarSoloWebPage = () => {
                     />
                 </div>
 
-                {/* ========== PRICING SECTION ========== */}
-                <div id="price" className="mt-20 xl:mt-37">
-                    <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-[48px] font-semibold text-black leading-[1.2] tracking-[-0.03em] mb-8 lg:mb-12">
-                        Сколько стоит?
-                    </h2>
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                        {PRICE.map((item, index) => (
-                            <div key={index} className="bg-[#F7F7F5] p-8 flex flex-col justify-between min-h-[500px]">
-                                {/* Header */}
-                                <div className="flex flex-col gap-4">
-                                    <span className="text-base text-black">{item.title}</span>
-                                    <span className="text-4xl lg:text-5xl font-semibold text-black">
-                                        {item.price}
-                                    </span>
-                                    <div className="flex flex-col gap-1">
-                                        <span className="text-xl font-semibold text-black">{item.forMonth}</span>
-                                        <span className="text-sm text-black">{item.installmentNote}</span>
-                                    </div>
-                                </div>
-
-                                {/* Features list */}
-                                <ul className="flex flex-col gap-3 my-6">
-                                    {item.list.map((feature, i) => (
-                                        <li key={i} className="flex items-start gap-2 text-sm text-black leading-[1.4]">
-                                            <span className="text-black mt-0.5">✓</span>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                {/* Button */}
-                                <Button color="primary" link={item.link} fullWidth>
-                                    {item.buttonText}
-                                </Button>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* ========== FAQ SECTION ========== */}
-                <div id="faq" className="mt-20 xl:mt-37 flex flex-col items-center">
-                    <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-[48px] font-semibold text-black leading-[1.2] tracking-[-0.03em] mb-8 lg:mb-12">
-                        FAQ
-                    </h2>
-                    <div className="flex flex-col w-full lg:w-[768px]">
-                        {FAQ_ITEMS.map((item, index) => (
-                            <QuestionsBlockItem
-                                key={index}
-                                question={item.question}
-                                answer={item.answer}
-                                isLast={index === FAQ_ITEMS.length - 1}
-                            />
-                        ))}
-                    </div>
-                </div>
-
             </div>
 
             {/* ========== CTA SECTION ========== */}
             <div className="px-4 sm:px-12 lg:px-16 xl:px-0 flex justify-center">
-                <div className="relative w-full max-w-[1277px] h-auto lg:h-[464px] py-12 lg:py-0 overflow-hidden flex items-center">
+                <div className="relative w-full max-w-[1277px] py-12 lg:py-16 overflow-hidden">
                     <MeshGradient
                         className="absolute inset-0 w-full h-full"
                         speed={0.18}
@@ -461,44 +333,19 @@ export const SferKumarSoloWebPage = () => {
                         swirl={0.1}
                         grainMixer={0}
                     />
-                    <div className="relative z-10 flex flex-col gap-8 lg:gap-12 max-w-[1035px] px-6 sm:px-10 lg:px-16">
-                        <div className="flex flex-col gap-6">
-                            <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold text-white leading-[1.2] tracking-[-0.03em]">
-                                {CTA.title}
+                    <div className="relative z-10 flex flex-col lg:flex-row gap-8 lg:gap-16 items-center justify-between px-6 sm:px-10 lg:px-16">
+                        {/* Left - Text */}
+                        <div className="flex flex-col gap-4 max-w-[600px]">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-semibold text-white leading-[1.2] tracking-[-0.03em]">
+                                Сделайте AI-инструменты частью своего стека и войдите в&nbsp;топ-1% рынка
                             </h2>
                             <p className="text-base lg:text-lg text-white leading-[1.5]">
                                 {CTA.subtitle}
                             </p>
                         </div>
-                        <Button color="white" width="220px" onClick={scrollToPrice}>
-                            {CTA.ctaText}
-                        </Button>
-                    </div>
-                </div>
-            </div>
-
-            {/* ========== CONTACTS SECTION ========== */}
-            <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto pb-16 md:pb-20 lg:pb-24 xl:pb-32">
-                <div id="contacts"
-                     className="flex flex-col gap-8 md:gap-6 lg:gap-10 xl:gap-20 mt-20 xl:mt-37 lg:items-center w-full">
-                    <Title title="Задать вопрос"/>
-                    <div
-                        className="flex flex-col md:flex-row gap-6 md:gap-0 md:justify-around md:gap-5 xl:gap-6 md:h-42 lg:h-50 xl:h-58 w-full">
-                        <div
-                            className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">
-                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={CursorIconBlue} alt="Телеграм"/>
-                            <div className="flex flex-col gap-2">
-                                <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Телеграм</h3>
-                                <a href="https://t.me/kgurbanov" target="_blank" rel="noopener noreferrer" className="text-sm xl:text-base text-gray-700 underline hover:text-primary-200 transition-colors">@kgurbanov</a>
-                            </div>
-                        </div>
-                        <div
-                            className="flex flex-col gap-11.5 md:gap-0 md:justify-between w-full px-6 py-5 md:p-8 xl:p-10 bg-[#F7F7F5]">
-                            <img className="w-10 md:w-8 xl:w-10 md:h-8 xl:h-10" src={EmailIconBlue} alt="Email"/>
-                            <div className="flex flex-col gap-2">
-                                <h3 className="text-xl lg:text-lg xl:text-xl font-semibold text-black">Почта</h3>
-                                <span className="text-sm xl:text-base text-gray-700">human@sfer.ai</span>
-                            </div>
+                        {/* Right - Form */}
+                        <div className="w-full lg:w-[360px] xl:w-[400px]">
+                            <RegistrationForm />
                         </div>
                     </div>
                 </div>

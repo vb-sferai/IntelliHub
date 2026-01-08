@@ -14,8 +14,10 @@ export const Header = () => {
     const isVibecodingRoute = location.pathname === ROUTES.vibecoding;
     const isAgentsRoute = location.pathname === ROUTES.agents;
     const isSferKumarSoloRoute = location.pathname === ROUTES.sferKumarSolo;
+    const isSferKumarSoloWebRoute = location.pathname === ROUTES.sferKumarSoloWeb;
     const isEduRoute = location.pathname === ROUTES.edu;
-    const isProductPage = isBaseRoute || isVibecodingRoute || isAgentsRoute || isSferKumarSoloRoute;
+    const isKumarSoloPage = isSferKumarSoloRoute || isSferKumarSoloWebRoute;
+    const isProductPage = isBaseRoute || isVibecodingRoute || isAgentsRoute || isKumarSoloPage;
     const isEduPage = isEduRoute;
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -111,11 +113,11 @@ export const Header = () => {
                     <img
                         src={LogoImg}
                         alt="Sfer AI"
-                        className={`${isSferKumarSoloRoute ? 'w-[100px] md:w-[168px]' : 'w-42 md:w-35 xl:w-[186px]'} transition-all duration-300 ${
+                        className={`${isKumarSoloPage ? 'w-[100px] md:w-[168px]' : 'w-42 md:w-35 xl:w-[186px]'} transition-all duration-300 ${
                             (isScrolled || isMenuOpen) ? 'filter brightness-0' : ''
                         }`}
                     />
-                    {isSferKumarSoloRoute && (
+                    {isKumarSoloPage && (
                         <span
                             className="mx-2 md:mx-4 text-base md:text-xl font-light select-none transition-all duration-300"
                             style={{ color: (isScrolled || isMenuOpen) ? '#000' : '#fff' }}
@@ -123,7 +125,7 @@ export const Header = () => {
                             ×
                         </span>
                     )}
-                    {isSferKumarSoloRoute && (
+                    {isKumarSoloPage && (
                         <img
                             src={KumarSoloLogo}
                             alt="Kumar&Solo"

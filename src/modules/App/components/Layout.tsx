@@ -26,6 +26,7 @@ export const Layout = () => {
     const isOrderSuccessPage = location.pathname === ROUTES.orderSuccess;
     const isPrivacyPolicyPage = location.pathname === ROUTES.privacyPolicy;
     const isSferKumarSoloPage = location.pathname === ROUTES.sferKumarSolo;
+    const isSferKumarSoloWebPage = location.pathname === ROUTES.sferKumarSoloWeb;
     const isNotFoundPage = !Object.values(ROUTES).slice(0, -1).some(route => {
         if (route.includes(':')) {
             const baseRoute = route.split(':')[0];
@@ -38,7 +39,7 @@ export const Layout = () => {
     const hideHeader = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isOrderSuccessPage || isPrivacyPolicyPage || isNotFoundPage;
 
     // Страницы без footer (OrderSuccessPage показывает footer)
-    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isPrivacyPolicyPage || isSferKumarSoloPage || isNotFoundPage;
+    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isPrivacyPolicyPage || isSferKumarSoloPage || isSferKumarSoloWebPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

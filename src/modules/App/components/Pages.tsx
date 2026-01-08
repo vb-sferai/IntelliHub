@@ -21,6 +21,7 @@ import {QuizPage} from "../../../pages/QuizPage";
 import {OrderSuccessPage} from "../../../pages/OrderSuccessPage";
 import {PrivacyPolicyPage} from "../../../pages/PrivacyPolicyPage";
 import {SferKumarSoloPage} from "../../../pages/SferKumarSoloPage";
+import {SferKumarSoloWebPage} from "../../../pages/SferKumarSoloWebPage";
 import {ROUTES} from "../../../constants/routes.ts";
 
 export const Pages = () => {
@@ -52,6 +53,7 @@ export const Pages = () => {
             <Route path={ROUTES.orderSuccess} element={<OrderSuccessPage />} />
             <Route path={ROUTES.privacyPolicy} element={<PrivacyPolicyPage />} />
             <Route path={ROUTES.sferKumarSolo} element={<SferKumarSoloPage />} />
+            <Route path={ROUTES.sferKumarSoloWeb} element={<SferKumarSoloWebPage />} />
             <Route path={ROUTES.notFound} element={<NotFoundPage />} />
         </Routes>
     );

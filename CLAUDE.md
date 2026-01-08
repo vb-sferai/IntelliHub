@@ -124,6 +124,8 @@ sfer.ai website/
 │       │   └── shared/
 │       ├── MainPage/          # Russian landing page
 │       ├── NotFoundPage/      # Creative 404 page (Cursor-style)
+│       ├── SferKumarSoloPage/ # Vibe Academy landing (Kumar + Kirill)
+│       ├── SferKumarSoloWebPage/ # Independent copy for web modifications
 │       ├── SupremeMainPage/   # English premium landing
 │       └── VibecodingPage/    # Vibecoding workshop
 ├── .gitignore
@@ -164,14 +166,26 @@ Routes are defined in [src/constants/routes.ts](src/constants/routes.ts):
 
 ```typescript
 export const ROUTES = {
-    root: '/',                           // MainPage (Russian landing)
-    supreme: '/supreme',                 // SupremeMainPage (English landing)
-    casestudies: '/casestudies',         // Case study showcase
-    base: '/baza',                       // AI Base workshop page
-    vibecoding: '/vibecoding',           // Vibecoding workshop page
-    agents: '/agents',                   // AI Agents workshop page
+    root: '/',                           // SupremeMainPage (English landing)
+    teams: '/teams',                     // MainPage (Russian team page)
+    programs: '/programs',               // CustomAutomationsPage
+    reviews: '/edu/reviews',             // ReviewsPage
+    cases: '/cases',                     // CaseStudiesPage
+    casestudiesLancet: '/cases/lancet',  // Case study: Lancet
+    casestudiesYandex: '/cases/yandex',  // Case study: Yandex
+    casestudiesGoBeyond: '/cases/gobeyond', // Case study: GoBeyond
+    casestudiesUAE: '/cases/uae',        // Case study: UAE
+    casestudiesNubes: '/cases/nubes',    // Case study: Nubes
+    base: '/edu/baza',                   // AI Base workshop page
+    vibecoding: '/edu/vibecoding',       // Vibecoding workshop page
+    edu: '/edu',                         // EduPage (education hub)
+    agents: '/edu/agents',               // AI Agents workshop page
+    sferKumarSolo: '/sfer-kumar-solo',   // Vibe Academy landing (Kumar + Kirill)
+    sferKumarSoloWeb: '/sfer-kumar-solo-web', // Independent copy for web version
     jobsPm: '/jobs/pm',                  // PM job listing
     jobsApply: '/jobs/:position/apply',  // Job application form
+    orderSuccess: '/order/success',      // Order success page
+    privacyPolicy: '/privacy-policy',    // Privacy policy page
     notFound: '*',                       // 404 page (Cursor-style)
 };
 ```
@@ -187,7 +201,7 @@ The Layout component ([src/modules/App/components/Layout.tsx](src/modules/App/co
 
 ### Pages
 
-The application has **10 pages** organized by purpose:
+The application has **11+ pages** organized by purpose:
 
 #### 1. MainPage (`/`)
 - **Purpose**: Original Russian landing page
@@ -325,6 +339,41 @@ The application has **10 pages** organized by purpose:
   - Tablet (768-1024px): Simplified layout
   - Mobile (<768px): Minimal editor-style view
 - **Animation**: Pulse effect on 404 number (framer-motion)
+
+#### 10. SferKumarSoloPage (`/sfer-kumar-solo`)
+- **Purpose**: Vibe Academy landing page (joint course by Kumar and Kirill)
+- **Chrome**: No Header, No Footer (self-contained page)
+- **Design**: Premium landing with MeshGradient backgrounds
+- **Sections**:
+  - Hero with gradient background
+  - Partner logos (Yandex, Sber, T-Bank, etc.)
+  - Course stats (2 months, 36 hours, etc.)
+  - AGI countdown section
+  - AI-first features
+  - Life program features
+  - "Who needs coding" audience cards
+  - Program modules (5 modules)
+  - Tools logos (Make, Cursor, ChatGPT, Claude, etc.)
+  - Instructors (Kumar, Kirill)
+  - Success stories (what students create)
+  - Reviews
+  - Pricing (3 tiers)
+  - FAQ accordion
+  - CTA section
+  - Contacts
+- **Data**: [src/pages/SferKumarSoloPage/data.ts](src/pages/SferKumarSoloPage/data.ts)
+- **Components**: SuccessStoriesSection (separate component)
+
+#### 11. SferKumarSoloWebPage (`/sfer-kumar-solo-web`)
+- **Purpose**: Independent copy of SferKumarSoloPage for web-specific modifications
+- **Chrome**: No Header, No Footer
+- **Independence**: Fully isolated from original — has its own:
+  - Button component (`components/Button/`)
+  - All icons and assets (`assets/`)
+  - Data file (`data.ts`)
+  - Components
+- **Use case**: Can be modified (blocks removed/edited) without affecting the original `/sfer-kumar-solo`
+- **Data**: [src/pages/SferKumarSoloWebPage/data.ts](src/pages/SferKumarSoloWebPage/data.ts)
 
 ### Key Dependencies
 

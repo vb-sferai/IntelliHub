@@ -38,7 +38,7 @@ export const Layout = () => {
     const hideHeader = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isOrderSuccessPage || isPrivacyPolicyPage || isNotFoundPage;
 
     // Страницы без footer (OrderSuccessPage показывает footer)
-    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isPrivacyPolicyPage || isNotFoundPage;
+    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isPrivacyPolicyPage || isSferKumarSoloPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

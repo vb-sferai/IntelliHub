@@ -20,11 +20,24 @@ export const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [buttonMargin, setButtonMargin] = useState('0px');
+    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
+        let lastScrollY = window.pageYOffset;
+
         const handleScroll = () => {
             const scrollTop = window.pageYOffset;
             setIsScrolled(scrollTop > 50);
+
+            // Определяем направление скролла
+            if (scrollTop > lastScrollY && scrollTop > 100) {
+                // Скролл вниз - скрываем хедер
+                setIsVisible(false);
+            } else {
+                // Скролл вверх - показываем хедер
+                setIsVisible(true);
+            }
+            lastScrollY = scrollTop;
         };
 
         const handleResize = () => {
@@ -88,7 +101,7 @@ export const Header = () => {
                     (isScrolled && !isMenuOpen)
                         ? 'bg-white text-gray-500 shadow-md'
                         : !(isScrolled || isMenuOpen) ? 'bg-transparent text-white' : 'bg-white'
-                }`}
+                } ${!isVisible && !isMenuOpen ? '-translate-y-full' : 'translate-y-0'}`}
             >
                 <Link
                     to="/"

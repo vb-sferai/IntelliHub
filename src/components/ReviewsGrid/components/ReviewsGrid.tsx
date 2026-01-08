@@ -12,6 +12,7 @@ type ReviewsGridProps = {
   initialRows?: number;
   accentColor?: string;
   showAllReviewsLink?: boolean;
+  className?: string;
 };
 
 export const ReviewsGrid = ({
@@ -20,6 +21,7 @@ export const ReviewsGrid = ({
   initialRows = 2,
   accentColor = '#005EE0',
   showAllReviewsLink = true,
+  className,
 }: ReviewsGridProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [collapsedHeight, setCollapsedHeight] = useState(600);
@@ -91,11 +93,13 @@ export const ReviewsGrid = ({
   const canExpand = reviews.length > columnsCount * initialRows;
 
   return (
-    <section id="reviews" className="mt-20 xl:mt-37">
+    <section id="reviews" className={className ?? "mt-20 xl:mt-37"}>
       {/* Заголовок секции */}
-      <h2 className="font-geist text-2xl md:text-3xl xl:text-4xl font-semibold mb-8 lg:mb-12">
-        {title}
-      </h2>
+      {title && (
+        <h2 className="font-geist text-2xl md:text-3xl xl:text-4xl font-semibold mb-8 lg:mb-12">
+          {title}
+        </h2>
+      )}
 
       {/* Контейнер с контролируемой высотой */}
       <div className="relative">

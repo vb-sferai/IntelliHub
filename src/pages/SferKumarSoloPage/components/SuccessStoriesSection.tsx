@@ -6,11 +6,12 @@ import Image2 from '../assets/ленд/2-image.png';
 import Image3 from '../assets/ленд/3-image.png';
 import Image4 from '../assets/ленд/4-image.png';
 import Image5 from '../assets/ленд/5-image.png';
+import ImageCase from '../assets/case.png';
 
 // Map card IDs to their images
 const CARD_IMAGES: Record<string, string[]> = {
     'content-factories': [Image1, Image2],
-    'sales-conversion': [], // No images
+    'sales-conversion': [ImageCase],
     'own-products': [Image3],
     'telegram-bots': [Image4, Image5],
 };
@@ -63,6 +64,20 @@ const SuccessStoryCard = ({ id, title, description, imageLayout }: SuccessStoryC
                             />
                         ) : (
                             <div className="w-[80%] bg-gray-300 rounded-sm" />
+                        )}
+                    </div>
+                );
+            case 'wide-image':
+                return (
+                    <div className="flex items-end justify-center h-full">
+                        {images[0] ? (
+                            <img
+                                src={images[0]}
+                                alt={title}
+                                className="w-full object-contain rounded-sm"
+                            />
+                        ) : (
+                            <div className="w-full h-[80%] bg-gray-300 rounded-sm" />
                         )}
                     </div>
                 );

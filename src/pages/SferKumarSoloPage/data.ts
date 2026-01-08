@@ -338,9 +338,9 @@ export const SUCCESS_STORIES = [
     },
     {
         id: 'sales-conversion',
-        title: 'Допишем сейчас',
-        description: 'рост конверсии продаж на 15%',
-        imageLayout: 'placeholder', // Empty/placeholder for now
+        title: 'AI-отдел контроля качества',
+        description: 'AI анализирует разговоры сейлзов по 50 параметрам, проставляет оценки и предлагает рекомендации по улучшению. Рост конверсии отдела продаж х1,5',
+        imageLayout: 'wide-image',
     },
     {
         id: 'own-products',

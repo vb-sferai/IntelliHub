@@ -41,6 +41,9 @@ export const useAmoCRMSubmit = () => {
         utm_campaign: utmParams?.utm_campaign || '',
         utm_content: utmParams?.utm_content || '',
         utm_term: utmParams?.utm_term || '',
+        // AmoCRM: воронка "AI VIBE ACADEMY 1.0" → этап "Новый лид"
+        pipeline_id: 10453234,
+        status_id: 82557350,
       };
       console.log('📤 Payload to send:', payload);
 

@@ -131,7 +131,9 @@ export const SferKumarSoloWebPage = () => {
                     {/* Header */}
                     <div className="flex flex-col gap-8 items-center max-w-[900px] mx-auto">
                         <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black text-left sm:text-center w-full">
-                            Никакого FOMO: по полочкам разложим всё, что происходит в мире нейросетей
+                            Никакого FOMO: по полочкам<br />
+                            разложим всё, что происходит<br />
+                            в мире нейросетей
                         </h2>
                         <p className="text-base lg:text-lg xl:text-xl font-normal leading-[1.5] text-[#858585] text-left sm:text-center w-full">
                             Подробный обзор инструментов и решение кейсов прямо в Zoom
@@ -337,7 +339,9 @@ export const SferKumarSoloWebPage = () => {
                         {/* Left - Text */}
                         <div className="flex flex-col gap-4 max-w-[600px]">
                             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-semibold text-white leading-[1.2] tracking-[-0.03em]">
-                                Сделайте AI-инструменты частью своего стека и войдите в&nbsp;топ-1% рынка
+                                <span className="whitespace-nowrap">Сделайте AI-инструменты</span><br />
+                                частью своего стека и<br />
+                                войдите в топ-1% рынка
                             </h2>
                             <p className="text-base lg:text-lg text-white leading-[1.5]">
                                 {CTA.subtitle}

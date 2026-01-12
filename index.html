@@ -16,21 +16,32 @@
 
     <!-- Скрипт автоматического редиректа по языку -->
     <script>
-      // Проверяем язык браузера только если мы на основном домене sfer.ai
+      // Автоопределение языка ТОЛЬКО на sfer.ai (не на en.sfer.ai!)
       if (window.location.hostname === 'sfer.ai') {
-        // Получаем языки браузера
+        // Проверяем язык браузера
         const userLangs = navigator.languages || [navigator.language || navigator.userLanguage];
+        const isRussianLang = userLangs.some(lang => lang.toLowerCase().startsWith('ru'));
 
-        // Проверяем, есть ли русский язык в настройках браузера
-        const isRussian = userLangs.some(lang => lang.toLowerCase().startsWith('ru'));
+        // Проверяем временную зону (Россия и СНГ) — для Firefox и других браузеров
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        const isRussianTimezone = timezone.startsWith('Europe/Moscow') ||
+                                  timezone.startsWith('Europe/Kaliningrad') ||
+                                  timezone.startsWith('Europe/Samara') ||
+                                  timezone.startsWith('Europe/Volgograd') ||
+                                  timezone.startsWith('Europe/Minsk') ||
+                                  timezone.startsWith('Asia/Yekaterinburg') ||
+                                  timezone.startsWith('Asia/Omsk') ||
+                                  timezone.startsWith('Asia/Novosibirsk') ||
+                                  timezone.startsWith('Asia/Krasnoyarsk') ||
+                                  timezone.startsWith('Asia/Irkutsk') ||
+                                  timezone.startsWith('Asia/Vladivostok') ||
+                                  timezone.startsWith('Asia/Almaty') ||
+                                  timezone.includes('Russia');
 
-        // Если найден русский язык, перенаправляем на ru.sfer.ai
-        // с сохранением полного пути, query-параметров и хеша
-        if (isRussian) {
-          const pathname = window.location.pathname;
-          const search = window.location.search;
-          const hash = window.location.hash;
-          window.location.href = 'https://ru.sfer.ai' + pathname + search + hash;
+        // Редирект если язык русский ИЛИ временная зона русская
+        if (isRussianLang || isRussianTimezone) {
+          const currentPath = window.location.pathname + window.location.search + window.location.hash;
+          window.location.href = 'https://ru.sfer.ai' + currentPath;
         }
       }
     </script>

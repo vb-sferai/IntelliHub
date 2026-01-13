@@ -462,8 +462,9 @@ export const pmApplicationSchema = z.object({
 
 **Important**: This project uses **separate Git branches** for language versions instead of a single codebase with i18n library.
 
-#### Primary Domains and Branches
-- **sfer.ai** (English) → Deployed from `supreme_main_eng` branch
+#### Domains and Branches
+- **sfer.ai** (English + auto-redirect) → Deployed from `supreme_main_eng` branch
+- **en.sfer.ai** (English, explicit) → Same deployment as sfer.ai (alias)
 - **ru.sfer.ai** (Russian) → Deployed from `supreme_main_ru_products` branch
 
 ### Implementation
@@ -483,31 +484,49 @@ export const pmApplicationSchema = z.object({
 - Each branch has its own 404 page in respective language
 - Shared technical architecture, different content
 
-#### 2. Automatic Language Detection (Optional, [index.html](index.html))
+#### 2. Automatic Language Detection ([index.html](index.html))
 
-For user convenience, optional redirect script on English domain:
+The redirect script on sfer.ai uses **two detection methods** for maximum coverage:
+1. **Browser language** (`navigator.languages`) — works for Chrome, Safari, Edge
+2. **Timezone** (`Intl.DateTimeFormat().resolvedOptions().timeZone`) — works for Firefox and users with misconfigured browser language
 
 ```javascript
 <script>
-  // Redirect Russian users on main page to ru.sfer.ai
+  // Auto-redirect ONLY on sfer.ai (not on en.sfer.ai!)
   if (window.location.hostname === 'sfer.ai') {
-    const userLangs = navigator.languages || [navigator.language];
-    const isRussian = userLangs.some(lang => lang.toLowerCase().startsWith('ru'));
-    const pathname = window.location.pathname;
-    const isMainPage = pathname === '/' || pathname === '';
+    const userLangs = navigator.languages || [navigator.language || navigator.userLanguage];
+    const isRussianLang = userLangs.some(lang => lang.toLowerCase().startsWith('ru'));
 
-    if (isRussian && isMainPage) {
-      window.location.href = 'https://ru.sfer.ai' + pathname + search + hash;
+    // Check timezone (Russia and CIS countries)
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    const isRussianTimezone = timezone.startsWith('Europe/Moscow') ||
+                              timezone.startsWith('Europe/Minsk') ||
+                              timezone.startsWith('Asia/Yekaterinburg') ||
+                              timezone.includes('Russia');
+
+    // Redirect if Russian language OR Russian timezone
+    if (isRussianLang || isRussianTimezone) {
+      const currentPath = window.location.pathname + window.location.search + window.location.hash;
+      window.location.href = 'https://ru.sfer.ai' + currentPath;
     }
   }
 </script>
 ```
 
-**Rules**:
-- Only redirects on sfer.ai (not ru.sfer.ai)
-- Only redirects Russian-language users (browser language detection)
-- Only redirects on main page (`/`)
-- Preserves path, query params, and hash
+**Routing Logic**:
+| Domain | Behavior |
+|--------|----------|
+| `sfer.ai` | Auto-redirect: RU browser/timezone → ru.sfer.ai, otherwise stays |
+| `en.sfer.ai` | Always English (no redirect, explicit choice) |
+| `ru.sfer.ai` | Always Russian (no redirect) |
+
+**Covered Timezones** (Russia + CIS):
+- Russia: Moscow, Kaliningrad, Samara, Volgograd, Yekaterinburg, Omsk, Novosibirsk, Krasnoyarsk, Irkutsk, Vladivostok
+- Belarus: Minsk
+- Kazakhstan: Almaty
+
+**Why Timezone Detection?**
+Firefox doesn't automatically include system language in `navigator.languages`. Even with Russian Firefox UI, `navigator.languages` may return `["en-US", "en"]`. Timezone detection solves this.
 
 #### 3. Legacy Language Detection in Components
 

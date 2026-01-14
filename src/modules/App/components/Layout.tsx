@@ -19,6 +19,7 @@ export const Layout = () => {
     const isCaseStudyUAEPage = location.pathname === ROUTES.casestudiesUAE;
     const isCaseStudyNubesPage = location.pathname === ROUTES.casestudiesNubes;
     const isProgramsPage = location.pathname === ROUTES.programs;
+    const isAutomationsPage = location.pathname === ROUTES.automations;
     const isPmJobPage = location.pathname === ROUTES.jobsPm;
     const isJobApplicationPage = location.pathname.includes('/jobs/') && location.pathname.includes('/apply');
     const isNewYearRedirectPage = location.pathname === ROUTES.newyear2026;
@@ -36,10 +37,10 @@ export const Layout = () => {
     });
 
     // Страницы без header (включая OrderSuccessPage)
-    const hideHeader = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isOrderSuccessPage || isPrivacyPolicyPage || isNotFoundPage;
+    const hideHeader = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isAutomationsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isOrderSuccessPage || isPrivacyPolicyPage || isNotFoundPage;
 
     // Страницы без footer (OrderSuccessPage показывает footer)
-    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isPrivacyPolicyPage || isSferKumarSoloPage || isSferKumarSoloWebPage || isNotFoundPage;
+    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isAutomationsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isPrivacyPolicyPage || isSferKumarSoloPage || isSferKumarSoloWebPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

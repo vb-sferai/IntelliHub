@@ -164,14 +164,9 @@ Routes are defined in [src/constants/routes.ts](src/constants/routes.ts):
 
 ```typescript
 export const ROUTES = {
-    root: '/',                           // MainPage (Russian landing)
-    supreme: '/supreme',                 // SupremeMainPage (English landing)
-    casestudies: '/casestudies',         // Case study showcase
-    base: '/baza',                       // AI Base workshop page
-    vibecoding: '/vibecoding',           // Vibecoding workshop page
-    agents: '/agents',                   // AI Agents workshop page
-    jobsPm: '/jobs/pm',                  // PM job listing
-    jobsApply: '/jobs/:position/apply',  // Job application form
+    root: '/',                           // SupremeMainPage (English landing)
+    teams: '/teams',                     // MainPage (Team training)
+    automations: '/automations',         // AutomationsPage (AI Automations B2B)
     notFound: '*',                       // 404 page (Cursor-style)
 };
 ```
@@ -182,36 +177,21 @@ Route implementation is in [src/modules/App/components/Pages.tsx](src/modules/Ap
 
 The Layout component ([src/modules/App/components/Layout.tsx](src/modules/App/components/Layout.tsx)) conditionally shows/hides Header and Footer based on the current route:
 
-**Shows chrome**: MainPage, product pages (Base, Vibecoding, Agents)
-**Hides chrome**: SupremeMainPage, CaseStudyLancetPage, JobPages, NotFoundPage
+**Hides chrome**: SupremeMainPage (`/`), AutomationsPage (`/automations`), NotFoundPage
 
 ### Pages
 
-The application has **10 pages** organized by purpose:
+The application has **4 main pages**:
 
-#### 1. MainPage (`/`)
-- **Purpose**: Original Russian landing page
-- **Audience**: Russian-speaking visitors on ru.sfer.ai
-- **Chrome**: Shows Header and Footer
-- **Sections**:
-  - Hero with statistics
-  - Products carousel (7 AI products)
-  - Cases showcase
-  - Events carousel (workshops, webinars)
-  - Team section
-  - FAQ
-- **Data**: [src/pages/MainPage/data.ts](src/pages/MainPage/data.ts)
-- **Components**: ProductsCarouselItem, CasesCarouselItem, EventsCarouselItem, QuestionsBlock
-
-#### 2. SupremeMainPage (`/supreme`)
-- **Purpose**: Premium English landing page
+#### 1. SupremeMainPage (`/`)
+- **Purpose**: Premium English landing page (main homepage)
 - **Audience**: English-speaking visitors, investors, partners
 - **Chrome**: No Header/Footer (custom SupremeHeader)
 - **Design**: High-end design with MeshGradient and DitheringBackground
 - **Sections**:
   - Hero (full-screen with mesh gradient)
   - Who We Are (company mission)
-  - What We Do (services)
+  - What We Do (services with links to /teams and /automations)
   - What Sets Us Apart (competitive advantages)
   - Philosophy (AI-first approach)
   - Case Studies (client results)
@@ -220,86 +200,31 @@ The application has **10 pages** organized by purpose:
 - **Navigation**: Custom sticky header with smooth scroll
 - **Data**: [src/pages/SupremeMainPage/data.ts](src/pages/SupremeMainPage/data.ts)
 
-#### 3. CaseStudyLancetPage (`/casestudies`)
-- **Purpose**: Detailed case study presentation
-- **Client**: Wealth Management Company
-- **Chrome**: No Header/Footer
-- **Content**: Problem, solution, results, metrics
-- **Design**: Full-screen presentation style
-
-#### 4. BasePage (`/baza`)
-- **Purpose**: AI Base 3-day workshop landing page
-- **Workshop**: November 25-27 (Mon-Wed), 19:00-21:00
-- **Pricing**:
-  - Live participation: 24,990 ₽ (8,330 ₽/month × 3)
-  - Recording access: 19,990 ₽ (6,663 ₽/month × 3)
-- **Chrome**: Shows Header (with product-specific navigation)
+#### 2. MainPage (`/teams`)
+- **Purpose**: Team training landing page
+- **Chrome**: Shows Header and Footer
 - **Sections**:
-  - Hero with mesh gradient
-  - Content carousel (3 workshop modules)
-  - Audience carousel (3 target groups)
-  - Reviews carousel (14 testimonials)
-  - Price carousel (2 tiers: Live, Recording)
-  - FAQ accordion
-  - Contact section with instructor bio
-- **Payment**: GetCourse integration
-- **Data**: [src/pages/BasePage/data.ts](src/pages/BasePage/data.ts)
-- **MeshGradient**: Custom configuration (preserve exact values)
+  - Hero with statistics
+  - Products carousel (AI products)
+  - Cases showcase
+  - Events carousel (workshops, webinars)
+  - Team section
+  - FAQ
+- **Data**: [src/pages/MainPage/data.ts](src/pages/MainPage/data.ts)
 
-#### 5. VibecodingPage (`/vibecoding`)
-- **Purpose**: Vibecoding workshop landing page
-- **Structure**: Similar to BasePage
-- **Chrome**: Shows Header
-- **Sections**: Hero, Content, Audience, Reviews, Price, FAQ, Contact
-- **Data**: [src/pages/VibecodingPage/data.ts](src/pages/VibecodingPage/data.ts)
-
-#### 6. AgentsPage (`/agents`)
-- **Purpose**: AI Agents workshop landing page
-- **Structure**: Similar to BasePage and VibecodingPage
-- **Chrome**: Shows Header
-- **Sections**: Hero, Content, Audience, Reviews, Price, FAQ, Contact
-- **Data**: [src/pages/AgentsPage/data.ts](src/pages/AgentsPage/data.ts)
-
-#### 7. PmJobPage (`/jobs/pm`)
-- **Purpose**: Product Manager / Business Assistant job listing
-- **Chrome**: No Header/Footer
+#### 3. AutomationsPage (`/automations`)
+- **Purpose**: B2B AI Automations services page
+- **Chrome**: No Header/Footer (custom AutomationsHeader)
+- **Design**: Light theme (bg-[#f9f7f4]), blue accents (#0A5271)
 - **Sections**:
-  - Personal greeting from Kirill Gurbanov
-  - Company overview (SFER.AI mission and values)
-  - Role responsibilities (4 key areas)
-  - Requirements (must-have and nice-to-have)
-  - Working conditions (remote, part-time, growth potential)
-  - Application CTA (links to ApplicationPage)
-- **Design**: Clean, professional layout with mesh gradient hero
+  - HeroSection (AI Automations headline)
+  - ServicesSection (service offerings)
+  - RoadmapSection (implementation process)
+  - CasesSection (client results)
+  - CTASection (call-to-action)
+- **Components**: AutomationsHeader, HeroSection, ServicesSection, RoadmapSection, CasesSection, CTASection
 
-#### 8. ApplicationPage (`/jobs/:position/apply`)
-- **Purpose**: Job application form with Google Sheets integration
-- **Chrome**: No Header/Footer
-- **Form Fields** (11 total):
-  1. Full Name (required, min 2 chars)
-  2. Telegram (required, validated format)
-  3. Location (required, city + country)
-  4. Experience (required, min 50 chars)
-  5. English Level (required, 1-10 scale)
-  6. AI Usage (required, min 30 chars)
-  7. Success Project (required, min 50 chars)
-  8. Failure Project (required, min 50 chars)
-  9. Motivation (required, min 30 chars)
-  10. Expected Compensation (required)
-  11. Additional Info (optional)
-- **Validation**: Zod schema with real-time validation
-- **Submission**: Google Apps Script webhook (no-cors mode)
-- **Features**:
-  - Progress bar (completion percentage)
-  - Toast notifications (react-hot-toast)
-  - Loading states
-  - Success screen with redirect
-  - Error handling
-- **Components**: JobTextInput, JobTextArea, JobRadioGroup (reusable)
-- **Hook**: useJobApplicationSubmit (submission logic)
-- **Documentation**: [docs/GOOGLE_APPS_SCRIPT_SETUP.md](docs/GOOGLE_APPS_SCRIPT_SETUP.md)
-
-#### 9. NotFoundPage (`*`)
+#### 4. NotFoundPage (`*`)
 - **Purpose**: Creative 404 error page styled as Cursor IDE
 - **Chrome**: No Header/Footer
 - **Design**: Full Cursor/VS Code interface simulation
@@ -310,13 +235,6 @@ The application has **10 pages** organized by purpose:
   - Status bar with git branch, language, position
   - Chat panel (AI assistant UI)
   - VS Code Dark+ theme colors
-- **Branch-Specific Implementation**:
-  - **RU Branch** (`supreme_main_ru_products`): Russian language version for ru.sfer.ai
-    - Error message: "Упс, похоже эта страница ещё не вайбкожена..."
-    - Button: "На главную"
-  - **EN Branch** (`supreme_main_eng`): English language version for sfer.ai
-    - Error message: "Oops, looks like this page is not vibecoded yet..."
-    - Button: "Go to Homepage"
 - **Language Detection** (legacy, can be simplified per branch):
   - Current implementation checks hostname (ru.sfer.ai) or ?lang=ru parameter
   - Can be simplified to hardcoded language per branch since deployments are separate

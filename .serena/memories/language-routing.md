@@ -55,8 +55,18 @@ Both branches have hreflang tags in `index.html`:
 <link rel="alternate" hreflang="x-default" href="https://sfer.ai/" />
 ```
 
+## Current Routes (supreme_main_eng branch)
+
+| Route | Page | Purpose |
+|-------|------|---------|
+| `/` | SupremeMainPage | English landing page |
+| `/teams` | MainPage | Team training page |
+| `/automations` | AutomationsPage | B2B AI Automations services |
+| `*` | NotFoundPage | 404 page (Cursor IDE style) |
+
 ## Important Notes
 
 - `en.sfer.ai` = alias to same server as `sfer.ai`, but no redirect (hostname check)
 - English-speaking users in CIS will be redirected to Russian; they can use `en.sfer.ai`
 - SSL certificates must be configured separately for each domain on respective servers
+- `/automations` shows the same AutomationsPage on all domains (no language switching)

@@ -2,6 +2,7 @@ export const ROUTES = {
     root: '/',
     teams: '/teams',
     programs: '/programs',
+    automations: '/automations',
     reviews: '/edu/reviews',
     cases: '/cases',
     casestudiesLancet: '/cases/lancet',

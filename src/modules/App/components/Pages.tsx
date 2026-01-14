@@ -11,8 +11,8 @@ export const Pages = () => {
         <Routes>
             <Route path={ROUTES.root} element={<SupremeMainPage />} />
             <Route path={ROUTES.teams} element={<MainPage />} />
-            <Route path={ROUTES.customAutomations} element={<CustomAutomationsPage />} />
-            <Route path={ROUTES.automations} element={<AutomationsPage />} />
+            <Route path={ROUTES.customAutomations} element={<AutomationsPage />} />
+            <Route path={ROUTES.automations} element={<Navigate to={ROUTES.customAutomations} replace />} />
             <Route path={ROUTES.notFound} element={<NotFoundPage />} />
         </Routes>
     );

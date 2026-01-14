@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Data in Files</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .checkbox-checked {
+            background: #8b5cf6;
+            border-color: #8b5cf6;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-8">
+    <div class="max-w-5xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-semibold text-gray-800 mb-2">Search Data in Files</h1>
+            <p class="text-gray-500">Find the documents you need with your query</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="flex gap-4 mb-8">
+            <div class="flex-1 bg-white rounded-lg border border-gray-200 px-4 py-3 flex items-center">
+                <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" placeholder="" class="flex-1 outline-none text-gray-700">
+            </div>
+            <button class="bg-gray-500 hover:bg-gray-600 text-white font-medium px-6 py-3 rounded-lg transition-colors">
+                FIND FILES
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex gap-6">
+            <!-- Sidebar -->
+            <div class="w-64 flex-shrink-0">
+                <!-- Search Filters -->
+                <div class="bg-white rounded-xl p-5 mb-4">
+                    <h3 class="font-semibold text-gray-800 mb-4">Search Filters</h3>
+
+                    <div class="mb-4">
+                        <p class="text-sm text-gray-600 mb-3">File Type</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <div class="w-6 h-6 rounded-full checkbox-checked flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">PDF</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <div class="w-6 h-6 rounded-full checkbox-checked flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">DOC</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <div class="w-6 h-6 rounded-full checkbox-checked flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">XLSX</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-600 mb-2">Date</p>
+                        <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-2 border border-gray-200">
+                            <span class="text-gray-700">Last month</span>
+                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search History -->
+                <div class="bg-white rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-4">
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <h3 class="font-semibold text-gray-800">Search History</h3>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-500">
+                        <p class="blur-[2px]">Tax: Commercial...</p>
+                        <p class="blur-[2px]">VAT data: 31 Dec...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="flex-1 space-y-4">
+                <!-- Result 1 -->
+                <div class="bg-white rounded-xl p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-medium text-gray-800 blur-[3px]">Payment data for April & Corrections: ParentHRReport</h4>
+                        <span class="text-sm text-gray-500">31.0.2021</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-3 blur-[2px]">reports.documents.archive.2021</p>
+                    <p class="text-sm text-gray-500 mb-4 blur-[2px]">Summary of quarterly payment corrections and adjustments for the reporting period...</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <span class="text-sm text-gray-600">PDF</span>
+                        </div>
+                        <a href="#" class="text-sm text-gray-600 hover:text-gray-800 flex items-center gap-1">
+                            Open
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Result 2 -->
+                <div class="bg-white rounded-xl p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-medium text-gray-800 blur-[3px]">Permits & Obligations for meetTAR drivers</h4>
+                        <span class="text-sm text-gray-500">31.0.2021</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-3 blur-[2px]">legal.compliance.transport</p>
+                    <p class="text-sm text-gray-500 mb-4 blur-[2px]">Document containing updated regulations and permit requirements for transport operations...</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <span class="text-sm text-gray-600">DOC</span>
+                        </div>
+                        <a href="#" class="text-sm text-gray-600 hover:text-gray-800 flex items-center gap-1">
+                            Open
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Result 3 -->
+                <div class="bg-white rounded-xl p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-medium text-gray-800 blur-[3px]">Tariffs overview: sales representatives</h4>
+                        <span class="text-sm text-gray-500">31.0.2021</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-3 blur-[2px]">sales.pricing.internal</p>
+                    <p class="text-sm text-gray-500 mb-4 blur-[2px]">Comprehensive breakdown of commission structures and pricing guidelines for sales team...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

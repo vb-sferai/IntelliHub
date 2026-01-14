@@ -15,7 +15,7 @@ const SERVICES = [
     title: 'Custom AI automations',
     description: 'End-to-end AI solutions tailored to your business needs.',
     buttonText: 'CUSTOM AI AUTOMATIONS',
-    buttonHref: '/custom-automations',
+    buttonHref: '/automations',
   },
 ];
 

@@ -6,7 +6,7 @@ import {ROUTES} from "../../../constants/routes.ts";
 
 export const Layout = () => {
     const location = useLocation();
-    const isSupremePage = location.pathname === ROUTES.root || location.pathname === ROUTES.customAutomations;
+    const isSupremePage = location.pathname === ROUTES.root;
     const isAutomationsPage = location.pathname === ROUTES.automations;
 
     // Check if current page is 404 (not found in known routes)

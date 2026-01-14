@@ -1,8 +1,7 @@
-import {Navigate, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {MainPage} from "../../../pages/MainPage";
 import {SupremeMainPage} from "../../../pages/SupremeMainPage";
-import {CustomAutomationsPage} from "../../../pages/CustomAutomationsPage";
-import {AutomationsPage} from "../../../pages/AutomationsPage";
+import {AutomationsRouter} from "../../../pages/AutomationsPage";
 import {NotFoundPage} from "../../../pages/NotFoundPage";
 import {ROUTES} from "../../../constants/routes.ts";
 
@@ -11,8 +10,7 @@ export const Pages = () => {
         <Routes>
             <Route path={ROUTES.root} element={<SupremeMainPage />} />
             <Route path={ROUTES.teams} element={<MainPage />} />
-            <Route path={ROUTES.customAutomations} element={<AutomationsPage />} />
-            <Route path={ROUTES.automations} element={<Navigate to={ROUTES.customAutomations} replace />} />
+            <Route path={ROUTES.automations} element={<AutomationsRouter />} />
             <Route path={ROUTES.notFound} element={<NotFoundPage />} />
         </Routes>
     );

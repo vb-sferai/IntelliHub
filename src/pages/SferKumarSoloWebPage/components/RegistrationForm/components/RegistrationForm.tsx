@@ -12,10 +12,10 @@ export const RegistrationForm = () => {
   });
   const { submit, isLoading, isSuccess, error, reset } = useAmoCRMSubmit();
 
-  // Редирект в Telegram бота после успешной отправки формы
+  // Открываем Telegram бота в новой вкладке после успешной отправки формы
   useEffect(() => {
     if (isSuccess) {
-      window.location.href = TELEGRAM_BOT_URL;
+      window.open(TELEGRAM_BOT_URL, '_blank');
     }
   }, [isSuccess]);
 

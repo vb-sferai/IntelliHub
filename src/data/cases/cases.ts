@@ -1,5 +1,4 @@
 import LancetLogo from '../../assets/imgs/lancet-logo.svg';
-import YandexLogo from '../../assets/imgs/yandex-logo.svg';
 import NubesLogo from '../../assets/imgs/nubes-logo.svg';
 import type { CaseStudy } from './types';
 
@@ -41,64 +40,6 @@ export const CASES: CaseStudy[] = [
     ],
     stack: 'ChatGPT, Claude, Gamma, Google Docs, Notion, Miro',
     link: '/cases/lancet',
-  },
-  {
-    id: 'yandex-webinar',
-    client: 'Яндекс',
-    logoUrl: YandexLogo,
-    request:
-      'Команда маркетинга Яндекс Алиса обратилась к нам с запросом на популяризацию нейросети через массовое обучение. Алиса недавно получила серьезное обновление, и нужно было рассказать, что изменилось, и как это работает.',
-    results: [
-      {
-        title: '11 000',
-        text: 'участников онлайн на пике',
-      },
-      {
-        title: '12 500',
-        text: 'уникальных просмотров за время трансляции',
-      },
-      {
-        title: '1,5 часа',
-        text: 'непрерывного контента',
-      },
-      {
-        title: '3',
-        text: 'станции Алисы разыграны среди участников',
-      },
-      {
-        title: '1000+',
-        text: 'просмотров записи после вебинара',
-      },
-    ],
-    stack: 'Яндекс Алиса AI',
-    link: '/cases/yandex',
-  },
-  {
-    id: 'yandex-gobeyond',
-    client: 'Яндекс',
-    logoUrl: YandexLogo,
-    request:
-      'Офлайн-интенсив для команды маркетинга Яндекс.Алиса по эффективному использованию AI-инструментов. Кастомная программа для создателей одного из лучших AI-продуктов страны.',
-    results: [
-      {
-        title: '20+',
-        text: 'маркетологов прошли обучение',
-      },
-      {
-        title: '5+',
-        text: 'AI-инструментов освоено на практике',
-      },
-      {
-        title: '5',
-        text: 'рабочих процессов оптимизировано уже во время обучения',
-      },
-      {
-        title: '100%',
-        text: 'участников применили полученные знания в первую же неделю',
-      },
-    ],
-    stack: 'Яндекс Алиса AI',
-    link: '/cases/gobeyond',
   },
   {
     id: 'uae-wealth',

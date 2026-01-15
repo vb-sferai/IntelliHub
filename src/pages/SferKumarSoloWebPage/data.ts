@@ -1,5 +1,4 @@
 // Аватары для отзывов
-import ReviewLiyaImg from './assets/reviews/liya_shvarts.jpg';
 import ReviewAlexImg from './assets/ленд/alexhohlov-photo.png';
 import ReviewVeronicaImg from './assets/ленд/veronica-photo.png';
 
@@ -86,6 +85,15 @@ export const INSTRUCTORS = [
 // Секция "Мне нужно уметь программировать? (нет)"
 export const WHO_NEEDS_CODING = [
     {
+        iconUrl: MoneyIcon,
+        title: 'Предприниматели\nи основатели бизнеса',
+        list: [
+            'Хотите перейти в AI-продукт',
+            'Используете ИИ поверхностно и фрагментарно',
+            'AI-проекты упираются в барьеры, не доводятся до релиза',
+        ],
+    },
+    {
         iconUrl: DataEnrichmentIcon,
         title: 'Маркетологи',
         list: [
@@ -101,15 +109,6 @@ export const WHO_NEEDS_CODING = [
             'Высокий CAC, нет бюджета',
             'Долго и тяжело тестировать креативы и гипотезы',
             'Можете написать пост с GPT, но это не системно',
-        ],
-    },
-    {
-        iconUrl: MoneyIcon,
-        title: 'Предприниматели\nи основатели бизнеса',
-        list: [
-            'Хотите перейти в AI-продукт',
-            'Используете ИИ поверхностно и фрагментарно',
-            'AI-проекты упираются в барьеры, не доводятся до релиза',
         ],
     },
 ];
@@ -305,15 +304,6 @@ export const REVIEWS = [
         role: '',
         rating: 5,
         avatarUrl: ReviewAlexImg,
-    },
-    {
-        id: 'liya-shvarts-1',
-        title: 'Восторг',
-        text: 'Шла без особых ожиданий, а вышла в полном восторге, вдохновении и горящими глазами)). Кирилл легко и понятно передаёт материал, всё показывает, структурно, отвечает на вопросы. Чётко и по делу, доброжелательно и с юмором — как я люблю! Я получила не только знания, но и конкретные настройки, шаблоны, поддержку! Кажется, это как благословение в новую жизнь и мягкий конструктивный пинок))',
-        author: 'liya_shvarts',
-        role: '',
-        rating: 5,
-        avatarUrl: ReviewLiyaImg,
     },
     {
         id: 'veronika-efremova-1',

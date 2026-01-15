@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAmoCRMSubmit, type FormData } from '../../../hooks/useAmoCRMSubmit';
+
+// URL Telegram бота для редиректа после успешной отправки
+const TELEGRAM_BOT_URL = 'https://t.me/Kumar_and_Solo_bot?start=c1767615890363-ds';
 
 export const RegistrationForm = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -8,6 +11,13 @@ export const RegistrationForm = () => {
     telegram: '',
   });
   const { submit, isLoading, isSuccess, error, reset } = useAmoCRMSubmit();
+
+  // Редирект в Telegram бота после успешной отправки формы
+  useEffect(() => {
+    if (isSuccess) {
+      window.location.href = TELEGRAM_BOT_URL;
+    }
+  }, [isSuccess]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

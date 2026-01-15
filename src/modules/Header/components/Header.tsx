@@ -145,7 +145,13 @@ export const Header = () => {
                         }}
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
-                        {isProductPage ? (
+                        {isSferKumarSoloWebRoute ? (
+                            <>
+                                <span onClick={() => scrollToSection('programs')} className="cursor-pointer transition-colors duration-300">Программа</span>
+                                <span onClick={() => scrollToSection('speaker')} className="cursor-pointer transition-colors duration-300">Ведущие</span>
+                                <span onClick={() => scrollToSection('reviews')} className="cursor-pointer transition-colors duration-300">Отзывы</span>
+                            </>
+                        ) : isProductPage ? (
                             <>
                                 <span onClick={() => scrollToSection('programs')} className="cursor-pointer transition-colors duration-300">Программа</span>
                                 <span onClick={() => scrollToSection('speaker')} className="cursor-pointer transition-colors duration-300">Ведущие</span>
@@ -220,7 +226,13 @@ export const Header = () => {
                         className="fixed inset-0 bg-white z-40 md:hidden pt-20 px-4 sm:px-12"
                     >
                         <div className="flex flex-col gap-2 text-base font-semibold text-black uppercase font-geist">
-                            {isProductPage ? (
+                            {isSferKumarSoloWebRoute ? (
+                                <>
+                                    <span onClick={() => scrollToSection('programs')} className="cursor-pointer py-3">Программа</span>
+                                    <span onClick={() => scrollToSection('speaker')} className="cursor-pointer py-3">Ведущие</span>
+                                    <span onClick={() => scrollToSection('reviews')} className="cursor-pointer py-3">Отзывы</span>
+                                </>
+                            ) : isProductPage ? (
                                 <>
                                     <span onClick={() => scrollToSection('programs')} className="cursor-pointer py-3">Программа</span>
                                     <span onClick={() => scrollToSection('speaker')} className="cursor-pointer py-3">Ведущие</span>

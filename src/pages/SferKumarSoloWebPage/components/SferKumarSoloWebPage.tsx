@@ -252,7 +252,7 @@ export const SferKumarSoloWebPage = () => {
                 </div>
 
                 {/* ========== INSTRUCTORS SECTION ========== */}
-                <div className="flex flex-col gap-8 lg:gap-12 mt-20 xl:mt-37 w-full">
+                <div id="speaker" className="flex flex-col gap-8 lg:gap-12 mt-20 xl:mt-37 w-full">
                     <h2 className="text-3xl xs:text-4xl lg:text-[42px] xl:text-[48px] font-semibold leading-[1.2] tracking-[-0.03em] text-black">
                         Кто преподаёт
                     </h2>
@@ -308,7 +308,7 @@ export const SferKumarSoloWebPage = () => {
             <div className="flex flex-col px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto pb-16 md:pb-20 lg:pb-24 xl:pb-32">
 
                 {/* ========== REVIEWS SECTION ========== */}
-                <div>
+                <div id="reviews">
                     <h2 className="text-3xl md:text-4xl lg:text-[42px] xl:text-[48px] font-semibold text-black leading-[1.2] tracking-[-0.03em] mt-20 xl:mt-37 mb-8 lg:mb-12">
                         Что говорят участники
                     </h2>

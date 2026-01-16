@@ -14,8 +14,9 @@ import SpeakerKirill from './assets/kirill.png';
 
 // Hero секция
 export const HERO = {
-    title: 'Vibe Academy:\nстань AI-first\nспециалистом\nза 2 месяца',
-    subtitle: 'Научись запускать продукты и делать\nработу команды из 20 человек\nбез программирования\nи технического бэкграунда',
+    title: 'Vibe Academy',
+    subtitle: 'AI Superpowers 2026',
+    description: 'За 2,5 месяца научись создавать и запускать продукты, настраивать маркетинг и продажи, и делать работу команды из 20 человек без программирования и технического бэкграунда',
     ctaText: 'ЗАПИСАТЬСЯ',
 };
 
@@ -204,7 +205,7 @@ export const PRICE = [
     {
         title: 'База',
         price: '145 770 ₽',
-        forMonth: '4 999 ₽ / месяц',
+        forMonth: '12 148 ₽ / месяц',
         installmentNote: 'в рассрочку на 12 месяцев',
         list: [
             '18 life-занятий в Zoom по 2 часа',

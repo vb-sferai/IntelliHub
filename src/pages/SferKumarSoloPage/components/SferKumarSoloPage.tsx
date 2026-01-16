@@ -1,5 +1,8 @@
+import { useState, useEffect } from 'react';
 import { Button } from '../../../components/Button';
 import { MeshGradient } from '@paper-design/shaders-react';
+import { saveUTMParams } from '../../../utils/analytics';
+import { ApplicationFormPopup } from './ApplicationFormPopup';
 import HeroBg from '../assets/Rectangle 266.png';
 import { Title } from '../../../components/Title';
 import { QuestionsBlockItem } from '../../../components/FAQ/components/QuestionBlockItem';
@@ -7,7 +10,7 @@ import { ReviewsGrid } from '../../../components/ReviewsGrid';
 import EmailIconBlue from '../../../assets/imgs/email-blue.svg';
 import CursorIconBlue from '../../../assets/imgs/cursor-blue.svg';
 import LogoGray from '../../../assets/imgs/logo-gray.svg';
-import { HERO, AI_FIRST_FEATURES, PRICE, CTA, CONTACTS, REVIEWS, COURSE_STATS, LIFE_PROGRAM_FEATURES, WHO_NEEDS_CODING, PROGRAM_MODULES, INSTRUCTORS, FAQ_ITEMS } from '../data';
+import { HERO, AI_FIRST_FEATURES, PRICE, CTA, REVIEWS, COURSE_STATS, LIFE_PROGRAM_FEATURES, WHO_NEEDS_CODING, PROGRAM_MODULES, INSTRUCTORS, FAQ_ITEMS } from '../data';
 import { SuccessStoriesSection } from './SuccessStoriesSection';
 import LogoYandex from '../assets/logo-yandex.svg';
 import LogoSber from '../assets/logo-sber.svg';
@@ -29,11 +32,15 @@ import LogoN8n from '../assets/logo-n8n.svg';
 import LogoSupabase from '../assets/logo-supabase.svg';
 
 export const SferKumarSoloPage = () => {
-    const scrollToPrice = () => {
-        const priceSection = document.getElementById('price');
-        if (priceSection) {
-            priceSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    // Сохраняем UTM-параметры при загрузке страницы
+    useEffect(() => {
+        saveUTMParams();
+    }, []);
+
+    const openPopup = () => {
+        setIsPopupOpen(true);
     };
 
     return (
@@ -55,13 +62,16 @@ export const SferKumarSoloPage = () => {
                 />
 
                 <div className="relative z-10 flex flex-col w-full text-center items-center gap-6 xl:gap-10 px-4 sm:px-12 lg:px-16 xl:px-0 max-w-[1039px] text-white py-20">
-                    <h1 className="text-[44px] xs:text-5xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold leading-[1.1] tracking-[-0.04em] whitespace-pre-line md:whitespace-normal">
+                    <h1 className="text-[44px] xs:text-5xl md:text-[56px] lg:text-[64px] xl:text-[80px] font-semibold leading-[1.1] tracking-[-0.04em]">
                         {HERO.title}
                     </h1>
-                    <p className="text-base xs:text-lg sm:text-xl lg:text-lg xl:text-xl font-medium opacity-90 max-w-[725px] leading-[1.3] whitespace-pre-line md:whitespace-normal">
+                    <p className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-semibold opacity-90">
                         {HERO.subtitle}
                     </p>
-                    <Button color="white" width="190px" onClick={scrollToPrice}>
+                    <p className="text-base xs:text-lg sm:text-xl lg:text-lg xl:text-xl font-medium opacity-90 max-w-[725px] leading-[1.3]">
+                        {HERO.description}
+                    </p>
+                    <Button color="white" width="190px" onClick={openPopup}>
                         {HERO.ctaText}
                     </Button>
                 </div>
@@ -470,7 +480,7 @@ export const SferKumarSoloPage = () => {
                                 {CTA.subtitle}
                             </p>
                         </div>
-                        <Button color="white" width="220px" onClick={scrollToPrice}>
+                        <Button color="white" width="220px" onClick={openPopup}>
                             {CTA.ctaText}
                         </Button>
                     </div>
@@ -511,6 +521,12 @@ export const SferKumarSoloPage = () => {
                     2025 ИП Гурбанов Кирилл Игоревич, ОГРНИП 315774600229281. Все права защищены.
                 </p>
             </footer>
+
+            {/* ========== APPLICATION FORM POPUP ========== */}
+            <ApplicationFormPopup
+                isOpen={isPopupOpen}
+                onClose={() => setIsPopupOpen(false)}
+            />
         </div>
     );
 };

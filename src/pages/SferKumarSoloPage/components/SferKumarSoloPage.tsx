@@ -84,7 +84,7 @@ export const SferKumarSoloPage = () => {
                     Работаем с
                 </p>
                 <div className="flex flex-wrap lg:flex-nowrap justify-center items-center gap-6 lg:gap-[72px]">
-                    <img src={LogoYandex} alt="Yandex" className="w-[85px] h-[20px] lg:w-[141px] lg:h-[34px]" />
+                    <img src={LogoYandex} alt="Yandex" className="hidden w-[85px] h-[20px] lg:w-[141px] lg:h-[34px]" />
                     <img src={LogoT} alt="T-Bank" className="w-[95px] h-[34px] lg:w-[158px] lg:h-[57px]" />
                     <img src={Logo500} alt="500 Global" className="w-[68px] h-[45px] lg:w-[113px] lg:h-[75px]" />
                     <img src={LogoAvito} alt="Avito" className="w-[94px] h-[27px] lg:w-[156px] lg:h-[45px]" />

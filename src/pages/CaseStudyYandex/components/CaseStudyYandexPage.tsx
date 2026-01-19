@@ -23,7 +23,7 @@ export const CaseStudyYandexPage = () => {
     <div className="min-h-screen bg-[#f9f7f4] text-[#0f0f10]">
       {/* Hero Section */}
       <CaseStudyHero
-        logoUrl={YandexLogo}
+        logoUrl="" // YandexLogo - temporarily hidden
         title="Кейс: 11 000 человек на вебинаре: как мы провели самое масштабное публичное обучение по AI от Яндекса"
         gradientColors={['#CC6600', '#CC0000', '#000000']}
       />

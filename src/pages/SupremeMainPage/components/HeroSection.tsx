@@ -23,7 +23,7 @@ const TRUSTED_LOGOS = [
   { alt: 'Nubes', src: NubesLogo },
   { alt: 'Lancet', src: LancetLogo },
   { alt: 'SMStretching', src: SMStretchingLogo, height: 'h-4 md:h-5' },
-  { alt: 'Яндекс', src: YandexLogo },
+  // { alt: 'Яндекс', src: YandexLogo }, // Temporarily hidden
   { alt: 'Алиса', src: AliceLogo },
   { alt: 'КОРТРОС', src: KortrosLogo, height: 'h-8 md:h-9', blendMode: true },
 ];

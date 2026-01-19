@@ -23,7 +23,7 @@ export const CaseStudyGoBeyondPage = () => {
     <div className="min-h-screen bg-[#f9f7f4] text-[#0f0f10]">
       {/* Hero Section */}
       <CaseStudyHero
-        logoUrl={YandexLogo}
+        logoUrl="" // YandexLogo - temporarily hidden
         title="Кейс: AI-инструменты для AI-разработчиков. Кастомная программа для команды маркетинга Яндекс.Алиса"
         gradientColors={['#CC6600', '#CC0000', '#000000']}
       />

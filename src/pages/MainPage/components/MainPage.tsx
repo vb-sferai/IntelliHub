@@ -68,7 +68,7 @@ export const MainPage = () => {
                         <img className="h-6 lg:h-[29px]" src={LancetLogo} alt="Lancet"/>
                         <img className="h-6 lg:h-[29px]" src={MtsLogo} alt="МТС"/>
                         <img className="h-6 lg:h-[29px]" src={YangoLogo} alt="Yango"/>
-                        <img className="h-6 lg:h-[29px]" src={YandexLogo} alt="Яндекс"/>
+                        <img className="hidden h-6 lg:h-[29px]" src={YandexLogo} alt="Яндекс"/>
                         <img className="h-6 lg:h-[29px]" src={SMStretchingLogo} alt="SMStretching"/>
                         <img className="h-6 lg:h-[29px]" src={AliceLogo} alt="Яндекс Алиса"/>
                         <img className="h-6 lg:h-[29px]" src={NubesLogo} alt="Nubes"/>

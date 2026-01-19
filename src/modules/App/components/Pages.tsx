@@ -23,6 +23,7 @@ import {OrderSuccessPage} from "../../../pages/OrderSuccessPage";
 import {PrivacyPolicyPage} from "../../../pages/PrivacyPolicyPage";
 import {SferKumarSoloPage} from "../../../pages/SferKumarSoloPage";
 import {SferKumarSoloWebPage} from "../../../pages/SferKumarSoloWebPage";
+import {VoiceBotPage} from "../../../pages/VoiceBotPage";
 import {ROUTES} from "../../../constants/routes.ts";
 
 export const Pages = () => {
@@ -56,6 +57,7 @@ export const Pages = () => {
             <Route path={ROUTES.privacyPolicy} element={<PrivacyPolicyPage />} />
             <Route path={ROUTES.sferKumarSolo} element={<SferKumarSoloPage />} />
             <Route path={ROUTES.sferKumarSoloWeb} element={<SferKumarSoloWebPage />} />
+            <Route path={ROUTES.voiceBot} element={<VoiceBotPage />} />
             <Route path={ROUTES.notFound} element={<NotFoundPage />} />
         </Routes>
     );

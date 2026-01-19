@@ -1,15 +1,31 @@
+import MtsLogo from '../../../assets/imgs/logo-mts.svg';
+import TutuLogo from '../../../assets/imgs/Tutu.ru.svg';
 import EpicGrowthLogo from '../../../assets/imgs/logo-epic-growth.svg';
 import YangoLogo from '../../../assets/imgs/logo-yango.svg';
 import HaomLogo from '../../../assets/imgs/logo-haom.svg';
+import RLogo from '../../../assets/imgs/logo-r.svg';
+import NubesLogo from '../../../assets/imgs/nubes-logo.svg';
+import LancetLogo from '../../../assets/imgs/lancet-logo.svg';
 import SMStretchingLogo from '../../../assets/imgs/logo-smstretching.svg';
+import YandexLogo from '../../../assets/imgs/yandex-logo.svg';
+import AliceLogo from '../../../assets/imgs/alice-logo.svg';
+import KortrosLogo from '../../../assets/imgs/kortross.png';
 import { MeshGradientBackground } from './MeshGradientBackground';
 import { MENU_ITEMS } from '../data';
 
 const TRUSTED_LOGOS = [
+  { alt: 'МТС', src: MtsLogo, height: 'h-8 md:h-9' },
+  { alt: 'Tutu', src: TutuLogo, makeWhite: true },
   { alt: 'Epic Growth', src: EpicGrowthLogo },
   { alt: 'Yango', src: YangoLogo },
   { alt: 'HAOM', src: HaomLogo },
-  { alt: 'SMStretching', src: SMStretchingLogo },
+  { alt: 'R', src: RLogo },
+  { alt: 'Nubes', src: NubesLogo },
+  { alt: 'Lancet', src: LancetLogo },
+  { alt: 'SMStretching', src: SMStretchingLogo, height: 'h-4 md:h-5' },
+  { alt: 'Яндекс', src: YandexLogo },
+  { alt: 'Алиса', src: AliceLogo },
+  { alt: 'КОРТРОС', src: KortrosLogo, height: 'h-8 md:h-9', blendMode: true },
 ];
 
 export const HeroSection = () => {
@@ -55,19 +71,24 @@ export const HeroSection = () => {
           </nav>
         </div>
 
-        <div className="mt-16 flex flex-col space-y-4 md:mt-40" aria-label="Trusted by">
+        <div className="mt-16 flex flex-col space-y-4 md:mt-40" aria-label="Наши клиенты">
           <p className="text-xl font-medium opacity-45" style={{ letterSpacing: '-0.6px' }}>
-            Trusted by
+            Наши клиенты
           </p>
-          <div className="flex flex-wrap items-center gap-[28px]">
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
             {TRUSTED_LOGOS.map((logo) => (
               <img
                 key={logo.alt}
                 src={logo.src}
                 alt={logo.alt}
-                className="h-7 w-auto"
+                className={`${logo.height || 'h-6 md:h-7'} w-auto`}
+                style={{
+                  ...(logo.makeWhite && { filter: 'brightness(0) invert(1) brightness(0.7)' }),
+                  ...(logo.blendMode && { mixBlendMode: 'lighten', filter: 'grayscale(1) brightness(0.7)' }),
+                }}
               />
             ))}
+            <span className="text-base font-medium opacity-60 md:text-lg">+20 клиентов</span>
           </div>
         </div>
       </div>

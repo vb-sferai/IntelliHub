@@ -109,6 +109,19 @@ export const RegistrationForm = () => {
       >
         {isLoading ? 'ОТПРАВКА...' : 'ОСТАВИТЬ ЗАЯВКУ'}
       </button>
+
+      {/* Текст о согласии */}
+      <p className="text-xs text-black/50 text-center mt-2">
+        Нажимая кнопку, вы соглашаетесь с{' '}
+        <a
+          href="/privacy-policy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-black/70 transition-colors"
+        >
+          политикой обработки персональных данных
+        </a>
+      </p>
     </form>
   );
 };

@@ -193,6 +193,19 @@ export const ApplicationFormPopup = ({ isOpen, onClose }: ApplicationFormPopupPr
                   >
                     {isLoading ? 'ОТПРАВКА...' : 'ОСТАВИТЬ ЗАЯВКУ'}
                   </button>
+
+                  {/* Текст о согласии */}
+                  <p className="text-xs text-white/50 text-center mt-2">
+                    Нажимая кнопку, вы соглашаетесь с{' '}
+                    <a
+                      href="/privacy-policy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-white/70 transition-colors"
+                    >
+                      политикой обработки персональных данных
+                    </a>
+                  </p>
                 </form>
               </>
             )}

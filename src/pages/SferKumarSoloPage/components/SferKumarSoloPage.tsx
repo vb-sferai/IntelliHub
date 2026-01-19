@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '../../../components/Button';
 import { MeshGradient } from '@paper-design/shaders-react';
 import { saveUTMParams } from '../../../utils/analytics';
@@ -433,7 +434,7 @@ export const SferKumarSoloPage = () => {
                                 </ul>
 
                                 {/* Button */}
-                                <Button color="primary" link={item.link} fullWidth>
+                                <Button color="primary" onClick={openPopup} fullWidth>
                                     {item.buttonText}
                                 </Button>
                             </div>
@@ -517,9 +518,14 @@ export const SferKumarSoloPage = () => {
             {/* ========== FOOTER ========== */}
             <footer className="flex flex-col md:flex-row items-center justify-between px-4 sm:px-12 lg:px-16 xl:px-0 xl:w-312 xl:mx-auto py-8 gap-4">
                 <img src={LogoGray} alt="sfer.ai" className="h-6" />
-                <p className="text-xs text-[#858585] text-center md:text-left">
-                    2025 ИП Гурбанов Кирилл Игоревич, ОГРНИП 315774600229281. Все права защищены.
-                </p>
+                <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+                    <p className="text-xs text-[#858585] text-center md:text-left">
+                        2025 ИП Гурбанов Кирилл Игоревич, ОГРНИП 315774600229281. Все права защищены.
+                    </p>
+                    <Link to="/privacy-policy" className="text-xs text-[#858585] hover:text-[#275DD8] transition-colors">
+                        Политика конфиденциальности
+                    </Link>
+                </div>
             </footer>
 
             {/* ========== APPLICATION FORM POPUP ========== */}

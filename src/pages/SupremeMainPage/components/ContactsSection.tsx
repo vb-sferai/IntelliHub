@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import EmailIcon from '../../../assets/imgs/supreme/icon-email.svg';
 import LinkedinIcon from '../../../assets/imgs/supreme/icon-linkedin.svg';
 import TelegramIcon from '../../../assets/imgs/supreme/icon-telegram.svg';
+import { ROUTES } from '../../../constants/routes';
 
 const CONTACT_CARDS = [
   {
@@ -72,6 +74,12 @@ export const ContactsSection = () => {
         {/* Footer */}
         <div className="flex flex-wrap items-center justify-between gap-6 border-t border-[#e4e7ec] pt-8">
           <p className="text-base font-normal leading-[24px] text-[#667085]">© 2025</p>
+          <Link
+            to={ROUTES.privacyPolicy}
+            className="text-base font-normal leading-[24px] text-[#667085] hover:text-[#275DD8] transition-colors"
+          >
+            Политика конфиденциальности
+          </Link>
         </div>
       </div>
     </section>

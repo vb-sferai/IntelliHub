@@ -183,6 +183,7 @@ export const PRICE = [
         ],
         buttonText: 'Забронировать место',
         link: 'https://kirillgurbanov.getcourse.ru/agents_workshop',
+        disabled: true,
     },
     {
         title: 'Только запись',

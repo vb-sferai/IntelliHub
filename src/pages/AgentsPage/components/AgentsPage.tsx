@@ -192,7 +192,7 @@ export const AgentsPage = () => {
                     <Carousel title="Сколько стоит?" cardsLength={PRICE.length} cardWidth={612}>
                         {PRICE.map((item, index) => (
                             <CarouselPriceItem key={index} title={item.title} price={item.price} forMonth={item.forMonth}
-                                               list={item.list} buttonText={item.buttonText} link={item.link}/>
+                                               list={item.list} buttonText={item.buttonText} link={item.link} disabled={item.disabled}/>
                         ))}
                     </Carousel>
                 </div>

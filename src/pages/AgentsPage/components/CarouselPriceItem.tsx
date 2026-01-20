@@ -7,9 +7,12 @@ type CarouselPriceItemProps = {
     list: string[];
     buttonText: string;
     link: string;
+    disabled?: boolean;
 };
 
-export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, link }: CarouselPriceItemProps) => {
+export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, link, disabled = false }: CarouselPriceItemProps) => {
+    const baseButtonClasses = "rounded-full flex items-center justify-center text-center py-4.5 md:py-3 lg:py-3.5 xl:py-4.5 font-geist text-xs sm:text-sm md:text-sm xl:text-base font-semibold px-4 sm:px-5 lg:px-6 xl:px-8 uppercase leading-tight transition-colors w-fit";
+
     return (
         <div
             className="flex flex-col justify-between w-[calc(100vw-56px)] sm:w-[calc(calc(calc(100vw-96px)-16px)/2)] lg:w-[calc(calc(calc(100vw-128px)-16px)/2)] xl:w-153 min-h-80 xs:min-h-90 lg:min-h-148 bg-[#F7F7F5] p-8 flex-shrink-0 justify-between">
@@ -35,16 +38,20 @@ export const CarouselPriceItem = ({ title, price, forMonth, list, buttonText, li
                     </li>
                 ))}
             </div>
-            <a
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cursor-pointer rounded-full flex items-center justify-center text-center bg-[#7F56B4] hover:bg-[#6B469A] text-white py-4.5 md:py-3 lg:py-3.5 xl:py-4.5 font-geist text-xs sm:text-sm md:text-sm xl:text-base font-semibold px-4 sm:px-5 lg:px-6 xl:px-8 uppercase leading-tight transition-colors w-fit"
-            >
-                {buttonText}
-            </a>
+            {disabled ? (
+                <div className={`${baseButtonClasses} bg-gray-300 text-gray-500 cursor-not-allowed`}>
+                    <span className="line-through">{buttonText}</span>
+                </div>
+            ) : (
+                <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${baseButtonClasses} cursor-pointer bg-[#7F56B4] hover:bg-[#6B469A] text-white`}
+                >
+                    {buttonText}
+                </a>
+            )}
         </div>
     );
 };
-
-

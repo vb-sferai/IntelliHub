@@ -24,7 +24,7 @@ export const CaseStudyYandexPage = () => {
       {/* Hero Section */}
       <CaseStudyHero
         logoUrl="" // YandexLogo - temporarily hidden
-        title="Кейс: 11 000 человек на вебинаре: как мы провели самое масштабное публичное обучение по AI от Яндекса"
+        title="Кейс: 11 000 человек на вебинаре: как мы провели самый массовый публичный вебинар про Алису"
         gradientColors={['#CC6600', '#CC0000', '#000000']}
       />
 
@@ -35,10 +35,10 @@ export const CaseStudyYandexPage = () => {
           <h2 className="text-2xl font-semibold md:text-[32px]">О проекте</h2>
           <div className={"space-y-6 " + baseTextClass}>
             <p>
-              31 июля 2024 года мы провели открытый вебинар для пользователей нейросети Алисы от Яндекса, который собрал <strong>11 000 человек онлайн</strong> на пике просмотра. На сегодняшний день это самый массовый образовательный проект sfer.ai и один из крупнейших публичных вебинаров по AI в России.
+              31 июля 2024 года мы провели открытый вебинар для пользователей нейросети Алисы от Яндекса, который собрал <strong>11 000 уникальных зрителей</strong>. На сегодняшний день это самый массовый образовательный проект sfer.ai и один из крупнейших публичных вебинаров по AI в России.
             </p>
             <p>
-              Перед нами поставили амбициозную задачу: рассказать про возможности Алисы широкой аудитории – от новичков до продвинутых пользователей. Без сложных терминов и избыточной теории, но так, чтобы каждый нашел для себя что-то полезное.
+              Перед нами поставили задачу: показать широкой аудитории новичков, как Алиса помогает в жизни и работе. Фокус — на конкретных практических кейсах и примерах применения.
             </p>
 
             {/* Отзыв сотрудника Яндекс */}
@@ -77,13 +77,12 @@ export const CaseStudyYandexPage = () => {
           <h2 className="text-2xl font-semibold md:text-[32px]">Заказчик и контекст</h2>
           <div className={"space-y-6 " + baseTextClass}>
             <p>
-              Команда маркетинга <strong>Яндекс Алиса</strong> обратилась к нам с запросом на популяризацию нейросети через массовое обучение. Алиса недавно получила серьезное обновление, и нужно было рассказать, что изменилось, и как это работает.
+              Команда маркетинга <strong>Яндекс Алиса</strong> обратилась к нам с запросом: провести вебинар для широкой аудитории новичков в лёгком, развлекательном формате. Через конкретные практические кейсы показать, как Алиса может быть полезна в самых разных жизненных и рабочих сценариях.
             </p>
             <p className="font-semibold">Мы должны были:</p>
             <ul className="space-y-3 pl-6 text-base md:text-lg leading-relaxed text-[#1A1A1A]">
-              <li className="list-disc">Показать сильные стороны нейросети</li>
-              <li className="list-disc">Продемонстрировать основные сценарии её использования</li>
-              <li className="list-disc">Объяснить, как работают новые функции: рассуждающие модели, генерация изображений, загрузка документов, поиск в интернете</li>
+              <li className="list-disc">Показать разнообразные сценарии применения Алисы в быту и на работе</li>
+              <li className="list-disc">Поделиться конкретными практическими кейсами и личным опытом использования</li>
               <li className="list-disc">Вдохновить людей пользоваться AI каждый день через понятные примеры</li>
             </ul>
           </div>
@@ -139,10 +138,9 @@ export const CaseStudyYandexPage = () => {
               </p>
               <p className="font-semibold">Двухчасовой вебинар включал:</p>
               <ul className="space-y-3 pl-6 text-base md:text-lg leading-relaxed text-[#1A1A1A]">
-                <li className="list-disc"><strong>Основы работы с нейросетями</strong> — простым языком о сложном</li>
-                <li className="list-disc"><strong>Интерфейс Алисы</strong> — детальный разбор всех возможностей AI от Яндекса</li>
-                <li className="list-disc"><strong>Практические сценарии</strong> — решение задач, от бытовых до профессиональных</li>
-                <li className="list-disc"><strong>Новые функции</strong> — рассказ о том, что многие не знали</li>
+                <li className="list-disc"><strong>Практические сценарии</strong> — примеры применения Алисы в жизни и работе</li>
+                <li className="list-disc"><strong>Личный опыт</strong> — как мы сами используем AI каждый день</li>
+                <li className="list-disc"><strong>Разнообразные кейсы</strong> — от бытовых задач до профессиональных сценариев</li>
                 <li className="list-disc"><strong>Ответы на вопросы</strong> — интерактив с аудиторией</li>
               </ul>
             </div>
@@ -193,23 +191,6 @@ export const CaseStudyYandexPage = () => {
         <section className="mb-16">
           <h2 className="text-2xl font-semibold md:text-[32px] mb-10">Уникальные элементы</h2>
 
-          <article className="space-y-6 mb-14">
-            <h3 className="text-xl font-semibold md:text-[28px]">Розыгрыш станций Алисы</h3>
-            <div className={"space-y-6 " + baseTextClass}>
-              <p>
-                Яндекс предоставил для розыгрыша 3 новые станции Алисы Миди. Мы организовали систему отбора:
-              </p>
-              <ul className="space-y-3 pl-6 text-base md:text-lg leading-relaxed text-[#1A1A1A]">
-                <li className="list-disc">Собрали самые интересные вопросы из чата</li>
-                <li className="list-disc">Проверили их на соответствие требованиям PR-службы</li>
-                <li className="list-disc">В прямом эфире через рандомайзер выбрали победителей</li>
-              </ul>
-              <p className="italic">
-                Один из счастливчиков написал в чате: «Никогда ничего не выигрывал! Так рад, не могу поверить!»
-              </p>
-            </div>
-          </article>
-
           <article className="space-y-6">
             <h3 className="text-xl font-semibold md:text-[28px]">Медийная поддержка</h3>
             <div className={"space-y-6 " + baseTextClass}>
@@ -233,23 +214,15 @@ export const CaseStudyYandexPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
               <div className="border-t-4 border-[#FFCC00] bg-white p-6">
                 <div className="text-3xl font-semibold text-[#FF0000] mb-2">11 000</div>
-                <p className="text-gray-600">участников онлайн на пике</p>
+                <p className="text-gray-600">уникальных зрителей</p>
               </div>
               <div className="border-t-4 border-[#FFCC00] bg-white p-6">
-                <div className="text-3xl font-semibold text-[#FF0000] mb-2">12 500</div>
-                <p className="text-gray-600">уникальных просмотров за время трансляции</p>
+                <div className="text-3xl font-semibold text-[#FF0000] mb-2">4 500</div>
+                <p className="text-gray-600">зрителей в пике</p>
               </div>
               <div className="border-t-4 border-[#FFCC00] bg-white p-6">
                 <div className="text-3xl font-semibold text-[#FF0000] mb-2">1.5 часа</div>
                 <p className="text-gray-600">непрерывного контента</p>
-              </div>
-              <div className="border-t-4 border-[#FFCC00] bg-white p-6">
-                <div className="text-3xl font-semibold text-[#FF0000] mb-2">3</div>
-                <p className="text-gray-600">станции Алисы разыграны среди участников</p>
-              </div>
-              <div className="border-t-4 border-[#FFCC00] bg-white p-6">
-                <div className="text-3xl font-semibold text-[#FF0000] mb-2">Тысячи</div>
-                <p className="text-gray-600">просмотров записи после вебинара</p>
               </div>
             </div>
           </article>
@@ -286,7 +259,7 @@ export const CaseStudyYandexPage = () => {
           <h2 className="text-2xl font-semibold md:text-[32px]">Продолжение истории</h2>
           <div className={"space-y-6 " + baseTextClass}>
             <p>
-              Вебинар до сих пор доступен в записи и продолжает набирать просмотры. Это стало важной вехой в популяризации AI среди русскоязычной аудитории и укрепило наше партнерство с Яндексом.
+              Вебинар до сих пор доступен в записи. Это стало важной вехой в популяризации AI среди русскоязычной аудитории и укрепило наше партнерство с Яндексом.
             </p>
           </div>
         </section>

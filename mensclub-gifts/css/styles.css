@@ -47,8 +47,8 @@
   --space-md: 24px;
   --space-lg: 32px;
   --space-xl: 48px;
-  --space-2xl: 64px;
-  --space-3xl: 96px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
   --space-4xl: 128px;
 
   /* Container */
@@ -214,7 +214,7 @@ p { margin-bottom: var(--space-md); }
 }
 
 section {
-  padding: var(--space-3xl) 0;
+  padding: var(--space-2xl) 0;
   position: relative;
 }
 
@@ -354,12 +354,12 @@ section {
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: calc(60px + var(--space-2xl));
-  padding-bottom: var(--space-3xl);
+  padding-top: calc(60px + var(--space-xl));
+  padding-bottom: var(--space-xl);
   overflow: hidden;
 }
 
@@ -391,28 +391,29 @@ section {
 .speaker-card {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
-  justify-content: center;
-  margin-top: var(--space-xl);
+  gap: var(--space-md);
+  justify-content: flex-start;
+  margin-top: var(--space-lg);
 }
 
 .speaker-avatar {
-  width: 80px;
-  height: 80px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--card-border);
+  flex-shrink: 0;
 }
 
 .speaker-avatar-placeholder {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent-blue) 0%, var(--button-blue) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   color: white;
 }
@@ -422,14 +423,14 @@ section {
 }
 
 .speaker-name {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .speaker-title {
-  font-size: 18px;
+  font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.5;
 }
@@ -441,20 +442,24 @@ section {
   }
 
   .speaker-card {
-    flex-direction: column;
-    text-align: center;
+    gap: var(--space-sm);
   }
 
-  .speaker-info {
-    text-align: center;
+  .speaker-avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .speaker-name {
+    font-size: 16px;
+  }
+
+  .speaker-title {
+    font-size: 13px;
   }
 
   .speaker-title br {
     display: none;
-  }
-
-  .speaker-title {
-    font-size: 14px;
   }
 }
 
@@ -571,14 +576,14 @@ section {
 
 .material-card {
   background: var(--card-bg);
-  padding: var(--space-xl) var(--space-lg);
+  padding: var(--space-lg) var(--space-md);
   border-radius: var(--radius-xl);
   border: 1px solid var(--card-border);
   transition: var(--transition);
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  min-height: 200px;
+  min-height: 180px;
 }
 
 .material-card:hover {
@@ -744,6 +749,184 @@ section {
   color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
+}
+
+/* ============================================
+   AI Setup Section
+   ============================================ */
+
+.ai-setup {
+  background: transparent;
+  position: relative;
+  padding: var(--space-3xl) 0;
+}
+
+.ai-setup-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ai-setup-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  background: var(--card-bg);
+  padding: var(--space-lg) var(--space-xl);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--card-border);
+  transition: var(--transition);
+}
+
+.ai-setup-card:hover {
+  border-color: var(--card-border-highlight);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.ai-setup-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.ai-setup-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.ai-setup-card-title a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--accent-blue);
+  transition: var(--transition);
+}
+
+.ai-setup-card-title a:hover {
+  color: var(--accent-blue);
+}
+
+.ai-setup-card-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 var(--space-md) 0;
+}
+
+.ai-setup-card-text:last-child {
+  margin-bottom: 0;
+}
+
+.ai-setup-card-number {
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .ai-setup-card {
+    flex-direction: column-reverse;
+    padding: var(--space-lg);
+    gap: var(--space-sm);
+  }
+
+  .ai-setup-card-number {
+    font-size: 48px;
+    align-self: flex-start;
+  }
+
+  .ai-setup-card-title {
+    font-size: 18px;
+  }
+
+  .ai-setup-card-text {
+    font-size: 14px;
+  }
+}
+
+/* ============================================
+   ChatGPT Customization Section
+   ============================================ */
+
+.chatgpt-custom {
+  background: transparent;
+  position: relative;
+  padding: var(--space-3xl) 0;
+}
+
+.chatgpt-custom-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.chatgpt-custom-card {
+  background: var(--card-bg);
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--card-border);
+  transition: var(--transition);
+}
+
+.chatgpt-custom-card:hover {
+  border-color: var(--card-border-highlight);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.chatgpt-custom-card-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.3;
+}
+
+.chatgpt-custom-card-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ChatGPT Instruction Copyable Block */
+.chatgpt-instruction-copyable {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: var(--bg-primary);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+  user-select: all;
+  cursor: text;
+}
+
+@media (max-width: 768px) {
+  .chatgpt-custom-card {
+    padding: var(--space-lg);
+  }
+
+  .chatgpt-custom-card-title {
+    font-size: 18px;
+  }
+
+  .chatgpt-instruction-copyable {
+    font-size: 13px;
+    padding: var(--space-md);
+  }
 }
 
 /* ============================================

@@ -293,28 +293,29 @@ function handleSubmit(event) {
  * Initialize the auth system
  */
 function initAuth() {
-  // Check if already authenticated
-  if (isAuthenticated()) {
-    showContent();
-    return;
-  }
+  try {
+    // Check if already authenticated
+    if (isAuthenticated()) {
+      showContent();
+      return;
+    }
 
-  // Show auth overlay
-  const overlay = document.getElementById('authOverlay');
-  if (overlay) {
-    overlay.style.display = 'flex';
-  }
+    // Overlay is visible by default in CSS, no need to show it
+    // Just setup form handler and focus
 
-  // Setup form handler
-  const form = document.getElementById('authForm');
-  if (form) {
-    form.addEventListener('submit', handleSubmit);
-  }
+    // Setup form handler
+    const form = document.getElementById('authForm');
+    if (form) {
+      form.addEventListener('submit', handleSubmit);
+    }
 
-  // Focus password input
-  const passwordInput = document.getElementById('passwordInput');
-  if (passwordInput) {
-    passwordInput.focus();
+    // Focus password input
+    const passwordInput = document.getElementById('passwordInput');
+    if (passwordInput) {
+      passwordInput.focus();
+    }
+  } catch (error) {
+    console.error('Auth initialization error:', error);
   }
 }
 

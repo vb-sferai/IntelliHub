@@ -763,6 +763,85 @@
     .partner-logo:hover {
       opacity: 0.8;
     }
+
+    /* Presentation Card */
+    .presentation-card {
+      display: block;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .presentation-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .presentation-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .presentation-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .presentation-card:hover .presentation-overlay {
+      opacity: 1;
+    }
+
+    .presentation-overlay svg {
+      width: 48px;
+      height: 48px;
+      color: white;
+    }
+
+    .presentation-overlay span {
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 24px;
+      transition: all 0.2s;
+    }
+
+    .download-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .download-btn svg {
+      width: 18px;
+      height: 18px;
+    }
   </style>
 </head>
 <body>
@@ -793,11 +872,39 @@
       <p class="hero-subtitle">Собрал для вас всё самое важное из нашей встречи и дополнительные ресурсы</p>
     </section>
 
-    <!-- Material 1: AI SEO -->
+    <!-- Material 1: Presentation -->
     <section class="section">
       <div class="container">
         <div class="section-divider">
-          <span class="section-number">01 / AI SEO</span>
+          <span class="section-number">01 / Презентация</span>
+        </div>
+
+        <h2 class="section-title">Моя презентация с выступления</h2>
+
+        <a href="https://drive.google.com/file/d/1OpGgZdmakLZS-uPIz-0ItDsJ3d9tlL7Z/view?usp=sharing" target="_blank" rel="noopener" class="presentation-card">
+          <img src="./images/presentation-cover.png" alt="Презентация Кирилла Гурбанова">
+          <div class="presentation-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            <span>Скачать презентацию</span>
+          </div>
+        </a>
+
+        <a href="https://drive.google.com/file/d/1OpGgZdmakLZS-uPIz-0ItDsJ3d9tlL7Z/view?usp=sharing" target="_blank" rel="noopener" class="download-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Скачать PDF
+        </a>
+      </div>
+    </section>
+
+    <!-- Material 2: AI SEO -->
+    <section class="section">
+      <div class="container">
+        <div class="section-divider">
+          <span class="section-number">02 / AI SEO</span>
         </div>
 
         <h2 class="section-title">Всё, что вы хотели знать про AI SEO</h2>
@@ -834,11 +941,11 @@
       </div>
     </section>
 
-    <!-- Material 2: AI Setup -->
+    <!-- Material 3: AI Setup -->
     <section class="section" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
       <div class="container">
         <div class="section-divider">
-          <span class="section-number">02 / AI Setup</span>
+          <span class="section-number">03 / AI Setup</span>
         </div>
 
         <h2 class="section-title">AI-сетап для работы со встречами</h2>
@@ -881,11 +988,11 @@
       </div>
     </section>
 
-    <!-- Material 3: ChatGPT -->
+    <!-- Material 4: ChatGPT -->
     <section class="section">
       <div class="container">
         <div class="section-divider">
-          <span class="section-number">03 / ChatGPT</span>
+          <span class="section-number">04 / ChatGPT</span>
         </div>
 
         <h2 class="section-title">Кастомизация ChatGPT</h2>

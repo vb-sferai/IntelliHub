@@ -19,6 +19,18 @@ export const CaseStudyYandexPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Добавляем noindex meta tag для скрытия от поисковиков (по запросу Яндекса)
+  useEffect(() => {
+    const metaRobots = document.createElement('meta');
+    metaRobots.name = 'robots';
+    metaRobots.content = 'noindex, nofollow';
+    document.head.appendChild(metaRobots);
+
+    return () => {
+      document.head.removeChild(metaRobots);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#f9f7f4] text-[#0f0f10]">
       {/* Hero Section */}

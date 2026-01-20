@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /cases/yandex
+
+User-agent: Yandex
+Disallow: /cases/yandex

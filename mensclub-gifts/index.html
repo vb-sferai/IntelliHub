@@ -28,8 +28,26 @@
   <link rel="icon" type="image/svg+xml" href="./images/favicon.svg">
 </head>
 <body>
-  <!-- Background Effects -->
-  <div class="bg-effects">
+  <!-- Auth Overlay -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-modal">
+      <div class="auth-logo">
+        <img src="./images/logo-sfer.svg" alt="sfer.ai">
+      </div>
+      <h2>Доступ ограничен</h2>
+      <p>Введите пароль для просмотра страницы</p>
+      <form class="auth-form" id="authForm">
+        <input type="password" class="auth-input" id="passwordInput" placeholder="Пароль" autocomplete="off">
+        <p class="auth-error" id="authError"></p>
+        <button type="submit" class="auth-button" id="authSubmitBtn">Войти</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Content (hidden until authenticated) -->
+  <div id="mainContent">
+    <!-- Background Effects -->
+    <div class="bg-effects">
     <div class="bg-blob bg-blob-1"></div>
     <div class="bg-blob bg-blob-2"></div>
     <div class="bg-blob bg-blob-3"></div>
@@ -306,7 +324,10 @@
     </div>
   </footer>
 
+  </div><!-- End mainContent -->
+
   <!-- Scripts -->
   <script src="./js/main.js"></script>
+  <script src="./js/auth.js"></script>
 </body>
 </html>

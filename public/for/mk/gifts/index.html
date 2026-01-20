@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Полезные материалы после выступления Кирилла Гурбанова для Мужского клуба">
+  <title>Материалы | Кирилл Гурбанов × Мужской клуб</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0a0b;
+      --bg-card: #111113;
+      --bg-elevated: #18181b;
+      --border: #27272a;
+      --border-highlight: #3f3f46;
+      --text: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #22d3ee;
+      --accent-dim: rgba(34, 211, 238, 0.15);
+      --success: #4ade80;
+      --coral: #fb7185;
+      --font: 'IBM Plex Sans', -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Auth Overlay */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.4s ease;
+    }
+
+    .auth-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .auth-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .auth-logo {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 32px;
+    }
+
+    .auth-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .auth-subtitle {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .auth-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .auth-error {
+      color: var(--coral);
+      font-size: 14px;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .auth-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Main Content */
+    .main-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .main-content.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: rgba(10, 10, 11, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-logo {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .header-logo span {
+      color: var(--text-muted);
+      margin: 0 8px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 140px 24px 80px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Container */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Section */
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section-number {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    /* Video Card */
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-info {
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .speaker-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .speaker-name {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .speaker-role {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Links Grid */
+    .links-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 600px) {
+      .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .link-card {
+      display: block;
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .link-card:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-2px);
+    }
+
+    .link-card-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .link-card-title::after {
+      content: '→';
+      color: var(--accent);
+      transition: transform 0.2s;
+    }
+
+    .link-card:hover .link-card-title::after {
+      transform: translateX(4px);
+    }
+
+    .link-card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Steps */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-dim);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .step-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step-title a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--accent);
+    }
+
+    .step-title a:hover {
+      color: var(--accent);
+    }
+
+    .step-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .step-text + .step-text {
+      margin-top: 12px;
+    }
+
+    /* Code Block */
+    .code-block {
+      margin-top: 32px;
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .code-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .copy-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      font-family: var(--font);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .copy-btn.copied {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .copy-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .code-content {
+      padding: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0 0 10px 10px;
+      overflow-x: auto;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .code-content pre {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    /* Cooperation */
+    .coop-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (min-width: 700px) {
+      .coop-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .coop-card {
+      padding: 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .coop-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--accent-dim);
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .coop-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .coop-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .coop-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .coop-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .coop-feature svg {
+      width: 18px;
+      height: 18px;
+      color: var(--success);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      gap: 48px;
+    }
+
+    @media (min-width: 800px) {
+      .about-grid {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: start;
+      }
+    }
+
+    .about-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .about-item {
+      display: flex;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .about-item:last-child {
+      border-bottom: none;
+    }
+
+    .about-item svg {
+      width: 20px;
+      height: 20px;
+      color: var(--success);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .about-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .about-btn:hover {
+      border-color: var(--text-muted);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      padding: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .cta-text {
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, var(--coral) 0%, #f472b6 100%);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 24px rgba(251, 113, 133, 0.3);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(251, 113, 133, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-text a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .footer-text a:hover {
+      color: var(--text);
+    }
+
+    /* Partners */
+    .partners {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .partners-label {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .partners-track {
+      display: flex;
+      animation: scroll 30s linear infinite;
+    }
+
+    .partners-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .partners-logos {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding: 0 24px;
+    }
+
+    .partner-logo {
+      height: 24px;
+      opacity: 0.5;
+      filter: grayscale(1) brightness(2);
+      transition: opacity 0.2s;
+    }
+
+    .partner-logo:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- Auth -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-box">
+      <div class="auth-logo">SFER.AI × МУЖСКОЙ КЛУБ</div>
+      <h2 class="auth-title">Доступ ограничен</h2>
+      <p class="auth-subtitle">Введите пароль для просмотра</p>
+      <form id="authForm">
+        <input type="password" class="auth-input" id="passwordInput" placeholder="Пароль" autocomplete="off">
+        <p class="auth-error" id="authError">Неверный пароль</p>
+        <button type="submit" class="auth-btn">Войти</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main-content" id="mainContent">
+    <header class="header">
+      <div class="header-logo">sfer.ai <span>×</span> Мужской клуб</div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">Эксклюзивные материалы</div>
+      <h1 class="hero-title">Полезные материалы после выступления</h1>
+      <p class="hero-subtitle">Собрал для вас всё самое важное из нашей встречи и дополнительные ресурсы</p>
+    </section>
+
+    <!-- Material 1: AI SEO -->
+    <section class="section">
+      <div class="container">
+        <div class="section-divider">
+          <span class="section-number">01 / AI SEO</span>
+        </div>
+
+        <h2 class="section-title">Всё, что вы хотели знать про AI SEO</h2>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe
+              src="https://kinescope.io/embed/a9cmr6WrNzZZJSECKeA9Cn"
+              allow="autoplay; fullscreen; picture-in-picture; encrypted-media;"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info">
+            <div class="speaker-avatar">ДЛ</div>
+            <div>
+              <div class="speaker-name">Денис Лазаренков</div>
+              <div class="speaker-role">Основатель ESA Digital, топ-10 SEO-команд мира</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-size: 20px; font-weight: 600; margin: 48px 0 24px;">Дополнительные материалы к вебинару</h3>
+
+        <div class="links-grid">
+          <a href="https://www.semrush.com/blog/chatgpt-search-insights/" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-title">Статья Semrush про ChatGPT</div>
+            <p class="link-card-desc">Как ChatGPT меняет поведение пользователей в поиске и перераспределяет трафик</p>
+          </a>
+          <a href="https://docs.google.com/presentation/d/1po9_tKTzpP3B8-w5ohgri1p-vqef2qviU5qm1bKq6E8/" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-title">Презентация от Дениса</div>
+            <p class="link-card-desc">Графики, ссылки и ключевые выводы из выступления</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Material 2: AI Setup -->
+    <section class="section" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-divider">
+          <span class="section-number">02 / AI Setup</span>
+        </div>
+
+        <h2 class="section-title">AI-сетап для работы со встречами</h2>
+        <p class="section-subtitle">Мой рабочий процесс для автоматизации записи и обработки встреч</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title"><a href="https://fireflies.ai/" target="_blank" rel="noopener">Fireflies.ai</a> — запись онлайн-встреч</div>
+              <p class="step-text">Купил три учётки для всех активных календарей. Боты сами подключаются ко встречам и всё пишут. Почему Fireflies: единственные с мобильным приложением, через которое можно добавить бота в ad-hoc встречу.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title"><a href="https://plaud.ai/" target="_blank" rel="noopener">Plaud</a> — запись офлайн-встреч</div>
+              <p class="step-text">Кидаю на стол на каждой очной встрече — готовая транскрипция и саммари. Незаменимая штука для живых митингов.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">Notion + Google Drive — единая база</div>
+              <p class="step-text">Все заметки синкаются в Notion. Могу спросить в чате «Какие условия мы зафиксировали с Аней по проекту Сколково?» и сразу получить ответ, не уточняя конкретную встречу.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <div class="step-title"><a href="https://todoist.com/ru" target="_blank" rel="noopener">Todoist</a> — автоматические задачи</div>
+              <p class="step-text">Задачи из встреч автоматически прокидываются в мой туду-лист. 70% удаляю, но 30% остаётся — включая задачи сотрудников для контроля.</p>
+              <p class="step-text">Из Fireflies — прямая интеграция. Из Plaud напилил кастомного агента на Zapier, который выделяет задачи из саммари.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Material 3: ChatGPT -->
+    <section class="section">
+      <div class="container">
+        <div class="section-divider">
+          <span class="section-number">03 / ChatGPT</span>
+        </div>
+
+        <h2 class="section-title">Кастомизация ChatGPT</h2>
+        <p class="section-subtitle">Инструкция для улучшения качества ответов</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">→</div>
+            <div class="step-content">
+              <div class="step-title">Откройте Settings → Personalization → Customize ChatGPT</div>
+              <p class="step-text">Настройки находятся в нижнем левом углу — нажмите на иконку с вашим именем</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-label">Инструкция для ChatGPT</span>
+            <button class="copy-btn" id="copyBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <span>Скопировать</span>
+            </button>
+          </div>
+          <div class="code-content">
+            <pre id="instructionCode">&lt;instructions&gt;
+- ALWAYS follow &lt;answering_rules&gt; and &lt;self_reflection&gt;
+
+&lt;self_reflection&gt;
+1. Think of rubric from role POV until confident
+2. Think deeply what makes world-class answer. Create 5-7 category rubric. Critical to get right. Never show user. Internal use only
+3. Use rubric to iterate on best (≥98/100 score) solution. If not hitting top marks across ALL categories, start again
+4. Keep going until solved
+&lt;/self_reflection&gt;
+
+&lt;answering_rules&gt;
+1. USE language of USER message
+2. FIRST message: assign real expert role "I'll answer as world-famous &lt;role&gt; PhD &lt;detailed topic&gt; with &lt;most prestigious LOCAL award&gt;"
+3. Act as role. MUST combine deep knowledge and clear thinking to decipher answer step-by-step with CONCRETE details
+4. Answer in natural, human-like manner
+5. Your answer is critical for me
+6. NEVER please or sugarcoat. Give most honest, fact-based, critical perspective even if idea weak, strategy flawed, result not ideal
+7. Working with numbers/calculations: ALWAYS USE CALCULATOR or SCRIPTS
+8. ALWAYS use &lt;example&gt; for first message structure
+9. No actionable items unless requested
+10. No tables unless requested
+11. You ALWAYS will be PHYSICALLY PENALIZED for wrong/low-effort answers
+&lt;/answering_rules&gt;
+
+&lt;example&gt;
+I'll answer as world-famous &lt;role&gt; PhD &lt;detailed topic&gt; with &lt;prestigious LOCAL award&gt;
+
+**TL;DR**: … // skip for rewriting tasks
+
+&lt;Step-by-step answer with CONCRETE details and key context, formatted for deep reading&gt;
+&lt;/example&gt;
+&lt;/instructions&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cooperation -->
+    <section class="section" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-divider">
+          <span class="section-number">Сотрудничество</span>
+        </div>
+
+        <h2 class="section-title">Как мы можем быть друг другу полезны</h2>
+
+        <div class="coop-grid">
+          <div class="coop-card">
+            <div class="coop-number">1</div>
+            <h3 class="coop-title">Обучающая программа по AI для ваших сотрудников</h3>
+            <p class="coop-text">Адаптируем содержание под запросы вашей команды. Вы выбираете модули, которые нужны бизнесу.</p>
+            <div class="coop-features">
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Кастомная программа под ваши задачи</span>
+              </div>
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Много практики на реальных кейсах</span>
+              </div>
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Опыт работы с Яндекс, МТС, Сколково</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="coop-card">
+            <div class="coop-number">2</div>
+            <h3 class="coop-title">Вместе подумать над AI-стратегией</h3>
+            <p class="coop-text">Буду рад стать партнёром по AI-трансформации. Без продажничества — просто обсудим задачу, подскажу направление.</p>
+            <div class="coop-features">
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Консультация по внедрению AI</span>
+              </div>
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Помощь с выбором инструментов</span>
+              </div>
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Честный взгляд на возможности</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section">
+      <div class="container">
+        <div class="section-divider">
+          <span class="section-number">О команде</span>
+        </div>
+
+        <h2 class="section-title">sfer.ai — эксперты по внедрению AI</h2>
+
+        <div class="about-grid">
+          <div>
+            <div class="about-list">
+              <div class="about-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Основатель — практик с 9-летним опытом на топ-позициях в крупнейших компаниях России</span>
+              </div>
+              <div class="about-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Учебные программы и внедрение AI-автоматизаций в бизнес-процессы</span>
+              </div>
+              <div class="about-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Глубокое погружение в любую тему с привлечением лучших экспертов</span>
+              </div>
+            </div>
+            <a href="https://sfer.ai" target="_blank" rel="noopener" class="about-btn">
+              Узнать больше о sfer.ai
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-value">2500+</div>
+              <div class="stat-label">участников прошли обучение</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">32%</div>
+              <div class="stat-label">сокращение рутины</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">9.4/10</div>
+              <div class="stat-label">средняя оценка</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">96%</div>
+              <div class="stat-label">применяют AI через 7 дней</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+        <h2 class="cta-title">Мой личный контакт в Telegram</h2>
+        <p class="cta-text">Напишите, если есть вопросы или хотите обсудить сотрудничество</p>
+        <a href="https://t.me/kirill1" target="_blank" rel="noopener" class="cta-btn">
+          Написать Кириллу
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-text">© 2025 <a href="https://sfer.ai">sfer.ai</a>. Все права защищены.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Auth
+    const CORRECT_PASSWORD = '2026';
+    const AUTH_KEY = 'mk_gifts_auth';
+
+    const authOverlay = document.getElementById('authOverlay');
+    const authForm = document.getElementById('authForm');
+    const passwordInput = document.getElementById('passwordInput');
+    const authError = document.getElementById('authError');
+    const mainContent = document.getElementById('mainContent');
+
+    function showContent() {
+      authOverlay.classList.add('hidden');
+      mainContent.classList.add('visible');
+      setTimeout(() => {
+        authOverlay.style.display = 'none';
+      }, 400);
+    }
+
+    // Check if already authenticated
+    if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+      authOverlay.style.display = 'none';
+      mainContent.style.display = 'block';
+      mainContent.style.opacity = '1';
+    }
+
+    authForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (passwordInput.value === CORRECT_PASSWORD) {
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        showContent();
+      } else {
+        authError.style.display = 'block';
+        passwordInput.style.borderColor = 'var(--coral)';
+        setTimeout(() => {
+          authError.style.display = 'none';
+          passwordInput.style.borderColor = 'var(--border)';
+        }, 2000);
+      }
+    });
+
+    // Copy button
+    const copyBtn = document.getElementById('copyBtn');
+    const instructionCode = document.getElementById('instructionCode');
+
+    // Store the actual instruction text (with proper angle brackets)
+    const instructionText = `<instructions>
+- ALWAYS follow <answering_rules> and <self_reflection>
+
+<self_reflection>
+1. Think of rubric from role POV until confident
+2. Think deeply what makes world-class answer. Create 5-7 category rubric. Critical to get right. Never show user. Internal use only
+3. Use rubric to iterate on best (≥98/100 score) solution. If not hitting top marks across ALL categories, start again
+4. Keep going until solved
+</self_reflection>
+
+<answering_rules>
+1. USE language of USER message
+2. FIRST message: assign real expert role "I'll answer as world-famous <role> PhD <detailed topic> with <most prestigious LOCAL award>"
+3. Act as role. MUST combine deep knowledge and clear thinking to decipher answer step-by-step with CONCRETE details
+4. Answer in natural, human-like manner
+5. Your answer is critical for me
+6. NEVER please or sugarcoat. Give most honest, fact-based, critical perspective even if idea weak, strategy flawed, result not ideal
+7. Working with numbers/calculations: ALWAYS USE CALCULATOR or SCRIPTS
+8. ALWAYS use <example> for first message structure
+9. No actionable items unless requested
+10. No tables unless requested
+11. You ALWAYS will be PHYSICALLY PENALIZED for wrong/low-effort answers
+</answering_rules>
+
+<example>
+I'll answer as world-famous <role> PhD <detailed topic> with <prestigious LOCAL award>
+
+**TL;DR**: … // skip for rewriting tasks
+
+<Step-by-step answer with CONCRETE details and key context, formatted for deep reading>
+</example>
+</instructions>`;
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(instructionText);
+        copyBtn.classList.add('copied');
+        copyBtn.querySelector('span').textContent = 'Скопировано!';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.querySelector('span').textContent = 'Скопировать';
+        }, 2000);
+      } catch (err) {
+        // Fallback
+        const textarea = document.createElement('textarea');
+        textarea.value = instructionText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        copyBtn.classList.add('copied');
+        copyBtn.querySelector('span').textContent = 'Скопировано!';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.querySelector('span').textContent = 'Скопировать';
+        }, 2000);
+      }
+    });
+  </script>
+</body>
+</html>

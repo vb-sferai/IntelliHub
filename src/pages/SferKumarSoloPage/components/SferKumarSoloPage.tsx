@@ -218,61 +218,50 @@ export const SferKumarSoloPage = () => {
                         </p>
                     </div>
 
-                    {/* Module Cards Grid */}
-                    <div className="flex flex-col gap-4 w-full">
-                        {/* First Row: Modules 1-3 */}
-                        <div className="flex flex-col lg:flex-row gap-4 w-full">
-                            {PROGRAM_MODULES.slice(0, 3).map((module, index) => (
-                                <div key={index} className="flex-1 min-w-0 bg-[#F7F7F5] p-8 flex flex-col justify-between h-auto lg:h-[400px]">
-                                    <div className="flex flex-col gap-4">
-                                        <div className="flex flex-col gap-1">
-                                            <span className="text-sm font-medium text-[#858585]">{module.module}</span>
-                                            <h3 className="text-xl lg:text-2xl font-semibold text-black leading-[1.25] whitespace-pre-line">
-                                                {module.title}
-                                            </h3>
-                                            {module.duration && (
-                                                <span className="text-sm text-[#858585] mt-2">{module.duration}</span>
-                                            )}
+                    {/* Module Cards - Responsive 1/2/3 columns grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 w-full">
+                        {PROGRAM_MODULES.map((module, index) => (
+                            <div
+                                key={index}
+                                className="bg-[#F7F7F5] p-6 sm:p-8 flex flex-col rounded-lg"
+                            >
+                                {/* Module Header */}
+                                <div className="flex flex-col gap-3">
+                                    <span className="text-sm font-medium text-[#858585]">
+                                        {module.module}
+                                    </span>
+                                    <h3 className="text-lg lg:text-xl xl:text-2xl font-semibold text-black leading-[1.3]">
+                                        {module.title}
+                                    </h3>
+                                    {/* Duration Badges */}
+                                    {module.duration && (
+                                        <div className="flex flex-wrap gap-2 mt-1">
+                                            {module.duration.split(' | ').map((part, i) => (
+                                                <span
+                                                    key={i}
+                                                    className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#E8E8E6] text-[#666]"
+                                                >
+                                                    {part}
+                                                </span>
+                                            ))}
                                         </div>
-                                    </div>
-                                    <ul className="flex flex-col gap-2 mt-4">
-                                        {module.items.map((item, itemIndex) => (
-                                            <li key={itemIndex} className="flex items-start gap-2 text-sm text-[#858585] leading-[1.4]">
-                                                <span className="w-1.5 h-1.5 bg-[#858585] rounded-full mt-1.5 shrink-0"></span>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    )}
                                 </div>
-                            ))}
-                        </div>
 
-                        {/* Second Row: Modules 4-5 */}
-                        <div className="flex flex-col lg:flex-row gap-4 w-full">
-                            {PROGRAM_MODULES.slice(3, 5).map((module, index) => (
-                                <div key={index} className="flex-1 min-w-0 bg-[#F7F7F5] p-8 flex flex-col justify-between h-auto lg:h-[400px]">
-                                    <div className="flex flex-col gap-4">
-                                        <div className="flex flex-col gap-1">
-                                            <span className="text-sm font-medium text-[#858585]">{module.module}</span>
-                                            <h3 className="text-xl lg:text-2xl font-semibold text-black leading-[1.25] whitespace-pre-line">
-                                                {module.title}
-                                            </h3>
-                                            {module.duration && (
-                                                <span className="text-sm text-[#858585] mt-2">{module.duration}</span>
-                                            )}
-                                        </div>
-                                    </div>
-                                    <ul className="flex flex-col gap-2 mt-4">
-                                        {module.items.map((item, itemIndex) => (
-                                            <li key={itemIndex} className="flex items-start gap-2 text-sm text-[#858585] leading-[1.4]">
-                                                <span className="w-1.5 h-1.5 bg-[#858585] rounded-full mt-1.5 shrink-0"></span>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
+                                {/* Module Items */}
+                                <ul className="flex flex-col gap-2.5 mt-5">
+                                    {module.items.map((item, itemIndex) => (
+                                        <li
+                                            key={itemIndex}
+                                            className="flex items-start gap-2.5 text-xs sm:text-sm text-[#858585] leading-[1.5]"
+                                        >
+                                            <span className="w-1 h-1 bg-[#858585] rounded-full mt-2 shrink-0"></span>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </div>
 

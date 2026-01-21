@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sfer.ai × JET — Развитие сотрудничества</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0a0a0c;
+            --bg-card: #111114;
+            --bg-elevated: #18181c;
+            --accent: #3b82f6;
+            --accent-dim: #2563eb;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --text-primary: #f5f5f7;
+            --text-secondary: #8e8e93;
+            --text-dim: #636366;
+            --border: rgba(255, 255, 255, 0.08);
+            --success: #4ade80;
+            --coral: #fb7185;
+            --orange: #f97316;
+            --orange-glow: rgba(249, 115, 22, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: 'Manrope', -apple-system, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Auth Overlay */
+        .auth-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.4s ease;
+        }
+
+        .auth-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .auth-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .auth-logo {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+            margin-bottom: 32px;
+        }
+
+        .auth-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .auth-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        .auth-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 16px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .auth-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .auth-error {
+            color: var(--coral);
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--text-primary);
+            color: var(--bg-deep);
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .auth-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: none;
+        }
+
+        .main-content.visible {
+            display: block;
+        }
+
+        /* Slide base */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 80px;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, var(--accent-glow) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .slide-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation dots */
+        .nav-dots {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--text-dim);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+        }
+
+        .nav-dot:hover {
+            background: var(--text-secondary);
+            transform: scale(1.3);
+        }
+
+        .nav-dot.active {
+            background: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+            z-index: 100;
+        }
+
+        .slide-counter span {
+            color: var(--accent);
+        }
+
+        /* Logo */
+        .logo {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            z-index: 100;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        /* Typography */
+        .headline {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .headline em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .headline .orange {
+            color: var(--orange);
+        }
+
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .subhead {
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        /* Hero slide */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            margin-bottom: 32px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Metrics */
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .metric {
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .metric-value {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 36px;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-item {
+            flex: 1;
+            min-width: 180px;
+            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: '→';
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            font-size: 18px;
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-month {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Proposal blocks */
+        .proposal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .proposal-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s;
+        }
+
+        .proposal-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .proposal-card.highlight {
+            border-color: var(--orange);
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(249, 115, 22, 0.05) 100%);
+        }
+
+        .proposal-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-glow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .proposal-card.highlight .proposal-icon {
+            background: var(--orange-glow);
+        }
+
+        .proposal-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .proposal-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .proposal-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--success);
+            padding: 4px 10px;
+            background: rgba(74, 222, 128, 0.1);
+            border-radius: 20px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .proposal-tag.new {
+            color: var(--orange);
+            background: var(--orange-glow);
+        }
+
+        /* Process steps */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            gap: 24px;
+            align-items: center;
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .process-step:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateX(4px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-glow);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .step-content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .step-output {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            padding: 8px 14px;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .step-output span {
+            color: var(--success);
+        }
+
+        /* Pilot details */
+        .pilot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .pilot-meta {
+            text-align: right;
+        }
+
+        .pilot-meta-item {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .pilot-meta-item strong {
+            color: var(--text-primary);
+        }
+
+        .pilot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .pilot-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .pilot-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .pilot-card-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-glow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .pilot-card-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .pilot-card-list {
+            list-style: none;
+        }
+
+        .pilot-card-list li {
+            position: relative;
+            padding-left: 14px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .pilot-card-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Result box */
+        .result-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .result-box.orange {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.05) 100%);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        .result-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .result-box.orange .result-label {
+            color: var(--orange);
+        }
+
+        .result-text {
+            font-size: 15px;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        /* Contact slide */
+        .contact-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .contact-name {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .contact-role {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .contact-link svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+        }
+
+        .contact-cta {
+            margin-top: 48px;
+            padding: 20px 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-cta:hover {
+            background: var(--accent-dim);
+            transform: translateY(-2px);
+        }
+
+        /* Scroll hint */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dim);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--accent-dim);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 40px 24px;
+            }
+
+            .metrics-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .proposal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pilot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pilot-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .pilot-meta {
+                text-align: left;
+            }
+
+            .nav-dots {
+                right: 20px;
+            }
+
+            .logo, .slide-counter {
+                left: 24px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .process-step {
+                grid-template-columns: 50px 1fr;
+            }
+
+            .step-output {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .metrics-row {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                flex-direction: column;
+            }
+
+            .timeline-item::after {
+                display: none;
+            }
+
+            .nav-dots {
+                display: none;
+            }
+
+            .step-number {
+                width: 44px;
+                height: 44px;
+                font-size: 16px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .nav-dots, .slide-counter, .logo, .scroll-hint, .auth-overlay {
+                display: none !important;
+            }
+
+            html {
+                scroll-snap-type: none;
+            }
+
+            body {
+                background: white !important;
+                color: #1a1a1a !important;
+            }
+
+            .slide {
+                min-height: auto;
+                height: 100vh;
+                page-break-after: always;
+                background: white !important;
+            }
+
+            .slide::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Auth -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-box">
+            <div class="auth-logo">SFER.AI × JET</div>
+            <h2 class="auth-title">Доступ ограничен</h2>
+            <p class="auth-subtitle">Введите пароль для просмотра</p>
+            <form id="authForm">
+                <input type="password" class="auth-input" id="passwordInput" placeholder="Пароль" autocomplete="off">
+                <p class="auth-error" id="authError">Неверный пароль</p>
+                <button type="submit" class="auth-btn">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="main-content" id="mainContent">
+        <div class="logo">sfer<span>.ai</span> × JET</div>
+
+        <nav class="nav-dots">
+            <button class="nav-dot active" data-slide="0"></button>
+            <button class="nav-dot" data-slide="1"></button>
+            <button class="nav-dot" data-slide="2"></button>
+            <button class="nav-dot" data-slide="3"></button>
+            <button class="nav-dot" data-slide="4"></button>
+        </nav>
+
+        <div class="slide-counter"><span>01</span> / 05</div>
+
+        <!-- Slide 1: What we've done -->
+        <section class="slide" id="slide-0">
+            <div class="slide-inner">
+                <div class="hero-badge fade-in">5 месяцев сотрудничества</div>
+                <span class="label fade-in stagger-1">Октябрь 2025 — Январь 2026</span>
+                <h1 class="headline fade-in stagger-1">Что мы сделали<br>за <em>первый этап</em></h1>
+                <p class="subhead fade-in stagger-2">Построили AI-комьюнити, провели обучение и вовлекли команду JET в использование AI-инструментов в ежедневной работе</p>
+
+                <div class="metrics-row fade-in stagger-2">
+                    <div class="metric">
+                        <div class="metric-value">56+</div>
+                        <div class="metric-label">Уникальных участников воркшопов</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">3</div>
+                        <div class="metric-label">Практических воркшопа</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">20</div>
+                        <div class="metric-label">Обзоров AI-инструментов</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">2</div>
+                        <div class="metric-label">Экспертные deep dive сессии</div>
+                    </div>
+                </div>
+
+                <div class="timeline fade-in stagger-3">
+                    <div class="timeline-item">
+                        <div class="timeline-month">Октябрь</div>
+                        <div class="timeline-content">Cursor Basics, Notion AI, 6 tool reviews</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-month">Ноябрь</div>
+                        <div class="timeline-content">AI Agents deep dive, жюри конкурса, 7 tool reviews</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-month">Декабрь</div>
+                        <div class="timeline-content">Expert sessions, Claude Code, Data workflows</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-hint">
+                <span>Scroll</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Slide 2: Proposal -->
+        <section class="slide" id="slide-1">
+            <div class="slide-inner">
+                <span class="label fade-in">Предложение</span>
+                <h2 class="headline fade-in stagger-1">Сохраняем движ +<br>добавляем <em class="orange">предметную работу</em></h2>
+                <p class="subhead fade-in stagger-2">Развиваем идею конкурса — теперь предметно работаем с конкретными подразделениями</p>
+
+                <div class="proposal-grid fade-in stagger-2">
+                    <div class="proposal-card">
+                        <span class="proposal-tag">Сохраняем</span>
+                        <div class="proposal-icon">💬</div>
+                        <div class="proposal-title">Общий чат и движ новостей</div>
+                        <div class="proposal-desc">Продолжаем вести комьюнити: обзоры инструментов, новости индустрии, ответы на вопросы команды</div>
+                    </div>
+
+                    <div class="proposal-card highlight">
+                        <span class="proposal-tag new">Добавляем</span>
+                        <div class="proposal-icon">🔬</div>
+                        <div class="proposal-title">Работа с подразделениями</div>
+                        <div class="proposal-desc">Берём 2-3 подразделения, встречаемся с ними и продвигаем по треку автоматизации. Находим процессы → считаем эффект → тестируем</div>
+                    </div>
+                </div>
+
+                <div class="result-box orange fade-in stagger-3">
+                    <div class="result-label">Суть</div>
+                    <div class="result-text">
+                        Аутсорсная AI-лаборатория, которая постоянно ищет процессы и эффекты от внедрения искусственного интеллекта в вашем бизнесе
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: How it works -->
+        <section class="slide" id="slide-2">
+            <div class="slide-inner">
+                <span class="label fade-in">Как это работает</span>
+                <h2 class="headline fade-in stagger-1">От задач подразделения<br>к <em>работающим пилотам</em></h2>
+
+                <div class="process-steps">
+                    <div class="process-step fade-in stagger-1">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3>Приходим в подразделение</h3>
+                            <p>Встречаемся с командой, смотрим их задачи и процессы, погружаемся в контекст</p>
+                        </div>
+                        <div class="step-output">Output: <span>Карта процессов</span></div>
+                    </div>
+
+                    <div class="process-step fade-in stagger-2">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3>Находим точки автоматизации</h3>
+                            <p>Определяем где AI может сэкономить время, улучшить качество или убрать рутину</p>
+                        </div>
+                        <div class="step-output">Output: <span>Список гипотез</span></div>
+                    </div>
+
+                    <div class="process-step fade-in stagger-3">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3>Считаем бизнес-эффект</h3>
+                            <p>Оцениваем затраты, трудозатраты, потенциальную экономию для каждой гипотезы</p>
+                        </div>
+                        <div class="step-output">Output: <span>Приоритизированный бэклог</span></div>
+                    </div>
+
+                    <div class="process-step fade-in stagger-4">
+                        <div class="step-number">04</div>
+                        <div class="step-content">
+                            <h3>Тестируем и внедряем</h3>
+                            <p>Где-то ребята делают сами, где-то мы помогаем, где-то обучаем — запускаем пилоты</p>
+                        </div>
+                        <div class="step-output">Output: <span>Работающие решения</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Pilot -->
+        <section class="slide" id="slide-3">
+            <div class="slide-inner">
+                <span class="label fade-in">Пилотный проект</span>
+
+                <div class="pilot-header">
+                    <div>
+                        <h2 class="headline fade-in stagger-1">Тестируем формат<br><em>6-8 недель</em></h2>
+                        <p class="subhead fade-in stagger-2">Выбираем 2-3 подразделения, успеваем поговорить про запросы, приоритизировать гипотезы и запустить первые пилоты</p>
+                    </div>
+                    <div class="pilot-meta fade-in stagger-2">
+                        <div class="pilot-meta-item"><strong>6-8 недель</strong> пилот</div>
+                        <div class="pilot-meta-item"><strong>2-3</strong> подразделения</div>
+                    </div>
+                </div>
+
+                <div class="pilot-grid fade-in stagger-3">
+                    <div class="pilot-card">
+                        <div class="pilot-card-header">
+                            <div class="pilot-card-icon">📋</div>
+                            <div class="pilot-card-title">Что делаем</div>
+                        </div>
+                        <ul class="pilot-card-list">
+                            <li>Выбираем подразделения вместе с вами</li>
+                            <li>Проводим интервью с командами</li>
+                            <li>Формируем бэклог автоматизации</li>
+                            <li>Запускаем 2-3 пилота</li>
+                        </ul>
+                    </div>
+
+                    <div class="pilot-card">
+                        <div class="pilot-card-header">
+                            <div class="pilot-card-icon">🎯</div>
+                            <div class="pilot-card-title">Что получаете</div>
+                        </div>
+                        <ul class="pilot-card-list">
+                            <li>Карту процессов для автоматизации</li>
+                            <li>Приоритизированный бэклог с ROI</li>
+                            <li>Работающие пилоты</li>
+                            <li>Методология для масштабирования</li>
+                        </ul>
+                    </div>
+
+                    <div class="pilot-card">
+                        <div class="pilot-card-header">
+                            <div class="pilot-card-icon">⭐</div>
+                            <div class="pilot-card-title">Бонус</div>
+                        </div>
+                        <ul class="pilot-card-list">
+                            <li>Выделяем «звёздочек» в процессе</li>
+                            <li>Растим внутренних AI-евангелистов</li>
+                            <li>Передаём комьюнити вам</li>
+                            <li>Команда сможет вести это сама</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="result-box fade-in stagger-4">
+                    <div class="result-label">После пилота</div>
+                    <div class="result-text">
+                        Понимаем, работает ли формат для JET. Если да — масштабируем на другие подразделения. Если нет — корректируем подход или завершаем.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Contact -->
+        <section class="slide" id="slide-4">
+            <div class="slide-inner">
+                <div class="contact-content">
+                    <span class="label fade-in">Обсудим?</span>
+                    <img src="../../centraluniversity/speaker.jpg" alt="Кирилл Гурбанов" class="contact-photo fade-in stagger-1">
+                    <h2 class="contact-name fade-in stagger-1">Кирилл Гурбанов</h2>
+                    <p class="contact-role fade-in stagger-2">Основатель sfer.ai</p>
+
+                    <div class="contact-links fade-in stagger-3">
+                        <a href="https://t.me/kirill1" target="_blank" class="contact-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                            </svg>
+                            @kirill1
+                        </a>
+                        <a href="mailto:gk@sfer.ai" class="contact-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            gk@sfer.ai
+                        </a>
+                    </div>
+
+                    <a href="https://t.me/kirill1" target="_blank" class="contact-cta fade-in stagger-4">
+                        Обсудить предложение
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Auth
+        const CORRECT_PASSWORD = 'jet2026';
+        const AUTH_KEY = 'jet_proposal_auth';
+
+        const authOverlay = document.getElementById('authOverlay');
+        const authForm = document.getElementById('authForm');
+        const passwordInput = document.getElementById('passwordInput');
+        const authError = document.getElementById('authError');
+        const mainContent = document.getElementById('mainContent');
+
+        function showContent() {
+            authOverlay.classList.add('hidden');
+            mainContent.classList.add('visible');
+            setTimeout(() => {
+                authOverlay.style.display = 'none';
+                initAnimations();
+            }, 400);
+        }
+
+        // Check if already authenticated
+        if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+            authOverlay.style.display = 'none';
+            mainContent.style.display = 'block';
+            mainContent.classList.add('visible');
+            setTimeout(initAnimations, 100);
+        }
+
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (passwordInput.value === CORRECT_PASSWORD) {
+                sessionStorage.setItem(AUTH_KEY, 'true');
+                showContent();
+            } else {
+                authError.style.display = 'block';
+                passwordInput.style.borderColor = 'var(--coral)';
+                setTimeout(() => {
+                    authError.style.display = 'none';
+                    passwordInput.style.borderColor = 'var(--border)';
+                }, 2000);
+            }
+        });
+
+        // Animations
+        function initAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        }
+
+        // Nav dots
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+        const counter = document.querySelector('.slide-counter');
+        const totalSlides = slides.length;
+
+        const slideObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(slides).indexOf(entry.target);
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                    counter.innerHTML = `<span>0${index + 1}</span> / 0${totalSlides}`;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => slideObserver.observe(slide));
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = dot.dataset.slide;
+                document.getElementById(`slide-${index}`).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!mainContent.classList.contains('visible')) return;
+            const currentIndex = Array.from(dots).findIndex(d => d.classList.contains('active'));
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                const next = Math.min(currentIndex + 1, slides.length - 1);
+                document.getElementById(`slide-${next}`).scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prev = Math.max(currentIndex - 1, 0);
+                document.getElementById(`slide-${prev}`).scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -3,360 +3,1105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Запись эфира про AI SEO для Мужского клуба. Денис Лазаренков рассказывает всё, что нужно знать про AI-поиск: ChatGPT, Claude, Gemini, Perplexity.">
-  <meta name="keywords" content="AI SEO, искусственный интеллект, поиск, ChatGPT, Claude, Gemini, Perplexity, sfer.ai, Мужской клуб">
-  <meta name="author" content="sfer.ai">
+  <meta name="description" content="Полезные материалы после выступления Кирилла Гурбанова для Мужского клуба">
+  <title>Материалы | Кирилл Гурбанов × Мужской клуб</title>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="AI SEO: Всё, что вы хотели знать | sfer.ai">
-  <meta property="og:description" content="Запись эфира про AI SEO для Мужского клуба от Дениса Лазаренкова и команды sfer.ai">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="./images/og-image.jpg">
-
-  <title>AI SEO: Всё, что вы хотели знать | sfer.ai</title>
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/styles.css">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="./images/favicon.svg">
+    :root {
+      --bg: #0a0a0b;
+      --bg-card: #111113;
+      --bg-elevated: #18181b;
+      --border: #27272a;
+      --border-highlight: #3f3f46;
+      --text: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #22d3ee;
+      --accent-dim: rgba(34, 211, 238, 0.15);
+      --success: #4ade80;
+      --coral: #fb7185;
+      --font: 'IBM Plex Sans', -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Auth Overlay */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.4s ease;
+    }
+
+    .auth-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .auth-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .auth-logo {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 32px;
+    }
+
+    .auth-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .auth-subtitle {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .auth-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .auth-error {
+      color: var(--coral);
+      font-size: 14px;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .auth-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Main Content */
+    .main-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .main-content.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: rgba(10, 10, 11, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-logo {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .header-logo span {
+      color: var(--text-muted);
+      margin: 0 8px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 140px 24px 80px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Container */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Section */
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section-number {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    /* Video Card */
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-info {
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .speaker-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .speaker-name {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .speaker-role {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Links Grid */
+    .links-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 600px) {
+      .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .link-card {
+      display: block;
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .link-card:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-2px);
+    }
+
+    .link-card-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .link-card-title::after {
+      content: '→';
+      color: var(--accent);
+      transition: transform 0.2s;
+    }
+
+    .link-card:hover .link-card-title::after {
+      transform: translateX(4px);
+    }
+
+    .link-card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Steps */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-dim);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .step-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step-title a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--accent);
+    }
+
+    .step-title a:hover {
+      color: var(--accent);
+    }
+
+    .step-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .step-text + .step-text {
+      margin-top: 12px;
+    }
+
+    /* Code Block */
+    .code-block {
+      margin-top: 32px;
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .code-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .copy-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      font-family: var(--font);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .copy-btn.copied {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .copy-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .code-content {
+      padding: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0 0 10px 10px;
+      overflow-x: auto;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .code-content pre {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    /* Cooperation */
+    .coop-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (min-width: 700px) {
+      .coop-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .coop-card {
+      padding: 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .coop-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--accent-dim);
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .coop-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .coop-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .coop-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .coop-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .coop-feature svg {
+      width: 18px;
+      height: 18px;
+      color: var(--success);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      gap: 48px;
+    }
+
+    @media (min-width: 800px) {
+      .about-grid {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: start;
+      }
+    }
+
+    .about-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .about-item {
+      display: flex;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .about-item:last-child {
+      border-bottom: none;
+    }
+
+    .about-item svg {
+      width: 20px;
+      height: 20px;
+      color: var(--success);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .about-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .about-btn:hover {
+      border-color: var(--text-muted);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      padding: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .cta-text {
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, var(--coral) 0%, #f472b6 100%);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 24px rgba(251, 113, 133, 0.3);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(251, 113, 133, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-text a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .footer-text a:hover {
+      color: var(--text);
+    }
+
+    /* Partners */
+    .partners {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .partners-label {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .partners-track {
+      display: flex;
+      animation: scroll 30s linear infinite;
+    }
+
+    .partners-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .partners-logos {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding: 0 24px;
+    }
+
+    .partner-logo {
+      height: 24px;
+      opacity: 0.5;
+      filter: grayscale(1) brightness(2);
+      transition: opacity 0.2s;
+    }
+
+    .partner-logo:hover {
+      opacity: 0.8;
+    }
+
+    /* Presentation Card */
+    .presentation-card {
+      display: block;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .presentation-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .presentation-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .presentation-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .presentation-card:hover .presentation-overlay {
+      opacity: 1;
+    }
+
+    .presentation-overlay svg {
+      width: 48px;
+      height: 48px;
+      color: white;
+    }
+
+    .presentation-overlay span {
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 24px;
+      transition: all 0.2s;
+    }
+
+    .download-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .download-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+  </style>
 </head>
 <body>
-  <!-- Auth Overlay -->
+  <!-- Auth -->
   <div class="auth-overlay" id="authOverlay">
-    <div class="auth-modal">
-      <div class="auth-logo">
-        <img src="./images/logo-sfer.svg" alt="sfer.ai">
-      </div>
-      <h2>Доступ ограничен</h2>
-      <p>Введите пароль для просмотра страницы</p>
-      <form class="auth-form" id="authForm">
+    <div class="auth-box">
+      <div class="auth-logo">SFER.AI × МУЖСКОЙ КЛУБ</div>
+      <h2 class="auth-title">Доступ ограничен</h2>
+      <p class="auth-subtitle">Введите пароль для просмотра</p>
+      <form id="authForm">
         <input type="password" class="auth-input" id="passwordInput" placeholder="Пароль" autocomplete="off">
-        <p class="auth-error" id="authError"></p>
-        <button type="submit" class="auth-button" id="authSubmitBtn">Войти</button>
+        <p class="auth-error" id="authError">Неверный пароль</p>
+        <button type="submit" class="auth-btn">Войти</button>
       </form>
     </div>
   </div>
 
-  <!-- Main Content (hidden until authenticated) -->
-  <div id="mainContent">
-    <!-- Background Effects -->
-    <div class="bg-effects">
-    <div class="bg-blob bg-blob-1"></div>
-    <div class="bg-blob bg-blob-2"></div>
-    <div class="bg-blob bg-blob-3"></div>
-    <div class="bg-grid"></div>
-  </div>
+  <!-- Main -->
+  <div class="main-content" id="mainContent">
+    <header class="header">
+      <div class="header-logo">sfer.ai <span>×</span> Мужской клуб</div>
+    </header>
 
-  <!-- Header -->
-  <header class="header" role="banner">
-    <div class="container">
-      <nav class="nav" role="navigation">
-        <div class="nav-logo">
-          <img src="./images/logo-sfer.svg" alt="sfer.ai" class="logo-img">
-          <span class="logo-separator">&times;</span>
-          <span class="logo-subtext">Мужской клуб</span>
-        </div>
-      </nav>
-    </div>
-  </header>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">Эксклюзивные материалы</div>
+      <h1 class="hero-title">Полезные материалы после выступления</h1>
+      <p class="hero-subtitle">Собрал для вас всё самое важное из нашей встречи и дополнительные ресурсы</p>
+    </section>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <!-- Material 1: Presentation -->
+    <section class="section">
       <div class="container">
-        <div class="hero-content">
-          <h1 class="hero-title">
-            Всё, что вы хотели<br>знать про AI SEO
-          </h1>
+        <div class="section-divider">
+          <span class="section-number">01 / Презентация</span>
         </div>
+
+        <h2 class="section-title">Моя презентация с выступления</h2>
+
+        <a href="https://drive.google.com/file/d/1OpGgZdmakLZS-uPIz-0ItDsJ3d9tlL7Z/view?usp=sharing" target="_blank" rel="noopener" class="presentation-card">
+          <img src="./images/presentation-cover.png" alt="Презентация Кирилла Гурбанова">
+          <div class="presentation-overlay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            <span>Скачать презентацию</span>
+          </div>
+        </a>
+
+        <a href="https://drive.google.com/file/d/1OpGgZdmakLZS-uPIz-0ItDsJ3d9tlL7Z/view?usp=sharing" target="_blank" rel="noopener" class="download-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Скачать PDF
+        </a>
       </div>
     </section>
 
-    <!-- Video Section -->
-    <section class="video-section" id="video">
+    <!-- Material 2: AI SEO -->
+    <section class="section">
       <div class="container">
-        <div class="video-container">
-          <h2 class="video-title section-title">Запись эфира</h2>
+        <div class="section-divider">
+          <span class="section-number">02 / AI SEO</span>
+        </div>
+
+        <h2 class="section-title">Всё, что вы хотели знать про AI SEO</h2>
+
+        <div class="video-card">
           <div class="video-wrapper">
             <iframe
               src="https://kinescope.io/embed/a9cmr6WrNzZZJSECKeA9Cn"
-              allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
-              frameborder="0"
-              allowfullscreen
-            ></iframe>
+              allow="autoplay; fullscreen; picture-in-picture; encrypted-media;"
+              allowfullscreen>
+            </iframe>
           </div>
-
-          <!-- Speaker -->
-          <div class="speaker-card">
-            <img src="./images/denis-photo.png" alt="Денис Лазаренков" class="speaker-avatar">
-            <div class="speaker-info">
+          <div class="video-info">
+            <div class="speaker-avatar">ДЛ</div>
+            <div>
               <div class="speaker-name">Денис Лазаренков</div>
-              <div class="speaker-title">основатель ESA Digital, которая входит<br>в топ-10 SEO-команд мира, Google Campus Alum.,<br>ex-Top30u30, GB Entrepreneur of the Year, Finalist</div>
+              <div class="speaker-role">Основатель ESA Digital, топ-10 SEO-команд мира</div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Materials Section -->
-    <section class="materials-section" id="materials">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Дополнительные материалы от sfer.ai</h2>
-        </div>
+        <h3 style="font-size: 20px; font-weight: 600; margin: 48px 0 24px;">Дополнительные материалы к вебинару</h3>
 
-        <div class="materials-grid">
-          <a href="https://www.semrush.com/blog/chatgpt-search-insights/" target="_blank" rel="noopener noreferrer" class="material-card">
-            <h3 class="material-title underline">Статья Semrush с<br>инсайтами про ChatGpt</h3>
-            <p class="material-description">
-              Статья о том как ChatGPT меняет поведение пользователей в поиске и перераспределяет трафик между сайтами (особенно в пользу образовательных, тех- и AI-ресурсов)
-            </p>
+        <div class="links-grid">
+          <a href="https://www.semrush.com/blog/chatgpt-search-insights/" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-title">Статья Semrush про ChatGPT</div>
+            <p class="link-card-desc">Как ChatGPT меняет поведение пользователей в поиске и перераспределяет трафик</p>
           </a>
-
-          <a href="https://docs.google.com/presentation/d/1po9_tKTzpP3B8-w5ohgri1p-vqef2qviU5qm1bKq6E8/" target="_blank" rel="noopener noreferrer" class="material-card highlight">
-            <h3 class="material-title underline">Презентация от Дениса</h3>
-            <p class="material-description">
-              Чтобы освежить знания и подробнее взглянуть на графики и ссылки
-            </p>
+          <a href="https://docs.google.com/presentation/d/1po9_tKTzpP3B8-w5ohgri1p-vqef2qviU5qm1bKq6E8/" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-title">Презентация от Дениса</div>
+            <p class="link-card-desc">Графики, ссылки и ключевые выводы из выступления</p>
           </a>
         </div>
       </div>
     </section>
 
-
-    <!-- AI Setup Section -->
-    <section class="ai-setup" id="ai-setup">
+    <!-- Material 3: AI Setup -->
+    <section class="section" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">AI-сетап по работе<br>со встречами и звонками</h2>
+        <div class="section-divider">
+          <span class="section-number">03 / AI Setup</span>
         </div>
 
-        <div class="ai-setup-grid">
-          <!-- Card 1: Fireflies -->
-          <div class="ai-setup-card">
-            <div class="ai-setup-card-content">
-              <h3 class="ai-setup-card-title">
-                <a href="https://fireflies.ai/" target="_blank" rel="noopener noreferrer">AI-расшифровщики встреч (Fireflies)</a>
-              </h3>
-              <p class="ai-setup-card-text">
-                Я начинал со встроенного решения в почтовик Spark, потом перешел на встроенное решение в Notion, потом психанул и купил для трех своих активных календарей три учётки Fireflies. Они сами подключаются ко встречам и всё пишут.
-              </p>
-              <p class="ai-setup-card-text">
-                Почему Fireflies: потому что только у них есть мобильное приложение через которое можно на бегу добавить бота в ad-hoc встречу, которой не было в календаре. Плюс куча интеграций со всеми возможными сервисами прямо из коробки.
-              </p>
+        <h2 class="section-title">AI-сетап для работы со встречами</h2>
+        <p class="section-subtitle">Мой рабочий процесс для автоматизации записи и обработки встреч</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title"><a href="https://fireflies.ai/" target="_blank" rel="noopener">Fireflies.ai</a> — запись онлайн-встреч</div>
+              <p class="step-text">Купил три учётки для всех активных календарей. Боты сами подключаются ко встречам и всё пишут. Почему Fireflies: единственные с мобильным приложением, через которое можно добавить бота в ad-hoc встречу.</p>
             </div>
-            <div class="ai-setup-card-number">1</div>
           </div>
 
-          <!-- Card 2: Plaud -->
-          <div class="ai-setup-card">
-            <div class="ai-setup-card-content">
-              <h3 class="ai-setup-card-title">
-                <a href="https://plaude.ai/" target="_blank" rel="noopener noreferrer">Офлайн-расшифровщик для живых встреч (Plaud)</a>
-              </h3>
-              <p class="ai-setup-card-text">
-                Незаменимая штука: кидаю Plaud на стол на каждой очной встрече и потом имею готовую транскрипцию и саммари. Супер-штука. Полноценно заюзал, пока был сейчас в Москве, где была тьма живых митингов.
-              </p>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title"><a href="https://plaud.ai/" target="_blank" rel="noopener">Plaud</a> — запись офлайн-встреч</div>
+              <p class="step-text">Кидаю на стол на каждой очной встрече — готовая транскрипция и саммари. Незаменимая штука для живых митингов.</p>
             </div>
-            <div class="ai-setup-card-number">2</div>
           </div>
 
-          <!-- Card 3: Notion + Google Drive -->
-          <div class="ai-setup-card">
-            <div class="ai-setup-card-content">
-              <h3 class="ai-setup-card-title">
-                Все заметки синкаются в единую базу Notion и на Google Диск
-              </h3>
-              <p class="ai-setup-card-text">
-                Дальше я с ними работаю через Notion AI. У меня есть единая сквозная база транскрипций всех онлайн и офлайн встреч в Ноушене, и я в любой момент могу спросить в чате «Какие условия мы зафиксировали с Аней по проекту Сколково?» и сразу получить ответ, даже не уточняя, о какой конкретно встрече из сотен идет речь.
-              </p>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">Notion + Google Drive — единая база</div>
+              <p class="step-text">Все заметки синкаются в Notion. Могу спросить в чате «Какие условия мы зафиксировали с Аней по проекту Сколково?» и сразу получить ответ, не уточняя конкретную встречу.</p>
             </div>
-            <div class="ai-setup-card-number">3</div>
           </div>
 
-          <!-- Card 4: Todoist -->
-          <div class="ai-setup-card">
-            <div class="ai-setup-card-content">
-              <h3 class="ai-setup-card-title">
-                <a href="https://todoist.com/ru" target="_blank" rel="noopener noreferrer">Задачи по итогам встречи автоматически прокидываются в Todoist</a>
-              </h3>
-              <p class="ai-setup-card-text">
-                (Мой ежедневный туду-лист последние лет 10), где я их потом разбираю и так ничего не забываю. Процентов 70 сразу удаляю, потому что они мне не нужны в задачнике, но 30 остается. В том числе задачи сотрудников, которые мне нужно будет позже проконтролировать.
-              </p>
-              <p class="ai-setup-card-text">
-                Из fireflies есть прямая интеграция в Тудуист. Из Plaud напилил на Zapier кастомного ИИ-агента, который берет резюме встречи, выделяет оттуда задачи и каждую отдельно закидывает в Todoist.
-              </p>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <div class="step-title"><a href="https://todoist.com/ru" target="_blank" rel="noopener">Todoist</a> — автоматические задачи</div>
+              <p class="step-text">Задачи из встреч автоматически прокидываются в мой туду-лист. 70% удаляю, но 30% остаётся — включая задачи сотрудников для контроля.</p>
+              <p class="step-text">Из Fireflies — прямая интеграция. Из Plaud напилил кастомного агента на Zapier, который выделяет задачи из саммари.</p>
             </div>
-            <div class="ai-setup-card-number">4</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ChatGPT Customization Section -->
-    <section class="chatgpt-custom" id="chatgpt-custom">
+    <!-- Material 4: ChatGPT -->
+    <section class="section">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Кастомизация ChatGPT</h2>
+        <div class="section-divider">
+          <span class="section-number">04 / ChatGPT</span>
         </div>
 
-        <div class="chatgpt-custom-grid">
-          <!-- Step 1: Settings path -->
-          <div class="chatgpt-custom-card">
-            <h3 class="chatgpt-custom-card-title">Нажмите Settings → Personalization → Customize ChatGPT</h3>
-            <p class="chatgpt-custom-card-text">
-              Найти настройки можно в нижнем левом углу, нажав<br>
-              на иконку с вашим именем или аватаркой.
-            </p>
-          </div>
+        <h2 class="section-title">Кастомизация ChatGPT</h2>
+        <p class="section-subtitle">Инструкция для улучшения качества ответов</p>
 
-          <!-- Step 2: Instruction to copy -->
-          <div class="chatgpt-custom-card">
-            <h3 class="chatgpt-custom-card-title">Дальше скопируйте и вставьте туда эту инструкцию</h3>
-            <div class="chatgpt-instruction-copyable">Follow in the strict order:
-USE the language of my message.
-ONCE PER CHAT assign a real-world expert role to yourself before answering, e.g., "I'll answer as a world-famous historical expert &lt;detailed topic&gt; with &lt;most prestigious LOCAL topic REAL award&gt;" or "I'll answer as a world-famous &lt;specific science&gt; expert in the &lt;detailed topic&gt; with &lt;most prestigious LOCAL topic award&gt;" etc.
-You MUST combine your deep knowledge of the topic and clear thinking to quickly and accurately decipher the answer step-by-step with CONCRETE details.
-I'm going to tip $1,000,000 for the best reply.
-Your answer is critical for my career.
-Answer the question in a natural, human-like manner.
-ALWAYS use an answering example for a first message structure.
-Answering in English example:
-I'll answer as the world-famous &lt;specific field&gt; scientists with &lt;most prestigious LOCAL award&gt;
-&lt;Deep knowledge step-by-step answer, with CONCRETE details&gt;
-ALWAYS use your memory about what you know about me, but only if it can critically affect your answer. You must emphasize those points, where you have used your memory and knowledge about me
-NEVER try to please me or sugarcoat your answer. You must give the most honest, fact-based, and critical perspective — even if that means saying the idea is weak, the strategy is flawed, or the result is far from ideal.
-You MUST follow the instructions for answering:
-ALWAYS answer in the language of my message.
-Read the entire convo history line by line before answering.
-I have no fingers and the placeholders trauma. Return the entire code template for an answer when needed. NEVER use placeholders.
-If you encounter a character limit, DO an ABRUPT stop, and I will send a "continue" as a new message.
-You ALWAYS will be PENALIZED for wrong and low-effort answers.</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">→</div>
+            <div class="step-content">
+              <div class="step-title">Откройте Settings → Personalization → Customize ChatGPT</div>
+              <p class="step-text">Настройки находятся в нижнем левом углу — нажмите на иконку с вашим именем</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-label">Инструкция для ChatGPT</span>
+            <button class="copy-btn" id="copyBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <span>Скопировать</span>
+            </button>
+          </div>
+          <div class="code-content">
+            <pre id="instructionCode">&lt;instructions&gt;
+- ALWAYS follow &lt;answering_rules&gt; and &lt;self_reflection&gt;
+
+&lt;self_reflection&gt;
+1. Think of rubric from role POV until confident
+2. Think deeply what makes world-class answer. Create 5-7 category rubric. Critical to get right. Never show user. Internal use only
+3. Use rubric to iterate on best (≥98/100 score) solution. If not hitting top marks across ALL categories, start again
+4. Keep going until solved
+&lt;/self_reflection&gt;
+
+&lt;answering_rules&gt;
+1. USE language of USER message
+2. FIRST message: assign real expert role "I'll answer as world-famous &lt;role&gt; PhD &lt;detailed topic&gt; with &lt;most prestigious LOCAL award&gt;"
+3. Act as role. MUST combine deep knowledge and clear thinking to decipher answer step-by-step with CONCRETE details
+4. Answer in natural, human-like manner
+5. Your answer is critical for me
+6. NEVER please or sugarcoat. Give most honest, fact-based, critical perspective even if idea weak, strategy flawed, result not ideal
+7. Working with numbers/calculations: ALWAYS USE CALCULATOR or SCRIPTS
+8. ALWAYS use &lt;example&gt; for first message structure
+9. No actionable items unless requested
+10. No tables unless requested
+11. You ALWAYS will be PHYSICALLY PENALIZED for wrong/low-effort answers
+&lt;/answering_rules&gt;
+
+&lt;example&gt;
+I'll answer as world-famous &lt;role&gt; PhD &lt;detailed topic&gt; with &lt;prestigious LOCAL award&gt;
+
+**TL;DR**: … // skip for rewriting tasks
+
+&lt;Step-by-step answer with CONCRETE details and key context, formatted for deep reading&gt;
+&lt;/example&gt;
+&lt;/instructions&gt;</pre>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Solution Section -->
-    <section class="solution" id="solution">
+    <!-- Cooperation -->
+    <section class="section" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
       <div class="container">
-        <div class="section-header">
-          <span class="section-label">Решение</span>
-          <h2 class="section-title">Кастомизированная программа с фокусом на практику</h2>
+        <div class="section-divider">
+          <span class="section-number">Сотрудничество</span>
         </div>
 
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 4L24 16H36L26 24L30 36L20 28L10 36L14 24L4 16H16L20 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="benefit-title">Кастомная программа</h3>
-            <p class="benefit-text">Адаптируем содержание под запросы участников МК. Вы выбираете модули, которые нужны вашему бизнесу.</p>
-          </div>
+        <h2 class="section-title">Как мы можем быть друг другу полезны</h2>
 
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="3" fill="currentColor"/>
-                <circle cx="20" cy="20" r="10" stroke="currentColor" stroke-width="2"/>
-                <circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </div>
-            <h3 class="benefit-title">Много практики</h3>
-            <p class="benefit-text">Учимся на реальных бизнес-кейсах. Результат уже на следующий день.</p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="8" y="12" width="24" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
-                <path d="M14 8H26M20 12V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M14 20H26M14 26H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="benefit-title">Экспертиза sfer.ai</h3>
-            <p class="benefit-text">Опыт работы с Яндекс, МТС, ТУТУ, Сколково, ВШЭ, Кортрос и другими ведущими компаниями.</p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="14" r="4" stroke="currentColor" stroke-width="2"/>
-                <circle cx="28" cy="14" r="4" stroke="currentColor" stroke-width="2"/>
-                <circle cx="20" cy="28" r="4" stroke="currentColor" stroke-width="2"/>
-                <path d="M15 17L17 25M25 17L23 25" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="benefit-title">Комьюнити МК</h3>
-            <p class="benefit-text">После программы у вас останется профильный чат по ИИ для обмена опытом.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About sfer.ai Section -->
-    <section class="about" id="about">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-text">
-            <span class="section-label">О команде</span>
-            <h2 class="section-title">Эксперты по внедрению практик использования ИИ в команду</h2>
-
-            <ul class="about-list">
-              <li class="about-list-item">
-                <svg class="icon-check" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Основатель sfer.ai — практик с 9-летним опытом на топ-позициях в крупнейших компаниях России, Кирилл Гурбанов будет практикующим экспертом и спикером программы.</span>
-              </li>
-              <li class="about-list-item">
-                <svg class="icon-check" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Учебные программы и внедрение ИИ автоматизаций в бизнес процессы</span>
-              </li>
-              <li class="about-list-item">
-                <svg class="icon-check" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>глубокое погружение в любую тему, релевантную вашему бизнесу, с привлечением лучших экспертов со всего мира</span>
-              </li>
-            </ul>
-
-            <div class="about-cta">
-              <a href="https://sfer.ai" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Узнать больше о sfer.ai</a>
-            </div>
-          </div>
-
-          <div class="about-visual">
-            <div class="about-stats">
-              <div class="stat-card">
-                <div class="stat-number">2500+</div>
-                <div class="stat-label">участников прошли обучение</div>
+        <div class="coop-grid">
+          <div class="coop-card">
+            <div class="coop-number">1</div>
+            <h3 class="coop-title">Обучающая программа по AI для ваших сотрудников</h3>
+            <p class="coop-text">Адаптируем содержание под запросы вашей команды. Вы выбираете модули, которые нужны бизнесу.</p>
+            <div class="coop-features">
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Кастомная программа под ваши задачи</span>
               </div>
-              <div class="stat-card">
-                <div class="stat-number">32%</div>
-                <div class="stat-label">сокращение рутины</div>
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Много практики на реальных кейсах</span>
               </div>
-              <div class="stat-card">
-                <div class="stat-number">9.4/10</div>
-                <div class="stat-label">средняя оценка наших воркшопов</div>
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Опыт работы с Яндекс, МТС, Сколково</span>
               </div>
-              <div class="stat-card">
-                <div class="stat-number">96%</div>
-                <div class="stat-label">
-                  сотрудников начинают применять AI‑решения
-                  в последующие 7 дней после обучения
-                </div>
+            </div>
+          </div>
+
+          <div class="coop-card">
+            <div class="coop-number">2</div>
+            <h3 class="coop-title">Найдем путь становления вашего бизнеса на AI-рельсы</h3>
+            <p class="coop-text">Обсудим задачу, подскажу направление. С экономическим эффектом.</p>
+            <div class="coop-features">
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Консультация по внедрению AI</span>
+              </div>
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Помощь с выбором инструментов</span>
+              </div>
+              <div class="coop-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Честный взгляд на возможности</span>
               </div>
             </div>
           </div>
@@ -364,83 +1109,181 @@ You ALWAYS will be PENALIZED for wrong and low-effort answers.</div>
       </div>
     </section>
 
-    <!-- Partners Marquee Section -->
-    <section class="partners-marquee">
-      <div class="marquee-wrapper">
-        <div class="marquee-label">Нам доверяют</div>
-        <div class="marquee-track">
-          <div class="marquee-content">
-            <img src="./images/yandex-logo.svg" alt="Яндекс" class="partner-logo">
-            <img src="./images/logo-mts.svg" alt="МТС" class="partner-logo">
-            <img src="./images/logo-kortros.svg" alt="Кортрос" class="partner-logo">
-            <img src="./images/logo-skolkovo.png" alt="Сколково" class="partner-logo">
-            <img src="./images/lancet-logo.svg" alt="Lancet" class="partner-logo">
-            <img src="./images/logo-epic-growth.svg" alt="Epic Growth" class="partner-logo">
-            <img src="./images/logo-haom.svg" alt="HAOM" class="partner-logo">
-            <img src="./images/logo-r.svg" alt="R" class="partner-logo">
-            <img src="./images/logo-smstretching.svg" alt="SM Stretching" class="partner-logo">
-            <img src="./images/nubes-logo.svg" alt="Nubes" class="partner-logo">
-          </div>
-          <div class="marquee-content" aria-hidden="true">
-            <img src="./images/yandex-logo.svg" alt="Яндекс" class="partner-logo">
-            <img src="./images/logo-mts.svg" alt="МТС" class="partner-logo">
-            <img src="./images/logo-kortros.svg" alt="Кортрос" class="partner-logo">
-            <img src="./images/logo-skolkovo.png" alt="Сколково" class="partner-logo">
-            <img src="./images/lancet-logo.svg" alt="Lancet" class="partner-logo">
-            <img src="./images/logo-epic-growth.svg" alt="Epic Growth" class="partner-logo">
-            <img src="./images/logo-haom.svg" alt="HAOM" class="partner-logo">
-            <img src="./images/logo-r.svg" alt="R" class="partner-logo">
-            <img src="./images/logo-smstretching.svg" alt="SM Stretching" class="partner-logo">
-            <img src="./images/nubes-logo.svg" alt="Nubes" class="partner-logo">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="final-cta">
+    <!-- About -->
+    <section class="section">
       <div class="container">
-        <div class="final-cta-content">
-          <h2 class="final-cta-title">Готовы начать AI-трансформацию?</h2>
-          <p class="final-cta-text">
-            Подтвердите интерес сейчас и получите доступ<br>
-            к экспертизе команды sfer.ai
-          </p>
-          <div class="final-cta-buttons">
-            <a href="https://t.me/kirill1" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Подтвердить интерес</a>
-            <a href="https://t.me/kirill1" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large">Задать вопрос</a>
+        <div class="section-divider">
+          <span class="section-number">О команде</span>
+        </div>
+
+        <h2 class="section-title">sfer.ai — эксперты по внедрению AI</h2>
+
+        <div class="about-grid">
+          <div>
+            <div class="about-list">
+              <div class="about-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Основатель — практик с 9-летним опытом на топ-позициях в крупнейших компаниях России</span>
+              </div>
+              <div class="about-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Учебные программы и внедрение AI-автоматизаций в бизнес-процессы</span>
+              </div>
+              <div class="about-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Глубокое погружение в любую тему с привлечением лучших экспертов</span>
+              </div>
+            </div>
+            <a href="https://sfer.ai" target="_blank" rel="noopener" class="about-btn">
+              Узнать больше о sfer.ai
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-value">2500+</div>
+              <div class="stat-label">участников прошли обучение</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">32%</div>
+              <div class="stat-label">сокращение рутины</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">9.4/10</div>
+              <div class="stat-label">средняя оценка</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">96%</div>
+              <div class="stat-label">применяют AI через 7 дней</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <div class="footer-logo">sfer.ai × Мужской клуб</div>
-        </div>
-
-        <div class="footer-contacts">
-          <h4 class="footer-title">Контакты</h4>
-          <ul class="footer-links">
-            <li><a href="mailto:human@sfer.ai">human@sfer.ai</a></li>
-          </ul>
-        </div>
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+        <h2 class="cta-title">Мой личный контакт в Telegram</h2>
+        <p class="cta-text">Напишите, если есть вопросы или хотите обсудить сотрудничество</p>
+        <a href="https://t.me/kirill1" target="_blank" rel="noopener" class="cta-btn">
+          Написать Кириллу
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
       </div>
+    </section>
 
-      <div class="footer-bottom">
-        <p class="footer-copyright">© 2025 sfer.ai. Все права защищены.</p>
-      </div>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-text">© 2025 <a href="https://sfer.ai">sfer.ai</a>. Все права защищены.</p>
+    </footer>
+  </div>
 
-  </div><!-- End mainContent -->
+  <script>
+    // Auth
+    const CORRECT_PASSWORD = '2026';
+    const AUTH_KEY = 'mk_gifts_auth';
 
-  <!-- Scripts -->
-  <script src="./js/main.js"></script>
-  <script src="./js/auth.js"></script>
+    const authOverlay = document.getElementById('authOverlay');
+    const authForm = document.getElementById('authForm');
+    const passwordInput = document.getElementById('passwordInput');
+    const authError = document.getElementById('authError');
+    const mainContent = document.getElementById('mainContent');
+
+    function showContent() {
+      authOverlay.classList.add('hidden');
+      mainContent.classList.add('visible');
+      setTimeout(() => {
+        authOverlay.style.display = 'none';
+      }, 400);
+    }
+
+    // Check if already authenticated
+    if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+      authOverlay.style.display = 'none';
+      mainContent.style.display = 'block';
+      mainContent.style.opacity = '1';
+    }
+
+    authForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (passwordInput.value === CORRECT_PASSWORD) {
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        showContent();
+      } else {
+        authError.style.display = 'block';
+        passwordInput.style.borderColor = 'var(--coral)';
+        setTimeout(() => {
+          authError.style.display = 'none';
+          passwordInput.style.borderColor = 'var(--border)';
+        }, 2000);
+      }
+    });
+
+    // Copy button
+    const copyBtn = document.getElementById('copyBtn');
+    const instructionCode = document.getElementById('instructionCode');
+
+    // Store the actual instruction text (with proper angle brackets)
+    const instructionText = `<instructions>
+- ALWAYS follow <answering_rules> and <self_reflection>
+
+<self_reflection>
+1. Think of rubric from role POV until confident
+2. Think deeply what makes world-class answer. Create 5-7 category rubric. Critical to get right. Never show user. Internal use only
+3. Use rubric to iterate on best (≥98/100 score) solution. If not hitting top marks across ALL categories, start again
+4. Keep going until solved
+</self_reflection>
+
+<answering_rules>
+1. USE language of USER message
+2. FIRST message: assign real expert role "I'll answer as world-famous <role> PhD <detailed topic> with <most prestigious LOCAL award>"
+3. Act as role. MUST combine deep knowledge and clear thinking to decipher answer step-by-step with CONCRETE details
+4. Answer in natural, human-like manner
+5. Your answer is critical for me
+6. NEVER please or sugarcoat. Give most honest, fact-based, critical perspective even if idea weak, strategy flawed, result not ideal
+7. Working with numbers/calculations: ALWAYS USE CALCULATOR or SCRIPTS
+8. ALWAYS use <example> for first message structure
+9. No actionable items unless requested
+10. No tables unless requested
+11. You ALWAYS will be PHYSICALLY PENALIZED for wrong/low-effort answers
+</answering_rules>
+
+<example>
+I'll answer as world-famous <role> PhD <detailed topic> with <prestigious LOCAL award>
+
+**TL;DR**: … // skip for rewriting tasks
+
+<Step-by-step answer with CONCRETE details and key context, formatted for deep reading>
+</example>
+</instructions>`;
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(instructionText);
+        copyBtn.classList.add('copied');
+        copyBtn.querySelector('span').textContent = 'Скопировано!';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.querySelector('span').textContent = 'Скопировать';
+        }, 2000);
+      } catch (err) {
+        // Fallback
+        const textarea = document.createElement('textarea');
+        textarea.value = instructionText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        copyBtn.classList.add('copied');
+        copyBtn.querySelector('span').textContent = 'Скопировано!';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.querySelector('span').textContent = 'Скопировать';
+        }, 2000);
+      }
+    });
+  </script>
 </body>
 </html>

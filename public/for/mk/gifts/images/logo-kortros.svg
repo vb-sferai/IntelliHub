@@ -1,7 +1,0 @@
-<svg width="140" height="32" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Icon -->
-  <rect x="0" y="0" width="12" height="32" fill="white"/>
-  <path d="M0 24 L6 18 L12 24" stroke="#06070c" stroke-width="2" fill="none"/>
-  <!-- Text КОРТРОС -->
-  <text x="20" y="22" font-family="Arial, sans-serif" font-size="16" font-weight="bold" letter-spacing="3" fill="white">КОРТРОС</text>
-</svg>

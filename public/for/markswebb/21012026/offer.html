@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sfer.ai x Markswebb — AI-хакатон</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0a0a0c;
+            --bg-card: #111114;
+            --bg-elevated: #18181c;
+            --accent: #3b82f6;
+            --accent-dim: #2563eb;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --text-primary: #f5f5f7;
+            --text-secondary: #8e8e93;
+            --text-dim: #636366;
+            --border: rgba(255, 255, 255, 0.08);
+            --success: #4ade80;
+            --success-glow: rgba(74, 222, 128, 0.15);
+            --coral: #fb7185;
+            --orange: #f97316;
+            --orange-glow: rgba(249, 115, 22, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: 'Manrope', -apple-system, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Auth Overlay */
+        .auth-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.4s ease;
+        }
+
+        .auth-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .auth-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .auth-logo {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+            margin-bottom: 32px;
+        }
+
+        .auth-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .auth-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        .auth-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 16px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .auth-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .auth-error {
+            color: var(--coral);
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--text-primary);
+            color: var(--bg-deep);
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .auth-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: none;
+        }
+
+        .main-content.visible {
+            display: block;
+        }
+
+        /* Slide base */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 80px;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, var(--accent-glow) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .slide-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation dots */
+        .nav-dots {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--text-dim);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+        }
+
+        .nav-dot:hover {
+            background: var(--text-secondary);
+            transform: scale(1.3);
+        }
+
+        .nav-dot.active {
+            background: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+            z-index: 100;
+        }
+
+        .slide-counter span {
+            color: var(--accent);
+        }
+
+        /* Logo */
+        .logo {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            z-index: 100;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        /* Typography */
+        .headline {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .headline em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .subhead {
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        /* Title slide */
+        .title-slide {
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%);
+        }
+
+        .title-slide::before {
+            display: none;
+        }
+
+        .title-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .title-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+
+        .title-logo img {
+            height: 32px;
+        }
+
+        .title-logo-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .title-card {
+            background: white;
+            border-radius: 24px;
+            padding: 60px 80px;
+            max-width: 900px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .title-card h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .title-card .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .title-card .footer {
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* About section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .about-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--accent);
+            padding: 6px 12px;
+            background: var(--accent-glow);
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 32px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-value {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 36px;
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .founder-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        .founder-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 2px solid var(--border);
+        }
+
+        .founder-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .founder-title {
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .founder-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .clients-section {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .clients-label {
+            font-size: 11px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+        }
+
+        .clients-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .client-logo {
+            height: 24px;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .client-logo:hover {
+            opacity: 1;
+        }
+
+        .client-more {
+            font-size: 13px;
+            color: var(--text-dim);
+            padding: 6px 12px;
+            background: var(--bg-elevated);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        /* Task understanding */
+        .task-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .task-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .task-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .task-card h3::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .task-list {
+            list-style: none;
+        }
+
+        .task-list li {
+            position: relative;
+            padding-left: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .task-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Team slide */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 16px;
+            margin: 0 auto 16px;
+            overflow: hidden;
+            border: 2px solid var(--border);
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .team-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Proposal summary */
+        .proposal-summary {
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.05) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .proposal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+        }
+
+        .proposal-price {
+            text-align: right;
+        }
+
+        .proposal-price-value {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 48px;
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .proposal-price-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .proposal-includes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .include-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .include-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-glow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .include-text h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .include-text p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Program details */
+        .program-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .day-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+        }
+
+        .day-card.day-1 {
+            border-color: var(--accent);
+        }
+
+        .day-card.day-2 {
+            border-color: var(--orange);
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .day-number {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .day-1 .day-number {
+            background: var(--accent-glow);
+            color: var(--accent);
+        }
+
+        .day-2 .day-number {
+            background: var(--orange-glow);
+            color: var(--orange);
+        }
+
+        .day-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .day-info span {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .schedule-list {
+            list-style: none;
+        }
+
+        .schedule-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-dim);
+            min-width: 60px;
+        }
+
+        .schedule-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .schedule-content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Result box */
+        .result-box {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(74, 222, 128, 0.05) 100%);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .result-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--success);
+            margin-bottom: 8px;
+        }
+
+        .result-text {
+            font-size: 15px;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        /* About company slide */
+        .company-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 48px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .company-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .company-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--accent);
+            color: white;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: var(--accent-dim);
+            transform: translateY(-2px);
+        }
+
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .contact-section {
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+        }
+
+        .contact-value {
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+
+        .contact-value a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Scroll hint */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dim);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--accent-dim);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slide { padding: 40px 24px; }
+            .about-grid, .task-grid, .program-grid, .proposal-includes { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .proposal-header { flex-direction: column; gap: 24px; }
+            .proposal-price { text-align: left; }
+            .nav-dots { right: 20px; }
+            .logo, .slide-counter { left: 24px; }
+            .contact-grid { flex-direction: column; gap: 24px; }
+            .title-card { padding: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-dots { display: none; }
+            .stats-row { flex-direction: column; gap: 16px; }
+            .founder-card { flex-direction: column; }
+            .team-grid { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            .nav-dots, .slide-counter, .logo, .scroll-hint, .auth-overlay { display: none !important; }
+            html { scroll-snap-type: none; }
+            body { background: white !important; color: #1a1a1a !important; }
+            .slide { min-height: auto; height: 100vh; page-break-after: always; background: white !important; }
+            .slide::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Auth Overlay -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-box">
+            <div class="auth-logo">sfer.ai x Markswebb</div>
+            <h1 class="auth-title">AI-хакатон</h1>
+            <p class="auth-subtitle">Введите пароль для просмотра</p>
+            <form id="authForm">
+                <input type="password" class="auth-input" id="passwordInput" placeholder="Пароль" required>
+                <div class="auth-error" id="authError">Неверный пароль</div>
+                <button type="submit" class="auth-btn">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Navigation -->
+        <div class="logo">sfer<span>.ai</span></div>
+        <div class="slide-counter"><span>01</span> / 07</div>
+        <div class="nav-dots">
+            <button class="nav-dot active" data-slide="0"></button>
+            <button class="nav-dot" data-slide="1"></button>
+            <button class="nav-dot" data-slide="2"></button>
+            <button class="nav-dot" data-slide="3"></button>
+            <button class="nav-dot" data-slide="4"></button>
+            <button class="nav-dot" data-slide="5"></button>
+            <button class="nav-dot" data-slide="6"></button>
+        </div>
+
+        <!-- Slide 0: Title -->
+        <div class="slide title-slide" id="slide-0">
+            <div class="slide-inner">
+                <div class="title-content">
+                    <div class="title-logo">
+                        <div class="title-logo-text">sfer.ai</div>
+                    </div>
+                    <div class="title-card">
+                        <h1>AI-хакатон Markswebb:<br>от идеи к прототипу</h1>
+                        <p class="subtitle">Экспертное сопровождение и фасилитация</p>
+                        <p class="footer">© SFER.AI, 2026</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <span>Scroll</span>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Slide 1: About -->
+        <div class="slide" id="slide-1">
+            <div class="slide-inner">
+                <span class="label">О нас</span>
+                <h1 class="headline">sfer.ai — ваш партнёр на всех этапах <em>ИИ-трансформации</em> бизнеса</h1>
+
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="about-badge">Обучение команд AI-практикам</div>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <div class="stat-value">2600+</div>
+                                <div class="stat-label">Специалистов прошли обучение</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">9.4/10</div>
+                                <div class="stat-label">Средняя оценка воркшопов</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 28px;">
+                            <div class="about-badge" style="background: var(--orange-glow); color: var(--orange);">Кастомная AI-автоматизация</div>
+                            <div class="stats-row">
+                                <div class="stat-item">
+                                    <div class="stat-value" style="color: var(--orange);">32%</div>
+                                    <div class="stat-label">Сокращение рутины</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" style="color: var(--orange);">85%</div>
+                                    <div class="stat-label">Используют ежедневно</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-card">
+                        <div class="about-badge" style="background: var(--success-glow); color: var(--success);">Глубокая бизнес-экспертиза</div>
+                        <div class="founder-card">
+                            <div class="founder-photo">
+                                <img src="team/kirill.png" alt="Кирилл Гурбанов">
+                            </div>
+                            <div class="founder-info">
+                                <h3>Кирилл Гурбанов</h3>
+                                <div class="founder-title">Фаундер sfer.ai, ex CEO / CPO<br>в крупнейших российских банках</div>
+                                <div class="founder-desc">Практик с 9-летним опытом на топ-позициях: со-основатель банка СМЛТ (группа Самолет), Chief Digital Officer МТС Банк, CPO Сбер Бизнес Мобайл</div>
+                            </div>
+                        </div>
+                        <div class="clients-section">
+                            <div class="clients-label">Наши клиенты</div>
+                            <div class="clients-grid">
+                                <img src="logos/logo-mts.svg" alt="МТС" class="client-logo">
+                                <img src="logos/yandex-logo.svg" alt="Яндекс" class="client-logo">
+                                <img src="logos/logo-yango.svg" alt="Yango" class="client-logo">
+                                <img src="logos/logo-epic-growth.svg" alt="Epic Growth" class="client-logo">
+                                <img src="logos/logo-haom.svg" alt="НАОМ" class="client-logo">
+                                <img src="logos/nubes-logo.svg" alt="Nubes" class="client-logo">
+                                <img src="logos/lancet-logo.svg" alt="Lancet" class="client-logo">
+                                <span class="client-more">+20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Task Understanding -->
+        <div class="slide" id="slide-2">
+            <div class="slide-inner">
+                <span class="label">Как мы поняли вашу задачу</span>
+                <h1 class="headline">Создать <em>прецеденты</em> реальных AI-внедрений с экономическим эффектом</h1>
+
+                <div class="task-grid">
+                    <div class="task-card">
+                        <h3>Понимание ситуации</h3>
+                        <ul class="task-list">
+                            <li>Команда использует ChatGPT и Gemini для личных задач</li>
+                            <li>Нет системных AI-внедрений в бизнес-процессы</li>
+                            <li>Не хватает прецедентов с измеримым экономическим эффектом</li>
+                            <li>Нужен толчок для запуска культуры AI-adoption</li>
+                        </ul>
+                    </div>
+
+                    <div class="task-card">
+                        <h3>Ожидаемый результат</h3>
+                        <ul class="task-list">
+                            <li>2-3 прецедента AI-автоматизации с понятным ROI</li>
+                            <li>Команда «звёздочек» — будущих AI-евангелистов</li>
+                            <li>Методология для масштабирования на другие процессы</li>
+                            <li>Понимание, как думать об AI через экономику</li>
+                        </ul>
+                    </div>
+
+                    <div class="task-card">
+                        <h3>Формат мероприятия</h3>
+                        <ul class="task-list">
+                            <li>Двухдневный AI-хакатон: 29-30 января</li>
+                            <li>~20 участников, 5-10 команд по 2-3 человека</li>
+                            <li>Экспертная поддержка от sfer.ai</li>
+                            <li>Призовой фонд за лучшие решения</li>
+                        </ul>
+                    </div>
+
+                    <div class="task-card">
+                        <h3>Потенциальные направления</h3>
+                        <ul class="task-list">
+                            <li>Автоматизация заполнения чек-листов по скриншотам</li>
+                            <li>AI-ассистент для исследовательских процессов</li>
+                            <li>Автоматизация рутинных операций с данными</li>
+                            <li>Внутренняя база знаний с AI-поиском</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Team -->
+        <div class="slide" id="slide-3">
+            <div class="slide-inner">
+                <span class="label">Команда хакатона</span>
+                <h1 class="headline">Эксперты <em>sfer.ai</em> для вашего мероприятия</h1>
+
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="team/eduard.png" alt="Эдуард Эпштейн">
+                        </div>
+                        <div class="team-name">Эдуард Эпштейн</div>
+                        <div class="team-role">AI-эксперт, Cursor и вайбкодинг</div>
+                        <div class="team-desc">7+ лет на рынке медиа, IT и digital-маркетинга. 1.5 года занимается AI-трансформацией бизнеса</div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="team/artem.png" alt="Артём Фролов">
+                        </div>
+                        <div class="team-name">Артём Фролов</div>
+                        <div class="team-role">AI-эксперт, AI-агенты</div>
+                        <div class="team-desc">Ex-Product Manager в T-Банке, ex-руководитель в Collextr.ai. 2+ года создаёт AI-агентов</div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="team/gevorg.jpg" alt="Геворг Акопян" onerror="this.parentElement.style.background='var(--accent-glow)'">
+                        </div>
+                        <div class="team-name">Геворг Акопян</div>
+                        <div class="team-role">AI-эксперт</div>
+                        <div class="team-desc">Ex-System Analyst в Альфа-Банке. Партнёр sfer.ai</div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="team/anna.jpg" alt="Анна Бурикова">
+                        </div>
+                        <div class="team-name">Анна Бурикова</div>
+                        <div class="team-role">Фасилитатор</div>
+                        <div class="team-desc">Фасилитатор онлайн-мероприятий и хакатонов. Глава образовательного направления sfer.ai</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Proposal Summary -->
+        <div class="slide" id="slide-4">
+            <div class="slide-inner">
+                <span class="label">Наше предложение</span>
+                <h1 class="headline">Проведение <em>AI-хакатона</em> с экспертной поддержкой</h1>
+
+                <div class="proposal-summary">
+                    <div class="proposal-header">
+                        <div>
+                            <h2 style="font-size: 24px; margin-bottom: 8px;">AI-хакатон Markswebb</h2>
+                            <p style="color: var(--text-secondary);">29-30 января 2026 года</p>
+                        </div>
+                        <div class="proposal-price">
+                            <div class="proposal-price-value">590 000 ₽</div>
+                            <div class="proposal-price-label">Стоимость проекта</div>
+                        </div>
+                    </div>
+
+                    <div class="proposal-includes">
+                        <div class="include-item">
+                            <div class="include-icon">👥</div>
+                            <div class="include-text">
+                                <h4>46 часов экспертов</h4>
+                                <p>3 эксперта × 10ч + фасилитатор 16ч на протяжении двух дней</p>
+                            </div>
+                        </div>
+                        <div class="include-item">
+                            <div class="include-icon">⚖️</div>
+                            <div class="include-text">
+                                <h4>1.5 часа жюри</h4>
+                                <p>Участие Кирилла Гурбанова в оценке и выборе победителей</p>
+                            </div>
+                        </div>
+                        <div class="include-item">
+                            <div class="include-icon">🎯</div>
+                            <div class="include-text">
+                                <h4>Фасилитация и менеджмент</h4>
+                                <p>Организация процесса, сессионные комнаты, управление судейством</p>
+                            </div>
+                        </div>
+                        <div class="include-item">
+                            <div class="include-icon">💡</div>
+                            <div class="include-text">
+                                <h4>Экспертная поддержка</h4>
+                                <p>Консультации команд по AI-инструментам и подходам</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Slide 5: Program Details -->
+        <div class="slide" id="slide-5">
+            <div class="slide-inner">
+                <span class="label">Подробная программа</span>
+                <h1 class="headline">Два дня: от идеи к <em>работающему прототипу</em></h1>
+
+                <div class="program-grid">
+                    <div class="day-card day-1">
+                        <div class="day-header">
+                            <div class="day-number">01</div>
+                            <div class="day-info">
+                                <h3>29 января — Разработка</h3>
+                                <span>8 часов работы</span>
+                            </div>
+                        </div>
+
+                        <ul class="schedule-list">
+                            <li class="schedule-item">
+                                <div class="schedule-time">30-60 мин</div>
+                                <div class="schedule-content">
+                                    <h4>Установочная встреча</h4>
+                                    <p>Представление команд, задач и регламента хакатона</p>
+                                </div>
+                            </li>
+                            <li class="schedule-item">
+                                <div class="schedule-time">7+ часов</div>
+                                <div class="schedule-content">
+                                    <h4>Самостоятельная работа команд</h4>
+                                    <p>Поиск и разработка AI-решений с экспертной поддержкой</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="day-card day-2">
+                        <div class="day-header">
+                            <div class="day-number">02</div>
+                            <div class="day-info">
+                                <h3>30 января — Презентации</h3>
+                                <span>5 часов работы</span>
+                            </div>
+                        </div>
+
+                        <ul class="schedule-list">
+                            <li class="schedule-item">
+                                <div class="schedule-time">2 часа</div>
+                                <div class="schedule-content">
+                                    <h4>Подготовка презентаций</h4>
+                                    <p>Финализация решений и подготовка выступлений</p>
+                                </div>
+                            </li>
+                            <li class="schedule-item">
+                                <div class="schedule-time">2 часа</div>
+                                <div class="schedule-content">
+                                    <h4>Презентации команд</h4>
+                                    <p>Демонстрация решений перед жюри</p>
+                                </div>
+                            </li>
+                            <li class="schedule-item">
+                                <div class="schedule-time">1 час</div>
+                                <div class="schedule-content">
+                                    <h4>Работа жюри и результаты</h4>
+                                    <p>Оценка, награждение победителей, обратная связь</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: About Company -->
+        <div class="slide" id="slide-6">
+            <div class="slide-inner">
+                <span class="label">О компании</span>
+                <h1 class="headline">Подробнее о <em>sfer.ai</em> и наших проектах</h1>
+
+                <div class="company-card">
+                    <div class="company-logo">sfer.ai</div>
+                    <p class="company-desc">
+                        Бутик AI Native решений для бизнеса. Помогаем компаниям внедрять искусственный интеллект:
+                        от обучения команд до разработки кастомных автоматизаций.
+                    </p>
+
+                    <a href="sferai_about.pdf" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        Скачать презентацию о компании
+                    </a>
+
+                    <div class="contact-section">
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value"><a href="mailto:gk@sfer.ai">gk@sfer.ai</a></div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-label">Telegram</div>
+                                <div class="contact-value"><a href="https://t.me/kirill1" target="_blank">@kirill1</a></div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-label">Сайт</div>
+                                <div class="contact-value"><a href="https://sfer.ai" target="_blank">sfer.ai</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="text-align: center; margin-top: 24px; font-size: 12px; color: var(--text-dim);">
+                    © SFER.AI, 2026. Все материалы являются интеллектуальной собственностью SFER.AI
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auth
+        const CORRECT_PASSWORD = '2026';
+        const AUTH_KEY = 'markswebb_offer_auth';
+        const authOverlay = document.getElementById('authOverlay');
+        const authForm = document.getElementById('authForm');
+        const passwordInput = document.getElementById('passwordInput');
+        const authError = document.getElementById('authError');
+        const mainContent = document.getElementById('mainContent');
+
+        function showContent() {
+            authOverlay.classList.add('hidden');
+            mainContent.classList.add('visible');
+            setTimeout(() => {
+                authOverlay.style.display = 'none';
+            }, 400);
+        }
+
+        // Check if already authenticated
+        if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+            authOverlay.style.display = 'none';
+            mainContent.style.display = 'block';
+            mainContent.classList.add('visible');
+        }
+
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (passwordInput.value === CORRECT_PASSWORD) {
+                sessionStorage.setItem(AUTH_KEY, 'true');
+                showContent();
+            } else {
+                authError.style.display = 'block';
+                passwordInput.style.borderColor = 'var(--coral)';
+                setTimeout(() => {
+                    authError.style.display = 'none';
+                    passwordInput.style.borderColor = 'var(--border)';
+                }, 2000);
+            }
+        });
+
+        // Nav dots
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+        const counter = document.querySelector('.slide-counter');
+        const totalSlides = slides.length;
+
+        const slideObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(slides).indexOf(entry.target);
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                    counter.innerHTML = `<span>0${index + 1}</span> / 0${totalSlides}`;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => slideObserver.observe(slide));
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = dot.dataset.slide;
+                document.getElementById(`slide-${index}`).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!mainContent.classList.contains('visible')) return;
+            const currentIndex = Array.from(dots).findIndex(d => d.classList.contains('active'));
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                const next = Math.min(currentIndex + 1, slides.length - 1);
+                document.getElementById(`slide-${next}`).scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prev = Math.max(currentIndex - 1, 0);
+                document.getElementById(`slide-${prev}`).scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

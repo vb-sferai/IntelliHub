@@ -10,6 +10,7 @@ import {CaseStudyYandexPage} from "../../../pages/CaseStudyYandex";
 import {CaseStudyGoBeyondPage} from "../../../pages/CaseStudyGoBeyond";
 import {CaseStudyUAEPage} from "../../../pages/CaseStudyUAE";
 import {CaseStudyNubesPage} from "../../../pages/CaseStudyNubes";
+import {CaseStudyInvisibleForcePage} from "../../../pages/CaseStudyInvisibleForce";
 import {BasePage} from "../../../pages/BasePage";
 import {VibecodingPage} from "../../../pages/VibecodingPage";
 import {EduPage} from "../../../pages/EduPage";
@@ -24,6 +25,7 @@ import {PrivacyPolicyPage} from "../../../pages/PrivacyPolicyPage";
 import {SferKumarSoloPage} from "../../../pages/SferKumarSoloPage";
 import {SferKumarSoloWebPage} from "../../../pages/SferKumarSoloWebPage";
 import {VoiceBotPage} from "../../../pages/VoiceBotPage";
+import {CommunityFormPage} from "../../../pages/CommunityFormPage";
 import {ROUTES} from "../../../constants/routes.ts";
 
 export const Pages = () => {
@@ -40,6 +42,7 @@ export const Pages = () => {
             <Route path={ROUTES.casestudiesGoBeyond} element={<CaseStudyGoBeyondPage />} />
             <Route path={ROUTES.casestudiesUAE} element={<CaseStudyUAEPage />} />
             <Route path={ROUTES.casestudiesNubes} element={<CaseStudyNubesPage />} />
+            <Route path={ROUTES.casestudiesInvisibleForce} element={<CaseStudyInvisibleForcePage />} />
             {/* Новые пути под /edu */}
             <Route path={ROUTES.base} element={<BasePage />} />
             <Route path={ROUTES.vibecoding} element={<VibecodingPage />} />
@@ -58,6 +61,9 @@ export const Pages = () => {
             <Route path={ROUTES.sferKumarSolo} element={<SferKumarSoloPage />} />
             <Route path={ROUTES.sferKumarSoloWeb} element={<SferKumarSoloWebPage />} />
             <Route path={ROUTES.voiceBot} element={<VoiceBotPage />} />
+            {/* Формы */}
+            <Route path={ROUTES.communityForm} element={<CommunityFormPage />} />
+            <Route path={ROUTES.communityForm2301} element={<CommunityFormPage />} />
             <Route path={ROUTES.notFound} element={<NotFoundPage />} />
         </Routes>
     );

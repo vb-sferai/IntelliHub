@@ -10,6 +10,7 @@ export const ROUTES = {
     casestudiesGoBeyond: '/cases/gobeyond',
     casestudiesUAE: '/cases/uae',
     casestudiesNubes: '/cases/nubes',
+    casestudiesInvisibleForce: '/cases/invisible-force',
     // Новые пути под /edu
     base: '/edu/baza',
     vibecoding: '/edu/vibecoding',
@@ -30,5 +31,8 @@ export const ROUTES = {
     voiceBot: '/products/voice-bot',
     // Юридические страницы
     privacyPolicy: '/privacy-policy',
+    // Формы
+    communityForm: '/forms/community',
+    communityForm2301: '/forms/community2301',
     notFound: '*',
 };

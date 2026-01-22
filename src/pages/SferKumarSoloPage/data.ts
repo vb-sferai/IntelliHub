@@ -11,6 +11,10 @@ import MoneyIcon from './assets/icons/money.svg';
 // Фото преподавателей
 import SpeakerKumar from './assets/kumar.png';
 import SpeakerKirill from './assets/kirill.png';
+import SpeakerEpstein from './assets/epstein.png';
+import SpeakerArtem from './assets/artem.png';
+import SpeakerUstinov from './assets/ustinov.png';
+import SpeakerNikolai from './assets/nikolai.png';
 
 // Hero секция
 export const HERO = {
@@ -81,6 +85,34 @@ export const INSTRUCTORS = [
         description: 'Основатель sfer.ai, практик с 9-летним опытом на топ-позициях в крупнейших компаниях России: со-основатель и член СД банка СМЛТ (группа «Самолет»), Chief Digital Officer МТС Банк, CPO Сбер Бизнес Мобайл',
         photo: SpeakerKirill,
         photoPosition: 'center 25%',
+    },
+    {
+        name: 'Эдуард Эпштейн',
+        role: 'Head of Growth & AI |\nBusiness Development Expert',
+        description: 'Уже более 7 лет на рынке медиа, IT и digital-маркетинга. Последние 1,5 года занимается AI-трансформацией бизнеса, внедряет AI-инструменты в отделы продаж, маркетинга, продукта и разработки. Обучил 500+ сотрудников vibe-coding и AI-инструментам',
+        photo: SpeakerEpstein,
+        photoPosition: '100% 100%',
+    },
+    {
+        name: 'Артем Фролов',
+        role: 'Ex-руководитель продуктового\nнаправления в Collextr.ai',
+        description: 'Ex-Product Manager в T-Банке. Более 2-х лет занимается созданием AI-агентов и автоматизацией процессов',
+        photo: SpeakerArtem,
+        photoPosition: 'center 20%',
+    },
+    {
+        name: 'Всеволод Устинов',
+        role: 'Основатель Elly Analytics',
+        description: 'Создатель платформы сквозной маркетинговой аналитики — первый в мире vibemarketing тул для перфоманс-маркетологов, который автоматизирует до 90% задач маркетолога',
+        photo: SpeakerUstinov,
+        photoPosition: 'center 20%',
+    },
+    {
+        name: 'Николай Кожемякин',
+        role: 'Head of Outreach в Global Transfers',
+        description: '10+ лет в B2B-маркетинге и международном бизнесе. Опыт от стартапов до корпораций уровня Electronic Arts. MBA IE Business School, Cornell PDP. Эксперт по холодному аутричу и контент-маркетингу в B2B',
+        photo: SpeakerNikolai,
+        photoPosition: 'center 20%',
     },
 ];
 

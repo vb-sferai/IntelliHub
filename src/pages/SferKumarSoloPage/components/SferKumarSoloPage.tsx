@@ -355,14 +355,15 @@ export const SferKumarSoloPage = () => {
                                         grainMixer={0}
                                     />
 
-                                    {/* Фото внутри кружка, прижато к низу */}
-                                    <div className="absolute inset-0 flex items-end justify-center">
+                                    {/* Фото внутри кружка */}
+                                    {instructor.photo && (
                                         <img
                                             src={instructor.photo}
                                             alt={instructor.name}
-                                            className="max-w-full max-h-full object-contain"
+                                            className="absolute inset-0 w-full h-full object-cover"
+                                            style={{ objectPosition: instructor.photoPosition }}
                                         />
-                                    </div>
+                                    )}
                                 </div>
 
                             </div>

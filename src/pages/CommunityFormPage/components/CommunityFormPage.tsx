@@ -30,7 +30,9 @@ const communityFormConfig: TypeformConfig = {
 
   thankYouScreen: {
     title: 'Супер!',
-    description: 'Мы свяжемся с вами, как только будут новости.',
+    description: 'Сейчас вы будете перенаправлены в Telegram-бот для завершения опроса.',
+    redirectUrl: 'https://t.me/kgrbnv_bot?start=dl-17691183802b592d82952b',
+    redirectDelay: 2000,
   },
 
   steps: [

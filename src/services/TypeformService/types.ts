@@ -28,6 +28,10 @@ export interface WelcomeScreenConfig {
 export interface ThankYouScreenConfig {
   title: string;
   description?: string;
+  /** URL для автоматического редиректа после показа экрана */
+  redirectUrl?: string;
+  /** Задержка перед редиректом в мс (по умолчанию 2000) */
+  redirectDelay?: number;
 }
 
 // Тема формы

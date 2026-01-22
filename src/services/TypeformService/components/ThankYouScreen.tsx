@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
 import type { ThankYouScreenConfig } from '../types';
@@ -7,12 +8,23 @@ interface ThankYouScreenProps {
 }
 
 export function ThankYouScreen({ config }: ThankYouScreenProps) {
+  // Авто-редирект, если указан URL
+  useEffect(() => {
+    if (config.redirectUrl) {
+      const delay = config.redirectDelay ?? 2000;
+      const timer = setTimeout(() => {
+        window.location.href = config.redirectUrl!;
+      }, delay);
+      return () => clearTimeout(timer);
+    }
+  }, [config.redirectUrl, config.redirectDelay]);
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4"
+      className="flex flex-col items-center justify-start min-h-[60vh] text-center px-4 pt-16 md:pt-24"
     >
       <motion.div
         initial={{ scale: 0 }}
@@ -37,7 +49,7 @@ export function ThankYouScreen({ config }: ThankYouScreenProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.4 }}
-          className="text-lg md:text-xl text-gray-600 max-w-xl"
+          className="text-lg md:text-xl text-gray-600 max-w-xl whitespace-pre-line"
         >
           {config.description}
         </motion.p>

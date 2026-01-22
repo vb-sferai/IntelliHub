@@ -1,12 +1,13 @@
 import { SUCCESS_TESTIMONIAL } from '../data';
 
-// Video Player Component - Loom Embed
+// Video Player Component - Kinescope Embed
 const VideoPlayer = () => {
     return (
         <div className="w-full max-w-[981px] mx-auto rounded-2xl overflow-hidden mt-16 lg:mt-20">
-            <div className="relative" style={{ paddingBottom: '56.25%', height: 0 }}>
+            <div className="relative" style={{ paddingTop: '56.25%', width: '100%' }}>
                 <iframe
-                    src="https://www.loom.com/embed/cac1808ee3d8402495de7b8e83e34484"
+                    src="https://kinescope.io/embed/5hLbGMyiEqAubeTANqrZro"
+                    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
                     frameBorder="0"
                     allowFullScreen
                     className="absolute top-0 left-0 w-full h-full rounded-2xl"

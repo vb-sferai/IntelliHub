@@ -62,7 +62,7 @@ export function StepScreen({
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-col justify-center min-h-[60vh] px-4"
+      className="flex flex-col justify-start md:justify-center min-h-0 md:min-h-[60vh] px-4"
     >
       <div className="max-w-2xl mx-auto w-full">
         {/* Step indicator */}

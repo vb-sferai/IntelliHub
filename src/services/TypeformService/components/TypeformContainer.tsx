@@ -103,7 +103,7 @@ export function TypeformContainer({ config, className = '' }: TypeformContainerP
       )}
 
       {/* Main content */}
-      <main className="flex-1 flex items-center justify-center">
+      <main className="flex-1 flex items-start md:items-center justify-center pt-8 md:pt-0">
         <div className="w-full max-w-4xl px-6 py-12">
           <AnimatePresence mode="wait">
             {renderScreen()}
@@ -111,10 +111,6 @@ export function TypeformContainer({ config, className = '' }: TypeformContainerP
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="py-4 px-6 text-center text-sm text-gray-400">
-        Powered by sfer.ai
-      </footer>
     </div>
   );
 }

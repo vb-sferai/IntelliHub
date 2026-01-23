@@ -10,7 +10,6 @@ import {CaseStudyYandexPage} from "../../../pages/CaseStudyYandex";
 import {CaseStudyGoBeyondPage} from "../../../pages/CaseStudyGoBeyond";
 import {CaseStudyUAEPage} from "../../../pages/CaseStudyUAE";
 import {CaseStudyNubesPage} from "../../../pages/CaseStudyNubes";
-import {CaseStudyInvisibleForcePage} from "../../../pages/CaseStudyInvisibleForce";
 import {BasePage} from "../../../pages/BasePage";
 import {VibecodingPage} from "../../../pages/VibecodingPage";
 import {EduPage} from "../../../pages/EduPage";
@@ -42,7 +41,6 @@ export const Pages = () => {
             <Route path={ROUTES.casestudiesGoBeyond} element={<CaseStudyGoBeyondPage />} />
             <Route path={ROUTES.casestudiesUAE} element={<CaseStudyUAEPage />} />
             <Route path={ROUTES.casestudiesNubes} element={<CaseStudyNubesPage />} />
-            <Route path={ROUTES.casestudiesInvisibleForce} element={<CaseStudyInvisibleForcePage />} />
             {/* Новые пути под /edu */}
             <Route path={ROUTES.base} element={<BasePage />} />
             <Route path={ROUTES.vibecoding} element={<VibecodingPage />} />

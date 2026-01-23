@@ -10,7 +10,6 @@ export const ROUTES = {
     casestudiesGoBeyond: '/cases/gobeyond',
     casestudiesUAE: '/cases/uae',
     casestudiesNubes: '/cases/nubes',
-    casestudiesInvisibleForce: '/cases/invisible-force',
     // Новые пути под /edu
     base: '/edu/baza',
     vibecoding: '/edu/vibecoding',

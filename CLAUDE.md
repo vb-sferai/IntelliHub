@@ -48,10 +48,13 @@ This repository uses **separate branches for language versions** instead of a si
 - **ru.sfer.ai** - Russian version (automatic redirect for Russian-speaking users)
 
 The project features:
-- Multiple product workshop pages (Base, Vibecoding, Agents)
-- Two distinct landing pages (MainPage, SupremeMainPage)
+- **26 pages** including landing pages, product pages, case studies, forms, and utility pages
+- Multiple product workshop pages (Base, Vibecoding, Agents, VoiceBot)
+- Two distinct landing pages (MainPage for teams, SupremeMainPage as main)
 - Job application system with Google Sheets integration
-- Case studies showcase
+- Community forms with TypeformService (Typeform-style UX)
+- Case studies showcase (5 case studies)
+- Yandex Metrika analytics integration
 - Creative Cursor-style 404 page with bilingual support
 
 **Technology Stack**:
@@ -62,6 +65,7 @@ The project features:
 - Framer Motion (animations)
 - Embla Carousel (carousels)
 - React Hook Form + Zod (form validation)
+- Lucide React (icons)
 
 ## Development Commands
 
@@ -88,46 +92,83 @@ npm run prettier:fix     # Auto-format code with Prettier
 
 ### Directory Structure
 
-The codebase follows a feature-based organization:
-
 ```
-sfer.ai website/
+IntelliHub/
 ├── .claude/                    # Claude Code settings
+├── .serena/                    # Serena MCP settings
 ├── docs/                       # Documentation files
+│   ├── google-apps-script/     # Google Apps Script files
+│   │   └── forms-to-sheets.js
 │   ├── APPLICATION_FORM_PLAN.md
-│   └── GOOGLE_APPS_SCRIPT_SETUP.md
+│   ├── GOOGLE_APPS_SCRIPT_SETUP.md
+│   ├── TypeformService.md
+│   ├── METRIKA_GOALS_SETUP.md
+│   ├── METRIKA_FIX_SOLUTION.md
+│   ├── METRIKA_DEBUG_GUIDE.md
+│   ├── YANDEX_METRIKA_SETUP.md
+│   ├── YANDEX_METRIKA_CHECKING_GUIDE.md
+│   ├── UTM_TRACKING_GUIDE.md
+│   └── google-apps-script-amocrm.js
 ├── public/
-│   └── favicon.svg            # White circle favicon
+│   ├── favicon.svg            # White circle favicon
+│   └── for/                   # Static offer pages
+│       ├── centraluniversity/
+│       ├── jet/
+│       ├── mk/
+│       └── markswebb/
 ├── src/
 │   ├── assets/
 │   │   └── imgs/              # Images, icons, logos
-│   │       ├── reviews/       # Review avatars
-│   │       └── supreme/       # Supreme page assets
 │   ├── components/            # Shared components
 │   │   ├── Button/
 │   │   ├── Carousel/
+│   │   ├── CookieBanner/
 │   │   ├── FAQ/
+│   │   ├── ReviewsGrid/
+│   │   ├── ScrollToTop/
 │   │   └── Title/
 │   ├── constants/
 │   │   └── routes.ts          # Route definitions
+│   ├── hooks/
+│   │   └── useAnalytics.ts    # Analytics hook
 │   ├── modules/               # Layout modules
 │   │   ├── App/               # App wrapper, Layout, Pages
 │   │   ├── Footer/            # Site footer
 │   │   └── Header/            # Site header (sticky, scroll-aware)
-│   └── pages/                 # Page components
-│       ├── AgentsPage/        # AI Agents workshop
-│       ├── BasePage/          # AI Base workshop
-│       ├── CaseStudyLancet/   # Case study page
-│       ├── JobPages/          # Job listing and application
-│       │   ├── ApplicationPage/
-│       │   ├── PmJobPage/
-│       │   └── shared/
-│       ├── MainPage/          # Russian landing page
-│       ├── NotFoundPage/      # Creative 404 page (Cursor-style)
-│       ├── SferKumarSoloPage/ # Vibe Academy landing (Kumar + Kirill)
-│       ├── SferKumarSoloWebPage/ # Independent copy for web modifications
-│       ├── SupremeMainPage/   # English premium landing
-│       └── VibecodingPage/    # Vibecoding workshop
+│   ├── pages/                 # Page components (26 pages)
+│   │   ├── AgentsPage/
+│   │   ├── AutomationsPage/
+│   │   ├── BasePage/
+│   │   ├── CaseStudiesPage/
+│   │   ├── CaseStudyGoBeyond/
+│   │   ├── CaseStudyLancet/
+│   │   ├── CaseStudyNubes/
+│   │   ├── CaseStudyUAE/
+│   │   ├── CaseStudyYandex/
+│   │   ├── CommunityFormPage/
+│   │   ├── CustomAutomationsPage/
+│   │   ├── EduPage/
+│   │   ├── JobPages/
+│   │   │   ├── ApplicationPage/
+│   │   │   ├── PmJobPage/
+│   │   │   └── shared/
+│   │   ├── MainPage/
+│   │   ├── NewYearRedirectPage/
+│   │   ├── NotFoundPage/
+│   │   ├── OfferPage/         # (not routed, under development)
+│   │   ├── OrderSuccessPage/
+│   │   ├── PrivacyPolicyPage/
+│   │   ├── QuizPage/
+│   │   ├── ReviewsPage/
+│   │   ├── SferKumarSoloPage/
+│   │   ├── SferKumarSoloWebPage/
+│   │   ├── SupremeMainPage/
+│   │   ├── VibecodingPage/
+│   │   └── VoiceBotPage/
+│   ├── services/              # Business logic services
+│   │   └── TypeformService/   # Typeform-style form service
+│   └── utils/
+│       └── analytics.ts       # Analytics utilities
 ├── .gitignore
 ├── package.json
 ├── vite.config.ts
@@ -158,17 +199,18 @@ PageName/
 └── index.ts           # Public exports
 ```
 
-### Routing
+## Routing
 
-#### Route Configuration
+### Route Configuration
 
 Routes are defined in [src/constants/routes.ts](src/constants/routes.ts):
 
 ```typescript
 export const ROUTES = {
-    root: '/',                           // SupremeMainPage (English landing)
-    teams: '/teams',                     // MainPage (Russian team page)
+    root: '/',                           // SupremeMainPage (main landing)
+    teams: '/teams',                     // MainPage (team page)
     programs: '/programs',               // CustomAutomationsPage
+    automations: '/automations',         // AutomationsPage
     reviews: '/edu/reviews',             // ReviewsPage
     cases: '/cases',                     // CaseStudiesPage
     casestudiesLancet: '/cases/lancet',  // Case study: Lancet
@@ -180,228 +222,218 @@ export const ROUTES = {
     vibecoding: '/edu/vibecoding',       // Vibecoding workshop page
     edu: '/edu',                         // EduPage (education hub)
     agents: '/edu/agents',               // AI Agents workshop page
-    sferKumarSolo: '/sfer-kumar-solo',   // Vibe Academy landing (Kumar + Kirill)
-    sferKumarSoloWeb: '/sfer-kumar-solo-web', // Independent copy for web version
+    sferKumarSolo: '/sfer-kumar-solo',   // Vibe Academy landing
+    sferKumarSoloWeb: '/sfer-kumar-solo-web', // Independent web version
+    // Legacy redirects
+    baseOld: '/baza',                    // → /edu/baza
+    vibecodingOld: '/vibecoding',        // → /edu/vibecoding
+    agentsOld: '/agents',                // → /edu/agents
+    // Jobs
     jobsPm: '/jobs/pm',                  // PM job listing
     jobsApply: '/jobs/:position/apply',  // Job application form
+    // Products
+    voiceBot: '/products/voice-bot',     // VoiceBot product page
+    // Forms
+    communityForm: '/forms/community',   // Community form
+    communityForm2301: '/forms/community2301', // Community form variant
+    // Utility pages
+    newyear2026: '/newyear2026',         // New Year redirect
+    survey: '/survey',                   // QuizPage
     orderSuccess: '/order/success',      // Order success page
     privacyPolicy: '/privacy-policy',    // Privacy policy page
-    notFound: '*',                       // 404 page (Cursor-style)
+    notFound: '*',                       // 404 page
 };
 ```
 
 Route implementation is in [src/modules/App/components/Pages.tsx](src/modules/App/components/Pages.tsx).
 
-#### Chrome (Header/Footer) Rendering
+### Chrome (Header/Footer) Rendering
 
-The Layout component ([src/modules/App/components/Layout.tsx](src/modules/App/components/Layout.tsx)) conditionally shows/hides Header and Footer based on the current route:
+The Layout component ([src/modules/App/components/Layout.tsx](src/modules/App/components/Layout.tsx)) conditionally shows/hides Header and Footer based on the current route.
 
 **Shows chrome**: MainPage, product pages (Base, Vibecoding, Agents)
-**Hides chrome**: SupremeMainPage, CaseStudyLancetPage, JobPages, NotFoundPage
+**Hides chrome**: SupremeMainPage, CaseStudy pages, JobPages, NotFoundPage, VoiceBotPage, CommunityFormPage
 
-### Pages
+## Pages
 
-The application has **11+ pages** organized by purpose:
+### Key Pages (Detailed)
 
-#### 1. MainPage (`/`)
-- **Purpose**: Original Russian landing page
-- **Audience**: Russian-speaking visitors on ru.sfer.ai
-- **Chrome**: Shows Header and Footer
-- **Sections**:
-  - Hero with statistics
-  - Products carousel (7 AI products)
-  - Cases showcase
-  - Events carousel (workshops, webinars)
-  - Team section
-  - FAQ
-- **Data**: [src/pages/MainPage/data.ts](src/pages/MainPage/data.ts)
-- **Components**: ProductsCarouselItem, CasesCarouselItem, EventsCarouselItem, QuestionsBlock
-
-#### 2. SupremeMainPage (`/supreme`)
-- **Purpose**: Premium English landing page
-- **Audience**: English-speaking visitors, investors, partners
+#### 1. SupremeMainPage (`/`)
+- **Purpose**: Premium main landing page
+- **Audience**: All visitors, investors, partners
 - **Chrome**: No Header/Footer (custom SupremeHeader)
 - **Design**: High-end design with MeshGradient and DitheringBackground
-- **Sections**:
-  - Hero (full-screen with mesh gradient)
-  - Who We Are (company mission)
-  - What We Do (services)
-  - What Sets Us Apart (competitive advantages)
-  - Philosophy (AI-first approach)
-  - Case Studies (client results)
-  - Contacts (team info)
-  - Discover CTA (final call-to-action)
-- **Navigation**: Custom sticky header with smooth scroll
+- **Sections**: Hero, Who We Are, What We Do, What Sets Us Apart, Philosophy, Case Studies, Contacts, Discover CTA
 - **Data**: [src/pages/SupremeMainPage/data.ts](src/pages/SupremeMainPage/data.ts)
 
-#### 3. CaseStudyLancetPage (`/casestudies`)
-- **Purpose**: Detailed case study presentation
-- **Client**: Wealth Management Company
-- **Chrome**: No Header/Footer
-- **Content**: Problem, solution, results, metrics
-- **Design**: Full-screen presentation style
+#### 2. MainPage (`/teams`)
+- **Purpose**: Team/company landing page (original Russian landing)
+- **Chrome**: Shows Header and Footer
+- **Sections**: Hero with statistics, Products carousel, Cases showcase, Events carousel, Team section, FAQ
+- **Data**: [src/pages/MainPage/data.ts](src/pages/MainPage/data.ts)
 
-#### 4. BasePage (`/baza`)
-- **Purpose**: AI Base 3-day workshop landing page
-- **Workshop**: November 25-27 (Mon-Wed), 19:00-21:00
-- **Pricing**:
-  - Live participation: 24,990 ₽ (8,330 ₽/month × 3)
-  - Recording access: 19,990 ₽ (6,663 ₽/month × 3)
+#### 3. SferKumarSoloPage (`/sfer-kumar-solo`)
+- **Purpose**: Vibe Academy landing page (joint course by Kumar and Kirill)
+- **Chrome**: No Header/Footer (self-contained)
+- **Design**: Premium landing with MeshGradient backgrounds
+- **Sections**: Hero, Partner logos, Course stats, AGI countdown, AI-first features, Life program features, "Who needs coding" audience cards, Program modules (5), Tools logos, Instructors, Success stories, Reviews, Pricing (3 tiers), FAQ, CTA, Contacts
+- **Data**: [src/pages/SferKumarSoloPage/data.ts](src/pages/SferKumarSoloPage/data.ts)
+
+#### 4. VoiceBotPage (`/products/voice-bot`)
+- **Purpose**: VoiceBot AI product landing page
+- **Chrome**: No Header/Footer
+- **Features**: Product showcase, demo, pricing, use cases
+- **Assets**: [src/pages/VoiceBotPage/assets/](src/pages/VoiceBotPage/assets/)
+
+#### 5. CommunityFormPage (`/forms/community`, `/forms/community2301`)
+- **Purpose**: Community registration form using TypeformService
+- **Chrome**: No Header/Footer
+- **Features**: Multi-step form with Typeform-style UX
+- **Integration**: TypeformService for form logic and presentation
+- **Note**: Two route variants point to same page component
+
+#### 6. Workshop Pages (BasePage, VibecodingPage, AgentsPage)
+- **Paths**: `/edu/baza`, `/edu/vibecoding`, `/edu/agents`
+- **Purpose**: Workshop landing pages
 - **Chrome**: Shows Header (with product-specific navigation)
-- **Sections**:
-  - Hero with mesh gradient
-  - Content carousel (3 workshop modules)
-  - Audience carousel (3 target groups)
-  - Reviews carousel (14 testimonials)
-  - Price carousel (2 tiers: Live, Recording)
-  - FAQ accordion
-  - Contact section with instructor bio
+- **Sections**: Hero with mesh gradient, Content carousel, Audience carousel, Reviews carousel, Price carousel, FAQ accordion, Contact section
 - **Payment**: GetCourse integration
-- **Data**: [src/pages/BasePage/data.ts](src/pages/BasePage/data.ts)
+- **Data**: Each page has its own `data.ts` file
 - **MeshGradient**: Custom configuration (preserve exact values)
 
-#### 5. VibecodingPage (`/vibecoding`)
-- **Purpose**: Vibecoding workshop landing page
-- **Structure**: Similar to BasePage
-- **Chrome**: Shows Header
-- **Sections**: Hero, Content, Audience, Reviews, Price, FAQ, Contact
-- **Data**: [src/pages/VibecodingPage/data.ts](src/pages/VibecodingPage/data.ts)
-
-#### 6. AgentsPage (`/agents`)
-- **Purpose**: AI Agents workshop landing page
-- **Structure**: Similar to BasePage and VibecodingPage
-- **Chrome**: Shows Header
-- **Sections**: Hero, Content, Audience, Reviews, Price, FAQ, Contact
-- **Data**: [src/pages/AgentsPage/data.ts](src/pages/AgentsPage/data.ts)
-
-#### 7. PmJobPage (`/jobs/pm`)
-- **Purpose**: Product Manager / Business Assistant job listing
+#### 7. JobPages (`/jobs/pm`, `/jobs/:position/apply`)
+- **PmJobPage**: Product Manager job listing with role description
+- **ApplicationPage**: Job application form with 11 fields, Zod validation, Google Sheets integration
 - **Chrome**: No Header/Footer
-- **Sections**:
-  - Personal greeting from Kirill Gurbanov
-  - Company overview (SFER.AI mission and values)
-  - Role responsibilities (4 key areas)
-  - Requirements (must-have and nice-to-have)
-  - Working conditions (remote, part-time, growth potential)
-  - Application CTA (links to ApplicationPage)
-- **Design**: Clean, professional layout with mesh gradient hero
-
-#### 8. ApplicationPage (`/jobs/:position/apply`)
-- **Purpose**: Job application form with Google Sheets integration
-- **Chrome**: No Header/Footer
-- **Form Fields** (11 total):
-  1. Full Name (required, min 2 chars)
-  2. Telegram (required, validated format)
-  3. Location (required, city + country)
-  4. Experience (required, min 50 chars)
-  5. English Level (required, 1-10 scale)
-  6. AI Usage (required, min 30 chars)
-  7. Success Project (required, min 50 chars)
-  8. Failure Project (required, min 50 chars)
-  9. Motivation (required, min 30 chars)
-  10. Expected Compensation (required)
-  11. Additional Info (optional)
-- **Validation**: Zod schema with real-time validation
-- **Submission**: Google Apps Script webhook (no-cors mode)
-- **Features**:
-  - Progress bar (completion percentage)
-  - Toast notifications (react-hot-toast)
-  - Loading states
-  - Success screen with redirect
-  - Error handling
-- **Components**: JobTextInput, JobTextArea, JobRadioGroup (reusable)
-- **Hook**: useJobApplicationSubmit (submission logic)
 - **Documentation**: [docs/GOOGLE_APPS_SCRIPT_SETUP.md](docs/GOOGLE_APPS_SCRIPT_SETUP.md)
 
-#### 9. NotFoundPage (`*`)
-- **Purpose**: Creative 404 error page styled as Cursor IDE
-- **Chrome**: No Header/Footer
-- **Design**: Full Cursor/VS Code interface simulation
-- **Features**:
-  - File explorer sidebar (fake project structure)
-  - Tab bar with active 404.tsx file
-  - Editor area with animated 404 number
-  - Status bar with git branch, language, position
-  - Chat panel (AI assistant UI)
-  - VS Code Dark+ theme colors
-- **Branch-Specific Implementation**:
-  - **RU Branch** (`supreme_main_ru_products`): Russian language version for ru.sfer.ai
-    - Error message: "Упс, похоже эта страница ещё не вайбкожена..."
-    - Button: "На главную"
-  - **EN Branch** (`supreme_main_eng`): English language version for sfer.ai
-    - Error message: "Oops, looks like this page is not vibecoded yet..."
-    - Button: "Go to Homepage"
-- **Language Detection** (legacy, can be simplified per branch):
-  - Current implementation checks hostname (ru.sfer.ai) or ?lang=ru parameter
-  - Can be simplified to hardcoded language per branch since deployments are separate
-- **Responsive**:
-  - Desktop (>1024px): Full IDE interface
-  - Tablet (768-1024px): Simplified layout
-  - Mobile (<768px): Minimal editor-style view
-- **Animation**: Pulse effect on 404 number (framer-motion)
+### Other Pages (Table)
 
-#### 10. SferKumarSoloPage (`/sfer-kumar-solo`)
-- **Purpose**: Vibe Academy landing page (joint course by Kumar and Kirill)
-- **Chrome**: No Header, No Footer (self-contained page)
-- **Design**: Premium landing with MeshGradient backgrounds
-- **Sections**:
-  - Hero with gradient background
-  - Partner logos (Yandex, Sber, T-Bank, etc.)
-  - Course stats (2 months, 36 hours, etc.)
-  - AGI countdown section
-  - AI-first features
-  - Life program features
-  - "Who needs coding" audience cards
-  - Program modules (5 modules)
-  - Tools logos (Make, Cursor, ChatGPT, Claude, etc.)
-  - Instructors (Kumar, Kirill)
-  - Success stories (what students create)
-  - Reviews
-  - Pricing (3 tiers)
-  - FAQ accordion
-  - CTA section
-  - Contacts
-- **Data**: [src/pages/SferKumarSoloPage/data.ts](src/pages/SferKumarSoloPage/data.ts)
-- **Components**: SuccessStoriesSection (separate component)
+| Page | Route | Purpose | Chrome |
+|------|-------|---------|--------|
+| EduPage | `/edu` | Education hub, links to workshops | Header/Footer |
+| ReviewsPage | `/edu/reviews` | Customer reviews showcase | Header/Footer |
+| CaseStudiesPage | `/cases` | Case studies list | No |
+| CaseStudyLancetPage | `/cases/lancet` | Lancet case study | No |
+| CaseStudyYandexPage | `/cases/yandex` | Yandex case study | No |
+| CaseStudyGoBeyondPage | `/cases/gobeyond` | GoBeyond case study | No |
+| CaseStudyUAEPage | `/cases/uae` | UAE case study | No |
+| CaseStudyNubesPage | `/cases/nubes` | Nubes case study | No |
+| CustomAutomationsPage | `/programs` | Custom automation services | Header/Footer |
+| AutomationsPage | `/automations` | Automations overview | Header/Footer |
+| QuizPage | `/survey` | Survey/quiz form | No |
+| OrderSuccessPage | `/order/success` | Order success confirmation | No |
+| PrivacyPolicyPage | `/privacy-policy` | Privacy policy | No |
+| NewYearRedirectPage | `/newyear2026` | New Year redirect utility | No |
+| SferKumarSoloWebPage | `/sfer-kumar-solo-web` | Independent copy of SferKumarSoloPage | No |
+| NotFoundPage | `*` | Creative Cursor-style 404 page | No |
+| OfferPage | (not routed) | Under development | — |
 
-#### 11. SferKumarSoloWebPage (`/sfer-kumar-solo-web`)
-- **Purpose**: Independent copy of SferKumarSoloPage for web-specific modifications
-- **Chrome**: No Header, No Footer
-- **Independence**: Fully isolated from original — has its own:
-  - Button component (`components/Button/`)
-  - All icons and assets (`assets/`)
-  - Data file (`data.ts`)
-  - Components
-- **Use case**: Can be modified (blocks removed/edited) without affecting the original `/sfer-kumar-solo`
-- **Data**: [src/pages/SferKumarSoloWebPage/data.ts](src/pages/SferKumarSoloWebPage/data.ts)
+## Services
 
-### Key Dependencies
+### TypeformService
 
-#### Production
-- **react** (19.1.1) + **react-dom** (19.1.1): UI library
-- **react-router-dom** (7.8.2): Client-side routing
-- **tailwindcss** (4.1.12): Utility-first CSS
-- **@paper-design/shaders-react** (0.0.61): WebGL mesh gradients
-- **embla-carousel-react** (8.6.0): Carousel component
-- **framer-motion** (12.23.12): Animations
-- **react-hook-form** (7.66.0): Form management
-- **zod** (4.1.12): Schema validation
-- **react-hot-toast** (2.6.0): Toast notifications
-- **clsx** (2.1.1): Conditional className utility
+Located at `src/services/TypeformService/`, this service provides a Typeform-style multi-step form experience.
 
-#### Development
-- **typescript** (5.8.3): TypeScript compiler
-- **vite** (7.1.2): Build tool and dev server
-- **eslint** (9.34.0): JavaScript/TypeScript linter
-- **prettier** (3.6.2): Code formatter
+**Documentation**: [docs/TypeformService.md](docs/TypeformService.md)
 
-### Styling
+**Structure**:
+```
+TypeformService/
+├── components/
+│   ├── fields/
+│   │   ├── EmailField.tsx
+│   │   ├── InfoField.tsx
+│   │   ├── SelectField.tsx
+│   │   ├── TextareaField.tsx
+│   │   ├── TextField.tsx
+│   │   └── index.ts
+│   ├── ProgressBar.tsx
+│   ├── StepScreen.tsx
+│   ├── ThankYouScreen.tsx
+│   ├── TypeformContainer.tsx
+│   └── WelcomeScreen.tsx
+├── hooks/
+│   └── useTypeform.ts
+├── types.ts
+└── index.ts
+```
 
-#### Tailwind CSS v4
+**Usage**: Used by CommunityFormPage for community registration forms.
+
+**Features**:
+- Welcome screen with intro
+- Multi-step form navigation
+- Progress bar
+- Various field types (text, textarea, email, select, info)
+- Thank you screen on completion
+- Form state management via `useTypeform` hook
+
+## Hooks and Utilities
+
+### Analytics
+
+**Hook**: `src/hooks/useAnalytics.ts`
+**Utility**: `src/utils/analytics.ts`
+
+Used for Yandex Metrika integration and event tracking across the application.
+
+**Related Documentation**:
+- [docs/YANDEX_METRIKA_SETUP.md](docs/YANDEX_METRIKA_SETUP.md)
+- [docs/YANDEX_METRIKA_CHECKING_GUIDE.md](docs/YANDEX_METRIKA_CHECKING_GUIDE.md)
+- [docs/METRIKA_GOALS_SETUP.md](docs/METRIKA_GOALS_SETUP.md)
+- [docs/METRIKA_DEBUG_GUIDE.md](docs/METRIKA_DEBUG_GUIDE.md)
+- [docs/METRIKA_FIX_SOLUTION.md](docs/METRIKA_FIX_SOLUTION.md)
+- [docs/UTM_TRACKING_GUIDE.md](docs/UTM_TRACKING_GUIDE.md)
+
+## Shared Components
+
+| Component | Purpose |
+|-----------|---------|
+| Button | Reusable button component |
+| Carousel | Embla-based carousel component |
+| CookieBanner | Cookie consent banner |
+| FAQ | Accordion FAQ component |
+| ReviewsGrid | Grid layout for reviews |
+| ScrollToTop | Scroll restoration on route change |
+| Title | Section title component |
+
+## Key Dependencies
+
+### Production
+| Package | Version | Purpose |
+|---------|---------|---------|
+| react | ^19.1.1 | UI library |
+| react-dom | ^19.1.1 | React DOM bindings |
+| react-router-dom | ^7.8.2 | Client-side routing |
+| tailwindcss | ^4.1.12 | Utility-first CSS |
+| @paper-design/shaders-react | ^0.0.61 | WebGL mesh gradients |
+| embla-carousel-react | ^8.6.0 | Carousel component |
+| embla-carousel-autoplay | ^8.6.0 | Carousel autoplay |
+| framer-motion | ^12.23.12 | Animations |
+| react-hook-form | ^7.69.0 | Form management |
+| @hookform/resolvers | ^5.2.2 | Form resolvers |
+| zod | ^4.2.1 | Schema validation |
+| react-hot-toast | ^2.6.0 | Toast notifications |
+| lucide-react | ^0.562.0 | Icon library |
+| clsx | ^2.1.1 | Conditional className utility |
+
+### Development
+| Package | Version | Purpose |
+|---------|---------|---------|
+| typescript | ~5.8.3 | TypeScript compiler |
+| vite | ^7.1.2 | Build tool |
+| @vitejs/plugin-react | ^5.0.0 | Vite React plugin |
+| eslint | ^9.34.0 | Linter |
+| prettier | ^3.6.2 | Code formatter |
+
+## Styling
+
+### Tailwind CSS v4
 
 Configured via `@tailwindcss/vite` plugin in [vite.config.ts](vite.config.ts).
 
-#### Custom Theme ([src/index.css](src/index.css))
+### Custom Theme ([src/index.css](src/index.css))
 
 ```css
 @theme {
@@ -427,251 +459,73 @@ Configured via `@tailwindcss/vite` plugin in [vite.config.ts](vite.config.ts).
 }
 ```
 
-#### Typography
+### Typography
 - **Primary Font**: Inter (sans-serif, Google Fonts)
 - **Monospace Font**: Geist Mono (code, technical elements)
 - **Additional**: Montserrat (Google Fonts)
-
-#### Responsive Design
-- Mobile-first approach
-- Breakpoint-specific layouts: `hidden md:flex`, `flex md:hidden`
-- Responsive padding: `px-4 sm:px-12 lg:px-16 xl:px-[calc((100vw-1408px)/2)]`
-- Responsive typography: `text-base md:text-sm xl:text-base`
-
-#### Page-Specific Colors
-Product pages define custom primary colors in inline `<style>` tags for theming.
-
-### Data Management
-
-#### Separation of Content from Components
-
-Page content is organized in `data.ts` files:
-
-```typescript
-// Example: BasePage/data.ts
-export const CONTENT = [
-  { iconUrl: '...', title: '...', text: '...', list: [...] }
-];
-export const AUDIENCE = [...];
-export const PRICE = [...];
-export const REVIEWS = [...];
-```
-
-#### Data Flow
-1. **Data File**: Exports typed arrays of content objects
-2. **Page Component**: Imports data arrays
-3. **Carousel**: Receives data via props
-4. **Item Components**: Render individual items (CarouselContentItem, CarouselPriceItem, CarouselReviewsItem)
-
-This separation allows easy content updates without touching UI code.
-
-### Important Patterns
-
-#### 1. Carousel Components
-Product pages (Base, Vibecoding, Agents) each have their **own Carousel component** in `PageName/components/Carousel/` rather than using the shared `src/components/Carousel/`. These are page-specific implementations with custom styling and behavior.
-
-#### 2. MeshGradient Configurations
-Hero sections use `@paper-design/shaders-react` with specific configuration values:
-- speed
-- colors (array of hex colors)
-- distortion
-- swirl
-- grainMixer
-- frame
-
-**IMPORTANT**: Preserve these exact values when editing to maintain visual consistency.
-
-#### 3. Header Scroll Behavior
-The Header component ([src/modules/Header/components/Header.tsx](src/modules/Header/components/Header.tsx)) has sophisticated scroll-aware behavior:
-- Transparent on page top → White background on scroll
-- CTA button fades in on scroll (hidden on product pages)
-- Logo brightness adjusts on scroll
-- Smooth scroll navigation to sections
-- Mobile burger menu with AnimatePresence animation
-
-#### 4. Conditional Chrome Rendering
-Layout.tsx checks pathname to determine chrome visibility:
-```typescript
-const showChrome = !isSupreme && !isCaseStudy && !isJobPage && !isNotFound;
-```
-
-#### 5. Form Validation with Zod
-Job application form uses Zod schemas for validation:
-```typescript
-export const pmApplicationSchema = z.object({
-  fullName: z.string().min(2, 'Имя должно содержать минимум 2 символа'),
-  telegram: z.string().regex(/^@?[a-zA-Z0-9_]{5,}$/, 'Неверный формат'),
-  // ... more fields
-});
-```
-
-## Internationalization (i18n)
-
-### Branch-Based Strategy
-
-**Important**: This project uses **separate Git branches** for language versions instead of a single codebase with i18n library.
-
-#### Primary Domains and Branches
-- **sfer.ai** (English) → Deployed from `supreme_main_eng` branch
-- **ru.sfer.ai** (Russian) → Deployed from `supreme_main_ru_products` branch
-
-### Implementation
-
-#### 1. Separate Branches Approach
-
-**Why Separate Branches:**
-- Complete independence between language versions
-- Different content, different marketing strategies
-- Separate deployment pipelines
-- No runtime language switching overhead
-- Simpler maintenance for two distinct websites
-
-**Branch Details:**
-- **`supreme_main_eng`**: Full English site content
-- **`supreme_main_ru_products`**: Full Russian site content
-- Each branch has its own 404 page in respective language
-- Shared technical architecture, different content
-
-#### 2. Automatic Language Detection (Optional, [index.html](index.html))
-
-For user convenience, optional redirect script on English domain:
-
-```javascript
-<script>
-  // Redirect Russian users on main page to ru.sfer.ai
-  if (window.location.hostname === 'sfer.ai') {
-    const userLangs = navigator.languages || [navigator.language];
-    const isRussian = userLangs.some(lang => lang.toLowerCase().startsWith('ru'));
-    const pathname = window.location.pathname;
-    const isMainPage = pathname === '/' || pathname === '';
-
-    if (isRussian && isMainPage) {
-      window.location.href = 'https://ru.sfer.ai' + pathname + search + hash;
-    }
-  }
-</script>
-```
-
-**Rules**:
-- Only redirects on sfer.ai (not ru.sfer.ai)
-- Only redirects Russian-language users (browser language detection)
-- Only redirects on main page (`/`)
-- Preserves path, query params, and hash
-
-#### 3. Legacy Language Detection in Components
-
-**Note**: Since branches are deployed separately, runtime language detection (hostname checks) in components can be simplified:
-
-**Current (legacy) implementation:**
-```typescript
-const [isRussian, setIsRussian] = useState(false);
-
-useEffect(() => {
-  const hostname = window.location.hostname;
-  setIsRussian(hostname.startsWith('ru.') || hostname.includes('ru.sfer'));
-}, []);
-```
-
-**Recommended simplification:**
-```typescript
-// In RU branch: just use Russian text directly
-const errorMessage = "Упс, похоже эта страница ещё не вайбкожена...";
-
-// In EN branch: just use English text directly
-const errorMessage = "Oops, looks like this page is not vibecoded yet...";
-```
-
-### Content Strategy
-
-#### Russian Branch (`supreme_main_ru_products` → ru.sfer.ai)
-- MainPage: Russian landing page
-- Product pages: Russian workshop descriptions
-- Job pages: Russian job listings
-- 404 page: Russian error message
-- All UI text in Russian
-
-#### English Branch (`supreme_main_eng` → sfer.ai)
-- SupremeMainPage: English premium landing
-- Product pages: English workshop descriptions
-- Job pages: English job listings
-- 404 page: English error message
-- All UI text in English
-
-### No Formal i18n Library
-- **No react-i18next**: Not needed with separate branches
-- **No translation files**: Content exists in respective branches
-- **Branch-based approach**: Two separate websites sharing architecture
-- **Simpler than i18n**: Each branch is monolingual
 
 ## External Integrations
 
 ### 1. Calendly
 - **URL**: https://calendly.com/as-sfer/30min
 - **Usage**: Default CTA button link for bookings
-- **Security**: Opens in new window with `noopener, noreferrer`
 
 ### 2. Google Sheets (via Apps Script)
-- **Purpose**: Job application submissions storage
-- **Endpoint**: Google Apps Script Web App (deployed URL in useJobApplicationSubmit.ts)
-- **Mode**: `no-cors` (required for Google Apps Script)
-- **Sheet Columns**: 13 fields (timestamp, position, personal info, experience, projects, etc.)
+- **Purpose**: Job application submissions, form data storage
 - **Documentation**: [docs/GOOGLE_APPS_SCRIPT_SETUP.md](docs/GOOGLE_APPS_SCRIPT_SETUP.md)
+- **AmoCRM Integration**: [docs/google-apps-script-amocrm.js](docs/google-apps-script-amocrm.js)
 
 ### 3. GetCourse
 - **Base Workshop**: https://kirillgurbanov.getcourse.ru/3day_workshop_ai
 - **Recording**: https://kirillgurbanov.getcourse.ru/3day_workshop_ai_rec
 - **Usage**: Payment and enrollment platform for workshops
 
-### 4. Google Fonts
+### 4. Yandex Metrika
+- **Purpose**: Analytics, event tracking, goal conversion
+- **Documentation**: See docs/YANDEX_METRIKA_*.md files
+
+### 5. Google Fonts
 - **Inter**: Primary sans-serif font
 - **Geist Mono**: Monospace for code/tech elements
 - **Montserrat**: Additional typography
 
-## Build Configuration
+## Static Offer Pages
 
-### Vite Configuration ([vite.config.ts](vite.config.ts))
+Located in `public/for/`, these are static HTML pages for specific partner offers:
 
-```typescript
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
+| Directory | Partner |
+|-----------|---------|
+| centraluniversity | Central University |
+| jet | JET |
+| mk | MK |
+| markswebb | Markswebb |
 
-export default defineConfig({
-  plugins: [tailwindcss(), react()],
-})
-```
+## Documentation Files
 
-### TypeScript Configuration
+### Main Documentation
+- **CLAUDE.md** (this file): Comprehensive project guide
+- **README.md**: Standard Vite + React template readme
 
-**Project References** ([tsconfig.json](tsconfig.json)):
-- App config: tsconfig.app.json
-- Node config: tsconfig.node.json
+### Feature Documentation (`docs/`)
+| File | Topic |
+|------|-------|
+| TypeformService.md | TypeformService usage guide |
+| APPLICATION_FORM_PLAN.md | Job application form implementation plan |
+| GOOGLE_APPS_SCRIPT_SETUP.md | Google Apps Script setup |
+| google-apps-script-amocrm.js | AmoCRM integration script |
+| google-apps-script/forms-to-sheets.js | Forms to Sheets script |
 
-**App Config** ([tsconfig.app.json](tsconfig.app.json)):
-- Target: ES2022
-- Module: ESNext
-- JSX: react-jsx
-- Strict mode enabled
+### Analytics Documentation (`docs/`)
+| File | Topic |
+|------|-------|
+| YANDEX_METRIKA_SETUP.md | Yandex Metrika setup |
+| YANDEX_METRIKA_CHECKING_GUIDE.md | Metrika verification guide |
+| METRIKA_GOALS_SETUP.md | Goals configuration |
+| METRIKA_DEBUG_GUIDE.md | Debugging Metrika issues |
+| METRIKA_FIX_SOLUTION.md | Common fixes |
+| UTM_TRACKING_GUIDE.md | UTM parameter tracking |
 
-### ESLint Configuration ([eslint.config.js](eslint.config.js))
-- TypeScript ESLint
-- React Hooks rules
-- React Refresh plugin
-- Prettier integration
-
-### Prettier Configuration ([.prettierrc](.prettierrc))
-```json
-{
-  "semi": true,
-  "singleQuote": true,
-  "trailingComma": "es5",
-  "printWidth": 80,
-  "tabWidth": 2,
-  "useTabs": false
-}
-```
-
-## Git Workflow Best Practices
+## Git Workflow
 
 ### Branch Strategy
 
@@ -679,59 +533,10 @@ export default defineConfig({
 - `supreme_main_ru_products` - Russian version (ru.sfer.ai)
 - `supreme_main_eng` - English version (sfer.ai)
 
-**Creating Feature Branches**:
-
-#### For Russian Version Features
-```bash
-# Start from Russian production branch
-git fetch origin
-git checkout supreme_main_ru_products
-git pull origin supreme_main_ru_products
-
-# Create feature branch
-git checkout -b kirill-[feature-name]-ru
-```
-
-#### For English Version Features
-```bash
-# Start from English production branch
-git fetch origin
-git checkout supreme_main_eng
-git pull origin supreme_main_eng
-
-# Create feature branch
-git checkout -b kirill-[feature-name]-en
-```
-
-#### For Features Affecting Both Versions
-```bash
-# Option 1: Separate feature branches (Recommended)
-# Create RU version
-git checkout supreme_main_ru_products
-git checkout -b kirill-[feature-name]-ru
-# ... make changes, commit, push, create PR
-
-# Create EN version
-git checkout supreme_main_eng
-git checkout -b kirill-[feature-name]-en
-# ... make changes, commit, push, create PR
-
-# Option 2: Cherry-pick between branches
-# Make changes in RU branch first
-git checkout kirill-[feature-name]-ru
-git commit -m "feat: ..."
-# Apply to EN branch
-git checkout supreme_main_eng
-git checkout -b kirill-[feature-name]-en
-git cherry-pick <commit-hash>
-# Adjust content for English, amend commit
-```
-
 **Branch Naming Convention**:
 - `kirill-[feature]-ru` for Russian version features
 - `kirill-[feature]-en` for English version features
 - `kirill-[feature]` for general/documentation changes
-- Use kebab-case: `kirill-404-page-ru`, `kirill-job-application-en`
 
 ### Commit Message Format
 
@@ -741,112 +546,38 @@ feat: Add creative Cursor-style 404 page with mobile support
 ## Summary
 - Created custom 404 page mimicking Cursor/VS Code interface
 - Added responsive mobile design with simplified UI
-- Implemented language detection (EN/RU) based on domain
-
-## Features
-- Full Cursor IDE interface mockup for desktop
-- Simplified mobile version with editor-like styling
-- Automatic language switching
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
-**Commit Types**:
-- `feat:` New feature
-- `fix:` Bug fix
-- `docs:` Documentation changes
-- `style:` Code formatting (no logic change)
-- `refactor:` Code refactoring
-- `test:` Adding tests
-- `chore:` Maintenance tasks
+**Commit Types**: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`
 
 ### Pull Request Process
 
-#### For Russian Version PR
 ```bash
-# Push feature branch
-git push -u origin kirill-[feature-name]-ru
+# Russian version PR
+gh pr create --base supreme_main_ru_products --title "feat: Feature (RU)"
 
-# Create pull request targeting RU branch
-gh pr create --base supreme_main_ru_products --title "feat: Feature description (RU)" --body "Detailed description"
+# English version PR
+gh pr create --base supreme_main_eng --title "feat: Feature (EN)"
 ```
 
-#### For English Version PR
-```bash
-# Push feature branch
-git push -u origin kirill-[feature-name]-en
+## Important Patterns
 
-# Create pull request targeting EN branch
-gh pr create --base supreme_main_eng --title "feat: Feature description (EN)" --body "Detailed description"
-```
+### 1. MeshGradient Configurations
+Hero sections use `@paper-design/shaders-react` with specific configuration values.
+**IMPORTANT**: Preserve exact values when editing to maintain visual consistency.
 
-**PR Target Branches**:
-- Russian features → `supreme_main_ru_products`
-- English features → `supreme_main_eng`
-- **Important**: Always specify `--base` flag to ensure PR targets correct branch
+### 2. Header Scroll Behavior
+The Header has sophisticated scroll-aware behavior with transparency transitions, CTA fade-in, and mobile burger menu.
 
-## Documentation Files
+### 3. Form Validation with Zod
+Forms use Zod schemas for validation with React Hook Form integration.
 
-### Current Documentation
-
-- **CLAUDE.md** (this file): Comprehensive project guide for AI assistants
-- **docs/APPLICATION_FORM_PLAN.md**: Job application form implementation plan (Russian)
-- **docs/GOOGLE_APPS_SCRIPT_SETUP.md**: Google Apps Script setup instructions (Russian)
-- **README.md**: Standard Vite + React template readme
-
-### Documentation Maintenance
-
-- Keep CLAUDE.md updated when adding new pages or major features
-- Update docs/ folder for feature-specific documentation
-- Include inline code comments for complex logic
-- Document any new external integrations
-
-## Security Considerations
-
-### Form Submissions
-- **Client-side validation**: Zod schemas
-- **Input sanitization**: Handled by Google Apps Script
-- **Rate limiting**: Should be added (not currently implemented)
-- **Honeypot fields**: Should be added for bot protection
-
-### External Links
-- All external links open with `target="_blank" rel="noopener noreferrer"`
-- Calendly, GetCourse links secured
-
-### Google Apps Script
-- **Deployment**: "Anyone" can access (public endpoint)
-- **No authentication**: Client-side only validation
-- **Recommendation**: Add server-side validation for production
-
-## Performance Optimizations
-
-### Current Optimizations
-- SVG for logos and icons (smaller file size)
-- JPG for photographs (optimized quality)
-- MP4 for videos (compressed)
-- Vite's optimized bundling
-- Tree-shaking unused code
-- Minification in production
-
-### Future Improvements
-- Code splitting with React.lazy()
-- Image optimization (WebP format)
-- Lazy loading for carousels
-- CDN for static assets
-
-## Testing Strategy
-
-### Current Status
-- No formal testing framework implemented
-- Manual testing via `npm run dev`
-
-### Recommended Testing
-- Unit tests: Vitest (Vite-native)
-- Component tests: React Testing Library
-- E2E tests: Playwright or Cypress
-- Form validation tests (Zod schemas)
+### 4. Conditional Chrome Rendering
+Layout.tsx checks pathname to determine chrome visibility for each route.
 
 ## Troubleshooting
 
@@ -858,24 +589,13 @@ gh pr create --base supreme_main_eng --title "feat: Feature description (EN)" --
 **Issue**: Form submission fails
 - **Solution**: Check Google Apps Script URL, verify no-cors mode, check network tab
 
-**Issue**: Header not showing/hiding correctly
-- **Solution**: Check Layout.tsx conditional logic, verify route pathname matching
+**Issue**: Analytics not tracking
+- **Solution**: Check Yandex Metrika setup, see METRIKA_DEBUG_GUIDE.md
 
 **Issue**: 404 page language not switching
-- **Solution**: Check hostname detection logic, test with ?lang=ru parameter
-
-**Issue**: Carousel not autoplaying
-- **Solution**: Verify embla-carousel-autoplay plugin configuration
-
-## Additional Resources
-
-- **React Documentation**: https://react.dev/
-- **Vite Documentation**: https://vite.dev/
-- **Tailwind CSS v4**: https://tailwindcss.com/
-- **React Router v7**: https://reactrouter.com/
-- **Zod Documentation**: https://zod.dev/
+- **Solution**: Each branch has its own 404 page in respective language
 
 ---
 
-**Last Updated**: 2025-11-10
+**Last Updated**: 2026-01-23
 **Project Version**: Active development on `supreme_main_ru_products` branch

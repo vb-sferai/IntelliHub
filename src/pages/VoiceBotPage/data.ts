@@ -1,6 +1,6 @@
 // Навигация для хедера (якорные ссылки на секции)
 export const NAV_ITEMS = [
-    { label: 'Как работает', href: '#how-it-works' },
+    { label: 'Сценарии', href: '#usage-scenarios' },
     { label: 'Сравнение', href: '#comparison' },
     { label: 'Тарифы', href: '#pricing' },
     { label: 'FAQ', href: '#faq' },
@@ -8,51 +8,37 @@ export const NAV_ITEMS = [
 
 // Hero секция
 export const HERO = {
-    title: 'Голосовые в текст за секунды',
-    subtitle: 'Устали слушать бесконечные голосовые? Просто перешлите их боту',
+    title: 'Больше никаких\nголосовых сообщений\nв телеграм',
+    subtitle: 'Sfer Voice Bot автоматически расшифрует любое голосовое - слушать больше не придётся',
     ctaText: 'Попробовать бесплатно',
-    botLink: 'https://t.me/your_voice_bot', // TODO: заменить на реальную ссылку
+    botLink: 'https://t.me/sfervoice_bot',
 };
 
-// Шаги работы с ботом
-export const STEPS = [
+// Сценарии использования для UsageScenariosSection
+export const USAGE_SCENARIOS = [
     {
-        number: '01',
-        title: 'Перешлите голосовое',
-        description: 'Просто перешлите голосовое сообщение нашему боту в Telegram',
+        number: 1,
+        title: 'Прямая расшифровка',
+        description:
+            'Просто отправьте голосовое сообщение или кружок боту - получите текст за несколько секунд',
+        requiresBusiness: false,
+        video: 'scenario-1-direct.mp4',
     },
     {
-        number: '02',
-        title: 'Бот расшифрует',
-        description: 'Искусственный интеллект мгновенно распознает речь',
+        number: 2,
+        title: 'Автоматическая расшифровка',
+        description:
+            'Получили голосовое от собеседника? Бот автоматически расшифрует его и ChatGPT отформатирует в удобочитаемый текст',
+        requiresBusiness: true,
+        video: 'scenario-2-direct.mp4',
     },
     {
-        number: '03',
-        title: 'Читайте текст',
-        description: 'Получите готовый текст сообщения в чате',
-    },
-];
-
-// Шаги для HowItWorksSection (формат step: number)
-// Иконки: 'send' | 'bot' | 'file-text' — соответствуют Lucide React
-export const STEPS_NEW = [
-    {
-        step: 1,
-        title: 'Перешлите голосовое',
-        description: 'Просто перешлите голосовое сообщение нашему боту в Telegram',
-        icon: 'send',
-    },
-    {
-        step: 2,
-        title: 'Бот расшифрует',
-        description: 'Искусственный интеллект мгновенно распознает речь',
-        icon: 'bot',
-    },
-    {
-        step: 3,
-        title: 'Читайте текст',
-        description: 'Получите готовый текст сообщения в чате',
-        icon: 'file-text',
+        number: 3,
+        title: 'Групповые чаты',
+        description:
+            'Добавьте бота в чат и упомяните его @sfervoice_bot в ответ на голосовое - он расшифрует его для всех',
+        requiresBusiness: false,
+        video: 'scenario-3-groups.mp4',
     },
 ];
 
@@ -61,9 +47,11 @@ export const COMPARISON_DATA = {
     headers: ['Функция', 'Наш бот', 'Telegram Premium'],
     rows: [
         { feature: 'Расшифровка голосовых', us: true, telegram: true },
-        { feature: 'Скорость обработки', us: '3-5 сек', telegram: '10-30 сек' },
+        { feature: 'Обработка кружков', us: true, telegram: true },
+        { feature: 'Длинные голосовые', us: true, telegram: true },
         { feature: '50+ языков', us: true, telegram: false },
-        { feature: 'Приватность (без хранения)', us: true, telegram: false },
+        { feature: 'Форматирование текста (абзацы, знаки препинания)', us: true, telegram: false },
+        { feature: 'Работает в чатах', us: true, telegram: false },
         { feature: 'Работает без Premium', us: true, telegram: false },
     ],
 };
@@ -96,49 +84,44 @@ export const FEATURES = [
 export const PRICING = [
     {
         name: 'Free',
-        price: '0 \u20BD',
+        price: '0 ₽',
         period: '',
         description: 'Для знакомства с ботом',
         features: [
-            '10 минут расшифровки в месяц',
+            '10 минут в месяц',
             'Все языки',
-            'Стандартная скорость',
         ],
         ctaText: 'Начать бесплатно',
-        ctaLink: 'https://t.me/your_voice_bot', // TODO: заменить
+        ctaLink: 'https://t.me/sfervoice_bot',
         isPopular: false,
     },
     {
-        name: 'Pro',
-        price: '299 \u20BD',
+        name: 'Basic',
+        price: '249 ₽',
         period: '/месяц',
-        description: 'Для активных пользователей',
+        description: 'Для регулярного использования',
         features: [
-            'Безлимитные расшифровки',
-            'Приоритетная обработка',
+            '100 минут в месяц',
             'Все языки',
-            'Поддержка 24/7',
         ],
         ctaText: 'Оформить подписку',
-        ctaLink: 'https://t.me/your_voice_bot?start=pro', // TODO: заменить
+        ctaLink: 'https://t.me/sfervoice_bot?start=basic',
         isPopular: true,
     },
     {
         name: 'Team',
-        price: '999 \u20BD',
+        price: '2 499 ₽',
         period: '/месяц',
-        description: 'Для команд',
+        description: 'Для больших объёмов',
         features: [
-            'До 5 пользователей',
-            'Безлимитные расшифровки',
-            'Приоритетная обработка',
-            'Персональный менеджер',
+            '1000 минут в месяц',
+            'Все языки',
         ],
-        ctaText: 'Связаться',
-        ctaLink: 'https://t.me/your_voice_bot?start=team', // TODO: заменить
+        ctaText: 'Оформить подписку',
+        ctaLink: 'https://t.me/sfervoice_bot?start=team',
         isPopular: false,
     },
-];
+];;;;;;
 
 // FAQ
 export const FAQ_ITEMS = [
@@ -162,16 +145,22 @@ export const FAQ_ITEMS = [
 
 // Юридическая информация (для ЮKassa)
 export const LEGAL = {
-    companyName: 'ИП Иванов Иван Иванович', // TODO: заменить
-    inn: '123456789012', // TODO: заменить
-    ogrnip: '123456789012345', // TODO: заменить
-    address: 'г. Москва, ул. Примерная, д. 1', // TODO: заменить
+    companyName: 'ИП Гурбанов Кирилл Игоревич',
+    inn: '772158403819',
+    ogrnip: '324774600493850',
+    address: '111674, Россия, г. Москва, ул. 2-я Вольская, д. 20, кв. 43',
     email: 'support@sfer.ai',
     telegram: '@sfer_support',
+    // Банковские реквизиты
+    bank: 'АО «ТБанк»',
+    bik: '044525974',
+    bankInn: '7710140679',
+    checkingAccount: '40802810200006477359',
+    corrAccount: '30101810145250000974',
 };
 
 // Контактная информация
 export const CONTACTS = {
-    email: 'support@sfer.ai',
-    telegram: '@sfer_support',
-};
+    email: 'human@sfer.ai',
+    telegram: 't.me/kgurbanov',
+};;

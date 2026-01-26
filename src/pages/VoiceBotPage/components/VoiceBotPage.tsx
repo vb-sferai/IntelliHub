@@ -8,13 +8,11 @@ import { ROUTES } from '../../../constants/routes';
 import LogoGray from '../../../assets/imgs/logo-gray.svg';
 import { VoiceBotHeader } from './VoiceBotHeader';
 import { HeroDemo } from './HeroDemo';
-import { HowItWorksSection } from './HowItWorksSection';
+import { UsageScenariosSection } from './UsageScenariosSection';
 import { ComparisonTable } from './ComparisonTable';
 import {
     HERO,
-    STEPS_NEW,
     COMPARISON_DATA,
-    FEATURES,
     PRICING,
     FAQ_ITEMS,
     LEGAL,
@@ -35,7 +33,7 @@ export const VoiceBotPage = () => {
             {/* ========== HERO SECTION ========== */}
             <section
                 id="hero"
-                className="relative min-h-[85vh] w-full flex items-center justify-center overflow-hidden pt-20"
+                className="relative min-h-[100vh] w-full flex items-center justify-center overflow-hidden"
             >
                 {/* MeshGradient background */}
                 <div className="absolute inset-0 w-full h-full">
@@ -50,16 +48,20 @@ export const VoiceBotPage = () => {
                 </div>
 
                 {/* Hero content with GIF demo */}
-                <div className="relative z-10 flex flex-col lg:flex-row w-full max-w-[1280px] items-center gap-8 lg:gap-16 px-4 sm:px-8 lg:px-16 py-20">
+                <div className="relative z-10 flex flex-col lg:flex-row w-full max-w-[1400px] items-center justify-center gap-12 lg:gap-20 px-6 sm:px-10 lg:px-20 py-24 pt-32">
                     {/* Text content */}
-                    <div className="flex flex-col text-center lg:text-left items-center lg:items-start gap-6 text-white flex-1">
-                        <h1 className="text-4xl xs:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-[-0.03em]">
-                            {HERO.title}
+                    <div className="flex flex-col items-center lg:items-start gap-8 text-white lg:flex-[1.2]">
+                        <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold leading-[1.05] tracking-[-0.02em] text-center lg:text-left">
+                            Больше никаких
+                            <br />
+                            голосовых сообщений
+                            <br />
+                            в телеграм
                         </h1>
-                        <p className="text-lg md:text-xl lg:text-2xl font-medium opacity-90 max-w-[600px] leading-[1.4]">
+                        <p className="text-lg sm:text-xl lg:text-2xl font-medium opacity-90 max-w-[540px] leading-[1.5] text-center lg:text-left">
                             {HERO.subtitle}
                         </p>
-                        <div className="mt-4">
+                        <div className="mt-2">
                             <Button color="white" link={HERO.botLink}>
                                 {HERO.ctaText}
                             </Button>
@@ -67,106 +69,53 @@ export const VoiceBotPage = () => {
                     </div>
 
                     {/* GIF demo */}
-                    <div className="flex-1 w-full max-w-md lg:max-w-lg">
+                    <div className="flex-1 w-full max-w-[360px] lg:max-w-[420px]">
                         <HeroDemo />
                     </div>
                 </div>
             </section>
 
-            {/* ========== HOW IT WORKS SECTION ========== */}
-            <section
-                id="how-it-works"
-                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24"
-            >
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-12 lg:mb-16">
-                    Как это работает
-                </h2>
-                <div className="w-full max-w-[1000px]">
-                    <HowItWorksSection steps={STEPS_NEW} />
-                </div>
-            </section>
+            {/* ========== USAGE SCENARIOS SECTION ========== */}
+            <UsageScenariosSection />
 
             {/* ========== CONFIDENTIALITY SECTION ========== */}
             <section
                 id="confidentiality"
-                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 pt-16 md:pt-20 lg:pt-24 xl:pt-32"
+                className="flex flex-col items-center px-6 sm:px-10 lg:px-20 py-16 lg:py-24"
             >
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-2">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-12 lg:mb-16">
                     Конфиденциальность
                 </h2>
-                <p className="text-gray-600 text-center mb-12 lg:mb-16 max-w-[500px]">
-                    Ваши данные — только ваши
-                </p>
-                <div className="flex flex-col md:flex-row gap-6 w-full max-w-4xl">
-                    <div className="flex-1 bg-[#F7F7F5] p-8 rounded-2xl">
-                        <span className="text-4xl mb-4 block">🔒</span>
-                        <h3 className="text-xl font-semibold text-black mb-2">
-                            Мы ничего не храним
-                        </h3>
-                        <p className="text-gray-600 text-base leading-relaxed">
-                            Аудиофайлы удаляются сразу после обработки. Никакие данные не сохраняются на наших серверах.
-                        </p>
-                    </div>
-                    <div className="flex-1 bg-[#F7F7F5] p-8 rounded-2xl">
-                        <span className="text-4xl mb-4 block">💬</span>
-                        <h3 className="text-xl font-semibold text-black mb-2">
-                            Всё остаётся в вашем чате
-                        </h3>
-                        <p className="text-gray-600 text-base leading-relaxed">
-                            Расшифровки отправляются только вам — в ваш личный чат с ботом. Доступ есть только у вас.
-                        </p>
-                    </div>
+                <div className="bg-[#F7F7F5] p-6 sm:p-8 lg:p-10 rounded-2xl w-full max-w-2xl text-center">
+                    <span className="text-5xl mb-4 block">🔒</span>
+                    <h3 className="text-xl lg:text-2xl font-semibold text-black mb-3">
+                        Мы не собираем данные
+                    </h3>
+                    <p className="text-gray-600 text-base lg:text-lg leading-relaxed">
+                        Голосовые сообщения обрабатываются в реальном времени и мгновенно удаляются. Мы не храним аудио, текст расшифровок или историю сообщений.
+                    </p>
                 </div>
             </section>
 
             {/* ========== COMPARISON SECTION ========== */}
             <section
                 id="comparison"
-                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24 bg-white"
-            >
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-4">
-                    Сравнение с Telegram Premium
-                </h2>
-                <p className="text-gray-600 text-center mb-12 lg:mb-16 max-w-[500px]">
-                    Почему наш бот — лучший выбор для расшифровки голосовых
-                </p>
-                <div className="w-full max-w-[800px]">
-                    <ComparisonTable data={COMPARISON_DATA} />
-                </div>
-            </section>
-
-            {/* ========== FEATURES SECTION ========== */}
-            <section
-                id="features"
-                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24 bg-[#F7F7F5]"
+                className="flex flex-col items-center px-6 sm:px-10 lg:px-20 py-16 lg:py-24 bg-white"
             >
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-12 lg:mb-16">
-                    Почему выбирают нас
+                    Сравнение с Telegram Premium
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-[900px]">
-                    {FEATURES.map((feature, index) => (
-                        <div
-                            key={index}
-                            className="bg-white p-8 rounded-2xl flex flex-col gap-4"
-                        >
-                            <span className="text-4xl">{feature.emoji}</span>
-                            <h3 className="text-xl font-semibold text-black">
-                                {feature.title}
-                            </h3>
-                            <p className="text-gray-600 text-base leading-relaxed">
-                                {feature.description}
-                            </p>
-                        </div>
-                    ))}
+                <div className="w-full max-w-[800px]">
+                    <ComparisonTable data={COMPARISON_DATA} />
                 </div>
             </section>
 
             {/* ========== PRICING SECTION ========== */}
             <section
                 id="pricing"
-                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24"
+                className="flex flex-col items-center px-6 sm:px-10 lg:px-20 py-16 lg:py-24"
             >
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-4">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-2">
                     Тарифы
                 </h2>
                 <p className="text-gray-600 text-center mb-12 lg:mb-16 max-w-[500px]">
@@ -176,7 +125,7 @@ export const VoiceBotPage = () => {
                     {PRICING.map((plan, index) => (
                         <div
                             key={index}
-                            className={`relative flex flex-col p-8 rounded-2xl border-2 ${
+                            className={`relative flex flex-col p-5 sm:p-6 lg:p-8 rounded-2xl border-2 ${
                                 plan.isPopular
                                     ? 'border-[#005EE0] bg-[#005EE0]/5'
                                     : 'border-gray-200 bg-white'
@@ -237,7 +186,7 @@ export const VoiceBotPage = () => {
             {/* ========== FAQ SECTION ========== */}
             <section
                 id="faq"
-                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24 bg-[#F7F7F5]"
+                className="flex flex-col items-center px-6 sm:px-10 lg:px-20 py-16 lg:py-24 bg-[#F7F7F5]"
             >
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-12 lg:mb-16">
                     Частые вопросы
@@ -255,7 +204,7 @@ export const VoiceBotPage = () => {
             </section>
 
             {/* ========== FOOTER SECTION ========== */}
-            <footer className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-12 lg:py-16 bg-black text-white">
+            <footer className="flex flex-col items-center px-6 sm:px-10 lg:px-20 py-16 lg:py-24 bg-black text-white">
                 <div className="w-full max-w-[1100px]">
                     {/* Logo and contacts */}
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
@@ -292,12 +241,12 @@ export const VoiceBotPage = () => {
                         >
                             Политика конфиденциальности
                         </Link>
-                        <a
-                            href="#"
+                        <Link
+                            to={ROUTES.voiceBotOffer}
                             className="text-gray-400 hover:text-white transition-colors"
                         >
                             Публичная оферта
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Legal info (required for YuKassa) */}

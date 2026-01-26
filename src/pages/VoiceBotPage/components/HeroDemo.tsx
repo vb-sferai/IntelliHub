@@ -1,15 +1,29 @@
-// HeroDemo Component - Telegram bot demo GIF
+// HeroDemo Component - Telegram bot demo video
 
-import demoGif from '../assets/demos/demo.gif';
+import { useState } from 'react';
+import heroVideo from '../assets/demos/hero-demo-edited.mp4';
 
 export const HeroDemo = () => {
+    const [isLoaded, setIsLoaded] = useState(false);
+
     return (
         <div className="flex items-center justify-center w-full">
-            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                <img
-                    src={demoGif}
-                    alt="Демонстрация работы бота — голосовое сообщение превращается в структурированный текст"
-                    className="w-full h-auto"
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-[9/16]">
+                {/* Loading skeleton */}
+                {!isLoaded && (
+                    <div className="absolute inset-0 bg-white/10 animate-pulse flex items-center justify-center">
+                        <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+                    </div>
+                )}
+                <video
+                    src={heroVideo}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    onCanPlay={() => setIsLoaded(true)}
+                    className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
                 />
             </div>
         </div>

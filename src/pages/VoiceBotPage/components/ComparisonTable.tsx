@@ -16,19 +16,19 @@ type ComparisonTableProps = {
 const renderValue = (value: boolean | string) => {
     if (value === true) {
         return (
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#7B2FF7] text-white text-sm">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#005EE0] text-white text-sm font-medium">
                 ✓
             </span>
         );
     }
     if (value === false) {
         return (
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 text-gray-400 text-sm">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 text-gray-400 text-sm">
                 ✗
             </span>
         );
     }
-    return <span className="text-sm text-gray-600">{value}</span>;
+    return <span className="text-sm font-medium text-gray-700">{value}</span>;
 };
 
 export const ComparisonTable = ({ data }: ComparisonTableProps) => {
@@ -45,7 +45,7 @@ export const ComparisonTable = ({ data }: ComparisonTableProps) => {
                                     index === 0
                                         ? 'font-normal text-gray-500 text-sm'
                                         : index === 1
-                                        ? 'font-semibold text-[#7B2FF7] text-base'
+                                        ? 'font-semibold text-[#005EE0] text-base'
                                         : 'font-normal text-gray-700 text-sm'
                                 }`}
                             >
@@ -84,7 +84,7 @@ export const ComparisonTable = ({ data }: ComparisonTableProps) => {
                         <h4 className="font-medium text-black mb-3">{row.feature}</h4>
                         <div className="flex flex-col gap-2">
                             <div className="flex justify-between items-center">
-                                <span className="text-sm text-[#7B2FF7] font-medium">Наш бот</span>
+                                <span className="text-sm text-[#005EE0] font-medium">Наш бот</span>
                                 {renderValue(row.us)}
                             </div>
                             <div className="flex justify-between items-center">

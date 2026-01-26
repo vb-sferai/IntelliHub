@@ -70,38 +70,42 @@ export const VoiceBotHeader = () => {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${headerTone}`}
       >
-        <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6 md:px-12 lg:px-16 xl:px-0">
-          <a href="/" className="flex items-center gap-3">
+        <div className="relative mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 sm:px-10 lg:px-20">
+          {/* Logo - left */}
+          <a href="/" className="flex items-center z-10">
             <img
               src={LogoImg}
               alt="Sfer AI"
-              className={`h-8 transition-all ${isScrolled || isMenuOpen ? 'filter brightness-0' : 'filter brightness-0 invert'}`}
+              className={`h-7 transition-all ${isScrolled || isMenuOpen ? 'filter brightness-0' : 'filter brightness-0 invert'}`}
             />
           </a>
 
-          <nav className="hidden items-center gap-8 text-xl font-normal md:flex" style={{ letterSpacing: '-0.6px' }}>
+          {/* Nav - absolutely centered */}
+          <nav className="hidden items-center gap-6 text-lg font-medium md:flex tracking-[-0.01em] absolute left-1/2 -translate-x-1/2">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.label}
                 type="button"
                 onClick={() => handleNavClick(item.href)}
-                className="relative text-left transition-colors duration-200 hover:opacity-80"
+                className="relative transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          <div className="hidden md:block">
+          {/* CTA button - right */}
+          <div className="hidden md:block z-10 -mr-6">
             <Button color={isScrolled ? 'black' : 'white'} link={HERO.botLink}>
               {HERO.ctaText}
             </Button>
           </div>
 
+          {/* Mobile burger */}
           <button
             type="button"
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="md:hidden"
+            className="md:hidden z-10"
             aria-expanded={isMenuOpen}
             aria-label={isMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
           >
@@ -121,9 +125,9 @@ export const VoiceBotHeader = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 flex flex-col gap-8 bg-white px-6 py-24 text-gray-900"
+            className="fixed inset-0 z-40 flex flex-col gap-8 bg-white px-6 py-20 text-gray-900"
           >
-            <ul className="space-y-4 text-xl font-normal" style={{ letterSpacing: '-0.6px' }}>
+            <ul className="space-y-5 text-lg font-medium tracking-[-0.01em]">
               {NAV_ITEMS.map((item) => (
                 <li key={item.label}>
                   <button

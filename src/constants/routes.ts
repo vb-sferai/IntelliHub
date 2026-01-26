@@ -28,6 +28,7 @@ export const ROUTES = {
     orderSuccess: '/order/success',
     // Продукты
     voiceBot: '/products/voice-bot',
+    voiceBotOffer: '/products/voice-bot/offer',
     // Юридические страницы
     privacyPolicy: '/privacy-policy',
     // Формы

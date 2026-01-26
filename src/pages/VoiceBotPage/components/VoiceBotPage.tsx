@@ -6,9 +6,14 @@ import { QuestionsBlockItem } from '../../../components/FAQ/components/QuestionB
 import { saveUTMParams } from '../../../utils/analytics';
 import { ROUTES } from '../../../constants/routes';
 import LogoGray from '../../../assets/imgs/logo-gray.svg';
+import { VoiceBotHeader } from './VoiceBotHeader';
+import { HeroDemo } from './HeroDemo';
+import { HowItWorksSection } from './HowItWorksSection';
+import { ComparisonTable } from './ComparisonTable';
 import {
     HERO,
-    STEPS,
+    STEPS_NEW,
+    COMPARISON_DATA,
     FEATURES,
     PRICING,
     FAQ_ITEMS,
@@ -24,8 +29,14 @@ export const VoiceBotPage = () => {
 
     return (
         <div className="flex flex-col w-full min-h-screen bg-white">
+            {/* ========== HEADER ========== */}
+            <VoiceBotHeader />
+
             {/* ========== HERO SECTION ========== */}
-            <section className="relative min-h-[85vh] w-full flex items-center justify-center overflow-hidden">
+            <section
+                id="hero"
+                className="relative min-h-[85vh] w-full flex items-center justify-center overflow-hidden pt-20"
+            >
                 {/* MeshGradient background */}
                 <div className="absolute inset-0 w-full h-full">
                     <MeshGradient
@@ -38,57 +49,97 @@ export const VoiceBotPage = () => {
                     />
                 </div>
 
-                {/* Hero content */}
-                <div className="relative z-10 flex flex-col w-full text-center items-center gap-6 px-4 sm:px-8 lg:px-16 max-w-[800px] text-white py-20">
-                    <h1 className="text-4xl xs:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-[-0.03em]">
-                        {HERO.title}
-                    </h1>
-                    <p className="text-lg md:text-xl lg:text-2xl font-medium opacity-90 max-w-[600px] leading-[1.4]">
-                        {HERO.subtitle}
-                    </p>
-                    <div className="mt-4">
-                        <Button color="white" link={HERO.botLink}>
-                            {HERO.ctaText}
-                        </Button>
+                {/* Hero content with GIF demo */}
+                <div className="relative z-10 flex flex-col lg:flex-row w-full max-w-[1280px] items-center gap-8 lg:gap-16 px-4 sm:px-8 lg:px-16 py-20">
+                    {/* Text content */}
+                    <div className="flex flex-col text-center lg:text-left items-center lg:items-start gap-6 text-white flex-1">
+                        <h1 className="text-4xl xs:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-[-0.03em]">
+                            {HERO.title}
+                        </h1>
+                        <p className="text-lg md:text-xl lg:text-2xl font-medium opacity-90 max-w-[600px] leading-[1.4]">
+                            {HERO.subtitle}
+                        </p>
+                        <div className="mt-4">
+                            <Button color="white" link={HERO.botLink}>
+                                {HERO.ctaText}
+                            </Button>
+                        </div>
+                    </div>
+
+                    {/* GIF demo */}
+                    <div className="flex-1 w-full max-w-md lg:max-w-lg">
+                        <HeroDemo />
                     </div>
                 </div>
             </section>
 
             {/* ========== HOW IT WORKS SECTION ========== */}
-            <section className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24">
+            <section
+                id="how-it-works"
+                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24"
+            >
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-12 lg:mb-16">
                     Как это работает
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full max-w-[1000px]">
-                    {STEPS.map((step, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col items-center text-center gap-4 p-6"
-                        >
-                            <div className="w-16 h-16 rounded-full bg-[#005EE0] flex items-center justify-center">
-                                <span className="text-white font-bold text-xl">
-                                    {step.number}
-                                </span>
-                            </div>
-                            <h3 className="text-xl font-semibold text-black">
-                                {step.title}
-                            </h3>
-                            <p className="text-gray-600 text-base leading-relaxed">
-                                {step.description}
-                            </p>
-                            {/* Arrow between steps (hidden on last step and mobile) */}
-                            {index < STEPS.length - 1 && (
-                                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 text-gray-300 text-2xl">
-                                    →
-                                </div>
-                            )}
-                        </div>
-                    ))}
+                <div className="w-full max-w-[1000px]">
+                    <HowItWorksSection steps={STEPS_NEW} />
+                </div>
+            </section>
+
+            {/* ========== CONFIDENTIALITY SECTION ========== */}
+            <section
+                id="confidentiality"
+                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 pt-16 md:pt-20 lg:pt-24 xl:pt-32"
+            >
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-2">
+                    Конфиденциальность
+                </h2>
+                <p className="text-gray-600 text-center mb-12 lg:mb-16 max-w-[500px]">
+                    Ваши данные — только ваши
+                </p>
+                <div className="flex flex-col md:flex-row gap-6 w-full max-w-4xl">
+                    <div className="flex-1 bg-[#F7F7F5] p-8 rounded-2xl">
+                        <span className="text-4xl mb-4 block">🔒</span>
+                        <h3 className="text-xl font-semibold text-black mb-2">
+                            Мы ничего не храним
+                        </h3>
+                        <p className="text-gray-600 text-base leading-relaxed">
+                            Аудиофайлы удаляются сразу после обработки. Никакие данные не сохраняются на наших серверах.
+                        </p>
+                    </div>
+                    <div className="flex-1 bg-[#F7F7F5] p-8 rounded-2xl">
+                        <span className="text-4xl mb-4 block">💬</span>
+                        <h3 className="text-xl font-semibold text-black mb-2">
+                            Всё остаётся в вашем чате
+                        </h3>
+                        <p className="text-gray-600 text-base leading-relaxed">
+                            Расшифровки отправляются только вам — в ваш личный чат с ботом. Доступ есть только у вас.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* ========== COMPARISON SECTION ========== */}
+            <section
+                id="comparison"
+                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24 bg-white"
+            >
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-4">
+                    Сравнение с Telegram Premium
+                </h2>
+                <p className="text-gray-600 text-center mb-12 lg:mb-16 max-w-[500px]">
+                    Почему наш бот — лучший выбор для расшифровки голосовых
+                </p>
+                <div className="w-full max-w-[800px]">
+                    <ComparisonTable data={COMPARISON_DATA} />
                 </div>
             </section>
 
             {/* ========== FEATURES SECTION ========== */}
-            <section className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24 bg-[#F7F7F5]">
+            <section
+                id="features"
+                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24 bg-[#F7F7F5]"
+            >
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-12 lg:mb-16">
                     Почему выбирают нас
                 </h2>
@@ -111,7 +162,10 @@ export const VoiceBotPage = () => {
             </section>
 
             {/* ========== PRICING SECTION ========== */}
-            <section className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24">
+            <section
+                id="pricing"
+                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24"
+            >
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-4">
                     Тарифы
                 </h2>
@@ -181,7 +235,10 @@ export const VoiceBotPage = () => {
             </section>
 
             {/* ========== FAQ SECTION ========== */}
-            <section className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24 bg-[#F7F7F5]">
+            <section
+                id="faq"
+                className="flex flex-col items-center px-4 sm:px-8 lg:px-16 py-16 lg:py-24 bg-[#F7F7F5]"
+            >
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black text-center mb-12 lg:mb-16">
                     Частые вопросы
                 </h2>

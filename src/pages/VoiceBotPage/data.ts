@@ -1,3 +1,11 @@
+// Навигация для хедера (якорные ссылки на секции)
+export const NAV_ITEMS = [
+    { label: 'Как работает', href: '#how-it-works' },
+    { label: 'Сравнение', href: '#comparison' },
+    { label: 'Тарифы', href: '#pricing' },
+    { label: 'FAQ', href: '#faq' },
+];
+
 // Hero секция
 export const HERO = {
     title: 'Голосовые в текст за секунды',
@@ -24,6 +32,41 @@ export const STEPS = [
         description: 'Получите готовый текст сообщения в чате',
     },
 ];
+
+// Шаги для HowItWorksSection (формат step: number)
+// Иконки: 'send' | 'bot' | 'file-text' — соответствуют Lucide React
+export const STEPS_NEW = [
+    {
+        step: 1,
+        title: 'Перешлите голосовое',
+        description: 'Просто перешлите голосовое сообщение нашему боту в Telegram',
+        icon: 'send',
+    },
+    {
+        step: 2,
+        title: 'Бот расшифрует',
+        description: 'Искусственный интеллект мгновенно распознает речь',
+        icon: 'bot',
+    },
+    {
+        step: 3,
+        title: 'Читайте текст',
+        description: 'Получите готовый текст сообщения в чате',
+        icon: 'file-text',
+    },
+];
+
+// Данные для таблицы сравнения с Telegram Premium
+export const COMPARISON_DATA = {
+    headers: ['Функция', 'Наш бот', 'Telegram Premium'],
+    rows: [
+        { feature: 'Расшифровка голосовых', us: true, telegram: true },
+        { feature: 'Скорость обработки', us: '3-5 сек', telegram: '10-30 сек' },
+        { feature: '50+ языков', us: true, telegram: false },
+        { feature: 'Приватность (без хранения)', us: true, telegram: false },
+        { feature: 'Работает без Premium', us: true, telegram: false },
+    ],
+};
 
 // Преимущества
 export const FEATURES = [

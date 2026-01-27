@@ -36,9 +36,9 @@ export const USAGE_SCENARIOS = [
         number: 3,
         title: 'Групповые чаты',
         description:
-            'Добавьте бота в чат и упомяните его @sfervoice_bot в ответ на голосовое - он расшифрует его для всех',
+            'Добавьте бота в чат - он автоматически расшифрует все голосовые сообщения для всех участников',
         requiresBusiness: false,
-        video: 'scenario-3-groups.mp4',
+        video: 'CleanShot 2026-01-27 at 17.34.37.mp4',
     },
 ];
 

@@ -11,13 +11,13 @@ import { VideoPlaceholder } from './VideoPlaceholder';
 // Import video assets
 import scenario1Video from '../assets/demos/scenario-1-direct.mp4';
 import scenario2Video from '../assets/demos/scenario-2-direct.mp4';
-import scenario3Video from '../assets/demos/scenario-3-groups.mp4';
+import scenario3Video from '../assets/demos/CleanShot 2026-01-27 at 17.34.37.mp4';
 
 // Video mapping for dynamic loading
 const VIDEO_MAP: Record<string, string> = {
     'scenario-1-direct.mp4': scenario1Video,
     'scenario-2-direct.mp4': scenario2Video,
-    'scenario-3-groups.mp4': scenario3Video,
+    'CleanShot 2026-01-27 at 17.34.37.mp4': scenario3Video,
 };
 
 type Scenario = {

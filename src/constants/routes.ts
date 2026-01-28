@@ -17,6 +17,7 @@ export const ROUTES = {
     agents: '/edu/agents',
     sferKumarSolo: '/sfer-kumar-solo',
     sferKumarSoloWeb: '/sfer-kumar-solo-web',
+    sferKumarBonus: '/sfer-kumar-solo-bonus',
     // Старые пути для редиректов
     baseOld: '/baza',
     vibecodingOld: '/vibecoding',

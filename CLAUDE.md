@@ -2,6 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Important: Documentation Lookup
+
+**Always use Context7 MCP** for looking up library/framework documentation instead of web search or other methods. This applies especially during plan mode.
+
+```
+1. First resolve library ID: mcp__context7__resolve-library-id
+2. Then query docs: mcp__context7__query-docs
+```
+
+Examples: Tailwind CSS responsive utilities, React hooks, Framer Motion animations, etc.
+
 ## Project Owner
 
 - **Name**: Kirill Gurbanov

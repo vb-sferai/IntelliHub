@@ -28,6 +28,7 @@ export const Layout = () => {
     const isPrivacyPolicyPage = location.pathname === ROUTES.privacyPolicy;
     const isSferKumarSoloPage = location.pathname === ROUTES.sferKumarSolo;
     const isSferKumarSoloWebPage = location.pathname === ROUTES.sferKumarSoloWeb;
+    const isSferKumarBonusPage = location.pathname === ROUTES.sferKumarBonus;
     const isVoiceBotPage = location.pathname === ROUTES.voiceBot;
     const isVoiceBotOfferPage = location.pathname === ROUTES.voiceBotOffer;
     const isCommunityFormPage = location.pathname === ROUTES.communityForm || location.pathname === ROUTES.communityForm2301;
@@ -43,7 +44,7 @@ export const Layout = () => {
     const hideHeader = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isAutomationsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isOrderSuccessPage || isPrivacyPolicyPage || isVoiceBotPage || isVoiceBotOfferPage || isCommunityFormPage || isNotFoundPage;
 
     // Страницы без footer (OrderSuccessPage показывает footer)
-    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isAutomationsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isPrivacyPolicyPage || isSferKumarSoloPage || isSferKumarSoloWebPage || isVoiceBotPage || isVoiceBotOfferPage || isNotFoundPage;
+    const hideFooter = isSupremePage || isReviewsPage || isCasesPage || isCaseStudyLancetPage || isCaseStudyYandexPage || isCaseStudyGoBeyondPage || isCaseStudyUAEPage || isCaseStudyNubesPage || isProgramsPage || isAutomationsPage || isPmJobPage || isJobApplicationPage || isNewYearRedirectPage || isSurveyPage || isPrivacyPolicyPage || isSferKumarSoloPage || isSferKumarSoloWebPage || isSferKumarBonusPage || isVoiceBotPage || isVoiceBotOfferPage || isNotFoundPage;
 
     return (
         <div className="min-h-full flex relative">

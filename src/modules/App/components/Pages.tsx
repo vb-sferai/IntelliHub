@@ -23,6 +23,7 @@ import {OrderSuccessPage} from "../../../pages/OrderSuccessPage";
 import {PrivacyPolicyPage} from "../../../pages/PrivacyPolicyPage";
 import {SferKumarSoloPage} from "../../../pages/SferKumarSoloPage";
 import {SferKumarSoloWebPage} from "../../../pages/SferKumarSoloWebPage";
+import {SferKumarBonusPage} from "../../../pages/SferKumarBonusPage";
 import {VoiceBotPage} from "../../../pages/VoiceBotPage";
 import {VoiceBotOfferPage} from "../../../pages/VoiceBotPage/components/VoiceBotOfferPage";
 import {CommunityFormPage} from "../../../pages/CommunityFormPage";
@@ -59,6 +60,7 @@ export const Pages = () => {
             <Route path={ROUTES.privacyPolicy} element={<PrivacyPolicyPage />} />
             <Route path={ROUTES.sferKumarSolo} element={<SferKumarSoloPage />} />
             <Route path={ROUTES.sferKumarSoloWeb} element={<SferKumarSoloWebPage />} />
+            <Route path={ROUTES.sferKumarBonus} element={<SferKumarBonusPage />} />
             <Route path={ROUTES.voiceBotOffer} element={<VoiceBotOfferPage />} />
             <Route path={ROUTES.voiceBot} element={<VoiceBotPage />} />
             {/* Формы */}

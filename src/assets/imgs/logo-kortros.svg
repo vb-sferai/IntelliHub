@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 32" fill="#AEB0B3">
+  <!-- Icon: rectangle with cut corner -->
+  <path d="M0 0h8v32H0V0zm8 0h8v8L8 16V0z"/>
+  <!-- Text: КОРТРОС -->
+  <text x="24" y="24" font-family="Arial, sans-serif" font-size="22" font-weight="bold" letter-spacing="1">КОРТРОС</text>
+</svg>

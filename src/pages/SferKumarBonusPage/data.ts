@@ -3,6 +3,8 @@ import SpeakerKumar from './assets/kumar.png';
 import SpeakerKirill from './assets/kirill.png';
 import SpeakerEpstein from './assets/epstein.png';
 import SpeakerArtem from './assets/artem.png';
+import SpeakerUstinov from './assets/ustinov.png';
+import SpeakerNikolai from './assets/nikolai.png';
 
 // ========== HERO SECTION ==========
 export const HERO = {
@@ -152,6 +154,20 @@ export const INSTRUCTORS = [
     role: 'Ex-руководитель продуктового\nнаправления в Collextr.ai',
     description: 'Ex-Product Manager в T-Банке. Более 2-х лет занимается созданием AI-агентов и автоматизацией процессов',
     photo: SpeakerArtem,
+    photoPosition: 'center 20%',
+  },
+  {
+    name: 'Всеволод Устинов',
+    role: 'Основатель Elly Analytics',
+    description: 'Создатель платформы сквозной маркетинговой аналитики — первый в мире vibemarketing тул для перфоманс-маркетологов, который автоматизирует до 90% задач маркетолога',
+    photo: SpeakerUstinov,
+    photoPosition: 'center 20%',
+  },
+  {
+    name: 'Николай Кожемякин',
+    role: 'Head of Outreach в Global Transfers',
+    description: '10+ лет в B2B-маркетинге и международном бизнесе. Опыт от стартапов до корпораций уровня Electronic Arts. MBA IE Business School, Cornell PDP. Эксперт по холодному аутричу и контент-маркетингу в B2B',
+    photo: SpeakerNikolai,
     photoPosition: 'center 20%',
   },
 ];

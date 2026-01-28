@@ -404,6 +404,7 @@ export const SferKumarSoloPage = () => {
                                 {/* Header */}
                                 <div className="flex flex-col gap-4">
                                     <span className="text-base text-black">{item.title}</span>
+                                    <span className="text-sm text-gray-600">{item.description}</span>
                                     <span className="text-4xl lg:text-5xl font-semibold text-black">
                                         {item.price}
                                     </span>

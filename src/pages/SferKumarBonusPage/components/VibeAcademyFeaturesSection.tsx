@@ -53,7 +53,7 @@ export const VibeAcademyFeaturesSection = () => {
   const bottomItems = VIBE_ACADEMY_FEATURES.items.slice(6);
 
   return (
-    <div className="flex flex-col gap-10 lg:gap-14 mt-20 lg:mt-32">
+    <div id="programs" className="flex flex-col gap-10 lg:gap-14 mt-20 lg:mt-32 scroll-mt-24">
       {/* Section Title */}
       <h2 className="text-2xl xs:text-3xl md:text-4xl lg:text-[42px] font-semibold text-black leading-[1.2] tracking-[-0.03em] text-center">
         {VIBE_ACADEMY_FEATURES.title}
